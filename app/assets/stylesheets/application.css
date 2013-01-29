@@ -9,9 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap/bootstrap.min.css
- *= require bootstrap/bootstrap-responsive.min.css
- *= require fontawesome/font-awesome.css
  *= require_tree .
  */
 
