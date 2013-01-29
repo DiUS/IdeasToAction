@@ -1,5 +1,5 @@
 !!! 5
-%html(lang="en")
+%html{ :lang => "en", "xmlns:ng" => "http://angularjs.org", "ng-app" => ''}
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -48,6 +48,8 @@
                 %a(href='/path3') Link 3
         .span9
           .div 
+            Contents
+            Nothing here {{'yet' + '!'}}
     
       %footer
         %p &copy; Company 2013
