@@ -26,6 +26,7 @@ environment(name: 'Actionman', description: "Actionman development environment",
         #   depends_on remote_task('updated apt-get') 
         # }
         remote_task(name: 'install babushka', command: 'sudo sh -c "`curl https://babushka.me/up`"', met_test_command: 'which babushka') { }
+        # babushka(name: 'DiUS:ci')
       }
     }
   end
