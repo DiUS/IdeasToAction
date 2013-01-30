@@ -8,8 +8,6 @@
 # > AWS_ACCESS_KEY_ID=<your key> AWS_SECRET_ACCESS_KEY=<your secret> politburo -e Amazon.envfile.rb Amazon#terminate
 # 
 #
-plugin(class: Politburo::Plugins::Cloud::Plugin) {}
-
 environment(name: 'Actionman', description: "Actionman development environment",
   region: 'ap-southeast-2',
   provider: :aws, 
