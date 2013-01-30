@@ -27,6 +27,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 group :test, :development do
   gem 'jasmine-rails'
   gem 'rspec-rails'
+  gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
 end
 
 # To use ActiveModel has_secure_password
