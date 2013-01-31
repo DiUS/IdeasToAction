@@ -1,4 +1,5 @@
 --require spec_helper
 --color
 --format documentation
-~skip --tag ~acceptance
+--tag acceptance
+--fail-fast
