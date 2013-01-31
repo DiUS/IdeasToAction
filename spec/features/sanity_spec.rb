@@ -1,4 +1,4 @@
-describe "End to End Sanity Check", :js => true do
+describe "End to End Sanity Check", js: true, acceptance: true do
   
   before :each do
     visit '/assets/index.html'
