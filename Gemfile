@@ -8,6 +8,10 @@ gem 'rails', '3.2.11'
 gem 'mysql2'
 gem "bigdecimal"
 
+gem "unicorn"
+gem 'foreman'
+gem 'foreman-export-initscript', :git => 'git://github.com/Draiken/foreman-export-initscript.git'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
