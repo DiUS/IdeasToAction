@@ -25,7 +25,7 @@ set :aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY']
 set :aws_releases_bucket, 'actionman-releases'
 set :aws_calling_format, 'SUBDOMAIN'
 
-ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/var/lib/jenkins/.ssh/deployer.pem'
+ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 
 set :stages, %w(production qa canary development)
 require 'capistrano/ext/multistage'
