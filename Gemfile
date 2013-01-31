@@ -6,6 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem "bigdecimal"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,8 +27,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 group :test, :development do
   gem 'jasmine-rails'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
+#  gem 'capybara'
+#  gem 'capybara-webkit'
   gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
 end
 
@@ -41,7 +42,10 @@ end
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capistrano-s3-copy', :git => 'git://github.com/srbartlett/capistrano-s3-copy.git', :require => false
+gem 'dotenv'
+gem 'elbow', :require => false
 
 # To use debugger
 # gem 'debugger'
