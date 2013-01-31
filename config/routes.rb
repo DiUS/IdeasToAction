@@ -1,4 +1,7 @@
 Actionman::Application.routes.draw do
+  resources :talks
+
+
   resources :ideas
 
 
