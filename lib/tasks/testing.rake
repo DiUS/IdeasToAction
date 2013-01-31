@@ -1,10 +1,11 @@
+if Rails.env.test?
+  RSpec::Core::RakeTask.new("spec:acceptance") do | spec |
+    spec.rspec_opts = %w(--options .rspec-acceptance-only)
+  end
 
-RSpec::Core::RakeTask.new("spec:acceptance") do | spec |
-  spec.rspec_opts = %w(--options .rspec-acceptance-only)
+  task :acceptance => [ "spec:acceptance" ]
+
+  task :test => [ "jasmine:headless", "spec" ]
+
+  task :default => :test
 end
-
-task :acceptance => [ "spec:acceptance" ]
-
-task :test => [ "jasmine:headless", "spec" ]
-
-task :default => :test
