@@ -26,6 +26,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 group :test, :development do
   gem 'jasmine-rails'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
 end
 
