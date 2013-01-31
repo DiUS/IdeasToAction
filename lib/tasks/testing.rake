@@ -1,4 +1,4 @@
-if Rails.env.test?
+if Rails.env.test? or Rails.env.development?
   RSpec::Core::RakeTask.new("spec:acceptance") do | spec |
     spec.rspec_opts = %w(--options .rspec-acceptance-only)
   end
