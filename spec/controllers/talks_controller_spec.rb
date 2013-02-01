@@ -36,9 +36,9 @@ describe TalksController do
 
   describe "GET index" do
     it "assigns all talks as @talks" do
-      talk = Talk.create! valid_attributes
+      Talk.count.should > 0
       get :index, {}, valid_session
-      assigns(:talks).should eq([talk])
+      assigns(:talks).should eq(Talk.all)
     end
   end
 
