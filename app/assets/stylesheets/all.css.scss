@@ -1,9 +1,27 @@
+body {
+  padding: 0px !important;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+
+}
+
+.mb-page {
+
+  > .header {
+
+    border: {
+      bottom: 2px solid #FF2A06;
+    }
+  }
+
+}
 .header {
 
   padding: {
-    top: 0.5em;
-    bottom: 0.5em;
-    left: 0.8em;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
   }
 
   margin: {
@@ -14,8 +32,36 @@
     size: 2em;
   }
 
-  border: {
-    bottom: solid 2px red;
+}
+
+.content {
+
+  padding: {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }  
+
+  .title {
+    font: {
+      size: 1.2em;
+    }
+  }
+
+  p {
+    padding-bottom: 5px;
+  }
+}
+
+.collapsible {
+
+  .header {
+    border: 1px solid black;
+
+    sup {
+      color: #FF2A06;
+    }
   }
 }
 

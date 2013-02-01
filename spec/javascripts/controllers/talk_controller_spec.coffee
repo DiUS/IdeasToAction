@@ -1,7 +1,7 @@
 describe 'ActionmanApp', ()->
 
   describe 'TalkCtrl', () -> 
-    ideaData = { 
+    talkData = { 
                 title: 'Amy Cuddy: Your body language shapes who you are', 
                 ideas: [
                   { body: 'Body language affects how others see us, but it may also change how we see ourselves.'},
@@ -16,12 +16,17 @@ describe 'ActionmanApp', ()->
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET('/talks/1.json').
-            respond(ideaData)
+            respond(talkData)
       scope = $rootScope.$new()
-      ctrl = $controller( 'TalkCtrl', { $scope: scope })
+      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1 } })
 
-    it 'should create "talk" model with ideas obtained restfully', () ->
+    it 'should set the talkId correctly', () ->
+      expect(scope.talkId).toBeUndefined
+      $httpBackend.flush()
+      expect(scope.talkId).toEqual(1);
+
+    it 'should create "talk" model obtained restfully', () ->
       expect(scope.talk).toBeUndefined
       $httpBackend.flush()
-      expect(scope.talk).toEqual(ideaData);
+      expect(scope.talk).toEqual(talkData);
     
