@@ -4,7 +4,8 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= "Actionman"
+    %meta(name="apple-mobile-web-app-capable" content="yes")
+    %title= "Actionman"    
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
@@ -14,12 +15,12 @@
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="favicon.ico" rel="shortcut icon")
-  %body
-    .content{ 'ng-view' => '' }
-    %footer
-      %p &copy; Company 2013
+  %body(ng-controller="MainCtrl") 
+    <a id="back-button" class="button" style="display: none;" ng-tap="$navigate.back()">Back</a>
+    <mobile-view></mobile-view> 
     /
       Javascripts
-      \==================================================
+      \================================================== 
     / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+    = javascript_include_tag "application"  
+ 
