@@ -1,6 +1,7 @@
 Actionman::Application.routes.draw do
-  resources :talks
-
+  resources :talks do
+    resources :ideas
+  end
 
   resources :ideas
 
