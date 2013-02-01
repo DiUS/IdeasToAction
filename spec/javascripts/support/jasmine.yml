@@ -1,5 +1,5 @@
 src_files:
- - "application.{js,coffee}"
+ - "**/*.{js,coffee}"
 
 stylesheets:
 
@@ -9,7 +9,7 @@ helpers:
 spec_files:
   - "**/*[Ss]pec.{js,coffee}"
 
-src_dir: "app/assets/javascripts"
+src_dir: "app/assets"
 
 spec_dir: spec/javascripts
 
