@@ -33,6 +33,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'shoulda'
   gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
 end
 

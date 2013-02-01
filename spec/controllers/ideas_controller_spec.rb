@@ -38,7 +38,7 @@ describe IdeasController do
     it "assigns all ideas as @ideas" do
       idea = Idea.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:ideas).should eq([idea])
+      assigns(:ideas).should include(idea)
     end
   end
 

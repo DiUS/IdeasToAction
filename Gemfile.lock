@@ -74,6 +74,8 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bigdecimal (1.1.0)
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.0.4)
     capistrano (2.14.1)
       highline
@@ -165,8 +167,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.19)
+    mocha (0.10.5)
+      metaclass (~> 0.0.1)
     multi_json (1.5.0)
     multi_xml (0.5.2)
     mysql2 (0.3.11)
@@ -239,6 +244,13 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda (3.3.2)
+      shoulda-context (~> 1.0.1)
+      shoulda-matchers (~> 1.4.1)
+    shoulda-context (1.0.2)
+    shoulda-matchers (1.4.2)
+      activesupport (>= 3.0.0)
+      bourne (~> 1.1.2)
     slop (3.4.3)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -289,6 +301,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)
+  shoulda
   therubyracer
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)
