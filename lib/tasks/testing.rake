@@ -3,7 +3,17 @@ if Rails.env.test? or Rails.env.development?
     spec.rspec_opts = %w(--options .rspec-acceptance-only)
   end
 
-  task :acceptance => [ "spec:acceptance" ]
+  task "jasmine:headless" => "db:test:prepare"
+
+  namespace :db do
+    namespace :test do
+      task :prepare => :environment do
+        Rake::Task["db:seed"].invoke
+      end
+    end
+  end
+
+  task :acceptance => [ "db:test:prepare", "spec:acceptance" ]
 
   task :test => [ "jasmine:headless", "spec" ]
 
