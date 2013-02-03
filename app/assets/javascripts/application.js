@@ -15,5 +15,7 @@
 //= require twitter/bootstrap
 
 //= require_tree ./angularjs/
-//= require_tree ../app
+//= require ../app/app.coffee
+//= require_tree ../app/controllers
+//= require_tree ../app/views
 //= require_tree .

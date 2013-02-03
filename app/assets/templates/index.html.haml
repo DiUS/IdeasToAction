@@ -22,5 +22,7 @@
       Javascripts
       \================================================== 
     / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "environments/#{Rails.env}"
+    = javascript_include_tag "cordova-2.3.0"
     = javascript_include_tag "application"
  
