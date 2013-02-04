@@ -8,5 +8,6 @@ angular.module('Actionman', [ 'mobile-navigate' ]).
       $routeProvider.
           when('/talks',  { templateUrl: 'views/talks/talks.html', controller: TalksCtrl }).
           when('/talks/:talkId',  { templateUrl: 'views/talks/talk.html', controller: TalkCtrl }).
+          when('/ideas/:ideaId',  { templateUrl: 'views/ideas/idea.html', controller: IdeaCtrl }).
           otherwise({redirectTo: '/talks'})
     ]
