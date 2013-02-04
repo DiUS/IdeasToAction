@@ -1,1 +1,0 @@
-window.ENDPOINT = 'http://localhost:5000';
