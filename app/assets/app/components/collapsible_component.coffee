@@ -1,0 +1,20 @@
+console.log 'adding collapsible', angular.module('Actionman')
+angular.module('Actionman').
+  directive('collapsible', () ->
+    console.log 'here'
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {},
+      link: ($scope, $element) -> 
+        $scope.$parent.$watch $scope.collection_expr, (newValue, oldValue) ->
+          $scope.collection = newValue || []
+      controller: ($scope, $element) -> 
+        $scope.title = $element.attr('title')
+        $scope.collection_expr = $element.attr('collection')
+        $scope.itemTemplate = $element.attr('item-template')
+
+      templateUrl: 'views/collapsible/collapsible.html',
+      replace: true
+    }
+  )
