@@ -1,5 +1,29 @@
 require 'spec_helper'
 
 describe Idea do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'as_json' do
+    before do
+      @idea = Idea.first
+      @idea.should_receive(:members_actioned).and_return [1,2,3,4,5,6]
+    end
+
+    it 'should merge members_actioned_count into the json object' do
+      @idea.as_json[:members_actioned_count].should_not be_nil
+    end
+
+    it 'should set the members_actioned_count to the number of unique members who have actioned on the idea' do
+      @idea.as_json[:members_actioned_count].should == 6
+    end
+  end
+
+  describe 'members_actioned' do
+    before do
+      @idea = Idea.first
+    end
+
+    it 'should find unique members who have actioned on the current idea' do
+      @idea.send(:members_actioned).size.should == 3
+    end
+  end
 end
