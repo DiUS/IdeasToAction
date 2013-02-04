@@ -14,8 +14,18 @@ if Rails.env.test? or Rails.env.development?
           title: 'Amy Cuddy: Your body language shapes who you are', 
           description: 'Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy shows how "power posing" -- standing in a posture of confidence, even when we don\'t feel confident -- can affect testosterone and cortisol levels in the brain, and might even have an impact on our chances for success.',
           ideas: [
-            { body: 'Body language affects how others see us, but it may also change how we see ourselves.'},
-            { body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.'}
+            { body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+              actions: [
+                { description: 'Fire a rocket launcher' },
+                { description: 'Sit properly' }
+              ].map() { | action_attrs | Action.new(action_attrs) }
+            },
+            { body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
+              actions: [
+                { description: 'Fire a rocket launcher' },
+                { description: 'Sit properly' }
+              ].map() { | action_attrs | Action.new(action_attrs) }
+            }
           ].map() { | idea_attrs | Idea.new(idea_attrs) }
         },
         { 
