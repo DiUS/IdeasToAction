@@ -16,6 +16,7 @@
 
 //= require_tree ./angularjs/
 //= require ../app/app.coffee
+//= require_tree ../app/components
 //= require_tree ../app/controllers
 //= require_tree ../app/views
 //= require_tree .

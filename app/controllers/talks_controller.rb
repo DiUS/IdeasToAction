@@ -17,7 +17,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @talk }
+      format.json { render json: @talk, methods: :ideas }
     end
   end
 
