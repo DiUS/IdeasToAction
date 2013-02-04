@@ -12,7 +12,6 @@ if Rails.env.test? or Rails.env.development?
       `mv tmp/mobile/assets/www/assets/index.html tmp/mobile/assets/www/assets/views tmp/mobile/assets/www/assets/twitter tmp/mobile/assets/www/`
       `rm tmp/mobile/assets/www/assets/*.gz`
       `tmp/mobile/cordova/build`
-      `open tmp/mobile/assets/www/index.html`
     end
   end
 end
