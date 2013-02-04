@@ -5,6 +5,7 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name="apple-mobile-web-app-capable" content="yes")
+    
     %title= "Actionman"    
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
@@ -22,6 +23,11 @@
       Javascripts
       \================================================== 
     / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "environments/#{Rails.env}"
+    - if Rails.env.test? or Rails.env.development?
+      :javascript  
+        window.ENDPOINT = 'http://localhost:5000';
+    - else 
+      :javascript  
+        window.ENDPOINT = 'http://192.168.0.87:5000';
     = javascript_include_tag "cordova-2.3.0"
     = javascript_include_tag "application"
