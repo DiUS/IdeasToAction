@@ -24,7 +24,7 @@ describe 'ActionmanApp', ()->
 
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
-      $httpBackend.expectGET('/talks.json').
+      $httpBackend.expectGET("#{window.ENDPOINT}/talks.json").
             respond(talksData)
       scope = $rootScope.$new()
       ctrl = $controller( 'TalksCtrl', { $scope: scope })
