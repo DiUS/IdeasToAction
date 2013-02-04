@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Talk.delete_all
+Idea.delete_all
+Member.delete_all
+ActionsTaken.delete_all
+Action.delete_all
+
 if Rails.env.test? or Rails.env.development?
 
   talks = Talk.create!(
@@ -34,5 +40,13 @@ if Rails.env.test? or Rails.env.development?
         },
       ]
     )
+
+  member1 = Member.create! token: '1234'
+  member2 = Member.create! token: '5678'
+  member3 = Member.create! token: '9012'
+
+  ActionsTaken.create! action: Action.first, member: member1
+  ActionsTaken.create! action: Action.first, member: member2
+  ActionsTaken.create! action: Action.first, member: member3
 
 end
