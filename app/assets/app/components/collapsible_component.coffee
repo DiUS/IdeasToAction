@@ -7,6 +7,7 @@ angular.module('Actionman').
       link: ($scope, $element) -> 
         $scope.$parent.$watch $scope.collection_expr, (newValue, oldValue) ->
           $scope.collection = newValue || []
+
       controller: ($scope, $element) -> 
         $scope.title = $element.attr('title')
         $scope.collection_expr = $element.attr('collection')
