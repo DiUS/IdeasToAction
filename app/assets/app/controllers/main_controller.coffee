@@ -1,7 +1,8 @@
 
 window.MainCtrl = ($scope, $navigate) ->
+  $scope.navigate = $navigate
   $('body').bind 'swipeRight', ()->
-    $('#back-button').click()
+    $scope.$apply('navigate.back()')
 
   $navigate.go('/talks', 'slide');
 
