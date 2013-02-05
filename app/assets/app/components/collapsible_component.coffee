@@ -1,7 +1,5 @@
-console.log 'adding collapsible', angular.module('Actionman')
 angular.module('Actionman').
   directive('collapsible', () ->
-    console.log 'here'
     return {
       restrict: 'E',
       transclude: true,
