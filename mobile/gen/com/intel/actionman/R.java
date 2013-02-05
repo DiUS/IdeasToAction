@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.actionman;
+package com.intel.actionman;
 
 public final class R {
     public static final class attr {

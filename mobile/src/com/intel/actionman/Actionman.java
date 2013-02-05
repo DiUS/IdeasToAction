@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.example.actionman;
+package com.intel.actionman;
 
 import android.app.Activity;
 import android.os.Bundle;

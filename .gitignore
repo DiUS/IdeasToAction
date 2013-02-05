@@ -16,3 +16,6 @@
 .jhw-cache/
 .DS_Store
 /bin
+/mobile/assets/www/
+/mobile/bin/
+/mobile/gen/
