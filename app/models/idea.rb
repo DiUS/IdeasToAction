@@ -1,7 +1,8 @@
 class Idea < ActiveRecord::Base
   has_many :actions
+  has_many :reactions
 
-  attr_accessible :body, :actions
+  attr_accessible :body, :actions, :reactions
 
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size)

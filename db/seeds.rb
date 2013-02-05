@@ -11,6 +11,7 @@ Idea.delete_all
 Member.delete_all
 ActionsTaken.delete_all
 Action.delete_all
+Reaction.delete_all
 
 if Rails.env.test? or Rails.env.development?
 
@@ -24,13 +25,21 @@ if Rails.env.test? or Rails.env.development?
               actions: [
                 { description: 'Fire a rocket launcher' },
                 { description: 'Sit properly' }
-              ].map() { | action_attrs | Action.new(action_attrs) }
+              ].map() { | action_attrs | Action.new(action_attrs) },
+              reactions: [
+                { text: 'This is a good idea' },
+                { text: 'I think I will try one of these actions' }
+              ].map() { | reaction_attrs | Reaction.new(reaction_attrs) }
             },
             { body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
               actions: [
                 { description: 'Fire a rocket launcher' },
                 { description: 'Sit properly' }
-              ].map() { | action_attrs | Action.new(action_attrs) }
+              ].map() { | action_attrs | Action.new(action_attrs) },
+              reactions: [
+                { text: 'This is a good idea' },
+                { text: 'I think I will try one of these actions' }
+              ].map() { | reaction_attrs | Reaction.new(reaction_attrs) }
             }
           ].map() { | idea_attrs | Idea.new(idea_attrs) }
         },
