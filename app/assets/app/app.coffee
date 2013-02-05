@@ -1,8 +1,9 @@
 angular.module('Actionman', [ 'mobile-navigate' ]).
-  directive('ngTap', ()->
+  directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
+      scope.navigate = $navigate
       elm.bind 'click', () -> 
-        scope.$apply(attrs.ngTap)
+        scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
   ).
   config [ '$routeProvider', ($routeProvider) ->
       $routeProvider.

@@ -5,5 +5,5 @@
       {{ talks.length }}
   .content.talks
     .talk{ 'ng-repeat' => "talk in talks" }
-      %p.title{ "ng-tap" => "$navigate.go('/talks/{{talk.id}}', 'slide')" }
+      %p.title{ "ng-href" => "/talks/{{talk.id}}" }
         {{talk.title}}
