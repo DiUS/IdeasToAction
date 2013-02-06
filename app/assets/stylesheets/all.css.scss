@@ -28,10 +28,6 @@ body {
     left: 20px;
   }
 
-  margin: {
-    bottom: 0.25em;
-  }
-
   font: {
     size: 2em;
   }
@@ -59,10 +55,21 @@ body {
 }
 
 .collapsible {
+  .items {
+    display: none;
+    padding-bottom: 1px;
+    .item {
+      overflow: auto;
+      background-color: white;
+      margin: 10px;
+      padding: 10px;
+    }
+  }
+
+  background-color: lightGray;
+  margin-bottom: 3px;
 
   .header {
-    border: 1px solid black;
-
     sup {
       color: #FF2A06;
     }
