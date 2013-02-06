@@ -12,6 +12,11 @@ gem "unicorn"
 gem 'foreman'
 gem 'foreman-export-initscript', :git => 'git://github.com/Draiken/foreman-export-initscript.git'
 
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+gem 'authlogic', "~> 3.2.0"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,9 +29,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'haml-rails'
 end
-
-gem 'jquery-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :test, :development do
   gem 'jasmine-rails'
