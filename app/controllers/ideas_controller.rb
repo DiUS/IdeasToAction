@@ -10,6 +10,14 @@ class IdeasController < ApplicationController
     end
   end
 
+  def recent
+    @ideas = Idea.order("created_at desc").limit(10)
+
+    respond_to do |format|
+      format.json { render json: @ideas }
+    end
+  end
+
   # GET /ideas/1
   # GET /ideas/1.json
   def show
