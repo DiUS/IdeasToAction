@@ -15,6 +15,8 @@ Actionman::Application.routes.draw do
     end
   end
 
+  resources :events
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
