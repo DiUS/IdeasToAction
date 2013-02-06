@@ -8,13 +8,7 @@ angular.module('Actionman').
         $scope.$parent.$watch $scope.collection_expr, (newValue, oldValue) ->
           $scope.collection = newValue || []
 
-      controller: ($scope, $element) -> 
-        $scope.expandCollapse = () -> $element.find('.items').slideToggle 300
-
-        $scope.title = $element.attr('title')
-        $scope.collection_expr = $element.attr('collection')
-        $scope.itemTemplate = $element.attr('item-template')
-
+      controller: window.CollapsibleCtrl,
       templateUrl: 'views/collapsible/collapsible.html',
       replace: true
     }
