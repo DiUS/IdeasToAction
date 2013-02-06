@@ -3,6 +3,12 @@ Actionman::Application.routes.draw do
     resources :ideas
   end
 
+  resources :actions do
+    collection do
+      get 'recent'
+    end
+  end
+
   resources :ideas do
     collection do
       get 'recent'
