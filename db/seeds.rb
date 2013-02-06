@@ -50,9 +50,9 @@ if Rails.env.test? or Rails.env.development?
       ]
     )
 
-  member1 = Member.create! token: '1234'
-  member2 = Member.create! token: '5678'
-  member3 = Member.create! token: '9012'
+  member1 = Member.create! persistence_token: '1234'
+  member2 = Member.create! persistence_token: '5678'
+  member3 = Member.create! persistence_token: '9012'
 
   ActionsTaken.create! action: Action.first, member: member1
   ActionsTaken.create! action: Action.first, member: member2
