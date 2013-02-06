@@ -4,6 +4,7 @@ if Rails.env.test? or Rails.env.development?
     task :build => :environment do
       `rake assets:precompile`
       `cp app/assets/javascripts/cordova-2.3.0.js public/assets`
+      `mkdir -p mobile/assets/www`
       `rm -rf mobile/assets/www/*`
       `mkdir mobile/assets/www/assets`
       `cp -R public/assets/* mobile/assets/www/assets`
