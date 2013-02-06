@@ -9,6 +9,7 @@ angular.module('Actionman', [ 'mobile-navigate' ]).
       $routeProvider.
           when('/config',  { templateUrl: 'views/admin/config.html', controller: ConfigCtrl }).
           when('/home',  { templateUrl: 'views/home/index.html', controller: HomeCtrl }).
+          when('/events/:eventId',  { templateUrl: 'views/events/event.html', controller: EventCtrl }).
           when('/talks',  { templateUrl: 'views/talks/talks.html', controller: TalksCtrl }).
           when('/talks/:talkId',  { templateUrl: 'views/talks/talk.html', controller: TalkCtrl }).
           when('/ideas/:ideaId',  { templateUrl: 'views/ideas/idea.html', controller: IdeaCtrl }).

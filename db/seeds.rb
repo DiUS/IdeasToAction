@@ -58,6 +58,6 @@ if Rails.env.test? or Rails.env.development?
   ActionsTaken.create! action: Action.first, member: member2
   ActionsTaken.create! action: Action.first, member: member3
 
-  event = Event.create! :name => 'Tedx', :talks  => talks
+  event = Event.create! :name => 'Tedx', :talks => talks
 
 end
