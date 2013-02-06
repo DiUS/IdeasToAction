@@ -1,8 +1,8 @@
 if Rails.env.test? or Rails.env.development?
   namespace :phonegap do
     desc "Build a phonegap application"
-    task :build => :environment do
-      `rake assets:precompile`
+    task :build do
+      `RAILS_ENV=production rake assets:precompile`
       `cp app/assets/javascripts/cordova-2.3.0.js public/assets`
       `mkdir -p mobile/assets/www`
       `rm -rf mobile/assets/www/*`
