@@ -3,8 +3,11 @@ Actionman::Application.routes.draw do
     resources :ideas
   end
 
-  resources :ideas
-
+  resources :ideas do
+    collection do
+      get 'recent'
+    end
+  end
 
   get "welcome/index"
 
