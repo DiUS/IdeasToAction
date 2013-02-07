@@ -15,10 +15,10 @@ describe 'ActionmanApp', ()->
 
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
-      $httpBackend.expectGET("#{window.ENDPOINT}/talks/1.json").
+      $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1.json").
             respond(talkData)
       scope = $rootScope.$new()
-      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1 } })
+      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 } })
 
     it 'should set the talkId correctly', () ->
       expect(scope.talkId).toBeUndefined
