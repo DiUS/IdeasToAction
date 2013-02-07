@@ -39,5 +39,12 @@ describe ActionsController do
       assigns(:actions).should_not include(other_action)
     end
 
+
+    it "should work when not nesting" do
+      get :index, { :format => 'json'}, valid_session
+
+      assigns(:actions).should include(action)
+      assigns(:actions).should include(other_action)
+    end
   end
 end
