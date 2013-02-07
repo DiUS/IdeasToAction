@@ -1,6 +1,9 @@
 Actionman::Application.routes.draw do
   get "heartbeat/beat"
 
+  match "member" => "member#show"
+  match "member/actions" => "member#actions"
+
   resources :actions do
     collection do
       get 'recent'
