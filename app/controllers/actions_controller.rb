@@ -1,7 +1,7 @@
 class ActionsController < ApplicationController
   inherit_resources
 
-  belongs_to :idea
+  belongs_to :idea, :optional => true
 
   respond_to :json
 
