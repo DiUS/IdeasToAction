@@ -25,4 +25,19 @@ describe ActionsController do
     end
   end
 
+  describe 'GET index' do
+    let(:idea) { Idea.find(1) }
+    let(:action) { idea.actions.first }
+
+    let(:other_idea) { Idea.find(2) }
+    let(:other_action) { other_idea.actions.first }
+
+    it "should nest in ideas" do
+      get :index, { :idea_id => 1, :format => 'json'}, valid_session
+
+      assigns(:actions).should include(action)
+      assigns(:actions).should_not include(other_action)
+    end
+
+  end
 end
