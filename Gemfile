@@ -38,6 +38,7 @@ group :test, :development do
   gem 'capybara-webkit'
   gem 'shoulda'
   gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
+  gem 'pry'
 end
 
 # To use ActiveModel has_secure_password
