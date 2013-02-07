@@ -25,7 +25,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @idea, methods: [:actions, :reactions] }
+      format.json { render json: @idea, methods: [:reactions] }
     end
   end
 

@@ -2,6 +2,7 @@ describe 'ActionmanApp', ()->
 
   describe 'IdeaCtrl', () -> 
     ideaData = { body: 'Body language affects how others see us, but it may also change how we see ourselves.'}
+    actionsData = [ { description: 'Examine your own body language in different social situations.'} ]
 
     scope = null
     ctrl = null
@@ -9,8 +10,15 @@ describe 'ActionmanApp', ()->
 
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
+
+      window.ENDPOINT = 'window_endpoint'
+
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
             respond(ideaData)
+
+      $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1/actions.json").
+            respond(actionsData)
+
       scope = $rootScope.$new()
       ctrl = $controller( 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 } })
 
@@ -23,4 +31,9 @@ describe 'ActionmanApp', ()->
       expect(scope.idea).toBeUndefined
       $httpBackend.flush()
       expect(scope.idea).toEqual(ideaData);
+    
+    it 'should create "actions" in "idea" model obtained restfully', () ->
+      expect(scope.idea).toBeUndefined
+      $httpBackend.flush()
+      expect(scope.idea.actions).toEqual(actionsData);
     
