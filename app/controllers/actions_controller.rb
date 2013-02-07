@@ -1,4 +1,10 @@
 class ActionsController < ApplicationController
+  inherit_resources
+
+  belongs_to :idea
+
+  respond_to :json
+
   def recent
     @actions = Action.order("created_at desc").limit(10)
 

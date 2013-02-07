@@ -15,6 +15,7 @@ Actionman::Application.routes.draw do
     collection do
       get 'recent'
     end
+    resources :actions
   end
 
   resources :events do
