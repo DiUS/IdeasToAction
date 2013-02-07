@@ -17,7 +17,11 @@ Actionman::Application.routes.draw do
     end
   end
 
-  resources :events
+  resources :events do
+    member do
+      get 'ideas'
+    end
+  end
 
   get "welcome/index"
 
