@@ -1,4 +1,6 @@
 Actionman::Application.routes.draw do
+  get "heartbeat/beat"
+
   resources :talks do
     resources :ideas
   end
