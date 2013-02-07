@@ -23,8 +23,7 @@ if Rails.env.test? or Rails.env.development?
           ideas: [
             { body: 'Body language affects how others see us, but it may also change how we see ourselves.',
               actions: [
-                { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius auctor ligula, et dapibus erat ullamcorper ut. Donec egestas placerat erat a lacinia. Nunc volutpat nisi et nulla sollicitudin venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.' },
-                { description: 'Ut mattis orci id nisl eleifend ultricies. Nulla laoreet arcu eu urna sodales eu facilisis libero sagittis. Fusce id odio at nisl convallis aliquet. Quisque id purus velit, id volutpat felis. Pellentesque id mi lacus.' }
+                { description: 'Examine your own body language in different social situations.' },
               ].map() { | action_attrs | Action.new(action_attrs) },
               reactions: [
                 { text: 'This is a good idea' },
@@ -33,8 +32,7 @@ if Rails.env.test? or Rails.env.development?
             },
             { body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
               actions: [
-                { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius auctor ligula, et dapibus erat ullamcorper ut. Donec egestas placerat erat a lacinia. Nunc volutpat nisi et nulla sollicitudin venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.' },
-                { description: 'Ut mattis orci id nisl eleifend ultricies. Nulla laoreet arcu eu urna sodales eu facilisis libero sagittis. Fusce id odio at nisl convallis aliquet. Quisque id purus velit, id volutpat felis. Pellentesque id mi lacus.' }
+                { description: 'Power-pose for two minutes before an important meeting.' },
               ].map() { | action_attrs | Action.new(action_attrs) },
               reactions: [
                 { text: 'This is a good idea' },
