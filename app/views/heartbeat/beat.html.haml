@@ -1,0 +1,3 @@
+%h1 Heartbeat
+%pre.json    
+  = JSON.pretty_unparse(JSON.parse(@heartbeat.to_json))
