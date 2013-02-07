@@ -1,10 +1,6 @@
 Actionman::Application.routes.draw do
   get "heartbeat/beat"
 
-  resources :talks do
-    resources :ideas
-  end
-
   resources :actions do
     collection do
       get 'recent'
@@ -21,6 +17,10 @@ Actionman::Application.routes.draw do
   resources :events do
     member do
       get 'ideas'
+    end
+    
+    resources :talks do
+      resources :ideas
     end
   end
 
