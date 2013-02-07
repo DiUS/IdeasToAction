@@ -24,10 +24,10 @@ describe 'ActionmanApp', ()->
 
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
-      $httpBackend.expectGET("#{window.ENDPOINT}/talks.json").
+      $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks.json").
             respond(talksData)
       scope = $rootScope.$new()
-      ctrl = $controller( 'TalksCtrl', { $scope: scope })
+      ctrl = $controller( 'TalksCtrl', { $scope: scope, $routeParams: { eventId: 1 } })
 
     it 'should create "talks" model with talks obtained restfully', () ->
       expect(scope.talks).toBeUndefined
