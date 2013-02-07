@@ -2,7 +2,7 @@
   .header
     {{title}}
     %sup
-      {{collection.length}}
+      {{collection_length}}
   .items
     .item{ 'ng-repeat' => "item in collection" }
       %ng:include(src="itemTemplate")
