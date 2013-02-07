@@ -48,6 +48,8 @@ if Rails.env.test? or Rails.env.development?
       ]
     )
 
+  other_talks = [Talk.create!]
+
   member1 = Member.create! persistence_token: '1234'
   member2 = Member.create! persistence_token: '5678'
   member3 = Member.create! persistence_token: '9012'
@@ -57,5 +59,7 @@ if Rails.env.test? or Rails.env.development?
   ActionsTaken.create! action: Action.first, member: member3
 
   event = Event.create! :name => 'Tedx', :talks => talks
+
+  event = Event.create! :name => 'another', :talks => other_talks
 
 end
