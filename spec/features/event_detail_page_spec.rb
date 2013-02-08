@@ -1,6 +1,6 @@
 require_relative 'collapsible_shared_examples'
 
-describe "Event page", js: true, acceptance: true do
+describe "Event detail page", js: true, acceptance: true do
   
   let(:event) { Event.find(1) }
 
