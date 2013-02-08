@@ -8,4 +8,8 @@ class MemberController < ApplicationController
   def actions
     render json: member.actions
   end
+
+  def reactions
+    render json: member.reactions
+  end
 end
