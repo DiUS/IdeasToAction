@@ -58,6 +58,9 @@ if Rails.env.test? or Rails.env.development?
   ActionsTaken.create! action: Action.first, member: member2
   ActionsTaken.create! action: Action.first, member: member3
 
+  Reaction.create! idea: Idea.first, member: member1, :text => 'i think you have come up with something big here'
+  Reaction.create! idea: Idea.first, member: member1, :text => 'what else can I say?'
+  Reaction.create! idea: Idea.first, member: member1, :text => 'There is some useful information here'
   event = Event.create! :name => 'TEDx', :talks => talks
 
   event = Event.create! :name => 'another', :talks => other_talks
