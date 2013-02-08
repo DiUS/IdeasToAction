@@ -5,5 +5,7 @@ class Member < ActiveRecord::Base
 
   has_many :actions_taken
 
+  has_many :reactions
+
   has_many :actions, :through => :actions_taken
 end
