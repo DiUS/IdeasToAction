@@ -11,8 +11,12 @@ describe 'ActionmanApp', ()->
 
     describe 'when expanding or collapsing the collapsible', () ->
       beforeEach () ->
-        $.fn.slideToggle = jasmine.createSpy 'slideToggle'
+        $.fn.slideToggle = jasmine.createSpy('slideToggle').andReturn(element)
+        $.fn.toggleClass = jasmine.createSpy('toggleClass').andReturn(element)
         scope.expandCollapse();
 
       it 'should slideToggle', inject ($compile, $rootScope) ->
         expect($.fn.slideToggle).toHaveBeenCalled();
+
+      it 'should toggleClass', inject ($compile, $rootScope) ->
+        expect($.fn.toggleClass).toHaveBeenCalled();
