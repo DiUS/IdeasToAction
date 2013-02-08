@@ -3,6 +3,7 @@ describe 'ActionmanApp', ()->
   describe 'MemberCtrl', () -> 
     memberData = {}
     actionsData = [ { description: 'Examine your own body language in different social situations.'} ]
+    reactionsData = [ { text: 'that was a good action'} ]
 
     scope = null
     ctrl = null
@@ -15,6 +16,9 @@ describe 'ActionmanApp', ()->
 
       $httpBackend.expectGET("#{window.ENDPOINT}/member.json").
             respond(memberData)
+
+      $httpBackend.expectGET("#{window.ENDPOINT}/member/reactions.json").
+            respond(reactionsData)
 
       $httpBackend.expectGET("#{window.ENDPOINT}/member/actions.json").
             respond(actionsData)
@@ -31,4 +35,8 @@ describe 'ActionmanApp', ()->
       expect(scope.member).toBeUndefined
       $httpBackend.flush()
       expect(scope.member.actions).toEqual(actionsData);
-    
+
+    it 'should create "reactions" in "member" model obtained restfully', () ->
+      expect(scope.member).toBeUndefined
+      $httpBackend.flush()
+      expect(scope.member.reactions).toEqual(reactionsData);
