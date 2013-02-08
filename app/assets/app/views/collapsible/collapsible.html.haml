@@ -1,8 +1,9 @@
-.collapsible{ 'ng-click' => 'expandCollapse()'}
+.collapsible.collapsed{ 'ng-click' => 'expandCollapse()'}
   .header
-    {{title}}
-    %sup
-      {{collection_length}}
+    %span.title
+      {{title}}
+      %sup
+        {{collection_length}}
   .items
     .item{ 'ng-repeat' => "item in collection" }
       %ng:include(src="itemTemplate")

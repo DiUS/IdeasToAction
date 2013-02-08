@@ -1,5 +1,6 @@
 window.CollapsibleCtrl = ($scope, $element) -> 
     $scope.expandCollapse = () -> 
+      $element.toggleClass('collapsed').toggleClass('expanded')
       $element.find('.items').slideToggle 300
 
     $scope.title = $element.attr('title')

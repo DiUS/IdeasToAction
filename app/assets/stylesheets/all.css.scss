@@ -15,11 +15,12 @@ body {
   > .header {
 
     border: {
-      bottom: 2px solid #FF2A06;
+      bottom: 2.5px solid #FF2A06;
     }
   }
 
 }
+
 .header {
 
   padding: {
@@ -55,6 +56,45 @@ body {
 }
 
 .collapsible {
+  background-color: #f4f4f4;
+  margin-bottom: 3px;
+
+  .header {
+    border: {
+      top: 1px solid #d8d8d8;
+    }
+
+    sup {
+      color: #FF2A06;
+    }
+
+  }
+
+  &.collapsed {
+    .header {
+
+      background: {
+        image: url('/assets/collapsed-indicator.png');
+        repeat: no-repeat;
+        position: 95% center;
+      }
+    }
+  }
+
+  &.expanded {
+    .header {
+
+      background: {
+        image: url('/assets/expanded-indicator.png');
+        repeat: no-repeat;
+        position: 95% center;
+      }
+
+    }
+  }
+
+
+
   .items {
     display: none;
     padding-bottom: 1px;
@@ -66,13 +106,5 @@ body {
     }
   }
 
-  background-color: lightGray;
-  margin-bottom: 3px;
-
-  .header {
-    sup {
-      color: #FF2A06;
-    }
-  }
 }
 
