@@ -1,8 +1,10 @@
 describe 'ActionmanApp', ()->
 
   describe 'IdeaCtrl', () -> 
-    ideaData = { body: 'Body language affects how others see us, but it may also change how we see ourselves.'}
-    actionsData = [ { description: 'Examine your own body language in different social situations.'} ]
+    ideaData = { 
+      body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+      action: ['action1', 'action2']
+    }
 
     scope = null
     ctrl = null
@@ -16,9 +18,6 @@ describe 'ActionmanApp', ()->
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
             respond(ideaData)
 
-      $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1/actions.json").
-            respond(actionsData)
-
       scope = $rootScope.$new()
       ctrl = $controller( 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 } })
 
@@ -31,9 +30,8 @@ describe 'ActionmanApp', ()->
       expect(scope.idea).toBeUndefined
       $httpBackend.flush()
       expect(scope.idea).toEqual(ideaData);
-    
-    it 'should create "actions" in "idea" model obtained restfully', () ->
-      expect(scope.idea).toBeUndefined
+
+    it 'should expose an update method', () ->
+      expect(scope.update).toBeUndefined
       $httpBackend.flush()
-      expect(scope.idea.actions).toEqual(actionsData);
-    
+      expect(scope.update).toBeDefined
