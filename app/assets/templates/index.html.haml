@@ -21,6 +21,8 @@
     /
       Git Commit:
       = ENV['GIT_COMMIT'] || 'Dev'
+      Build Number:
+      = ENV['BUILD_NUMBER'] || 'Dev'
 
     :javascript
       document.addEventListener("deviceready", onDeviceReady, false);
