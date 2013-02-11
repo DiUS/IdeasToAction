@@ -17,12 +17,20 @@ describe Action do
   end
 
   describe 'members_actioned' do
-    before do
-      @action = Action.first
-    end
+    let(:action) { Action.first }
 
     it 'should find unique members who have actioned' do
-      @action.send(:members_actioned).size.should == 3
+      action.send(:members_actioned).size.should == 3
     end
+  end
+
+  describe 'actions_taken.from_member' do
+    let(:member) { Member.first }
+    let(:action) { Action.first }
+    let(:member_action_taken) { ActionsTaken.first }
+
+    it 'should find a single action taken from a member' do
+      action.actions_taken.from_member(member).should eql member_action_taken
+    end    
   end
 end
