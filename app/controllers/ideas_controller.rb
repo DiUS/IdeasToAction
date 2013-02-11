@@ -1,3 +1,5 @@
+require_relative '../view_models/idea_view_model'
+
 class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
@@ -21,11 +23,10 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    @idea = Idea.find(params[:id])
+    idea_view_model = IdeaViewModel.new params.merge(:member => member)
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @idea, methods: [:reactions] }
+      format.json { render json: idea_view_model.as_json }
     end
   end
 

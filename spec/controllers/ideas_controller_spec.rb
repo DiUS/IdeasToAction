@@ -43,11 +43,25 @@ describe IdeasController do
   end
 
   describe "GET show" do
-    it "assigns the requested idea as @idea" do
-      idea = Idea.create! valid_attributes
-      get :show, {:id => idea.to_param}, valid_session
-      assigns(:idea).should eq(idea)
+    let(:idea_view_model) { mock IdeaViewModel }
+    let(:member) { mock_model Member }
+    let(:params) { {:id => 1} }
+
+    before :each do
+      controller.stub(:member).and_return member
+      idea_view_model.should_receive(:as_json).and_return({ :idea => 'cool' })
     end
+
+    it 'uses a view model to construct the json response' do
+      IdeaViewModel.should_receive(:new).and_return idea_view_model
+      get :show, params.merge(:format => :json), valid_session
+    end
+
+    # it "assigns the requested idea as @idea" do
+    #   idea = Idea.create! valid_attributes
+      
+    #   assigns(:idea).should eq(idea)
+    # end
   end
 
   describe "GET new" do
