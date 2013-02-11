@@ -12,4 +12,10 @@ class ActionsController < ApplicationController
       format.json { render json: @actions }
     end
   end
+
+  def doneIt
+    action = Action.find(params[:id])
+    ActionsTaken.create! :member => member, :action => action
+    render :nothing => true
+  end
 end
