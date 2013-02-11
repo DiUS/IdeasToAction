@@ -3,7 +3,11 @@ class Action < ActiveRecord::Base
 
   belongs_to :idea
 
-  has_many :actions_taken
+  has_many :actions_taken do
+    def from_member member
+      find(:first, :conditions => ['member_id = ?', member.id])
+    end
+  end
 
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size)
