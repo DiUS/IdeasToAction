@@ -18,6 +18,10 @@
     %link(href="favicon.ico" rel="shortcut icon")
   %body(ng-controller="MainCtrl") 
     <mobile-view></mobile-view> 
+    /
+      Git Commit:
+      = ENV['GIT_COMMIT'] || 'Dev'
+
     :javascript
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady() {
