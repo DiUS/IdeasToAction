@@ -16,6 +16,11 @@ test:
   database: actionman_test
   username: root
 
+android:
+  adapter: mysql2
+  database: actionman_dev
+  username: root
+
 base: &base
   adapter: mysql2
   encoding: utf8
