@@ -1,6 +1,10 @@
 namespace :phonegap do
   desc "Build the Phonegap packaged application for distribution"
 
+  task :clean => :clean_www_directory do
+    FileUtils.rm_rf 'mobile/bin'
+    FileUtils.rm_rf 'mobile/gen'
+  end
 
   task :precompiled_assets do
     Kernel.system('rake RAILS_ENV=production assets:precompile')
