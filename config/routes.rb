@@ -9,13 +9,16 @@ Actionman::Application.routes.draw do
     collection do
       get 'recent'
     end
+
+    member do 
+      post 'doneIt'
+    end
   end
 
   resources :ideas do
     collection do
       get 'recent'
     end
-    resources :actions
   end
 
   resources :events do
