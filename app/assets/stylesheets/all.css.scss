@@ -37,6 +37,10 @@ body {
 
 .content {
 
+  border: {
+    bottom: 1px solid #d8d8d8;
+  }
+
   padding: {
     top: 20px;
     left: 20px;
@@ -60,10 +64,7 @@ body {
   margin-bottom: 3px;
 
   .header {
-    border: {
-      top: 1px solid #d8d8d8;
-    }
-
+    
     sup {
       color: #FF2A06;
     }
