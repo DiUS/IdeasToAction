@@ -25,6 +25,21 @@ describe ActionsController do
     end
   end
 
+  describe 'POST doneIt' do
+    let(:member) { mock_model Member }
+    let(:action) { mock_model Action }
+
+    before :each do
+      Action.should_receive(:find).and_return action
+      controller.stub(:member).and_return member
+    end
+
+    it 'creates an actions taken entry' do
+      ActionsTaken.should_receive(:create!).with(:member => member, :action => action)
+      post :doneIt, {:id => 1, :format => 'json'}, valid_session 
+    end
+  end
+
   describe 'GET index' do
     let(:idea) { Idea.find(1) }
     let(:action) { idea.actions.first }
