@@ -43,5 +43,8 @@ production:
 qa:
   <<: *base
 
+android:
+  <<: *base
+
 canary:
   <<: *base
