@@ -23,13 +23,34 @@ import android.app.Activity;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
+import com.zubhium.ZubhiumSDK;
+import android.util.Log;
+
 public class Actionman extends DroidGap
 {
+    ZubhiumSDK sdk;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        // Show splash screen
         super.setIntegerProperty("splashscreen", R.drawable.splash);
+
+        // Crash reporting
+        String appVersion = "N/A";
+        try
+        {
+            appVersion = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+        }
+        catch (Exception e)
+        {
+            Log.v("onCreate", e.getMessage());
+        }
+        sdk = ZubhiumSDK.getZubhiumSDKInstance(getApplicationContext(), "14f186144b54a8b2ec77dac15e7ce4", appVersion);
+
+        // Get the app going...
         super.loadUrl("file:///android_asset/www/index.html", 4000);
     }
 }
