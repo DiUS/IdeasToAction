@@ -1,11 +1,13 @@
 require 'pathname'
+require 'erb'
 
 namespace :phonegap do
-  desc "Build the Phonegap packaged application for distribution"
-
+  
+  desc "Clean the Phonegap build artefacts"
   task :clean => :clean_www_directory do
-    FileUtils.rm_rf 'mobile/bin'
-    FileUtils.rm_rf 'mobile/gen'
+    FileUtils.rm_rf 'mobile/bin' if File.exists?('mobile/bin')
+    FileUtils.rm_rf 'mobile/gen' if File.exists?('mobile/gen')
+    FileUtils.rm 'mobile/AndroidManifest.xml' if File.exists?('mobile/AndroidManifest.xml')
   end
 
   task :precompiled_assets do
@@ -24,7 +26,15 @@ namespace :phonegap do
 
   directory 'mobile/assets/www' => :clean_www_directory
 
-  task :assets_in_www_directory => [ 'mobile/assets/www', :precompiled_assets ] do
+  desc "Builds the Android manifest"
+  task :android_manifest do
+    android_manifest_template = Pathname.new('mobile/AndroidManifest.xml.erb')
+    android_manifest = Pathname.new('mobile/AndroidManifest.xml')
+
+    android_manifest.open("w") { | manifest | manifest.puts ERB.new(android_manifest_template.read).result }
+  end
+
+  task :assets_in_www_directory => [ 'mobile/assets/www', :precompiled_assets, :android_manifest ] do
     FileUtils.mv('public/assets', 'mobile/assets/www/.')
     FileUtils.mv(%w(mobile/assets/www/assets/index.html mobile/assets/www/assets/views mobile/assets/www/assets/twitter), 'mobile/assets/www/', verbose: true)
     FileUtils.rm_rf(Dir.glob('mobile/assets/www/assets/*.gz'), verbose: true)
@@ -35,6 +45,7 @@ namespace :phonegap do
     application_css.open("w") {|file| file.write content }
   end
 
+  desc "Build the Phonegap packaged application for distribution"
   task :build => [ :clean, :precompiled_assets, :cordova_in_assets, :assets_in_www_directory ] do
     raise "Couldn't build Phonegap package" unless Kernel.system('mobile/cordova/build')
   end
