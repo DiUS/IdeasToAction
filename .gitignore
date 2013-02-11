@@ -20,3 +20,4 @@
 /mobile/bin/
 /mobile/gen/
 public/assets
+mobile/AndroidManifest.xml
