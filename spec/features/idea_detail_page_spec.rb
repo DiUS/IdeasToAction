@@ -30,4 +30,18 @@ describe "Idea detail page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
   end
 
+  describe 'when taking action on an idea' do
+    let(:collapsible) { page.find(".collapsible[title='Actions']") }
+    
+    before :each do 
+      page.should_not have_content 'You did on'
+      collapsible.find(".header").click
+      collapsible.find(".btn").click
+    end
+
+    it 'should display the date' do
+      page.should have_content 'You did on'
+    end
+  end
+
 end
