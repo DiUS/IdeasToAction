@@ -21,3 +21,4 @@
 /mobile/gen/
 public/assets
 mobile/AndroidManifest.xml
+mobile/local.properties
