@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212005108) do
+ActiveRecord::Schema.define(:version => 20130212043737) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20130212005108) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "ideas_tags", :force => true do |t|
+    t.integer  "idea_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "members", :force => true do |t|
     t.string   "persistence_token"
     t.datetime "created_at",        :null => false
@@ -52,6 +59,12 @@ ActiveRecord::Schema.define(:version => 20130212005108) do
     t.integer  "member_id"
     t.integer  "idea_id"
     t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

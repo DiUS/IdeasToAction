@@ -1,11 +1,15 @@
 class Idea < ActiveRecord::Base
+  attr_accessible :tags
+
   has_many :actions
   has_many :reactions
+
+  has_and_belongs_to_many :tags
 
   attr_accessible :body, :actions, :reactions
 
   def as_json options = nil
-    super.merge(members_actioned_count: members_actioned.size)
+    super.merge(members_actioned_count: members_actioned.size, tags: tags)
   end
 
   private
