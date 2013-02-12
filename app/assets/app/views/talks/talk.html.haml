@@ -2,6 +2,9 @@
 .header
   Talk
 .content.talk
+  .hero{'ng-switch on' => 'talk.hero_image_url'}
+    %img(ng-src="{{talk.hero_image_url}}" alt="{{talk.title}}" ng-switch-default = '')
+    %span(ng-switch-when = 'null')
   %p.title
     {{talk.title}}
   %p.description
