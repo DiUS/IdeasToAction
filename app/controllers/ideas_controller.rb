@@ -20,6 +20,12 @@ class IdeasController < ApplicationController
     end
   end
 
+  def react
+    idea = Idea.find(params[:id])
+    Reaction.create! idea: idea, member: member, :text => params[:text]
+    render :nothing => true
+  end
+
   # GET /ideas/1
   # GET /ideas/1.json
   def show
