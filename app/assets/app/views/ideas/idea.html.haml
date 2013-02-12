@@ -1,6 +1,9 @@
 #idea
   .header
     Idea
+  .tags
+    %span.tag{'ng:repeat' => 'tag in idea.tags'}
+      {{tag.name}}
   .content
     %p.description
       {{idea.body}}

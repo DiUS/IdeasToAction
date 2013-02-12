@@ -30,6 +30,16 @@ describe "Idea detail page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
   end
 
+  context "tags" do
+    let(:tags) { idea.tags }
+
+    it "should have each of the tags displayed" do
+      tags.each do | tag | 
+        page.should have_selector('.tag', text: tag.name)
+      end
+    end
+  end
+
   describe 'when taking action on an idea' do
     let(:collapsible) { page.find(".collapsible[title='Actions']") }
     

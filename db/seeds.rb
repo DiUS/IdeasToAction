@@ -6,14 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Talk.delete_all
-Idea.delete_all
-Member.delete_all
-ActionsTaken.delete_all
-Action.delete_all
-Reaction.delete_all
-
 if Rails.env.test? or Rails.env.development?
+
+  Tag.delete_all
+  Event.delete_all
+  Talk.delete_all
+  Idea.delete_all
+  Member.delete_all
+  ActionsTaken.delete_all
+  Action.delete_all
+  Reaction.delete_all
+
+  tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
 
   event = Event.create!({ 
     name: 'TEDActive', 
@@ -27,6 +31,7 @@ if Rails.env.test? or Rails.env.development?
           hero_image_url: 'http://images.ted.com/images/ted/a50e3b4c7ba8e8476731498682c169ac07ccae5b_389x292.jpg',
           ideas: [
             { body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+              tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
               actions: [
                 { description: 'Examine your own body language in different social situations.' },
               ].map() { | action_attrs | Action.new(action_attrs) },
@@ -36,7 +41,8 @@ if Rails.env.test? or Rails.env.development?
               ].map() { | reaction_attrs | Reaction.new(reaction_attrs) }
             },
             { body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
-              actions: [
+              tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
+                actions: [
                 { description: 'Power-pose for two minutes before an important meeting.' },
               ].map() { | action_attrs | Action.new(action_attrs) },
               reactions: [

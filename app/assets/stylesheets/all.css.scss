@@ -25,7 +25,6 @@ body {
 
   padding: {
     top: 20px;
-    bottom: 20px;
     left: 20px;
   }
 
@@ -33,6 +32,21 @@ body {
     size: 2em;
   }
 
+}
+
+.tags {
+  padding: {
+    top: 5px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .tag {
+    background: #f4f4f4;
+    margin: 2px;
+    padding: 2px;
+    font-size: 0.8em;
+  }
 }
 
 .content {
