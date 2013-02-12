@@ -15,8 +15,12 @@ Reaction.delete_all
 
 if Rails.env.test? or Rails.env.development?
 
-  talks = Talk.create!(
-      [
+  event = Event.create!({ 
+    name: 'TEDActive', 
+    description: 'TEDActive is a curated community of 700 curious and energetic leaders who share an immersive week of TEDTalks and surprising experiences designed to inspire conversation, exchange and immediate action around ideas worth spreading.',
+    logo_image_url: 'http://conferences.ted.com/TEDActive2013/images/logo.png?20091208',
+    hero_image_url: 'http://conferences.ted.com/TED2013/images/auditions/talentsearch_f.jpg',
+    talks: [
         { 
           title: 'Amy Cuddy: Your body language shapes who you are', 
           description: 'Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy shows how "power posing" -- standing in a posture of confidence, even when we don\'t feel confident -- can affect testosterone and cortisol levels in the brain, and might even have an impact on our chances for success.',
@@ -45,10 +49,8 @@ if Rails.env.test? or Rails.env.development?
           title: 'Steve Jobs: How to live before you die', 
           description: 'At his Stanford University commencement speech, Steve Jobs, CEO and co-founder of Apple and Pixar, urges us to pursue our dreams and see the opportunities in life\'s setbacks -- including death itself.',
         },
-      ]
-    )
-
-  other_talks = [Talk.create!]
+    ].map { | talk_attrs | Talk.new(talk_attrs) }
+  })
 
   member1 = Member.create! persistence_token: '1234'
   member2 = Member.create! persistence_token: '5678'
@@ -58,11 +60,24 @@ if Rails.env.test? or Rails.env.development?
   ActionsTaken.create! action: Action.first, member: member2
   ActionsTaken.create! action: Action.first, member: member3
 
-  Reaction.create! idea: Idea.first, member: member1, :text => 'i think you have come up with something big here'
-  Reaction.create! idea: Idea.first, member: member1, :text => 'what else can I say?'
-  Reaction.create! idea: Idea.first, member: member1, :text => 'There is some useful information here'
-  event = Event.create! :name => 'TEDx', :talks => talks
+  Reaction.create!({ 
+    idea: Idea.first, 
+    member: member1, 
+    :text => 'i think you have come up with something big here',
+  })
 
-  event = Event.create! :name => 'another', :talks => other_talks
+  Reaction.create!({
+    idea: Idea.first, 
+    member: member1, 
+    text: 'what else can I say?',
+  })
+
+  Reaction.create!({
+    idea: Idea.first, 
+    member: member1, 
+    text: 'There is some useful information here',
+  })
+
+  anoter_event = Event.create! :name => 'another', :talks => [ Talk.new ]
 
 end
