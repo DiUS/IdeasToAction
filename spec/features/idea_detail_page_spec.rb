@@ -57,14 +57,20 @@ describe "Idea detail page", js: true, acceptance: true do
   describe 'when reacting to an idea' do
     let(:collapsible) { page.find(".collapsible[title='Reactions']") }
 
-    before :each do
-      collapsible.should have_selector('.header sup', text: '5')
-      page.find('#reaction').set('This is my reaction')
-      page.find('#submit-reaction').click
-    end
+    describe 'checking the number of reactions' do
+      before :each do
+        page.find('#reaction').set('This is my reaction')
+        page.find('#submit-reaction').click
+      end
 
-    it 'should update the count on the reaction collapsible' do
-      collapsible.should have_selector('.header sup', text: '6')
+      it 'should update the count on the reaction collapsible' do
+        collapsible.should have_selector('.header sup', text: '6')
+      end
+
+      it 'should add the reaction to the reactions collapsible' do
+        collapsible.find(".header").click
+        collapsible.should have_text('This is my reaction')
+      end
     end
   end
 end
