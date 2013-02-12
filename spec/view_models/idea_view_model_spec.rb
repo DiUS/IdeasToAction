@@ -22,19 +22,25 @@ describe IdeaViewModel do
     end
 
     describe 'for each action in associated with the idea' do
+      let(:time) { DateTime.new }
       let(:first_action) { mock_model(Action) }
       let(:first_action_json) { idea_view_model.as_json['actions'].first }
-      let(:member_action_taken) { mock_model ActionsTaken }
+      let(:member_action_taken) { mock_model ActionsTaken, :created_at => time }
 
       before :each do 
         idea.should_receive(:actions).and_return [ first_action ]
         actions_taken = [ mock_model(ActionsTaken) ]
         first_action.should_receive(:actions_taken).and_return(actions_taken)
         actions_taken.should_receive(:from_member).with(member).and_return member_action_taken
+
+        member_action_taken.stub(:as_json).and_return({ :actions_taken => 'stuff' })
       end
 
       it 'should associate the member action taken' do
-        first_action_json['member_action_taken'].should eql member_action_taken
+        first_action_json['member_action_taken'].should eql member_action_taken.as_json
+      end
+
+      it 'should change created at to be nicely formatted' do
       end
     end
 
