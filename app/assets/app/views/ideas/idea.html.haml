@@ -13,6 +13,6 @@
   %collapsible(title='Reactions' type='reaction' collection='idea.reactions' item-template='views/reactions/reaction_collapsible_item.html')
   %div
     %textarea#reaction{'placeholder' => 'Add my reaction'}
-    %button.btn.btn-small.btn-danger{'ng-click' => 'react(idea.id)', 'ng-controller' => 'ReactionCtrl'} Add my reaction
+    %button#submit-reaction.btn.btn-small.btn-danger{'ng-click' => 'react(idea.id)', 'ng-controller' => 'ReactionCtrl'} Add my reaction
 
     
