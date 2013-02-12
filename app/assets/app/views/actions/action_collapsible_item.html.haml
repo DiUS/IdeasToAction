@@ -3,7 +3,7 @@
   %b {{item.members_actioned_count}} 
   %span People did this
 %div.pull-right{'ng-switch on' => 'item.member_action_taken'}
-  %button.btn.btn-small.btn-danger{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)', 'ng-controller' => 'ActionCtrl'} Done it
+  %button.btn.btn-danger{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)', 'ng-controller' => 'ActionCtrl'} Done it
   %p.action-statement{'ng-switch-default' => ''}
     %span You did on
     %b {{item.member_action_taken.created_at}} 
