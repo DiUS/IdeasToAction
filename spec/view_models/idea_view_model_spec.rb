@@ -41,6 +41,7 @@ describe IdeaViewModel do
       end
 
       it 'should change created at to be nicely formatted' do
+        first_action_json['member_action_taken']['created_at'].should eql time.strftime("%b %d %Y")
       end
     end
 
