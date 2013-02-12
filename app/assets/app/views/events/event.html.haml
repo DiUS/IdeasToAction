@@ -1,4 +1,4 @@
-.header{'ng-switch on' => 'event.logo_image_url'}
+.header.main-header{'ng-switch on' => 'event.logo_image_url'}
   %img(ng-src="{{event.logo_image_url}}" alt="{{event.name}}" ng-switch-default = '')
   %span(ng-switch-when='null')
     {{event.name}}
