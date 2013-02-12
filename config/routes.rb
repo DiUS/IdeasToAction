@@ -19,6 +19,10 @@ Actionman::Application.routes.draw do
     collection do
       get 'recent'
     end
+
+    member do 
+      post 'react'
+    end
   end
 
   resources :events do
