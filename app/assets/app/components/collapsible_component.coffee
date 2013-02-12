@@ -8,7 +8,8 @@ angular.module('Actionman').
         $scope.$parent.$watch $scope.collection_expr, (newValue, oldValue) ->
           $scope.collection = newValue || []
         $scope.$parent.$watch "#{$scope.collection_expr}.length", (newValue, oldValue) ->
-          $scope.collection_length ||= newValue
+          $element.find('.title sup').text(newValue);
+          $scope.collection_length = newValue
 
       controller: window.CollapsibleCtrl,
       templateUrl: 'views/collapsible/collapsible.html',
