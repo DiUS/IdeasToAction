@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if Rails.env.test? or Rails.env.development?
+if %w(test development qa).include? Rails.env
 
   Tag.delete_all
   Event.delete_all
