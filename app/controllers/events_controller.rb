@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
 
+  def index
+    render json: Event.all
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
