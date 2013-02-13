@@ -1,4 +1,9 @@
-.header
-  Ideas to Action
-%collapsible(title='Recent Ideas' type='idea' collection='ideas' item-template='views/ideas/idea_collapsible_item.html')
-%collapsible(title='Recent Actions' type='action' collection='actions' item-template='views/actions/action_collapsible_item.html')
+#home
+  .header.main-header
+    Ideas to Action
+  .content
+    %p
+      Welcome to Ideas to Action
+  .sections
+    %collapsible(title='Recent Ideas' type='idea' collection='ideas' item-template='views/ideas/idea_collapsible_item.html')
+    %collapsible(title='Recent Actions' type='action' collection='actions' item-template='views/actions/action_collapsible_item.html')
