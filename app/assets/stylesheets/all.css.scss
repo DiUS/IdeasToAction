@@ -15,7 +15,18 @@ body {
   text-shadow: none !important;
   background-image: none !important;
   border: 0 !important;
+  background-color: white !important;
+}
+
+.btn-danger {
   background-color: #FF2A06 !important;
+}
+
+.modal {
+  
+  .modal-header {
+    padding-top: 20px;
+  }
 }
 
 .mb-page {

@@ -9,6 +9,9 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
     ]
   }
 
+  $scope.cancel = ()->
+    $('body').scope().navigate.back()
+
   $scope.retrieveTalkById = (talkId) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json").success (talk) -> 
       $scope.idea.talks.push(talk)
