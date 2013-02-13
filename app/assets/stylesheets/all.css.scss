@@ -42,6 +42,9 @@ body {
     size: 2em;
   }
 
+  .cancel-button {
+    padding-right: 10px;
+  }
 }
 
 .tags {
@@ -80,15 +83,23 @@ body {
   .hero {
     padding-bottom: 5px;
   }
+
+  &:last-child {
+    padding-bottom: 5px;
+  }
 }
 
 .section {
   background-color: #f4f4f4;
+  margin-bottom: 3px;
+
+  &:last-child {
+    padding-bottom: 5px;
+  }
 }
 
 .collapsible {
   background-color: #f4f4f4;
-  margin-bottom: 3px;
 
   &:first-child {
     border: {

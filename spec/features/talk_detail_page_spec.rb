@@ -22,6 +22,26 @@ describe "Talk detail page", js: true, acceptance: true do
     let(:item_contents) { talk.ideas.map(&:body) }
 
     it_should_behave_like "a collapsible"
+
+    it "should have a 'Submit a new idea' button" do
+      page.should have_selector('#new-idea', text: 'Submit a new idea')
+    end
+
+    context "when clicking the 'Submit a new idea' button..." do
+      let(:new_idea_button) { page.find('#new-idea', text: 'Submit a new idea') }
+
+      before :each do
+        new_idea_button.click
+      end
+
+      it "should show the submission form" do
+        page.should have_content('Submit an idea')
+      end
+
+      it "the form URL should contain the originating talk" do
+        page.current_url.should include "/ideas/new/inspiredByTalk/1"
+      end
+    end
   end
 
 end
