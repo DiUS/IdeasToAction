@@ -26,4 +26,10 @@ describe EventsController do
     end
   end
 
+  describe 'GET index' do
+    it 'gets all events' do
+      Event.should_receive(:all)
+      get :index, {:format => 'json'}, valid_session
+    end
+  end
 end
