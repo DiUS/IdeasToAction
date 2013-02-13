@@ -1,13 +1,21 @@
 #idea
   .header.main-header
     Submit an idea
+    %img.cancel-button.pull-right(src = 'cancel-button.png')      
   .content
     %p
       Thank you for taking the time to submit an idea!
   .sections
-    %collapsible(title='Inspired by' start-as='expanded' type='talk' collection='idea.talks' item-template='views/talks/talk_in_idea_submission_collapsible_item.html')
+    %collapsible(title='Inspired by...' start-as='expanded' type='talk' collection='idea.talks' item-template='views/talks/talk_in_idea_submission_collapsible_item.html')
     .body.section
       .header
         I had this idea...
       .content
-        %textarea#body{'placeholder' => 'Add my reaction'}
+        %textarea#body{'placeholder' => 'My idea is...', 'ng-model' => 'idea.body'}
+    %collapsible(title='Into these actions...' start-as='expanded' type='action' collection='idea.actions' item-template='views/actions/action_in_idea_submission_collapsible_item.html')
+  .content.row-fluid
+    %p
+      Please review your idea before submission. 
+    .span12.center
+      %button#submit-idea.btn.btn-large.btn-danger
+        Submit your idea

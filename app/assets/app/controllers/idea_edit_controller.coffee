@@ -1,5 +1,13 @@
 window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
-  $scope.idea = { talks: [] }
+  $scope.idea = {
+    body: ''
+    talks: [],
+    actions: [
+      {
+        description: 'Love it!'
+      }
+    ]
+  }
 
   $scope.retrieveTalkById = (talkId) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json").success (talk) -> 

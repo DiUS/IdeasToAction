@@ -13,5 +13,5 @@
     %collapsible(title='Ideas' type='idea' collection='talk.ideas' item-template='views/ideas/idea_collapsible_item.html')
       .center.row-fluid
         .span12
-          %button#new-idea.btn.btn-large.btn-danger
+          %button#new-idea.btn.btn-large.btn-danger(ng-href = '/ideas/new/inspiredByTalk/{{talk.id}}')
             Submit a new idea

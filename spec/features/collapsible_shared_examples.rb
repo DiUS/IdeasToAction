@@ -20,8 +20,10 @@ shared_examples_for "a collapsible" do
   end
 
   it "should toggle the items when the header is clicked" do
-    items.should_not be_visible
-    header.click
+    if (respond_to?(:starts_as_collapsed?) ? starts_as_collapsed? : true)
+      items.should_not be_visible
+      header.click
+    end
     items_should_be_visible
     header.click
     items_should_not_be_visible
