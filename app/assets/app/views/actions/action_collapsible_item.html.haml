@@ -1,9 +1,16 @@
-%p {{item.description}}
-%p.action-statement.pull-left
-  %b {{item.members_actioned_count}} 
-  %span People did this
-%div.pull-right{'ng-switch on' => 'item.member_action_taken'}
-  %button.btn.btn-danger{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)', 'ng-controller' => 'ActionCtrl'} Done it
-  %p.action-statement{'ng-switch-default' => ''}
-    %span You did on
-    %b {{item.member_action_taken.created_at}} 
+%div{ 'ng-controller' => 'ActionCtrl' }
+  %p {{item.description}}
+  %p.action-statement.pull-left
+    %b {{item.members_actioned_count}} 
+    %span People did this
+  %div.pull-right{'ng-switch on' => 'item.member_action_taken'}
+    %button.btn.btn-danger.done-it{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id, item.idea_id)'} Done it
+    %p.action-statement{'ng-switch-default' => ''}
+      %span You did on
+      %b {{item.member_action_taken.created_at}} 
+  .container
+    .row-fluid.reaction{'id' => 'reaction-{{item.idea_id}}', 'ng-controller' => 'ReactionCtrl'}
+      .span12
+        %textarea{'placeholder' => 'Add my reaction'}
+      .span4.offset8
+        %button.btn.btn-large.btn-danger.submit-reaction{'ng-click' => 'react(item.idea_id)'} Add my reaction
