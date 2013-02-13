@@ -17,7 +17,7 @@ describe 'Actionman', ()->
       ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 } })
 
     it 'should initialise an empty idea correctly', ()->
-      expect(scope.idea).toBeDefined()
+      expect(scope.idea).toBeDefined
 
     it 'should set the ideaId correctly', () ->
       expect(scope.idea.talks).toMatch([])
