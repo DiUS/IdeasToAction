@@ -35,6 +35,8 @@ Actionman::Application.routes.draw do
     end
   end
 
+  resources :talks
+
   get "welcome/index"
 
   # The priority is based upon order of creation:

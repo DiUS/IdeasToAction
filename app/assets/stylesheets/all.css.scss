@@ -61,10 +61,6 @@ body {
 
 .content {
 
-  border: {
-    bottom: 1px solid #d8d8d8;
-  }
-
   padding: {
     top: 20px;
     left: 20px;
@@ -86,9 +82,19 @@ body {
   }
 }
 
+.section {
+  background-color: #f4f4f4;
+}
+
 .collapsible {
   background-color: #f4f4f4;
   margin-bottom: 3px;
+
+  &:first-child {
+    border: {
+      top: 1px solid #d8d8d8;
+    }
+  }
 
   .header {
     padding: 20px;
@@ -125,6 +131,11 @@ body {
   .items {
     display: none;
     padding-bottom: 1px;
+
+    &:last-child {
+      padding-bottom: 10px;
+    }
+
     .item {
 
       margin: 10px;
