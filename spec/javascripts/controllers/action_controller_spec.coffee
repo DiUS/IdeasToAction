@@ -23,4 +23,4 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'ActionCtrl', { $scope: scope })
 
     it 'should create a doneIt function', () ->
-      expect(scope.doneIt).toBeDefined      
+      expect(scope.doneIt).toBeDefined()     

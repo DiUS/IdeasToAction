@@ -30,7 +30,7 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'TalksCtrl', { $scope: scope, $routeParams: { eventId: 1 } })
 
     it 'should create "talks" model with talks obtained restfully', () ->
-      expect(scope.talks).toBeUndefined
+      expect(scope.talks).toBeUndefined()
       $httpBackend.flush()
       expect(scope.talks).toEqual(talksData);
     

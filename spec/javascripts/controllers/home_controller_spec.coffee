@@ -16,11 +16,11 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { } })
 
     it 'should set the ideas correctly', () ->
-      expect(scope.ideas).toBeUndefined
+      expect(scope.ideas).toBeUndefined()
       $httpBackend.flush()
       expect(scope.ideas).toEqual(ideas);
 
     it 'should set the actions correctly', () ->
-      expect(scope.actions).toBeUndefined
+      expect(scope.actions).toBeUndefined()
       $httpBackend.flush()
       expect(scope.actions).toEqual(actions);

@@ -19,12 +19,11 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 } })
 
     it 'should set the talkId correctly', () ->
-      expect(scope.talkId).toBeUndefined
       $httpBackend.flush()
       expect(scope.talkId).toEqual(1);
 
     it 'should create "talk" model obtained restfully', () ->
-      expect(scope.talk).toBeUndefined
+      expect(scope.talk).toBeUndefined()
       $httpBackend.flush()
       expect(scope.talk).toEqual(talkData);
     

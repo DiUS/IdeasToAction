@@ -22,19 +22,17 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 } })
 
     it 'should set the ideaId correctly', () ->
-      expect(scope.ideaId).toBeUndefined
       $httpBackend.flush()
       expect(scope.ideaId).toEqual(1);
 
     it 'should create "idea" model obtained restfully', () ->
-      expect(scope.idea).toBeUndefined
+      expect(scope.idea).toBeUndefined()
       $httpBackend.flush()
       expect(scope.idea).toEqual(ideaData);
 
     it 'should expose an update method', () ->
-      expect(scope.update).toBeUndefined
       $httpBackend.flush()
-      expect(scope.update).toBeDefined
+      expect(scope.update).toBeDefined()
 
     it 'should execute a callback within update if one is given', () ->
       callback = jasmine.createSpy 'callback'
