@@ -1,0 +1,13 @@
+#idea
+  .header.main-header
+    Submit an idea
+  .content
+    %p
+      Thank you for taking the time to submit an idea!
+  .sections
+    %collapsible(title='Inspired by' start-as='expanded' type='talk' collection='idea.talks' item-template='views/talks/talk_in_idea_submission_collapsible_item.html')
+    .body.section
+      .header
+        I had this idea...
+      .content
+        %textarea#body{'placeholder' => 'Add my reaction'}
