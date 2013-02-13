@@ -27,16 +27,16 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'MemberCtrl', { $scope: scope })
 
     it 'should create "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined
+      expect(scope.member).toBeUndefined()
       $httpBackend.flush()
       expect(scope.member).toEqual(memberData);
     
     it 'should create "actions" in "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined
+      expect(scope.member).toBeUndefined()
       $httpBackend.flush()
       expect(scope.member.actions).toEqual(actionsData);
 
     it 'should create "reactions" in "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined
+      expect(scope.member).toBeUndefined()
       $httpBackend.flush()
       expect(scope.member.reactions).toEqual(reactionsData);

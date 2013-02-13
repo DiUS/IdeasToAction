@@ -16,17 +16,16 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'EventCtrl', { $scope: scope, $routeParams: { eventId: 1 } })
 
     it 'should set the eventId correctly', () ->
-      expect(scope.eventId).toBeUndefined
       $httpBackend.flush()
       expect(scope.eventId).toEqual(1);
 
     it 'should create "event" model obtained restfully', () ->
-      expect(scope.event).toBeUndefined
+      expect(scope.event).toBeUndefined()
       $httpBackend.flush()
       expect(scope.event).toEqual(eventData);
 
     it 'should create "ideas" model obtained restfully', () ->
-      expect(scope.ideas).toBeUndefined
+      expect(scope.ideas).toBeUndefined()
       $httpBackend.flush()
       expect(scope.ideas).toEqual(ideaData);
     

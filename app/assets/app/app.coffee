@@ -16,5 +16,6 @@ angular.module('Actionman', [ 'mobile-navigate' ]).
       when('/ideas/new/inspiredByTalk/:talkId',        { templateUrl: 'views/ideas/new.html',      controller: IdeaEditCtrl }).
       when('/ideas/:ideaId',                 { templateUrl: 'views/ideas/idea.html',     controller: IdeaCtrl }).
       when('/member',                        { templateUrl: 'views/members/member.html', controller: MemberCtrl }).
+      when('/talks-events',                  { templateUrl: 'views/talks-events/index.html', controller: TalksEventsCtrl }).
       otherwise({redirectTo: '/events/1'})
     ]

@@ -19,4 +19,4 @@ describe 'ActionmanApp', ()->
       ctrl = $controller( 'ReactionCtrl', { $scope: scope })
 
     it 'should create a react function', () ->
-      expect(scope.react).toBeDefined
+      expect(scope.react).toBeDefined()
