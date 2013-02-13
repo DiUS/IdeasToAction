@@ -35,3 +35,11 @@ describe 'ActionmanApp', ()->
       expect(scope.update).toBeUndefined
       $httpBackend.flush()
       expect(scope.update).toBeDefined
+
+    it 'should execute a callback within update if one is given', () ->
+      callback = jasmine.createSpy 'callback'
+      $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").respond(ideaData)
+      scope.update(callback)
+      $httpBackend.flush()
+      expect(callback).toHaveBeenCalled()
+
