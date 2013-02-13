@@ -12,12 +12,13 @@
         {{idea.members_actioned_count}}
       %p.action-statement.pull-left
         People have taken action on this idea
-  %collapsible(title='Actions' type='action' collection='idea.actions' item-template='views/actions/action_collapsible_item.html')
-  %collapsible(title='Reactions' type='reaction' collection='idea.reactions' item-template='views/reactions/reaction_collapsible_item.html')
-    .center.row-fluid
-      .span12
-        %textarea#reaction{'placeholder' => 'Add my reaction'}
-      .span3.offset9
-        %button#submit-reaction.btn.btn-large.btn-danger{'ng-click' => 'react(idea.id)', 'ng-controller' => 'ReactionCtrl'} Add my reaction
+  .sections
+    %collapsible(title='Actions' type='action' collection='idea.actions' item-template='views/actions/action_collapsible_item.html')
+    %collapsible(title='Reactions' type='reaction' collection='idea.reactions' item-template='views/reactions/reaction_collapsible_item.html')
+      .center.row-fluid
+        .span12
+          %textarea#reaction{'placeholder' => 'Add my reaction'}
+        .span3.offset9
+          %button#submit-reaction.btn.btn-large.btn-danger{'ng-click' => 'react(idea.id)', 'ng-controller' => 'ReactionCtrl'} Add my reaction
 
-    
+      
