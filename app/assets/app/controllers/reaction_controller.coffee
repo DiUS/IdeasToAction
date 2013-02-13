@@ -1,5 +1,5 @@
 window.ReactionCtrl = ($scope, $http, $routeParams) ->
-  $scope.react = (ideaId) -> 
+  $scope.react = (ideaId, actionId) -> 
     $http.post("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", {text: $("#reaction-#{ideaId}").find('textarea').val()}).success (data) ->
-      $("#reaction-#{ideaId}").slideToggle 300, () ->
+      $("#reaction-#{actionId}").slideToggle 300, () ->
         $("#idea").scope().update()
