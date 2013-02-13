@@ -10,6 +10,8 @@ describe 'Actionman', ()->
     beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
 
+      window.ENDPOINT = "window_endpoint"
+
       $httpBackend.expectGET("#{window.ENDPOINT}/talks/1.json").respond(talkData)
 
       window.ENDPOINT = 'window_endpoint'
@@ -17,10 +19,10 @@ describe 'Actionman', ()->
       ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 } })
 
     it 'should initialise an empty idea correctly', ()->
-      expect(scope.idea).toBeDefined
+      expect(scope.idea).toBeDefined()
 
     it 'should set the ideaId correctly', () ->
       expect(scope.idea.talks).toMatch([])
       $httpBackend.flush()
-      expect(scope.idea.talks).toMatch([ talkData ])
+      expect(scope.idea.talks).toEqual([ talkData ])
 

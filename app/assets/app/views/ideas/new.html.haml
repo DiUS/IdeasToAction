@@ -1,7 +1,7 @@
 #idea
   .header.main-header
     Submit an idea
-    %img.cancel-button.pull-right(src = 'cancel-button.png')      
+    %img#cancel-button.cancel-button.pull-right(src = 'cancel-button.png' ng-click="confirmDialogShown=true")      
   .content
     %p
       Thank you for taking the time to submit an idea!
@@ -19,3 +19,17 @@
     .span12.center
       %button#submit-idea.btn.btn-large.btn-danger
         Submit your idea
+#cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown")
+  .modal-header.header.main-header
+    Cancel idea submission?
+  .moday-body
+    .content
+      %p 
+        Are you sure you want to cancel your submission?
+        %em 
+          You will lose all your data.
+  .modal-footer
+    %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
+      Confirm
+    %a#close-button.btn(ng-click="confirmDialogShown=false")
+      Close
