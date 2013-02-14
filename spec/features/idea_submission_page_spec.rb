@@ -12,6 +12,28 @@ describe "Idea submission page", js: true, acceptance: true do
     page.find(".actions")
   end
 
+  def add_new_action_button
+    actions_section.find("#add-new-action")
+  end
+
+  def new_action_description_field
+    actions_section.find('#new-action-description')
+  end
+
+  def idea_body_field
+    actions_section.find('#body')
+  end
+
+  def action_items_container
+    actions_section.find('.items')
+  end
+
+  def add_action(name)
+    fill_in 'new-action-description', with: name
+    add_new_action_button.click
+    action_items_container.should have_selector(".item", text: name)
+  end
+
   before :each do
     talk.should_not be_nil
     visit "/assets/index.html#/events/1/talks/1"
@@ -29,18 +51,6 @@ describe "Idea submission page", js: true, acceptance: true do
   end
 
   context "actions section" do
-    def add_new_action_button
-      actions_section.find("#add-new-action")
-    end
-
-    def action_items_container
-      actions_section.find('.items')
-    end
-
-    def new_action_description_field
-      actions_section.find('#new-action-description')
-    end
-
     def new_action_description_field_should_be_invalid
       actions_section.should have_selector("#new-action-description.ng-invalid")
     end
@@ -102,9 +112,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
     context "when actions exist" do
       before do
-        fill_in 'new-action-description', with: 'eat fruit'
-        add_new_action_button.click
-        action_items_container.should have_selector(".item", text: 'eat fruit')
+        add_action 'eat fruit'
       end
 
       def action_item
@@ -119,6 +127,42 @@ describe "Idea submission page", js: true, acceptance: true do
       end
     end
 
+  end
+
+  context "submit idea button" do
+
+    context "when idea has text" do
+
+      before do
+        fill_in "body", with: 'idea content'
+      end
+
+      context "when actions were added" do
+        before do
+          add_action('eat fruit')
+        end
+
+        it "should be enabled" do
+          page.should have_selector("#submit-idea")
+          page.should_not have_selector("#submit-idea[disabled='disabled']")
+        end
+      end
+
+      context "when no actions were added" do
+
+        it "should be disabled" do
+          page.should have_selector("#submit-idea[disabled='disabled']")
+        end
+      end
+    end
+
+    context "when the idea has no text" do
+
+        it "should be disabled" do
+          page.should have_selector("#submit-idea[disabled='disabled']")
+        end
+
+    end
   end
 
   context "when user clicks the cancel button" do

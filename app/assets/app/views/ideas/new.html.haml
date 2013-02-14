@@ -17,7 +17,7 @@
       .header
         I had this idea...
       .content
-        %textarea#body{'placeholder' => 'My idea is...', 'ng-model' => 'idea.body'}
+        %textarea#body(placeholder='My idea is...' ng-model='idea.body' required='')
     .section.actions
       .header
         %span.title
@@ -33,7 +33,7 @@
     %p
       Please review your idea before submission. 
     .center
-      %button#submit-idea.btn.btn-large.btn-danger
+      %button#submit-idea.btn.btn-large.btn-danger(ng-disabled='!validIdea()')
         Submit your idea
 #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown")
   .modal-header.header.main-header
