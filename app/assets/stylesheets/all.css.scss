@@ -53,6 +53,10 @@ body {
     size: 2em;
   }
 
+  sup {
+    color: #FF2A06;
+  }
+
   .cancel-button {
     padding-right: 10px;
   }
@@ -104,13 +108,9 @@ body {
   background-color: #f4f4f4;
   margin-bottom: 3px;
 
-  &:last-child {
-    padding-bottom: 5px;
+  .header {
+    padding: 20px;
   }
-}
-
-.collapsible {
-  background-color: #f4f4f4;
 
   &:first-child {
     border: {
@@ -118,14 +118,37 @@ body {
     }
   }
 
-  .header {
-    padding: 20px;
+  &:last-child {
+    padding-bottom: 5px;
+  }
 
-    sup {
-      color: #FF2A06;
+  .control {
+  }
+
+  .items {
+    padding-bottom: 1px;
+
+    &:last-child {
+      padding-bottom: 10px;
     }
 
+    .item {
+
+      margin: 10px;
+
+      overflow: auto;
+      background-color: white;
+
+      > * > * {
+        margin: 0px;
+        padding: 10px;
+      }
+    }
   }
+
+}
+
+.collapsible {
 
   &.collapsed {
     .header {
@@ -152,25 +175,6 @@ body {
 
   .items {
     display: none;
-    padding-bottom: 1px;
-
-    &:last-child {
-      padding-bottom: 10px;
-    }
-
-    .item {
-
-      margin: 10px;
-
-      overflow: auto;
-      background-color: white;
-
-      > * > * {
-        margin: 0px;
-        padding: 10px;
-      }
-    }
   }
-
 }
 
