@@ -6,17 +6,33 @@
     %p
       Thank you for taking the time to submit an idea!
   .sections
-    %collapsible(title='Inspired by...' start-as='expanded' type='talk' collection='idea.talks' item-template='views/talks/talk_in_idea_submission_collapsible_item.html')
+    .section.talks
+      .header
+        %span.title
+          Inspired by...
+      .items
+        .item{ 'ng-repeat' => "item in idea.talks" }
+          %ng:include(src="'views/talks/talk_in_idea_submission_collapsible_item.html'")
     .body.section
       .header
         I had this idea...
       .content
         %textarea#body{'placeholder' => 'My idea is...', 'ng-model' => 'idea.body'}
-    %collapsible(title='Into these actions...' start-as='expanded' type='action' collection='idea.actions' item-template='views/actions/action_in_idea_submission_collapsible_item.html')
+    .section.actions
+      .header
+        %span.title
+          Into these actions...
+      .items
+        .item{ 'ng-repeat' => "item in idea.actions" }
+          %ng:include(src="'views/actions/action_in_idea_submission_collapsible_item.html'")
+      .control.content
+        %form#new-action(name='newAction' ng-submit="addNewAction()")
+          %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...')
+          %input#add-new-action.btn.btn-danger(type="submit" value='Add action' ng-disabled='newAction.$invalid')
   .content.row-fluid
     %p
       Please review your idea before submission. 
-    .span12.center
+    .center
       %button#submit-idea.btn.btn-large.btn-danger
         Submit your idea
 #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown")
