@@ -16,6 +16,9 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
     @idea.actions.push({ description: @newActionDescription })
     @newActionDescription = ''
 
+  $scope.removeAction = (action)->
+    @idea.actions.splice(action, 1)
+
   $scope.retrieveTalkById = (talkId) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json").success (talk) -> 
       $scope.idea.talks.push(talk)
