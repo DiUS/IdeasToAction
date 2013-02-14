@@ -8,7 +8,7 @@ Actionman::Application.routes.draw do
 
   resources :actions do
     collection do
-      get 'recent'
+      get 'random'
     end
 
     member do 
@@ -18,7 +18,7 @@ Actionman::Application.routes.draw do
 
   resources :ideas do
     collection do
-      get 'recent'
+      get 'random'
     end
 
     member do 
