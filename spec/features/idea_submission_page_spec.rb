@@ -100,6 +100,25 @@ describe "Idea submission page", js: true, acceptance: true do
       action_items_container.should_not have_selector(".item p", text: '')
     end
 
+    context "when actions exist" do
+      before do
+        fill_in 'new-action-description', with: 'eat fruit'
+        add_new_action_button.click
+        action_items_container.should have_selector(".item", text: 'eat fruit')
+      end
+
+      def action_item
+        action_items_container.find(".item", text: 'eat fruit')
+      end
+
+      it "should allow you to remove actions" do
+        action_item.should have_selector(".remove-button")
+        action_item.find(".remove-button").click
+
+        action_items_container.should_not have_selector(".item", text: 'eat fruit')
+      end
+    end
+
   end
 
   context "when user clicks the cancel button" do
