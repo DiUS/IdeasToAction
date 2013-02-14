@@ -3,8 +3,12 @@
     Ideas to Action
   .content
     %p {{counts.members}} people; {{counts.ideas}} ideas; {{counts.actions_taken}} actions taken: - transforming ideas worth spreading into actions worth doing.
-  .sections
-    / %collapsible(title='Recent Ideas' type='idea' collection='ideas' item-template='views/ideas/idea_collapsible_item.html')
-    / %collapsible(title='Recent Actions' type='action' collection='actions' item-template='views/actions/action_collapsible_item.html')
-  %p(ng-href="/talks-events") Talks and Events
-  %p(ng-href="/member") View my member profile
+
+    %h3 Heres an idea
+    %p#random-idea(ng-href="/ideas/{{idea.id}}") {{idea.body}}
+
+    %h3 What are people doing?
+    %p#random-action(ng-href="/ideas/{{action.idea_id}}") {{action.description}}
+
+    %p(ng-href="/talks-events") Talks and Events
+    %p(ng-href="/member") View my member profile
