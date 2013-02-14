@@ -190,19 +190,12 @@ describe IdeasController do
     end
   end
 
-  describe 'GET recent' do
+  describe 'GET random' do
     it 'gets recent ideas' do
-      idea_chain = mock :idea
-      Idea.should_receive(:order).with("created_at desc").and_return idea_chain
-      idea_chain.should_receive(:limit).with(10)
-      get :recent, {:format => 'json'}, valid_session
-    end
-
-    it "assigns recent ideas as @ideas" do
-      idea = Idea.create! valid_attributes
-      get :recent, {:format => 'json'}, valid_session
-      assigns(:ideas).should include(idea)
+      idea = Idea.first
+      Idea.should_receive(:find).with(:first, :order => 'rand()').and_return idea
+      get :random, { :format => :json }
+      response.body.should eql idea.to_json
     end
   end
-
 end

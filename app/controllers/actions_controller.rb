@@ -5,6 +5,10 @@ class ActionsController < ApplicationController
 
   respond_to :json
 
+  def random
+    render json: Action.find(:first, :order => 'rand()')
+  end
+
   def recent
     @actions = Action.order("created_at desc").limit(10)
 
