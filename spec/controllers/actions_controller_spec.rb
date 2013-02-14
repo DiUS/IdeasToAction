@@ -10,18 +10,12 @@ describe ActionsController do
     { }
   end
 
-  describe 'GET recent' do
-    it 'gets recent actions' do
-      action_chain = mock :action
-      Action.should_receive(:order).with("created_at desc").and_return action_chain
-      action_chain.should_receive(:limit).with(10)
-      get :recent, {:format => 'json'}, valid_session
-    end
-
-    it "assigns recent actions as @actions" do
-      action = Action.create! valid_attributes
-      get :recent, {:format => 'json'}, valid_session
-      assigns(:actions).should include(action)
+  describe 'GET random' do
+    it 'gets recent ideas' do
+      action = Action.first
+      Action.should_receive(:find).with(:first, :order => 'rand()').and_return action
+      get :random, { :format => :json }
+      response.body.should eql action.to_json
     end
   end
 
