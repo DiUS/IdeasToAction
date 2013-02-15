@@ -59,6 +59,11 @@ body {
 
   .cancel-button {
     padding-right: 10px;
+    background: {
+      image: image-url('cancel-button.png');
+      repeat: no-repeat;
+      position: center center;
+    }
   }
 }
 
@@ -143,6 +148,15 @@ body {
         margin: 0px;
         padding: 10px;
       }
+
+      .remove-button {
+        background: {
+          image: image-url('remove-button.png');
+          repeat: no-repeat;
+          position: center center;
+        }
+      }
+
     }
   }
 
