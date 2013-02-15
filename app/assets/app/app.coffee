@@ -4,6 +4,9 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
       scope.navigate = $navigate
       elm.bind 'click', () -> 
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
+
+      scope.$on '$pageTransitionSuccess', () ->
+        $('.mb-page').css('position', 'static')
   ).
   config [ '$routeProvider', ($routeProvider) ->
     $routeProvider.
