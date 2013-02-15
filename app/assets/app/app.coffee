@@ -6,7 +6,9 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
 
       scope.$on '$pageTransitionSuccess', () ->
-        $('.mb-page').css('position', 'static')
+        setTimeout () ->
+          $('.mb-page').css('position', 'static')
+        , 800
   ).
   config [ '$routeProvider', ($routeProvider) ->
     $routeProvider.
