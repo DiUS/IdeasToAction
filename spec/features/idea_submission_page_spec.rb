@@ -146,6 +146,18 @@ describe "Idea submission page", js: true, acceptance: true do
           page.should have_selector("#submit-idea")
           page.should_not have_selector("#submit-idea[disabled='disabled']")
         end
+
+        context "when clicked" do
+
+          before do
+            page.find("#submit-idea").click
+          end
+
+          it "should redirect to the new idea's page" do
+            page.current_url.should include "/ideas/"
+            page.should have_selector 'p.description', text: 'idea content'
+          end
+        end
       end
 
       context "when no actions were added" do
