@@ -1,4 +1,4 @@
-#talk
+#talk(ng-show='!showNewIdeaDialog')
   .header.main-header
     Talk
   .content.talk
@@ -13,5 +13,6 @@
     %collapsible(title='Ideas' type='idea' collection='talk.ideas' item-template='views/ideas/idea_collapsible_item.html')
       .center.row-fluid
         .span12
-          %button#new-idea.btn.btn-large.btn-danger(ng-href = '/ideas/new/inspiredByTalk/{{talk.id}}')
+          %button#new-idea.btn.btn-large.btn-danger(ng-click='createNewIdea(talk)')
             Submit a new idea
+%ng-include#new-idea-dialog(src="'views/ideas/new.html'" ng-controller='IdeaEditCtrl' ng-show='showNewIdeaDialog')
