@@ -53,6 +53,11 @@ angular.module('mobile-navigate').factory('$change', ['$q', '$rootScope', functi
       (nextTransClass = transition[reverse ? 1 : 0]),
       reverse && REVERSE_CLASS || ''
     ]);
+    /* This is a hack put in to fix scrolling issue in android 4.0.
+        Outside we are changing the value from absolute, this is
+        setting it back before any animation happens */
+    $('.mb-page').css('position', 'absolute');
+    /* end */
     next.addClass(nextClasses);
 
     var prevClasses;
@@ -62,6 +67,11 @@ angular.module('mobile-navigate').factory('$change', ['$q', '$rootScope', functi
        (prevTransClass = transition[reverse ? 0 : 1]),
        reverse && REVERSE_CLASS || ''
       ]);
+      /* This is a hack put in to fix scrolling issue in android 4.0.
+        Outside we are changing the value from absolute, this is
+        setting it back before any animation happens */
+      $('.mb-page').css('position', 'absolute');
+      /* end */
       prev.addClass(prevClasses);
     }
 
