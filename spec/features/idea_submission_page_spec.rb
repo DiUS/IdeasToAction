@@ -4,12 +4,16 @@ describe "Idea submission page", js: true, acceptance: true do
   
   let(:talk) { Talk.find(1) }
 
+  def submission_dialog
+    page.find("#new-idea-dialog")
+  end
+
   def talks_section
-    page.find(".talks")
+    submission_dialog.find(".talks")
   end
 
   def actions_section
-    page.find(".actions")
+    submission_dialog.find(".actions")
   end
 
   def add_new_action_button
@@ -143,19 +147,19 @@ describe "Idea submission page", js: true, acceptance: true do
         end
 
         it "should be enabled" do
-          page.should have_selector("#submit-idea")
-          page.should_not have_selector("#submit-idea[disabled='disabled']")
+          submission_dialog.should have_selector("#submit-idea")
+          submission_dialog.should_not have_selector("#submit-idea[disabled='disabled']")
         end
 
         context "when clicked" do
 
           before do
-            page.find("#submit-idea").click
+            submission_dialog.find("#submit-idea").click
           end
 
           it "should redirect to the new idea's page" do
-            page.current_url.should include "/ideas/"
             page.should have_selector 'p.description', text: 'idea content'
+            page.current_url.should include "/ideas/"
           end
         end
       end
@@ -163,7 +167,7 @@ describe "Idea submission page", js: true, acceptance: true do
       context "when no actions were added" do
 
         it "should be disabled" do
-          page.should have_selector("#submit-idea[disabled='disabled']")
+          submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
         end
       end
     end
@@ -171,7 +175,7 @@ describe "Idea submission page", js: true, acceptance: true do
     context "when the idea has no text" do
 
         it "should be disabled" do
-          page.should have_selector("#submit-idea[disabled='disabled']")
+          submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
         end
 
     end
@@ -179,7 +183,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
   context "when user clicks the cancel button" do
     def cancel_button
-      page.find('.cancel-button')
+      submission_dialog.find('.cancel-button')
     end
 
     before :each do
@@ -188,7 +192,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
     context "the confirmation dialog box" do
       def cancel_confirmation_dialog_box
-        page.find('#cancel-confirm-dialog')
+        submission_dialog.find('#cancel-confirm-dialog')
       end
 
       def confirm_button
@@ -200,17 +204,18 @@ describe "Idea submission page", js: true, acceptance: true do
       end
 
       it "should be displayed" do
-        page.should have_selector('#cancel-confirm-dialog', visible: true)
+        submission_dialog.should have_selector('#cancel-confirm-dialog', visible: true)
       end
 
       it "when user clicks the close button, it should close the dialog box" do
         close_button.click
-        page.should have_selector('#cancel-confirm-dialog', visible: false)
+        submission_dialog.should have_selector('#cancel-confirm-dialog', visible: false)
       end
 
       it "when the user clicks the confirm button, it should close the dialog box and navigate back to the originating page" do
+        page.should have_selector("#new-idea-dialog", visible: true)
         confirm_button.click
-        page.current_url.should include "/events/1/talks/1"
+        page.should have_selector("#new-idea-dialog", visible: false)
       end
     end
 

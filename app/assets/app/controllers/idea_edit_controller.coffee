@@ -1,18 +1,16 @@
 window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
-  $scope.idea = {
-    body: '',
-    talks: [],
-    actions: [
-    ]
-  }
 
-  $scope.newActionDescription = ''
+  $scope.startNewIdea = (talk)->
+    $scope.idea = { body: '', talks: [ ], actions: [ ] }
+    $scope.idea.talks.push(talk) if talk
+    $scope.newActionDescription = ''
+    $scope
 
   $scope.cancel = ()->
-    $('body').scope().navigate.back()
+    $scope.$parent.showNewIdeaDialog = false
 
   $scope.addNewAction = ()->
-    return if $scope.newAction.$invalid
+    return unless @newActionDescription.length > 0
     @idea.actions.push({ description: @newActionDescription })
     @newActionDescription = ''
 
@@ -27,8 +25,7 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
       $scope.idea.talks.push(talk)
 
   $scope.submitIdea = (idea) ->
-    console.log idea
     $http.post("#{window.ENDPOINT}/ideas", idea).success (ideaWithId) -> 
       $('body').scope().navigate.go("/ideas/#{ideaWithId.id}")
 
-  $scope.retrieveTalkById($routeParams.talkId) if ($routeParams.talkId)
+  $scope.startNewIdea($scope.$parent.talk)

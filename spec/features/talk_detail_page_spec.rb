@@ -35,12 +35,9 @@ describe "Talk detail page", js: true, acceptance: true do
       end
 
       it "should show the submission form" do
-        page.should have_content('Submit an idea')
+        page.should have_selector("#new-idea-dialog", visible: true)
       end
 
-      it "the form URL should contain the originating talk" do
-        page.current_url.should include "/ideas/new/inspiredByTalk/1"
-      end
     end
   end
 
