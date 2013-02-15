@@ -26,6 +26,36 @@ describe Idea do
     end
   end
 
+  describe "#member" do
+    let(:idea) { Idea.first }
+    let(:member) { Member.first }
+
+    it "should belong to a member" do
+      idea.member = member
+      idea.save!
+      idea.reload
+      idea.member.should eq member
+    end
+
+    it "should be required" do
+      idea.should be_valid
+      idea.member = nil
+      idea.should_not be_valid
+    end
+  end
+
+  describe "#talks" do
+    let(:idea) { Idea.first }
+
+    it { should have_many(:talks).through(:talk_to_idea_associations) }
+
+    it "should require at least one" do
+      idea.should be_valid
+      idea.talks = []
+      idea.should_not be_valid
+    end
+  end
+
   describe "tags" do
     let(:idea) { Idea.first }
     let(:tag) { Tag.first }

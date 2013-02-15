@@ -1,5 +1,12 @@
 class Idea < ActiveRecord::Base
-  attr_accessible :tags
+  attr_accessible :tags, :talks
+
+  belongs_to :member
+  validates_presence_of :member
+
+  has_many :talk_to_idea_associations
+  has_many :talks, through: :talk_to_idea_associations
+  validates_length_of :talks, minimum: 1
 
   has_many :actions
   has_many :reactions

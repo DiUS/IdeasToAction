@@ -26,4 +26,9 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json").success (talk) -> 
       $scope.idea.talks.push(talk)
 
+  $scope.submitIdea = (idea) ->
+    console.log idea
+    $http.post("#{window.ENDPOINT}/ideas", idea).success (ideaWithId) -> 
+      $('body').scope().navigate.go("/ideas/#{ideaWithId.id}")
+
   $scope.retrieveTalkById($routeParams.talkId) if ($routeParams.talkId)
