@@ -2,13 +2,21 @@
   .header.main-header
     Ideas to Action
   .content
-    %p {{counts.members}} people; {{counts.ideas}} ideas; {{counts.actions_taken}} actions taken: - transforming ideas worth spreading into actions worth doing.
+    .center
+      %h2 {{counts.members}} People
+      %h2 {{counts.ideas}} Ideas
+      %h2 {{counts.actions_taken}} Actions Taken
 
-    %h3 Heres an idea
-    %p#random-idea(ng-href="/ideas/{{idea.id}}") {{idea.body}}
+    %p transforming ideas worth spreading into actions worth doing.
+    
+    %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
+      {{idea.body}}
+      %a.continue
 
-    %h3 What are people doing?
-    %p#random-action(ng-href="/ideas/{{action.idea_id}}") {{action.description}}
+    %p.flat-description#random-action(ng-href="/ideas/{{action.idea_id}}")
+      {{action.description}}
+      %a.continue
 
-    %p(ng-href="/talks-events") Talks and Events
-    %p(ng-href="/member") View my member profile
+  .collapsible.section.collapsible-right
+    .header(ng-href="/talks-events") Talks and Events
+    .header(ng-href="/member") View my member profile
