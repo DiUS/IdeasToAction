@@ -6,7 +6,10 @@ describe "Home page", js: true, acceptance: true do
   end 
 
   it "should display welcome text that rattles the bones" do
-    page.text.should =~ /(\d+) people; (\d+) ideas; (\d+) actions taken: - transforming ideas worth spreading into actions /
+    page.text.should =~ /(\d+) People/
+    page.text.should =~ /(\d+) Ideas/
+    page.text.should =~ /(\d+) Actions/
+    page.text.should =~ /transforming ideas worth spreading into actions worth taking/
   end
 
   it "should display a random idea" do
