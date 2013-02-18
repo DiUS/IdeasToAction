@@ -1,4 +1,4 @@
-window.TalkCtrl = ($scope, $http, $routeParams) ->
+window.TalkCtrl = ($scope, $http, $routeParams, dataCache) ->
   $scope.talkId = $routeParams.talkId
   $scope.eventId = $routeParams.eventId
 
@@ -8,11 +8,13 @@ window.TalkCtrl = ($scope, $http, $routeParams) ->
     $("#new-idea-dialog").scope().startNewIdea(talk)
     $scope.showNewIdeaDialog = true
 
-  $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}.json").success( (data) -> 
-    $scope.talk = data
+  $scope.update = ()->
+    $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}.json", { cache: dataCache }).success( (data) -> 
+      $scope.talk = data
 
-    $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}/ideas.json").success( (data) -> 
-      $scope.talk.ideas = data
+      $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}/ideas.json", { cache: dataCache }).success( (data) -> 
+        $scope.talk.ideas = data
+      )
     )
-  )
- 
+   
+  $scope.update()

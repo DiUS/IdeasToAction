@@ -9,7 +9,7 @@ describe 'ActionmanApp', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
 
       window.ENDPOINT = 'window_endpoint'
@@ -24,7 +24,7 @@ describe 'ActionmanApp', ()->
             respond(actionsData)
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'MemberCtrl', { $scope: scope })
+      ctrl = $controller( 'MemberCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
 
     it 'should create "member" model obtained restfully', () ->
       expect(scope.member).toBeUndefined()

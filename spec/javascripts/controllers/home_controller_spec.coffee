@@ -9,13 +9,13 @@ describe 'ActionmanApp', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET("#{window.ENDPOINT}/counts.json").respond(counts)
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/random.json").respond(idea)
       $httpBackend.expectGET("#{window.ENDPOINT}/actions/random.json").respond(action)
       scope = $rootScope.$new()
-      ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { } })
+      ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the idea correctly', () ->
       expect(scope.idea).toBeUndefined()

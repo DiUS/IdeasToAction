@@ -1,9 +1,9 @@
-window.HomeCtrl = ($scope, $http, $routeParams) ->
-  $http.get("#{window.ENDPOINT}/counts.json").success (data) -> 
+window.HomeCtrl = ($scope, $http, $routeParams, dataCache) ->
+  $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
 
-  $http.get("#{window.ENDPOINT}/ideas/random.json").success (data) -> 
+  $http.get("#{window.ENDPOINT}/ideas/random.json", { cache: dataCache }).success (data) -> 
     $scope.idea = data
 
-  $http.get("#{window.ENDPOINT}/actions/random.json").success (data) -> 
+  $http.get("#{window.ENDPOINT}/actions/random.json", { cache: dataCache }).success (data) -> 
     $scope.action = data

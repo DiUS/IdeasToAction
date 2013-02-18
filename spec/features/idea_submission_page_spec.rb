@@ -158,7 +158,9 @@ describe "Idea submission page", js: true, acceptance: true do
           end
 
           it "should redirect to the new idea's page" do
+            page.should have_selector '#idea', visible: true
             page.should have_selector 'p.description', text: 'idea content'
+
             page.current_url.should include "/ideas/"
           end
         end

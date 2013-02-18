@@ -5,9 +5,9 @@ describe 'ActionmanApp', ()->
     ctrl = null
     element = $('<div class="collapsible"><div class="items"></div></div>')
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       scope = $rootScope.$new()
-      ctrl = $controller( 'CollapsibleCtrl', { $scope: scope, $element: element })
+      ctrl = $controller( 'CollapsibleCtrl', { $scope: scope, $element: element, dataCache: $cacheFactory('fake cache') })
 
     describe 'when expanding or collapsing the collapsible', () ->
       beforeEach () ->

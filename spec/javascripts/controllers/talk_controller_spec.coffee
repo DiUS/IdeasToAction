@@ -11,12 +11,12 @@ describe 'ActionmanApp', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1.json").respond(talkData)
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1/ideas.json").respond(ideaData)
       scope = $rootScope.$new()
-      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 } })
+      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 }, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the talkId correctly', () ->
       $httpBackend.flush()
