@@ -50,16 +50,13 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before :each do 
-      Rails.logger.info "STARTING NEW DESCRIBE FOREACH"
       self.use_transactional_fixtures.should be true
 
-      Rails.logger.info "ASSERTING ON NUMBER OF REACTIONS"
       idea.reload.reactions.size.should eq 5
 
       page.should_not have_selector('p.action-statement', text: 'You did on')
       reaction_collapsible.should have_selector('.header sup', text: '5')
 
-      Rails.logger.info "--- Marking action as done"
       collapsible.find(".header").click
       page.should have_selector(".btn.done-it", visible: true)
       collapsible.find(".btn.done-it").click
@@ -77,15 +74,12 @@ describe "Idea detail page", js: true, acceptance: true do
             idea.reload.reactions.size.should eq 5
             reaction_collapsible.should have_selector('.header sup', text: '5')
 
-            page.should have_selector('p.action-statement', text: 'You did on')
-
             page.should have_selector(".reaction textarea")
             page.should have_selector(".reaction textarea", visible: true)
 
             page.find(".reaction textarea").set('This is my reaction')
             page.find(".reaction textarea").value.should eq 'This is my reaction'
 
-            Rails.logger.info "--------- About to submit reaction"
             page.find('.submit-reaction').click
           rescue => e
             puts page.html
