@@ -4,7 +4,7 @@ class CountsController < ApplicationController
     render :json => {
       :members => Member.count,
       :ideas => Idea.count,
-      :actions_taken => ActionsTaken.count
+      :actions => Action.count
     }
   end
 end
