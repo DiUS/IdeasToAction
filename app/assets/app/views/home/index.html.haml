@@ -1,13 +1,13 @@
 #home
   .header.main-header
-    Ideas to Action
+    Ideas into action
   .content
     .center
       %h2 {{counts.members}} People
       %h2 {{counts.ideas}} Ideas
-      %h2 {{counts.actions_taken}} Actions Taken
-
-    %p transforming ideas worth spreading into actions worth doing.
+      %h2 {{counts.actions}} Actions
+      .hero
+        %p TEDx transforming ideas worth spreading into actions worth taking
     
     %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
       {{idea.body}}
@@ -17,6 +17,7 @@
       {{action.description}}
       %a.continue
 
-  .collapsible.section.collapsible-right
+  .collapsible.section
     .header(ng-href="/talks-events") Talks and Events
-    .header(ng-href="/member") View my member profile
+  .collapsible.section
+    .header(ng-href="/member") My profile
