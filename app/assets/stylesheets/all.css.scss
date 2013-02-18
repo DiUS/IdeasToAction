@@ -200,11 +200,11 @@ body {
 }
 
 #home .main-header {
-  font-size: 70px;
+  font-size: 40px;
 }
 
 .hero {
-  font-size: 35px;
+  font-size: 25px;
   line-height: 40px;
   margin-top: 25px;
 }
@@ -222,4 +222,13 @@ body {
         position: center center;
     }
   }
+}
+
+.reload {
+  font-size: 30px;
+  color: #ddd;
+  position: absolute;
+  right: 20px;
+  width: 25px;
+  top: 15px;
 }
