@@ -36,11 +36,6 @@ body {
   z-index: 999;
 }
 
-body.fadeIn #loading {
-  opacity: 0;
-  -webkit-transition: opacity 1s;
-}
-
 .mb-page {
 
   .main-header {
