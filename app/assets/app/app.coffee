@@ -25,10 +25,10 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
         $q.reject(response)
   ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
-    $httpProvider.responseInterceptors.push('ajaxCounterInterceptor');
-    $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
-      window.ajaxCounter++
-      data
+      $httpProvider.responseInterceptors.push('ajaxCounterInterceptor')
+      $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
+        window.ajaxCounter++
+        data
 
       $routeProvider.
         when('/config',                           { templateUrl: 'views/admin/config.html',       controller: ConfigCtrl }).
