@@ -12,4 +12,4 @@ window.HomeCtrl = ($scope, $http, $routeParams) ->
     fadeInWhenReady()
 
   fadeInWhenReady = () ->
-    $('body').addClass('fadeIn') if window.ajaxCounter == 0
+    $('#loading').fadeOut(500) if window.ajaxCounter == 0
