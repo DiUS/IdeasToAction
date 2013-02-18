@@ -15,12 +15,12 @@ describe 'Actionman', ()->
     ctrl = null
     httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       httpBackend = _$httpBackend_
       window.ENDPOINT = "window_endpoint"
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 } })
+      ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 }, dataCache: $cacheFactory('fake cache') })
 
     it 'should initialise an empty idea correctly', ()->
       expect(scope.idea).toBeDefined()

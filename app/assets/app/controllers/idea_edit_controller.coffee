@@ -1,4 +1,4 @@
-window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
+window.IdeaEditCtrl = ($scope, $http, $routeParams, dataCache) ->
 
   $scope.startNewIdea = (talk)->
     $scope.idea = { body: '', talks: [ ], actions: [ ] }
@@ -21,11 +21,13 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams) ->
     (@idea.actions.length > 0) and (@idea.body)
 
   $scope.retrieveTalkById = (talkId) ->
-    $http.get("#{window.ENDPOINT}/talks/#{talkId}.json").success (talk) -> 
+    $http.get("#{window.ENDPOINT}/talks/#{talkId}.json", { cache: dataCache }).success (talk) -> 
       $scope.idea.talks.push(talk)
 
   $scope.submitIdea = (idea) ->
     $http.post("#{window.ENDPOINT}/ideas", idea).success (ideaWithId) -> 
-      $('body').scope().navigate.go("/ideas/#{ideaWithId.id}")
+      dataCache.removeAll()
+      $("#talk").scope().update().success (data)->
+        $('body').scope().navigate.go("/ideas/#{ideaWithId.id}")
 
   $scope.startNewIdea($scope.$parent.talk)

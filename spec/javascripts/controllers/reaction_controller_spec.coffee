@@ -6,7 +6,7 @@ describe 'ActionmanApp', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       ideaId = 1
       element = $('<div></div>')
 
@@ -17,7 +17,7 @@ describe 'ActionmanApp', ()->
       $httpBackend.expectPOST("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", {text: 'my reaction'}).respond({})
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'ReactionCtrl', { $scope: scope, $element: element })
+      ctrl = $controller( 'ReactionCtrl', { $scope: scope, $element: element, dataCache: $cacheFactory('fake cache') })
 
     it 'should create a react function', () ->
       expect(scope.react).toBeDefined()

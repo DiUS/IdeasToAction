@@ -12,7 +12,7 @@ describe 'ActionmanApp', ()->
     actionId = 1
     ideaScope = { 'update': jasmine.createSpy('update') }
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
 
       window.ENDPOINT = 'window_endpoint'
@@ -20,7 +20,7 @@ describe 'ActionmanApp', ()->
       $httpBackend.expectPOST("#{window.ENDPOINT}/actions/#{actionId}/doneIt.json").respond({})
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'ActionCtrl', { $scope: scope })
+      ctrl = $controller( 'ActionCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
 
     it 'should create a doneIt function', () ->
       expect(scope.doneIt).toBeDefined()     

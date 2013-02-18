@@ -8,12 +8,12 @@ describe 'ActionmanApp', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1.json").respond(eventData)
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/ideas.json").respond(ideaData)
       scope = $rootScope.$new()
-      ctrl = $controller( 'EventCtrl', { $scope: scope, $routeParams: { eventId: 1 } })
+      ctrl = $controller( 'EventCtrl', { $scope: scope, $routeParams: { eventId: 1 }, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the eventId correctly', () ->
       $httpBackend.flush()
