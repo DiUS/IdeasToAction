@@ -7,6 +7,7 @@ body {
   overflow-x: hidden;
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
+  font-family: Helvetica,Arial,sans-serif;
 }
 
 .btn {
@@ -190,7 +191,6 @@ body {
         repeat: no-repeat;
         position: 95% center;
       }
-
     }
   }
 
@@ -199,16 +199,25 @@ body {
   }
 }
 
+#home .main-header {
+  font-size: 70px;
+}
+
+.hero {
+  font-size: 35px;
+  line-height: 40px;
+  margin-top: 25px;
+}
+
 .flat-description {
   padding: 10px;
-  background-color: #eee;
 
   .continue {
       display: inline-block;
-      width: 9px;
+      width: 7px;
       height: 11px;
       background: {
-        image: image-url('right-indicator.png');
+        image: image-url('arrow_element.png');
         repeat: no-repeat;
         position: center center;
     }
