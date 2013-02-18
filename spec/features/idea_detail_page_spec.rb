@@ -41,8 +41,13 @@ describe "Idea detail page", js: true, acceptance: true do
   end
 
   describe 'when taking action on an idea' do
-    let(:collapsible) { page.find(".collapsible[title='Actions']") }
-    let(:reaction_collapsible) { page.find(".collapsible[title='Reactions']") }
+    def collapsible
+      page.find(".collapsible[title='Actions']")
+    end
+
+    def reaction_collapsible
+      page.find(".collapsible[title='Reactions']")
+    end
     
     before :each do 
       Rails.logger.info "STARTING NEW DESCRIBE FOREACH"
@@ -56,7 +61,7 @@ describe "Idea detail page", js: true, acceptance: true do
 
       Rails.logger.info "--- Marking action as done"
       collapsible.find(".header").click
-      page.should have_selector(".btn.done-it")
+      page.should have_selector(".btn.done-it", visible: true)
       collapsible.find(".btn.done-it").click
     end
 
@@ -68,16 +73,24 @@ describe "Idea detail page", js: true, acceptance: true do
 
       describe 'checking the number of reactions' do
         before :each do
-          idea.reload.reactions.size.should eq 5
-          reaction_collapsible.should have_selector('.header sup', text: '5')
+          begin
+            idea.reload.reactions.size.should eq 5
+            reaction_collapsible.should have_selector('.header sup', text: '5')
 
-          page.should have_selector(".reaction textarea", visible: true)
+            page.should have_selector('p.action-statement', text: 'You did on')
 
-          page.find(".reaction textarea").set('This is my reaction')
-          page.find(".reaction textarea").value.should eq 'This is my reaction'
+            page.should have_selector(".reaction textarea")
+            page.should have_selector(".reaction textarea", visible: true)
 
-          Rails.logger.info "--------- About to submit reaction"
-          page.find('.submit-reaction').click
+            page.find(".reaction textarea").set('This is my reaction')
+            page.find(".reaction textarea").value.should eq 'This is my reaction'
+
+            Rails.logger.info "--------- About to submit reaction"
+            page.find('.submit-reaction').click
+          rescue => e
+            puts page.html
+            raise e
+          end
         end
 
         it 'should update the reactions' do
