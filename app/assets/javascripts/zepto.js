@@ -1316,6 +1316,10 @@ window.Zepto = Zepto
       cancelLongTap()
       touch.x2 = e.touches[0].pageX
       touch.y2 = e.touches[0].pageY
+      // If touch horizontal then prevents the event and it will suppress scrolling.
+      // Reference https://github.com/madrobby/zepto/issues/315
+      if(touch.x2 && Math.abs(touch.x1 - touch.x2) > 10)
+        e.preventDefault()
     }).bind('touchend', function(e){
        cancelLongTap()
 
