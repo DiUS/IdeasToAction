@@ -16,17 +16,14 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
     (promise) ->
       promise.then (response) ->
         window.ajaxCounter--
-        $('#loading').empty() if window.ajaxCounter == 0
         response
       , (response) ->
         window.ajaxCounter--
-        $('#loading').empty() if window.ajaxCounter == 0
         $q.reject(response)
   ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
     $httpProvider.responseInterceptors.push('ajaxCounterInterceptor');
     $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
-      $('#loading').text('loading')
       window.ajaxCounter++
       data
 
