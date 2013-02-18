@@ -199,3 +199,18 @@ body {
   }
 }
 
+.flat-description {
+  padding: 10px;
+  background-color: #eee;
+
+  .continue {
+      display: inline-block;
+      width: 9px;
+      height: 11px;
+      background: {
+        image: image-url('right-indicator.png');
+        repeat: no-repeat;
+        position: center center;
+    }
+  }
+}
