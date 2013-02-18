@@ -1,3 +1,5 @@
+window.ajaxCounter = 0
+
 angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
@@ -13,8 +15,25 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
   ).
+  factory('ajaxCounterInterceptor', ($q, $window) ->
+    (promise) ->
+      promise.then (response) ->
+        window.ajaxCounter--
+        $('#loading').empty() if window.ajaxCounter == 0
+        response
+      , (response) ->
+        window.ajaxCounter--
+        $('#loading').empty() if window.ajaxCounter == 0
+        $q.reject(response)
+  ).
   config [ 
     '$routeProvider', ($routeProvider) ->
+      httpProvider.responseInterceptors.push('ajaxCounterInterceptor');
+      $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
+        $('#loading').text('loading')
+        window.ajaxCounter++
+        data
+
       $routeProvider.
         when('/config',                           { templateUrl: 'views/admin/config.html',       controller: ConfigCtrl }).
         when('/home',                             { templateUrl: 'views/home/index.html',         controller: HomeCtrl }).
