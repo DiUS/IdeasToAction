@@ -1,4 +1,7 @@
 .header.main-header
   Talks and events
-%collapsible(title='Talks' type='talks' collection='talks' item-template='views/talks/talk_collapsible_item.html')
-%collapsible(title='Events' type='events' collection='events' item-template='views/events/event_collapsible_item.html')
+.content.hero
+  Select a talk or event to discover new ideas
+.sections
+  %collapsible(title='Talks' type='talks' collection='talks' item-template='views/talks/talk_collapsible_item.html')
+  %collapsible(title='Events' type='events' collection='events' item-template='views/events/event_collapsible_item.html')
