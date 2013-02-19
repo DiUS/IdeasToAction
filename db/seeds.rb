@@ -56,7 +56,7 @@ if %w(test development qa).include? Rails.env
     },
     { 
       talks: [ amy_cuddy_talk, steve_jobs_talk ],      
-      body: '"power posing" can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
+      body: 'Power posing can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
       tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Power-pose for two minutes before an important meeting.' },
