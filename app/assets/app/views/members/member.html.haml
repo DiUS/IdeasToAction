@@ -1,9 +1,8 @@
 #member
   .header.main-header
-    Member
-  .content
-    %p 
-      Hi there!
+    My profile
+    .home-page.pull-right(ng-href="/home")
+      %i.icon-home
   .sections
     %collapsible(title='Actions Taken' type='action' collection='member.actions' item-template='views/actions/action_collapsible_item.html')
     %collapsible(title='Reactions Recorded' type='reaction' collection='member.reactions' item-template='views/reactions/reaction_collapsible_item.html')

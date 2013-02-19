@@ -1,6 +1,8 @@
 #idea
   .header.main-header
     Idea
+    .home-page.pull-right(ng-href="/home")
+      %i.icon-home
   .tags
     %span.tag{'ng:repeat' => 'tag in idea.tags'}
       {{tag.name}}
