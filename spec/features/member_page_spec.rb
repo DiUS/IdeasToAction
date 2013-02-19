@@ -47,4 +47,15 @@ describe "Member page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
   end
 
+  describe 'when wanting to navigate back to the home page' do
+    before do
+      page.should_not have_selector('#home')
+      page.find('.header .home-page').click
+    end
+
+    it 'should navigate back to home' do
+      page.should have_selector('#home')
+    end
+  end
+
 end
