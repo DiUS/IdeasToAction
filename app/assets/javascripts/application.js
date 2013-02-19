@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 
 //= require_tree ./angularjs/
+//= require_tree ./snappy-swipe-nav/
 //= require ../app/app.coffee
 //= require_tree ../app/components
 //= require_tree ../app/controllers

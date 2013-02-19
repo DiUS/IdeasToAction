@@ -1,6 +1,6 @@
 window.ajaxCounter = 0
 
-angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
+angular.module('Actionman', [ 'snappy-swipe-navigate', 'mobile-navigate', 'ui' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
       scope.navigate = $navigate
