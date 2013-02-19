@@ -223,16 +223,16 @@ body {
   background-color: #f2f2f2;
   line-height: 26px;
   margin-bottom: 25px;
+}
 
-  .continue {
-      display: inline-block;
-      width: 7px;
-      height: 11px;
-      background: {
-        image: image-url('arrow_element.png');
-        repeat: no-repeat;
-        position: center center;
-    }
+.continue {
+    display: inline-block;
+    width: 7px;
+    height: 11px;
+    background: {
+      image: image-url('arrow_element.png');
+      repeat: no-repeat;
+      position: center center;
   }
 }
 
