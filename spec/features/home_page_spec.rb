@@ -9,7 +9,7 @@ describe "Home page", js: true, acceptance: true do
     page.text.should =~ /(\d+) People/
     page.text.should =~ /(\d+) Ideas/
     page.text.should =~ /(\d+) Actions/
-    page.text.should =~ /transforming ideas worth spreading into actions worth taking/
+    page.text.should =~ /Transforming ideas worth spreading into actions worth taking/
   end
 
   it "should display a random idea" do
