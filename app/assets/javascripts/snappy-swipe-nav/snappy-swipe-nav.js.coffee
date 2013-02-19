@@ -5,10 +5,33 @@
 angular.module('snappy-swipe-navigate', [])
 
 angular.module('snappy-swipe-navigate').
-  controller('swipe-view-controller', ($rootScope, $scope, $element)->
-    console.log("swipe-view-controller", $scope, $element)
+  service('$navigate', ($rootScope, $location)->
+    @go = (path, transition)->
+      console.log("$navigate.go", path, transition)
+      $location.path(path)
 
-    # The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout()
+    $rootScope.$on('$routeChangeSuccess', ($event, next, last)->
+      console.log("$routeChangeSuccess. Event:", $event, "Next:", next, "Last:", last, $location.path())
+      $rootScope.swipeScope.scrollToPath($location.path(), next) unless next.redirectTo
+    )
+
+  ).
+  controller('swipe-view-controller', ($rootScope, $scope, $element, $location, $route, $controller, $compile)->
+    $scope.onScrollEnd = ()->
+      currentPage = $scope.currentPage()
+      $scope.onUserScrollEnd() unless $scope.swallowNextScroll
+      $scope.swallowNextScroll = false
+      $scope.lastPage = $scope.currentPage()
+      true
+
+    $scope.onUserScrollEnd = ()->
+      currentPage = $scope.currentPage()
+      if (!currentPage.is($scope.lastPage)) 
+        console.log("On new page after user scroll", currentPage, $scope.lastPage)
+        $location.path(currentPage.attr('path'))
+      true
+
+    $scope.element = $element
     $scope.wrapperWidth = 0;
 
     $scope.scroll = new iScroll('pageWrapper', {
@@ -16,17 +39,86 @@ angular.module('snappy-swipe-navigate').
       momentum: false,
       hScrollbar: false,
       vScrollbar: false,
-      lockDirection: true
+      lockDirection: true,
+      onScrollEnd: $scope.onScrollEnd
     })
 
-    $scope.currentPageCount = ()->
-      2
+    $scope.scrollToPath = (path, page)->
+      indexOfPage = $scope.indexOfPageForPath(path)
+      if (indexOfPage < 0)
+        # Create new page
+        $scope.swallowNextScroll = true
+        $scope.insertPage(path, page)
+        # Set index of page
+        indexOfPage = $scope.indexOfPageForPath(path)
+      $scope.swallowNextScroll = true
+      console.log("indexOfPage", indexOfPage)
+      $scope.scroll.refresh();
+      $scope.scroll.scrollToPage(indexOfPage, 0, 500);
 
-    $scope.updateLayout = (event)->
+    $scope.pageScroller = ()->
+      $('#pageScroller')
+
+    $scope.insertPage= (path, page)->
+      console.log("Inserting new page for path", path)
+      current = $route.current
+      locals = current && current.locals
+
+      page.element = angular.element(document.createElement("div"))
+      page.element.html(locals.$template)
+      page.element.addClass('page') # Always has to have page class
+
+      page.scope = $scope.$new();
+      if (current.controller)
+        locals.$scope = page.scope;
+        page.controller = $controller(current.controller, locals);
+        page.element.contents().data('$ngControllerController', page.controller);
+      
+      $compile(page.element.contents())(page.scope);
+
+      page.element.attr('path', path)
+
+      # Clear all pages forward in history
+      $scope.currentPage().next().remove() while ($scope.currentPage().next().length)
+
+      # Add this forward page
+      $scope.pageScroller().append(page.element);
+      $scope.updateLayout()
+      page.scope.$emit('$viewContentLoaded');
+      #page.scope.$eval(attrs.onLoad);
+      page.element
+    
+
+    $scope.indexOfPageForPath = (path)->
+      index = -1
+      $(".page", $scope.element).each (i, e)->
+        index = i if $(e).attr('path') == path 
+      index
+
+    $scope.currentPageCount = ()->
+      pages = $scope.pages()
+      (pages && pages.length) || 0
+
+    $scope.pages = ()->
+      $('.page', $scope.element)
+
+    $scope.currentPageIndex = ()->
       currentPage = 0
 
       if ($scope.wrapperWidth > 0)
         currentPage = - Math.ceil( $('#pageScroller').position().left / $scope.wrapperWidth)
+
+      currentPage
+
+    $scope.currentPage = ()->
+      $($scope.pages()[$scope.currentPageIndex()])
+
+    $scope.lastPage = null
+
+    $scope.updateLayout = (event)->
+      console.log "Updating layout", event
+      return if $scope.currentPageCount() <= 0
+      currentPage = $scope.currentPageIndex()
 
       $scope.wrapperWidth = $('#pageWrapper').width()
 
@@ -35,27 +127,20 @@ angular.module('snappy-swipe-navigate').
 
       $scope.scroll.refresh();
       $scope.scroll.scrollToPage(currentPage, 0, 0);
-
-    $(window).bind("resize", $scope.updateLayout)
-    $(window).bind("orientationchange", $scope.updateLayout)
-
-    $scope.updateLayout()
   ).
-  directive('swipeView', () ->
+  directive('swipeView', ($rootScope, $compile, $controller, $route) ->
     return {
       restrict: 'E',
       transclude: true,
       scope: { },
-      link: ($scope, $element) ->
-        $scope.$parent.$watch $scope.collection_expr, (newValue, oldValue) ->
-          $scope.collection = newValue || []
-        $scope.$parent.$watch "#{$scope.collection_expr}.length", (newValue, oldValue) ->
-          $element.find('.title sup').text(newValue);
-          $scope.collection_length = newValue
+      link: (scope, viewElement, attrs) ->
+        $(window).bind("resize", scope.updateLayout)
+        $(window).bind("orientationchange", scope.updateLayout)
+        $(window).bind("ready", scope.updateLayout())
+        $rootScope.swipeScope = scope
 
       controller: 'swipe-view-controller',
-      template: '<div id="pageWrapper"><div id="pageScroller"><div class="page" ><h1>Page 1</h2></div><div class="page" ><h1>Page 2</h2></div></div></div>',
-      replace: true
+      template: '<div id="pageWrapper"><div id="pageScroller"></div></div>',
     }
   )
 
