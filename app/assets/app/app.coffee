@@ -19,11 +19,9 @@ angular.module('Actionman', [ 'mobile-navigate', 'ui' ]).
     (promise) ->
       promise.then (response) ->
         window.ajaxCounter--
-        $('#loading').fadeOut(500) if window.ajaxCounter == 0
         response
       , (response) ->
         window.ajaxCounter--
-        $('#loading').fadeOut(500) if window.ajaxCounter == 0
         $q.reject(response)
   ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
