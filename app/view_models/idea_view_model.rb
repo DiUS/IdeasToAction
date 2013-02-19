@@ -14,6 +14,7 @@ class IdeaViewModel
       @idea_view_model['actions'].last['member_action_taken']['created_at'] = member_action_taken.created_at.strftime("%b %d %Y") unless member_action_taken.nil?
     end
 
+    @idea_view_model['talks'] = idea.talks.as_json
     @idea_view_model['reactions'] = idea.reactions.as_json
   end
 

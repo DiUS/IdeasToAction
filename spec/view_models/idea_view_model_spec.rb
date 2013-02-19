@@ -63,5 +63,24 @@ describe IdeaViewModel do
         first_reaction_json.should eql ({ :reaction => 'stuff' })
       end
     end
+
+    it 'should associate talks' do
+      idea.talks.should_not be_empty
+      idea_view_model.as_json['talks'].size.should eql idea.talks.size
+    end
+
+    describe 'for each talk associated with the idea' do
+      let(:first_talk) { mock_model(Talk) }
+      let(:first_talk_json) { idea_view_model.as_json['talks'].first }
+
+      before :each do 
+        idea.should_receive(:talks).and_return [ first_talk ]
+        first_talk.stub(:as_json).and_return({ :talk => 'stuff' })
+      end
+
+      it 'should as_json each reaction' do
+        first_talk_json.should eql ({ :talk => 'stuff' })
+      end
+    end
   end
 end
