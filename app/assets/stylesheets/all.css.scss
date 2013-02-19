@@ -203,9 +203,15 @@ body {
   font-size: 40px;
 }
 
+#home .content {
+  border: {
+      bottom: 2.5px solid #FF2A06;
+    }
+}
+
 .hero {
-  font-size: 25px;
-  line-height: 40px;
+  font-size: 22px;
+  line-height: 35px;
   margin-top: 25px;
 }
 
