@@ -23,6 +23,13 @@ describe "Idea detail page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
   end
 
+  context "Inspired by collapsible" do
+    let(:title) { "Inspired by" }
+    let(:item_contents) { idea.talks.map(&:title) }
+
+    it_should_behave_like "a collapsible"
+  end
+
   context "Reactions collapsible" do
     let(:title) { "Reactions" }
     let(:item_contents) { idea.reactions.map(&:text) }
