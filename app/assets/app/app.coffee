@@ -1,16 +1,11 @@
 window.ajaxCounter = 0
 
-angular.module('Actionman', [ 'snappy-swipe-navigate', 'mobile-navigate', 'ui' ]).
+angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
       scope.navigate = $navigate
       elm.bind 'click', () -> 
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
-
-      scope.$on '$pageTransitionSuccess', () ->
-        setTimeout () ->
-          $('.mb-page').css('position', 'static')
-        , 800
   ).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
@@ -39,5 +34,5 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'mobile-navigate', 'ui' ]
         when('/ideas/:ideaId',                    { templateUrl: 'views/ideas/idea.html',         controller: IdeaCtrl }).
         when('/member',                           { templateUrl: 'views/members/member.html',     controller: MemberCtrl }).
         when('/talks-events',                     { templateUrl: 'views/talks-events/index.html', controller: TalksEventsCtrl }).
-        otherwise({redirectTo: '/home'})
+        otherwise( {redirectTo: '/home'} )
     ]
