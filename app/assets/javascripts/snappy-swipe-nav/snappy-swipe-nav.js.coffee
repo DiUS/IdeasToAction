@@ -22,8 +22,7 @@ angular.module('snappy-swipe-navigate').
       $scope.onUserScrollEnd() unless $scope.swallowNextScroll
       $scope.swallowNextScroll = false
       $scope.lastPage = $scope.currentPage()
-      $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
-      $scope.scroll.refresh();
+      $scope.refreshPageHeight()
       false
 
     $scope.onUserScrollEnd = ()->
@@ -46,6 +45,10 @@ angular.module('snappy-swipe-navigate').
       lockDirection: true,
       onScrollEnd: $scope.onScrollEnd
     })
+
+    $scope.refreshPageHeight = ()->
+      $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
+      $scope.scroll.refresh();
 
     $scope.scrollToPath = (path, page)->
       indexOfPage = $scope.indexOfPageForPath(path)
