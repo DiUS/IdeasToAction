@@ -1,5 +1,7 @@
 describe 'Actionman', ()->
 
+  beforeEach(module('Actionman'))
+
   describe 'IdeaEditCtrl', () -> 
     talkData = { id: 1, title: 'Amy Cuddy: Your body language shapes who you are'}
 
@@ -14,13 +16,19 @@ describe 'Actionman', ()->
     scope = null
     ctrl = null
     httpBackend = null
+    navigate = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $navigate, $cacheFactory) ->
       httpBackend = _$httpBackend_
+      navigate = $navigate
+
       window.ENDPOINT = "window_endpoint"
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 }, dataCache: $cacheFactory('fake cache') })
+
+      $navigate.swipeScope = { name: "mock swipe scope", resetToTop: jasmine.createSpy('resetToTop') }
+
+      ctrl = $controller( 'IdeaEditCtrl', { $scope: scope, $routeParams: { talkId: 1 }, $navigate, dataCache: $cacheFactory('fake cache') })
 
     it 'should initialise an empty idea correctly', ()->
       expect(scope.idea).toBeDefined()

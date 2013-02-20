@@ -1,4 +1,6 @@
-describe 'ActionmanApp', ()->
+describe 'Actionman', ()->
+
+  beforeEach(module('Actionman'))
 
   describe 'TalkCtrl', () -> 
     talkData = { title: 'Amy Cuddy: Your body language shapes who you are'}

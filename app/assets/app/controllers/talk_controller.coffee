@@ -1,4 +1,4 @@
-window.TalkCtrl = ($scope, $http, $routeParams, dataCache) ->
+window.TalkCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
   $scope.talkId = $routeParams.talkId
   $scope.eventId = $routeParams.eventId
 
@@ -7,7 +7,7 @@ window.TalkCtrl = ($scope, $http, $routeParams, dataCache) ->
   $scope.createNewIdea = (talk)-> 
     $("#new-idea-dialog").scope().startNewIdea(talk)
     $scope.showNewIdeaDialog = true
-    $('swipe-view').scope().resetToTop()
+    $navigate.swipeScope.resetToTop()
 
   $scope.update = ()->
     $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}.json", { cache: dataCache }).success( (data) -> 
