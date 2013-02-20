@@ -7,6 +7,7 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, dataCache) ->
     $scope
 
   $scope.cancel = ()->
+    $('swipe-view').scope().resetToTop()
     $scope.$parent.showNewIdeaDialog = false
 
   $scope.addNewAction = ()->
@@ -29,5 +30,7 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, dataCache) ->
       dataCache.removeAll()
       $("#talk").scope().update().success (data)->
         $('body').scope().navigate.go("/ideas/#{ideaWithId.id}")
+        $('swipe-view').scope().resetToTop()
+        $scope.$parent.showNewIdeaDialog = false
 
   $scope.startNewIdea($scope.$parent.talk)
