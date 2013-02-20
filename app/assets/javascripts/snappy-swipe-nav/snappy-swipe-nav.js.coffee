@@ -7,13 +7,11 @@ angular.module('snappy-swipe-navigate', [])
 angular.module('snappy-swipe-navigate').
   service('$navigate', ($rootScope, $location)->
     @go = (path, transition)->
-      console.log("$navigate.go", path, transition)
       $location.path(path)
 
     self = this 
 
     $rootScope.$on('$routeChangeSuccess', ($event, next, last)->
-      console.log("$routeChangeSuccess. Event:", $event, "Next:", next, "Last:", last, $location.path())
       self.swipeScope.scrollToPath($location.path(), next) unless next.redirectTo
     )
 
@@ -30,7 +28,6 @@ angular.module('snappy-swipe-navigate').
     $scope.onUserScrollEnd = ()->
       currentPage = $scope.currentPage()
       if (!currentPage.is($scope.lastPage)) 
-        console.log("On new page after user scroll", currentPage, $scope.lastPage)
         path = currentPage.attr('path')
         $scope.$apply("location.path('#{path}')")
       true
@@ -65,7 +62,6 @@ angular.module('snappy-swipe-navigate').
         # Set index of page
         indexOfPage = $scope.indexOfPageForPath(path)
       $scope.swallowNextScroll = true
-      console.log("indexOfPage", indexOfPage)
       $scope.scroll.refresh();
       $scope.scroll.scrollToPage(indexOfPage, 0, 500);
 
@@ -73,7 +69,6 @@ angular.module('snappy-swipe-navigate').
       $('#pageScroller')
 
     $scope.insertPage= (path, page)->
-      console.log("Inserting new page for path", path)
       current = $route.current
       locals = current && current.locals
 
@@ -133,7 +128,6 @@ angular.module('snappy-swipe-navigate').
     $scope.lastPage = null
 
     $scope.updateLayout = (event)->
-      console.log "Updating layout", event
       return if $scope.currentPageCount() <= 0
       currentPage = $scope.currentPageIndex()
 
