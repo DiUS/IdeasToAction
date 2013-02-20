@@ -3,6 +3,9 @@
     My profile
     .home-page.pull-right(ng-href="/home")
       %i.icon-home
+  .content
+    %p.description
+      Find the actions you have taken and the reactions you have recorded below
   .sections
     %collapsible(title='Actions Taken' type='action' collection='member.actions' item-template='views/actions/action_collapsible_item.html')
-    %collapsible(title='Reactions Recorded' type='reaction' collection='member.reactions' item-template='views/reactions/reaction_collapsible_item.html')
+    %collapsible(title='Reactions' type='reaction' collection='member.reactions' item-template='views/reactions/reaction_collapsible_item.html')
