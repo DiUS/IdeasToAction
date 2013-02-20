@@ -50,6 +50,10 @@ angular.module('snappy-swipe-navigate').
       $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
       $scope.scroll.refresh();
 
+    $scope.resetToTop = ()->
+      $scope.refreshPageHeight()
+      $scope.scroll.scrollToPage($scope.currentPageIndex(), 0, 300)
+
     $scope.scrollToPath = (path, page)->
       indexOfPage = $scope.indexOfPageForPath(path)
       if (indexOfPage < 0)
@@ -71,17 +75,21 @@ angular.module('snappy-swipe-navigate').
       current = $route.current
       locals = current && current.locals
 
+      contentWrapper = angular.element(document.createElement("div"))
+      contentWrapper.addClass('contentWrapper')
+      contentWrapper.html(locals.$template)
+
       page.element = angular.element(document.createElement("div"))
-      page.element.html(locals.$template)
       page.element.addClass('page') # Always has to have page class
+      page.element.append(contentWrapper)
 
       page.scope = $scope.$new();
       if (current.controller)
         locals.$scope = page.scope;
         page.controller = $controller(current.controller, locals);
-        page.element.contents().data('$ngControllerController', page.controller);
+        contentWrapper.contents().data('$ngControllerController', page.controller);
       
-      $compile(page.element.contents())(page.scope);
+      $compile(contentWrapper.contents())(page.scope);
 
       page.element.attr('path', path)
 
