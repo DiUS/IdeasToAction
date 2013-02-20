@@ -22,17 +22,21 @@ angular.module('snappy-swipe-navigate').
       $scope.onUserScrollEnd() unless $scope.swallowNextScroll
       $scope.swallowNextScroll = false
       $scope.lastPage = $scope.currentPage()
-      true
+      $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
+      $scope.scroll.refresh();
+      false
 
     $scope.onUserScrollEnd = ()->
       currentPage = $scope.currentPage()
       if (!currentPage.is($scope.lastPage)) 
         console.log("On new page after user scroll", currentPage, $scope.lastPage)
-        $location.path(currentPage.attr('path'))
+        path = currentPage.attr('path')
+        $scope.$apply("location.path('#{path}')")
       true
 
     $scope.element = $element
-    $scope.wrapperWidth = 0;
+    $scope.wrapperWidth = 0
+    $scope.location = $location
 
     $scope.scroll = new iScroll('pageWrapper', {
       snap: true,
