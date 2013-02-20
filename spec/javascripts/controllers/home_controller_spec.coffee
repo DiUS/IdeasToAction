@@ -1,4 +1,4 @@
-describe 'ActionmanApp', ()->
+describe 'Actionman', ()->
 
   describe 'HomeCtrl', () -> 
     idea = { body: 'Body language affects how others see us, but it may also change how we see ourselves.'}

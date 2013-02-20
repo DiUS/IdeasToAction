@@ -10,9 +10,11 @@ angular.module('snappy-swipe-navigate').
       console.log("$navigate.go", path, transition)
       $location.path(path)
 
+    self = this 
+
     $rootScope.$on('$routeChangeSuccess', ($event, next, last)->
       console.log("$routeChangeSuccess. Event:", $event, "Next:", next, "Last:", last, $location.path())
-      $rootScope.swipeScope.scrollToPath($location.path(), next) unless next.redirectTo
+      self.swipeScope.scrollToPath($location.path(), next) unless next.redirectTo
     )
 
   ).
@@ -143,7 +145,7 @@ angular.module('snappy-swipe-navigate').
       $scope.scroll.refresh();
       $scope.scroll.scrollToPage(currentPage, 0, 0);
   ).
-  directive('swipeView', ($rootScope, $compile, $controller, $route) ->
+  directive('swipeView', ($rootScope, $compile, $controller, $route, $navigate) ->
     return {
       restrict: 'E',
       transclude: true,
@@ -152,7 +154,7 @@ angular.module('snappy-swipe-navigate').
         $(window).bind("resize", scope.updateLayout)
         $(window).bind("orientationchange", scope.updateLayout)
         $(window).bind("ready", scope.updateLayout())
-        $rootScope.swipeScope = scope
+        $navigate.swipeScope = scope
 
       controller: 'swipe-view-controller',
       template: '<div id="pageWrapper"><div id="pageScroller"></div></div>',

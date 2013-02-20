@@ -1,4 +1,4 @@
-describe 'ActionmanApp', ()->
+describe 'Actionman', ()->
 
   describe 'ActionCtrl', () -> 
     ideaData = { 

@@ -1,4 +1,6 @@
-describe 'ActionmanApp', ()->
+describe 'Actionman', ()->
+
+  beforeEach(module('Actionman'))
 
   describe 'CollapsibleCtrl', () -> 
     scope = null
