@@ -170,6 +170,17 @@ body {
 
 .collapsible {
 
+  &[type="reaction"] {
+    .item {
+      margin-bottom: 12px;
+      background-color: #f4f4f4;
+
+      .description {
+        padding: 0 10px;      
+      }
+    }
+  }
+
   &.collapsed {
     .header {
 

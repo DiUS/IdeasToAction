@@ -30,7 +30,7 @@ describe "Member page", js: true, acceptance: true do
   end
 
   it "should have the event page visible" do
-    page.should have_content "Reactions Recorded #{member.reactions.size}"
+    page.should have_content "Reactions #{member.reactions.size}"
   end
 
   context "Actions collapsible" do
@@ -41,7 +41,7 @@ describe "Member page", js: true, acceptance: true do
   end
 
   context "Reactions collapsible" do
-    let(:title) { "Reactions Recorded" }
+    let(:title) { "Reactions" }
     let(:item_contents) { member.reactions.map(&:text) }
 
     it_should_behave_like "a collapsible"
