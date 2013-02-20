@@ -17,8 +17,9 @@
     .body.section
       .header
         I had this idea...
-      .content
-        %textarea#body(placeholder='My idea is...' ng-model='idea.body' required='')
+      .items
+        .item
+          %textarea#body(placeholder='My idea is...' ng-model='idea.body' required='')
     .section.actions
       .header
         %span.title
@@ -26,15 +27,16 @@
       .items
         .item{ 'ng-repeat' => "item in idea.actions" }
           %ng:include(src="'views/actions/action_in_idea_submission_collapsible_item.html'")
-      .control.content
-        %form#new-action(name='newAction' ng-submit="addNewAction()")
+      %form#new-action(name='newAction' ng-submit="addNewAction()")
+        .control.content
           %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...')
-          %input#add-new-action.btn.btn-danger(type="submit" value='Add action' ng-disabled='newAction.$invalid')
-  .content.row-fluid
+        .control.content
+          %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
+  .content
     %p
       Please review your idea before submission. 
     .center
-      %button#submit-idea.btn.btn-large.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
+      %button#submit-idea.center.btn.btn-xlarge.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
         Submit your idea
 #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
   .modal-header.header.main-header
