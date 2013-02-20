@@ -3,7 +3,8 @@ window.CollapsibleCtrl = ($scope, $element) ->
       $element.toggleClass('collapsed').toggleClass('expanded')
       $element.find('.items').slideToggle 300, () ->
         $('swipe-view').scope().refreshPageHeight();
-        $('swipe-view').scope().scroll.scrollTo(0 - $element.offset().left, 0 - $element.offset().top, 300)
+        console.log "Element offset", $element.offset().left, $element.offset().top
+        $('swipe-view').scope().scroll.scrollToElement($element[0], 300)
 
     $scope.title = $element.attr('title')
     $scope.collection_expr = $element.attr('collection')
