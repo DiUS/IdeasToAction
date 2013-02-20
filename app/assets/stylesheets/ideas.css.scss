@@ -27,10 +27,14 @@ h2 {
   padding-right: 10px;
 }
 
-.reaction textarea {
-  width: 97%;
+textarea, input {
+  width: 94%;
+  font-size: 20px !important;
+  padding: 10px !important;
+}
+
+textarea {
   margin: 0 auto;
-  margin-top: 10px;
 }
 
 .submit-reaction {

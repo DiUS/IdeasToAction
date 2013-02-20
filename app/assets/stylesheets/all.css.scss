@@ -22,6 +22,11 @@ body {
   -webkit-border-radius: 3px !important;
 }
 
+.btn-xlarge {
+  padding: 18px 21px !important;
+  font-size: 30px !important;
+}
+
 .btn-danger {
   background-color: #FF2A06 !important;
 }
@@ -151,7 +156,7 @@ body {
 
     .item {
 
-      margin: 10px;
+      margin: 0 10px 10px;
 
       overflow: auto;
       background-color: white;
