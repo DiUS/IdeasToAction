@@ -3,7 +3,6 @@ window.CollapsibleCtrl = ($scope, $element, $navigate) ->
       $element.toggleClass('collapsed').toggleClass('expanded')
       $element.find('.items').slideToggle 300, () ->
         $navigate.swipeScope.refreshPageHeight();
-        console.log "Element offset", $element.offset().left, $element.offset().top
         $navigate.swipeScope.scroll.scrollToElement($element[0], 300)
 
     $scope.title = $element.attr('title')
