@@ -1,8 +1,21 @@
-h2 {
+.big {
+  font-weight: bold;
+  display: inline-block;
   color: #FF2A06;
   font-size: 60px;
   line-height: 60px;
   font-family: Helvetica;
+  text-align: right;
+}
+
+.big:nth-child(odd) {
+  width: 35%;
+  padding-right: 18px;
+}
+
+.big:nth-child(even) {
+  width: 55%;
+  text-align: left; 
 }
 
 .action-statement {
