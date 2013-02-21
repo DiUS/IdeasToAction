@@ -1,7 +1,5 @@
 .big {
-  font-weight: bold;
   display: inline-block;
-  color: #FF2A06;
   font-size: 60px;
   line-height: 60px;
   font-family: Helvetica;
@@ -9,11 +7,14 @@
 }
 
 .big:nth-child(odd) {
+  font-weight: bold;
+  color: #FF2A06;
   width: 35%;
   padding-right: 18px;
 }
 
 .big:nth-child(even) {
+  color: #1A1A1A;
   width: 55%;
   text-align: left; 
 }
