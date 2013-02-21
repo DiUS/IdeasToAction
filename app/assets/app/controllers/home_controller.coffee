@@ -1,5 +1,7 @@
 window.HomeCtrl = ($scope, $http, $routeParams, dataCache) ->
   $('#loading').show()
+
+  $scope.header = 'Ideas into action <div class="reload pull-right" onclick="location.reload(true);"><i class="icon-refresh" /></div>'
   
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data

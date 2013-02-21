@@ -65,17 +65,17 @@ body {
   }
 }
 
-.page {
+.main-header {
 
-  .main-header {
-
-    padding-bottom: 20px;
-
-    border: {
-      bottom: 2.5px solid #FF2A06;
-    }
+  a:hover, a:visited, a:link {
+    text-decoration: none;
   }
 
+  padding-bottom: 20px;
+
+  border: {
+    bottom: 2.5px solid #FF2A06;
+  }
 }
 
 .header {
@@ -242,6 +242,7 @@ body {
   font-size: 40px;
   line-height: 40px;
   padding-bottom: 23px;
+  min-height: 40px;
 }
 
 #home .content {
@@ -284,5 +285,10 @@ body {
   position: absolute;
   right: 25px;
   width: 25px;
-  top: 22px;
+  top: 5px;
+}
+
+.header-container {
+  position: absolute;
+  width: 96%;
 }

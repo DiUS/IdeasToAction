@@ -4,6 +4,8 @@ window.TalkCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
 
   $scope.showNewIdeaDialog = false
 
+  $scope.header = 'Talk <a class="home-page pull-right" href="#/home"><i class="icon-home" /></a>'
+
   $scope.createNewIdea = (talk)-> 
     $("#new-idea-dialog").scope().startNewIdea(talk)
     $scope.showNewIdeaDialog = true

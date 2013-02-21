@@ -17,10 +17,19 @@ angular.module('snappy-swipe-navigate').
 
   ).
   controller('swipe-view-controller', ($rootScope, $scope, $element, $location, $route, $controller, $compile)->
+    updateHeader = () ->
+      content = $scope.currentPage().children().children().scope().header
+      $mainHeader = $('.main-header')
+      $el = $('<div class="header-container">' + content + '</div>')
+      $mainHeader.prepend($el)
+      $mainHeader.find(".header-container:last").fadeOut 300, () -> $(@).remove()
+
     $scope.onScrollEnd = ()->
       currentPage = $scope.currentPage()
       $scope.onUserScrollEnd() unless $scope.swallowNextScroll
       $scope.swallowNextScroll = false
+      if $scope.lastPage && $scope.lastPage[0] != $scope.currentPage()[0]
+        updateHeader() 
       $scope.lastPage = $scope.currentPage()
       $scope.refreshPageHeight()
       false
@@ -151,7 +160,7 @@ angular.module('snappy-swipe-navigate').
         $navigate.swipeScope = scope
 
       controller: 'swipe-view-controller',
-      template: '<div id="pageWrapper"><div id="pageScroller"></div></div>',
+      template: '<div class="header main-header"><div class="header-container">Ideas into action <div class="reload pull-right" onclick="location.reload(true);"><i class="icon-refresh" /></div></div></div><div id="pageWrapper"><div id="pageScroller"></div></div>',
     }
   )
 
