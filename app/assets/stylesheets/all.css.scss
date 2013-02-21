@@ -38,7 +38,7 @@ body {
 }
 
 #loading {
-  background: white url(/assets/ajax-loader.gif) no-repeat center center;
+  background: white image-url('ajax-loader.gif') no-repeat center center;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -47,11 +47,11 @@ body {
 }
 
 #preload-loader { 
-  background: url(/assets/ajax-loader.gif) no-repeat -9999px -9999px; 
+  background: image-url('ajax-loader.gif') no-repeat -9999px -9999px; 
 }
 
 .loading {
-  background: white url(/assets/ajax-loader.gif) no-repeat bottom center;
+  background: white image-url('ajax-loader.gif') no-repeat bottom center;
   height: 100%;
   width: 100%;
   opacity: 1;
