@@ -3,5 +3,6 @@ window.MemberCtrl = ($scope, $http, $routeParams, dataCache) ->
     $scope.member = data
     $http.get("#{window.ENDPOINT}/member/reactions.json", { cache: dataCache }).success (data) -> 
       $scope.member.reactions = data
-    $http.get("#{window.ENDPOINT}/member/actions.json", { cache: dataCache }).success (data) -> 
-      $scope.member.actions = data
+      $http.get("#{window.ENDPOINT}/member/actions.json", { cache: dataCache }).success (data) -> 
+        $scope.member.actions = data
+        $('.loading').removeClass('loading')

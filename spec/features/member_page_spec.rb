@@ -25,11 +25,11 @@ describe "Member page", js: true, acceptance: true do
     @reaction.destroy
   end
 
-  it "should have the event page visible" do
+  it "should have the actions taken visible" do
     page.should have_content "Actions Taken #{member.actions.size}"
   end
 
-  it "should have the event page visible" do
+  it "should have the reactions visible" do
     page.should have_content "Reactions #{member.reactions.size}"
   end
 

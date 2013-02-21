@@ -46,6 +46,25 @@ body {
   z-index: 999;
 }
 
+#preload-loader { 
+  background: url(/assets/ajax-loader.gif) no-repeat -9999px -9999px; 
+}
+
+.loading {
+  background: white url(/assets/ajax-loader.gif) no-repeat bottom center;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  z-index: 999;
+}
+
+.loading {
+  .tags, .content, .sections {
+    visibility: hidden;
+  }
+}
+
 .page {
 
   .main-header {
