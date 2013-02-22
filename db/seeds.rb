@@ -30,7 +30,8 @@ if %w(test development qa).include? Rails.env
   #
   paolo_cardini_talk = Talk.create!(
     title: 'Paolo Cardini: Forget Multitasking, try monotasking - a 3-minute talk', 
-    description: 'An invitation to "downgrade" our hyper-multitasking phones with clever Mono Task covers that remind us of their essential functions, and more important, to create our own "mono tasking" reality, which is better aligned with how most human minds work.'
+    description: 'An invitation to "downgrade" our hyper-multitasking phones with clever Mono Task covers that remind us of their essential functions, and more important, to create our own "mono tasking" reality, which is better aligned with how most human minds work.',
+    hero_image_url: 'http://images.ted.com/images/ted/65f24e304cacea90ce4f5fd6e7baad2a57195e82_389x292.jpg'
   )
 
   paolo_cardini_talk_idea_1 = Idea.new(
@@ -71,7 +72,8 @@ if %w(test development qa).include? Rails.env
   #
   brene_brown_talk = Talk.create!(
     title: 'Brene Brown: The Power of Vulnerability', 
-    description: 'Brene Brown studies human connection -- our ability to empathize, belong, love. In a poignant, funny talk, she shares a deep insight from her research, one that sent her on a personal quest to know herself as well as to understand humanity.'
+    description: 'Brene Brown studies human connection -- our ability to empathize, belong, love. In a poignant, funny talk, she shares a deep insight from her research, one that sent her on a personal quest to know herself as well as to understand humanity.',
+    hero_image_url: 'http://images.ted.com/images/ted/4e1c25357f3ddd259c2eb15871337c2f0172f5a0_389x292.jpg'
   )
 
   brene_brown_talk_idea_1 = Idea.new(
@@ -113,7 +115,8 @@ if %w(test development qa).include? Rails.env
   #
   mitch_resnick_talk = Talk.create!(
     title: "Mitch Resnick: Let's teach kids to code", 
-    description: "Coding isn't just for computer whizzes, says Mitch Resnick of MIT Media Lab -- it's for everyone. In a fun, demo-filled talk Resnick outlines the benefits of teaching kids to code, so they can do more than just \"read\" new technologies -- but also create them."
+    description: "Coding isn't just for computer whizzes, says Mitch Resnick of MIT Media Lab -- it's for everyone. In a fun, demo-filled talk Resnick outlines the benefits of teaching kids to code, so they can do more than just \"read\" new technologies -- but also create them.",
+    hero_image_url: 'http://i3.ytimg.com/vi/42_30Rgf6F0/mqdefault.jpg'
   )
 
   mitch_resnick_talk_idea_1 = Idea.new(
@@ -155,7 +158,8 @@ if %w(test development qa).include? Rails.env
   #
   young_ha_kim_talk = Talk.create!(
     title: "Young-ha Kim: Be an artist, right now!", 
-    description: "With charm and humor, celebrated Korean author Young-ha Kim invokes the world's greatest artists to urge you to unleash your inner child -- the artist who wanted to play forever."
+    description: "With charm and humor, celebrated Korean author Young-ha Kim invokes the world's greatest artists to urge you to unleash your inner child -- the artist who wanted to play forever.",
+    hero_image_url: 'http://images.ted.com/images/ted/98c37912ea62c89c21f43ef98ee122ebacd8634d_389x292.jpg'
   )
 
   young_ha_kim_talk_idea_1 = Idea.new(
@@ -196,7 +200,8 @@ if %w(test development qa).include? Rails.env
   #
   shawn_achor_talk = Talk.create!(
     title: "Shawn Achor: The happy secret to better work", 
-    description: "We believe that we should work to be happy, but could that be backwards? In this fast-moving and entertaining talk, psychologist Shawn Achor argues that actually happiness inspires productivity."
+    description: "We believe that we should work to be happy, but could that be backwards? In this fast-moving and entertaining talk, psychologist Shawn Achor argues that actually happiness inspires productivity.",
+    hero_image_url: 'http://assets2.bigthink.com/system/idea_thumbnails/24080/original/2256923806_16a80a9a8a.jpg?1284855391'
   )
 
   shawn_achor_talk_idea_1 = Idea.new(
@@ -279,7 +284,8 @@ if %w(test development qa).include? Rails.env
   #
   drew_dudley = Talk.create!(
     title: "Drew Dudley: Everyday leadership", 
-    description: "We have all changed someone's life -- usually without even realizing it. In this funny talk, Drew Dudley calls on all of us to celebrate leadership as the everyday act of improving each other's lives."
+    description: "We have all changed someone's life -- usually without even realizing it. In this funny talk, Drew Dudley calls on all of us to celebrate leadership as the everyday act of improving each other's lives.",
+    hero_image_url: 'http://media.tumblr.com/tumblr_lnx1pukyjb1qedzgi.jpg'
   )
 
   drew_dudley_idea_1 = Idea.new(
@@ -320,7 +326,8 @@ if %w(test development qa).include? Rails.env
   #
   edi_rama = Talk.create!(
     title: "Edi Rama: Take back your city with paint", 
-    description: "Make a city beautiful, curb corruption. Edi Rama took this deceptively simple path as mayor of Tirana, Albania, where he instilled pride in his citizens by transforming public spaces with colorful designs. With projects that put the people first, Rama decreased crime -- and showed his citizens they could have faith in their leaders."
+    description: "Make a city beautiful, curb corruption. Edi Rama took this deceptively simple path as mayor of Tirana, Albania, where he instilled pride in his citizens by transforming public spaces with colorful designs. With projects that put the people first, Rama decreased crime -- and showed his citizens they could have faith in their leaders.",
+    hero_image_url: 'http://nimg.sulekha.com/others/original700/edi-rama-2009-11-20-14-11-56.jpg'
   )
 
   edi_rama_idea_1 = Idea.new(
