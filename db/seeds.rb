@@ -17,12 +17,330 @@ if %w(test development qa).include? Rails.env
   Action.delete_all
   Reaction.delete_all
 
-  tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
-
+  # Setup
   member1 = Member.create! persistence_token: '1234'
   member2 = Member.create! persistence_token: '5678'
   member3 = Member.create! persistence_token: '9012'
 
+  tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
+
+
+  #
+  # TED Global 2012
+  #
+  paolo_cardini_talk = Talk.create!(
+    title: 'Paolo Cardini: Forget Multitasking, try monotasking - a 3-minute talk', 
+    description: 'An invitation to "downgrade" our hyper-multitasking phones with clever Mono Task covers that remind us of their essential functions, and more important, to create our own "mono tasking" reality, which is better aligned with how most human minds work.'
+  )
+
+  paolo_cardini_talk_idea_1 = Idea.new(
+      talks: [ paolo_cardini_talk ],
+      body: 'Multi-tasking may be managed by only 2% of people, yet the technology that surrounds us puts us all too easliy into a multi-tasking state.',
+      tags: ['Culture', 'Design', 'Humor', 'Product design', 'Technology'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Call someone instead of texting, and give your full attention.' },
+        { description: "Visit Cardini's website and buy a phone cover to encourage mono tasking in your daily life and as a conversation-starter to enable sharing the idea with others." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  paolo_cardini_talk_idea_1.member = member1
+  paolo_cardini_talk_idea_1.save!
+
+  paolo_cardini_talk_idea_2 = Idea.new(
+      talks: [ paolo_cardini_talk ],
+      body: 'Tecnhology-induced multi-tasking diminishes our experiences by distracting us from our immediate surroundings.',
+      tags: ['Culture', 'Design', 'Humor', 'Product design', 'Technology'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Turn off your phone next time you are in a place that you wish to explore and experience it unmediated and uninterrupted by technology.  Allow yourself to get lost, if not literally in the place, then in the experience.' }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  paolo_cardini_talk_idea_2.member = member1
+  paolo_cardini_talk_idea_2.save!
+
+  ted_global_2012 = Event.create!( 
+    name: 'TED Global 2012', 
+    description: 'As the world becomes interconnected, the ways we relate and learn about one another (and the rules about what we share) are changing. That was the inspiration for TEDGlobal 2012: Radical Openness, held in Edinburgh.',
+    talks: [ paolo_cardini_talk ])
+
+
+  #
+  # TEDx Houston
+  #
+  brene_brown_talk = Talk.create!(
+    title: 'Brene Brown: The Power of Vulnerability', 
+    description: 'Brene Brown studies human connection -- our ability to empathize, belong, love. In a poignant, funny talk, she shares a deep insight from her research, one that sent her on a personal quest to know herself as well as to understand humanity.'
+  )
+
+  brene_brown_talk_idea_1 = Idea.new(
+      talks: [ brene_brown_talk ],
+      body: 'Connection is what gives our lives purpose and meaning - what life is all about.   People who experience deep connection are "whole-hearted" and embrace vulnerability as necessary to the authenticity that enables deep connection.  Denial of this vulnerability leads to numbing of all emotions, which hinders our relationships.',
+      tags: ['Communication', 'Culture', 'Psychology', 'Self social change'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Make a list of emotions you find difficult and normally try to protect yourself from.  Try to welcome them.' },
+        { description: "Talk to someone with whom you want to connect more deeply about these ideas - make room for vulnerability in the  relationship by becoming mutualy aware of it." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  brene_brown_talk_idea_1.member = member1
+  brene_brown_talk_idea_1.save!
+
+  brene_brown_talk_idea_2 = Idea.new(
+      talks: [ brene_brown_talk ],
+      body: 'Feeling worthy of love and belonging leads to the capacity for compassion toward yourself, which is essential to having true compassion for others.  Shame is the fear of disconnection due to feeling unworthy.  Letting go of shame helps us to be more compassionate, whole-hearted beings.',
+      tags: ['Communication', 'Culture', 'Psychology', 'Self social change'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Think of something you would do to show someone you love him or her.  Do it for yourself.' },
+        { description: 'Think "I am not _______ enough."  Thin?  Strong?  Smart?  Accomplished?  Now think of someone else you know who shares this trait.  Would you say that person does not deserve love or does not belong?  No.  Now give yourself the same compassion.' }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  brene_brown_talk_idea_2.member = member1
+  brene_brown_talk_idea_2.save!
+
+  tedx_houston = Event.create!( 
+    name: 'TEDX Houston', 
+    description: 'In 2009, and in the spirit of ideas worth spreading, TED created a program called TEDx - A program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxHouston, where x = an independently organized TED event.',
+    talks: [ brene_brown_talk ])
+
+
+  #
+  # TEDx Beacon Street
+  #
+  mitch_resnick_talk = Talk.create!(
+    title: "Mitch Resnick: Let's teach kids to code", 
+    description: "Coding isn't just for computer whizzes, says Mitch Resnick of MIT Media Lab -- it's for everyone. In a fun, demo-filled talk Resnick outlines the benefits of teaching kids to code, so they can do more than just \"read\" new technologies -- but also create them."
+  )
+
+  mitch_resnick_talk_idea_1 = Idea.new(
+      talks: [ mitch_resnick_talk ],
+      body: 'Being comfortable with digital technologies does not necessarily make kids "digital natives."  They may be able to "read" in this language, but we must teach them to code if we want them to "write" as well and fully utilize the technology to express themselves.',
+      tags: ['Children', 'Computers', 'Education', 'Internet', 'Parenting', 'Technology', 'Youth'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Go to scratch.mit.edu and make an interactive card for a friend.' },
+        { description: "Choose a child in your life with whom to collaborate on making a game at scratch.mit.edu  Play it together." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  mitch_resnick_talk_idea_1.member = member1
+  mitch_resnick_talk_idea_1.save!
+
+  mitch_resnick_talk_idea_2 = Idea.new(
+      talks: [ mitch_resnick_talk ],
+      body: 'Learning to code leads to coding to learn, and many transferrable academic and life skills may be acquired through the practice of coding, in large part because of its relationship to the design process.  This has great educational potential.',
+      tags: ['Children', 'Computers', 'Education', 'Internet', 'Parenting', 'Technology', 'Youth'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Invite your local school board members or a principal or teacher in your community to listen to this TED talk and introduce kids to Scratch.' },
+        { description: "Make a Scratch creation that demonstrates its value in some way, and share it through all your social media outlets." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  mitch_resnick_talk_idea_2.member = member1
+  mitch_resnick_talk_idea_2.save!
+
+  tedx_beacon_street = Event.create!( 
+    name: 'TEDx Beacon Street', 
+    description: 'TEDxBeaconStreet is an exciting new conference that took place in the Greater Boston area on November 17 and 18, with a focus on fascinating speakers, captivating Adventures (which will continue throughout the next year), and a cross-generational audience, all in the service of Ideas In Action. There was no cost to attend the events.',
+    talks: [ mitch_resnick_talk ])
+
+  #
+  # TEDx Seoul
+  #
+  young_ha_kim_talk = Talk.create!(
+    title: "Young-ha Kim: Be an artist, right now!", 
+    description: "With charm and humor, celebrated Korean author Young-ha Kim invokes the world's greatest artists to urge you to unleash your inner child -- the artist who wanted to play forever."
+  )
+
+  young_ha_kim_talk_idea_1 = Idea.new(
+      talks: [ young_ha_kim_talk ],
+      body: 'As children, we are natural artists who sing, dance, draw, paint, and tell stories through our days, but as we grow, the artists within us are banished or locked in, but they do not go away.  Adults still have the natural artist within them, and it needs nourishment and freedom of expression.',
+      tags: ['Arts', 'Creativity', 'Writing'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.' },
+        { description: "Participate with a child in the creative process, without judgement and for the sheer joy of it.  Let him guide the process, and enjoy the ride." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  young_ha_kim_talk_idea_1.member = member1
+  young_ha_kim_talk_idea_1.save!
+
+  young_ha_kim_talk_idea_2 = Idea.new(
+      talks: [ young_ha_kim_talk ],
+      body: 'Many people do not believe they can be artistis, so suppressed is the artist within.  Activities that stay ahead of the judgemental thoughts that sabotage their efforts can help them realize their artistic abilities and, more importantly, the joy of artistic creativity.',
+      tags: ['Arts', 'Creativity', 'Writing'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Do Kim\'s writing exercise.  Choose a theme such as either a joyful or difficult childhood experience, and "write like crazy" for an hour.  Don\'t stop to think, edit or review.  Just keep writing.  ' }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  young_ha_kim_talk_idea_2.member = member1
+  young_ha_kim_talk_idea_2.save!
+
+  tedx_seoul = Event.create!( 
+    name: 'TEDx Seoul', 
+    description: 'TEDxSeoul is a platform where participants connect to each other around ideas and make social changes together for greater good. TEDxSeoul strives to be a community where all the participants, including the speakers, audiences and organizers, communicate on an eye-to-eye level sharing their passion and energy.',
+    talks: [ young_ha_kim_talk ])
+
+
+  #
+  # TEDx Bloomington
+  #
+  shawn_achor_talk = Talk.create!(
+    title: "Shawn Achor: The happy secret to better work", 
+    description: "We believe that we should work to be happy, but could that be backwards? In this fast-moving and entertaining talk, psychologist Shawn Achor argues that actually happiness inspires productivity."
+  )
+
+  shawn_achor_talk_idea_1 = Idea.new(
+      talks: [ shawn_achor_talk ],
+      body: 'Only 10% of our long-term happiness is determined by external circumstances.  90% is determined by the way our brains process the world.  By taking simple steps to enhance happiness, we can alter the lens through which we see the world and effectively imporve our reality.',
+      tags: ['Business', 'Happiness', 'Psychology', 'Science'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Write 3 new things for which you are grateful every day for three weeks, and notice the way your mind starts to focus on the positive.' },
+        { description: "Write down your favorite experience each day in a journal - this enables your brain to experience it again, doubling the dopamine dose." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  shawn_achor_talk_idea_1.member = member1
+  shawn_achor_talk_idea_1.save!
+
+  shawn_achor_talk_idea_2 = Idea.new(
+      talks: [ shawn_achor_talk ],
+      body: 'Our institutions and companies have it backward by operating as if success is a prerequisite of happiness when, in fact, happiness is a prerequisite of success.  The brain in a positive state is measurably more capable of learning, more productive and more creative.',
+      tags: ['Business', 'Happiness', 'Psychology', 'Science'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'To enhance your positive state, commit an intentional act of kindness within your social circle, such as writing an email expressing gratitude or praising someone.  Try to make this a regular practice.' }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  shawn_achor_talk_idea_2.member = member1
+  shawn_achor_talk_idea_2.save!
+
+  tedx_bloomington = Event.create!( 
+    name: 'TEDx Bloomington', 
+    description: 'In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TEDTalks video and live speakers combine to spark deep discussion and connection in a small group.',
+    talks: [ shawn_achor_talk ])
+
+
+  #
+  # TED Salon NY2013
+  #
+  esther_perel = Talk.create!(
+    title: "Esther Perel: The secret to desire in a long-term relationship", 
+    description: "In long-term relationships, we often expect our beloved to be both best friend and erotic partner. But as Esther Perel argues, good and committed sex draws on two conflicting needs: our need for security and our need for surprise. So how do you sustain desire? With wit and eloquence, Perel lets us in on the mystery of erotic intelligence."
+  )
+
+  esther_perel_idea_1 = Idea.new(
+      talks: [ esther_perel ],
+      body: 'The key to sustaining desire in a committed relationshp is the reconciliation of the needs for both love and desire, which can be at odds with each other.  Three desire-enhancing elements stand out:  time apart; seeing your partner in his/her element, radiant; and experiencing novelty together.',
+      tags: ['Culture' , 'Love', 'Relationships', 'Sex'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Take that weekend away with the guys/girlfriends, going guilt-free and with the awareness between you and your partner that absence enhances desire.' },
+        { description: "Choose a new activity to share with your partner - go skydiving or to the zoo, play frisbee or a new board game.  Just have fun doing something new or that you have missed doing together for a long time.  Enjoy, and consider making it a regular practice to enjoy new things." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  esther_perel_idea_1.member = member1
+  esther_perel_idea_1.save!
+
+  esther_perel_idea_2 = Idea.new(
+      talks: [ esther_perel ],
+      body: '"The myth of spontanaeity."  Let go of dependence on the idea that good sex must be spontaneous.  "Commited sex is premeditated sex."',
+      tags: ['Culture' , 'Love', 'Relationships', 'Sex'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Plan your next sexual encounter with your partner.  Talk about hat you might want.  Ask the same.  Combine it with a date doing something new together.' },
+        { description: "Choose one time a week for sex.  Enjoy the anticipation." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  esther_perel_idea_2.member = member1
+  esther_perel_idea_2.save!
+
+  ted_salon_ny2013 = Event.create!( 
+    name: 'TED Salon NY2013', 
+    description: 'A TEDx Salon is a small weekly or monthly recurring event that keeps a TEDx community engaged between larger annual or bi-annual events.',
+    talks: [ esther_perel ])
+
+
+  #
+  # TEDx Toronto 2010
+  #
+  drew_dudley = Talk.create!(
+    title: "Drew Dudley: Everyday leadership", 
+    description: "We have all changed someone's life -- usually without even realizing it. In this funny talk, Drew Dudley calls on all of us to celebrate leadership as the everyday act of improving each other's lives."
+  )
+
+  drew_dudley_idea_1 = Idea.new(
+      talks: [ drew_dudley ],
+      body: 'We have elevated leadership to something so unattainable that only those who change the world on a massive scale may claim to be leaders.  Doing so diminishes the everyday acts we commit that are, in fact, acts of leadership.',
+      tags: ['Community', 'Leadership', 'Life', 'TEDxFeatured'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Ask yourself, "am I a leader?"  Note the feelings that arise.  Note who comes to your mind when you think "leader," and whether you accept yourself into that circle of people.' },
+        { description: "Identify someone who has made your life better.  Thank this person." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  drew_dudley_idea_1.member = member1
+  drew_dudley_idea_1.save!
+
+  drew_dudley_idea_2 = Idea.new(
+      talks: [ drew_dudley ],
+      body: 'As long as we make leadership something unattainable, we excuse ourselves from the responsibility of expecting it every day from ourselves and each other.',
+      tags: ['Community', 'Leadership', 'Life', 'TEDxFeatured'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Write Marianne Williamson\'s quote down, and put it somewhere you will see it every day:  "Our greatest fear is not that we are inadequate.  Our greatest fear is that we are powerful beyond measure.  It is our light, and not our darkness, that frightens us."' },
+        { description: "Bring your awareness to leadership as happening in small everyday moments that need to be created and acknowledged.  Create them yourself, and acknowledge them in both yourself and others." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  drew_dudley_idea_2.member = member1
+  drew_dudley_idea_2.save!
+
+  tedx_toronto_2010 = Event.create!( 
+    name: 'TEDx Toronto 2010', 
+    description: 'TEDxToronto is the largest TEDx conference in Toronto, Canada. The second annual conference took place on September 30, 2010 at Glenn Gould Studio with 12 TEDx Talks. It brought together the city\'s foremost thought leaders, change makers and everyday people from each discipline -- as speakers, attendees and enthusiasts.',
+    talks: [ drew_dudley ])
+
+  #
+  # TEDxThessaloniki
+  #
+  edi_rama = Talk.create!(
+    title: "Edi Rama: Take back your city with paint", 
+    description: "Make a city beautiful, curb corruption. Edi Rama took this deceptively simple path as mayor of Tirana, Albania, where he instilled pride in his citizens by transforming public spaces with colorful designs. With projects that put the people first, Rama decreased crime -- and showed his citizens they could have faith in their leaders."
+  )
+
+  edi_rama_idea_1 = Idea.new(
+      talks: [ edi_rama ],
+      body: 'The creation of beauty in a city can change it for the better, even reducing crime rates at lower cost than employing a larger police force.  Beauty can stand as a guardsman, reducing litter and encouraging civic responsibility, such as paying taxes.',
+      tags: ['Art', 'Cities', 'Community', 'Global issues', 'Government', 'Politics', 'Urban planning'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Take more ownership of your public surroundings by picking up litter when you go out.' },
+        { description: "Notice your public surroundings and how thay make you feel.  Consider how important they might be to your community's attitudes toward itself.  Keep this in mind next time you have the opportunity to vote for or participate in a community improvement activity." }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  edi_rama_idea_1.member = member1
+  edi_rama_idea_1.save!
+
+  edi_rama_idea_2 = Idea.new(
+      talks: [ edi_rama ],
+      body: 'Environment has an impact on behavior, and changing an environment in the right way can impact behavior.  Systems and environment play important roles.  Corruption and other undesireable practices may be designed into and out of systems and places intentionally.',
+      tags: ['Art', 'Cities', 'Community', 'Global issues', 'Government', 'Politics', 'Urban planning'].map { | tag_name | Tag.find_by_name(tag_name) },
+        actions: [
+        { description: 'Examine your assumptions about different people in the world.  Challenge the notion that culture or genes detemine things like degrees of corruption.' }
+      ].map() { | action_attrs | Action.new(action_attrs) }
+  )
+
+  edi_rama_idea_2.member = member1
+  edi_rama_idea_2.save!
+
+  tedxthessaloniki = Event.create!( 
+    name: 'TEDxThessaloniki', 
+    description: 'TEDxThessaloniki brings the TED experience to Thessaloniki maintaining the non-profit nature and the innovative spirit of TED. The first event was held in 2010 and since then we have brought leading thinkers and practitioners to Greece, formed a community of thousands TEDxSters, whose main trait is their passion for change, and contribute a series of interesting and inspiring stories to the TEDx project.',
+    talks: [ edi_rama ])
+
+  #
+  # TEDActive
+  #
   amy_cuddy_talk = Talk.create!(
         title: 'Amy Cuddy: Your body language shapes who you are', 
         description: 'Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy shows how "power posing" -- standing in a posture of confidence, even when we don\'t feel confident -- can affect testosterone and cortisol levels in the brain, and might even have an impact on our chances for success.',
@@ -69,28 +387,26 @@ if %w(test development qa).include? Rails.env
   ].map() { | idea_attrs | idea = Idea.new(idea_attrs); idea.member = member1; idea.save! }
 
 
-  ActionsTaken.create! action: Action.first, member: member1
-  ActionsTaken.create! action: Action.first, member: member2
-  ActionsTaken.create! action: Action.first, member: member3
+  # ActionsTaken.create! action: Action.first, member: member1
+  # ActionsTaken.create! action: Action.first, member: member2
+  # ActionsTaken.create! action: Action.first, member: member3
 
-  Reaction.create!({ 
-    idea: Idea.first, 
-    member: member1, 
-    :text => 'i think you have come up with something big here',
-  })
+  # Reaction.create!({ 
+  #   idea: Idea.first, 
+  #   member: member1, 
+  #   :text => 'i think you have come up with something big here',
+  # })
 
-  Reaction.create!({
-    idea: Idea.first, 
-    member: member1, 
-    text: 'what else can I say?',
-  })
+  # Reaction.create!({
+  #   idea: Idea.first, 
+  #   member: member1, 
+  #   text: 'what else can I say?',
+  # })
 
-  Reaction.create!({
-    idea: Idea.first, 
-    member: member1, 
-    text: 'There is some useful information here',
-  })
-
-  anoter_event = Event.create! :name => 'another', :talks => [ Talk.new ]
+  # Reaction.create!({
+  #   idea: Idea.first, 
+  #   member: member1, 
+  #   text: 'There is some useful information here',
+  # })
 
 end
