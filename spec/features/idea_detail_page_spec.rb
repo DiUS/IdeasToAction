@@ -2,12 +2,12 @@ require_relative 'collapsible_shared_examples'
 
 describe "Idea detail page", js: true, acceptance: true do
   
-  let(:idea) { Idea.find(1) }
+  let(:idea) { Idea.find(17) }
   let(:action) { idea.actions.first }
 
   before :each do
     idea.should_not be_nil
-    visit "/assets/index.html#/ideas/1"
+    visit "/assets/index.html#/ideas/17"
   end
 
   it "should have the idea details visible" do
@@ -70,10 +70,10 @@ describe "Idea detail page", js: true, acceptance: true do
     before :each do 
       self.use_transactional_fixtures.should be true
 
-      idea.reload.reactions.size.should eq 5
+      idea.reload.reactions.size.should eq 2
 
       page.should_not have_selector('p.action-statement', text: 'You did on')
-      reaction_collapsible.should have_selector('.header sup', text: '5')
+      reaction_collapsible.should have_selector('.header sup', text: '2')
 
       collapsible.find(".header").click
       page.should have_selector(".btn.done-it", visible: true)
@@ -89,8 +89,8 @@ describe "Idea detail page", js: true, acceptance: true do
       describe 'checking the number of reactions' do
         before :each do
           begin
-            idea.reload.reactions.size.should eq 5
-            reaction_collapsible.should have_selector('.header sup', text: '5')
+            idea.reload.reactions.size.should eq 2
+            reaction_collapsible.should have_selector('.header sup', text: '2')
 
             page.should have_selector(".reaction textarea")
             page.should have_selector(".reaction textarea", visible: true)
@@ -106,7 +106,7 @@ describe "Idea detail page", js: true, acceptance: true do
         end
 
         it 'should update the reactions' do
-          reaction_collapsible.should have_selector('.header sup', text: '6')
+          reaction_collapsible.should have_selector('.header sup', text: '3')
 
           reaction_collapsible.find(".header").click
           reaction_collapsible.should have_text('This is my reaction')
