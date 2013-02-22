@@ -387,26 +387,28 @@ if %w(test development qa).include? Rails.env
   ].map() { | idea_attrs | idea = Idea.new(idea_attrs); idea.member = member1; idea.save! }
 
 
-  # ActionsTaken.create! action: Action.first, member: member1
-  # ActionsTaken.create! action: Action.first, member: member2
-  # ActionsTaken.create! action: Action.first, member: member3
+  if %w(test development).include? Rails.env
+    ActionsTaken.create! action: Action.first, member: member1
+    ActionsTaken.create! action: Action.first, member: member2
+    ActionsTaken.create! action: Action.first, member: member3
 
-  # Reaction.create!({ 
-  #   idea: Idea.first, 
-  #   member: member1, 
-  #   :text => 'i think you have come up with something big here',
-  # })
+    Reaction.create!({ 
+      idea: Idea.first, 
+      member: member1, 
+      :text => 'i think you have come up with something big here',
+    })
 
-  # Reaction.create!({
-  #   idea: Idea.first, 
-  #   member: member1, 
-  #   text: 'what else can I say?',
-  # })
+    Reaction.create!({
+      idea: Idea.first, 
+      member: member1, 
+      text: 'what else can I say?',
+    })
 
-  # Reaction.create!({
-  #   idea: Idea.first, 
-  #   member: member1, 
-  #   text: 'There is some useful information here',
-  # })
+    Reaction.create!({
+      idea: Idea.first, 
+      member: member1, 
+      text: 'There is some useful information here',
+    })
+  end
 
 end
