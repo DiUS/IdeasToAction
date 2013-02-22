@@ -61,7 +61,9 @@ if %w(test development qa).include? Rails.env
   ted_global_2012 = Event.create!( 
     name: 'TED Global 2012', 
     description: 'As the world becomes interconnected, the ways we relate and learn about one another (and the rules about what we share) are changing. That was the inspiration for TEDGlobal 2012: Radical Openness, held in Edinburgh.',
-    talks: [ paolo_cardini_talk ])
+    talks: [ paolo_cardini_talk ],
+    hero_image_url: 'http://farm8.staticflickr.com/7253/7450449710_23216321ae_z.jpg'
+    )
 
 
   #
@@ -101,7 +103,9 @@ if %w(test development qa).include? Rails.env
   tedx_houston = Event.create!( 
     name: 'TEDX Houston', 
     description: 'In 2009, and in the spirit of ideas worth spreading, TED created a program called TEDx - A program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxHouston, where x = an independently organized TED event.',
-    talks: [ brene_brown_talk ])
+    talks: [ brene_brown_talk ],
+    hero_image_url: 'http://media.tumblr.com/tumblr_m06bbd2h2q1qe2k72.jpg'
+    )
 
 
   #
@@ -141,7 +145,10 @@ if %w(test development qa).include? Rails.env
   tedx_beacon_street = Event.create!( 
     name: 'TEDx Beacon Street', 
     description: 'TEDxBeaconStreet is an exciting new conference that took place in the Greater Boston area on November 17 and 18, with a focus on fascinating speakers, captivating Adventures (which will continue throughout the next year), and a cross-generational audience, all in the service of Ideas In Action. There was no cost to attend the events.',
-    talks: [ mitch_resnick_talk ])
+    talks: [ mitch_resnick_talk ],
+    hero_image_url: 'http://farm9.static.flickr.com/8289/7627278806_0101696503.jpg'
+  )
+
 
   #
   # TEDx Seoul
@@ -179,7 +186,9 @@ if %w(test development qa).include? Rails.env
   tedx_seoul = Event.create!( 
     name: 'TEDx Seoul', 
     description: 'TEDxSeoul is a platform where participants connect to each other around ideas and make social changes together for greater good. TEDxSeoul strives to be a community where all the participants, including the speakers, audiences and organizers, communicate on an eye-to-eye level sharing their passion and energy.',
-    talks: [ young_ha_kim_talk ])
+    talks: [ young_ha_kim_talk ],
+    hero_image_url: 'http://images.ted.com/images/ted/e4d2470f139e9da9fb93f68013c231974f123af2_425x259.jpg'
+  )
 
 
   #
@@ -218,7 +227,9 @@ if %w(test development qa).include? Rails.env
   tedx_bloomington = Event.create!( 
     name: 'TEDx Bloomington', 
     description: 'In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TEDTalks video and live speakers combine to spark deep discussion and connection in a small group.',
-    talks: [ shawn_achor_talk ])
+    talks: [ shawn_achor_talk ],
+    hero_image_url: 'http://farm3.staticflickr.com/2157/5720549498_2c062bfa33_z.jpg'
+  )
 
 
   #
@@ -258,7 +269,9 @@ if %w(test development qa).include? Rails.env
   ted_salon_ny2013 = Event.create!( 
     name: 'TED Salon NY2013', 
     description: 'A TEDx Salon is a small weekly or monthly recurring event that keeps a TEDx community engaged between larger annual or bi-annual events.',
-    talks: [ esther_perel ])
+    talks: [ esther_perel ],
+    hero_image_url: 'http://elianefersan.files.wordpress.com/2012/09/elle-speaking-at-tedx-salon1.jpeg?w=726'
+  )
 
 
   #
@@ -298,7 +311,9 @@ if %w(test development qa).include? Rails.env
   tedx_toronto_2010 = Event.create!( 
     name: 'TEDx Toronto 2010', 
     description: 'TEDxToronto is the largest TEDx conference in Toronto, Canada. The second annual conference took place on September 30, 2010 at Glenn Gould Studio with 12 TEDx Talks. It brought together the city\'s foremost thought leaders, change makers and everyday people from each discipline -- as speakers, attendees and enthusiasts.',
-    talks: [ drew_dudley ])
+    talks: [ drew_dudley ],
+    hero_image_url: 'http://praxistheatre.com/wp-content/uploads/2012/10/TEDxToronto-Salon-Series.jpeg'
+    )
 
   #
   # TEDxThessaloniki
@@ -336,7 +351,9 @@ if %w(test development qa).include? Rails.env
   tedxthessaloniki = Event.create!( 
     name: 'TEDxThessaloniki', 
     description: 'TEDxThessaloniki brings the TED experience to Thessaloniki maintaining the non-profit nature and the innovative spirit of TED. The first event was held in 2010 and since then we have brought leading thinkers and practitioners to Greece, formed a community of thousands TEDxSters, whose main trait is their passion for change, and contribute a series of interesting and inspiring stories to the TEDx project.',
-    talks: [ edi_rama ])
+    talks: [ edi_rama ],
+    hero_image_url: 'http://revoseek.com/wp-content/uploads/2012/05/TEDxThessaloniki-2012.jpg'
+  )
 
   #
   # TEDActive
