@@ -43,6 +43,9 @@ production:
 qa:
   <<: *base
 
+qa_mobile_assets:
+  <<: *base
+
 android:
   <<: *base
 
