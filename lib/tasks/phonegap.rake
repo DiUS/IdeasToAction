@@ -11,11 +11,7 @@ namespace :phonegap do
   end
 
   task :precompiled_assets do
-    raise "Couldn't precompile assets" unless Kernel.system('rake RAILS_ENV=android assets:precompile')
-  end
-
-  task :precompiled_assets_qa do
-    raise "Couldn't precompile assets" unless Kernel.system('rake RAILS_ENV=qa assets:precompile')
+    raise "Couldn't precompile assets" unless Kernel.system("rake RAILS_ENV=#{@assets_env || 'android'} assets:precompile")
   end
 
   file 'public/assets/cordova-2.3.0.js' do
@@ -49,15 +45,16 @@ namespace :phonegap do
     application_css.open("w") {|file| file.write content }
   end
 
-  desc "Build the Phonegap packaged application for distribution"
-  task :build => [ :clean, :precompiled_assets, :cordova_in_assets, :assets_in_www_directory ] do
-    raise "Couldn't build Phonegap package" unless Kernel.system('mobile/cordova/build')
-  end
-
   namespace :build do
-    desc "Build the Phonegap packaged application for distribution (qa)"
-    task :qa => [ :clean, :precompiled_assets_qa, :cordova_in_assets, :assets_in_www_directory ] do
+    task :default => [ :clean, :precompiled_assets, :cordova_in_assets, :assets_in_www_directory ] do
       raise "Couldn't build Phonegap package" unless Kernel.system('mobile/cordova/build')
+    end
+
+    desc "Build the Phonegap packaged application for distribution (qa)"
+    task :qa => [ :set_qa_assets, :default ]
+
+    task :set_qa_assets do
+      @assets_env = "qa_mobile_assets"
     end
   end
 end
