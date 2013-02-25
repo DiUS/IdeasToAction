@@ -13,12 +13,13 @@ describe 'Actionman', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $navigate, $cacheFactory) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1.json").respond(talkData)
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1/ideas.json").respond(ideaData)
+      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
       scope = $rootScope.$new()
-      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 }, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 }, $navigate, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the talkId correctly', () ->
       $httpBackend.flush()

@@ -1,5 +1,7 @@
 describe 'Actionman', ()->
 
+  beforeEach(module('Actionman'))
+
   describe 'IdeaCtrl', () -> 
     ideaData = { 
       body: 'Body language affects how others see us, but it may also change how we see ourselves.',
@@ -10,7 +12,7 @@ describe 'Actionman', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory, $navigate) ->
       $httpBackend = _$httpBackend_
 
       window.ENDPOINT = 'window_endpoint'
@@ -18,8 +20,10 @@ describe 'Actionman', ()->
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
             respond(ideaData)
 
+      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
+
       scope = $rootScope.$new()
-      ctrl = $controller( 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 }, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 }, dataCache: $cacheFactory('fake cache'), $navigate })
 
 
     describe "#update", ()->

@@ -1,5 +1,7 @@
 describe 'Actionman', ()->
 
+  beforeEach(module('Actionman'))
+
   describe 'MemberCtrl', () -> 
     memberData = {}
     actionsData = [ { description: 'Examine your own body language in different social situations.'} ]
@@ -9,7 +11,7 @@ describe 'Actionman', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $navigate, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
 
       window.ENDPOINT = 'window_endpoint'
@@ -23,8 +25,10 @@ describe 'Actionman', ()->
       $httpBackend.expectGET("#{window.ENDPOINT}/member/actions.json").
             respond(actionsData)
 
+      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
+
       scope = $rootScope.$new()
-      ctrl = $controller( 'MemberCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'MemberCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache'), $navigate })
 
     it 'should create "member" model obtained restfully', () ->
       expect(scope.member).toBeUndefined()
