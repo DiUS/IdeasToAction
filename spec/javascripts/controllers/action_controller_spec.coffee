@@ -14,13 +14,14 @@ describe 'Actionman', ()->
 
     beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
       $httpBackend = _$httpBackend_
+      element = $('<div></div>')
 
       window.ENDPOINT = 'window_endpoint'
 
       $httpBackend.expectPOST("#{window.ENDPOINT}/actions/#{actionId}/doneIt.json").respond({})
 
       scope = $rootScope.$new()
-      ctrl = $controller( 'ActionCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'ActionCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache'), $element: element })
 
     it 'should create a doneIt function', () ->
       expect(scope.doneIt).toBeDefined()     
