@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap
+//= require /bootstrap_and_overrides.js.coffee
 
 //= require_tree ./angularjs/
 //= require_tree ./snappy-swipe-nav/

@@ -21,15 +21,6 @@ GIT
       trollop
 
 GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: a114d4765d55a993d0dfa6ab89afa03691e25203
-  specs:
-    twitter-bootstrap-rails (2.2.0)
-      actionpack (>= 3.1)
-      execjs
-      railties (>= 3.1)
-
-GIT
   remote: git://github.com/srbartlett/capistrano-s3-copy.git
   revision: 1f10c3cbb465c5bcc53d9e6abcbeb842d3be8006
   specs:
@@ -77,6 +68,8 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bigdecimal (1.1.0)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -294,6 +287,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic (~> 3.2.0)
   bigdecimal
+  bootstrap-sass
   capistrano
   capistrano-s3-copy!
   capybara
@@ -315,6 +309,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda
   therubyracer
-  twitter-bootstrap-rails!
   uglifier (>= 1.0.3)
   unicorn

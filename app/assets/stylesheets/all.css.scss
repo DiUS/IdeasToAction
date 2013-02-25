@@ -17,7 +17,6 @@ body {
   text-shadow: none !important;
   background-image: none !important;
   border: 0 !important;
-  background-color: white !important;
   border-radius: 3px !important;
   -webkit-border-radius: 3px !important;
 }
@@ -27,8 +26,8 @@ body {
   font-size: 30px !important;
 }
 
-.btn-danger {
-  background-color: #FF2A06 !important;
+.btn-clicked {
+  background-color: #C32B06;
 }
 
 .modal {
