@@ -334,6 +334,8 @@ iScroll.prototype = {
 		that.dirX = 0;
 		that.dirY = 0;
 
+		that.direction = null;
+
 		// Gesture start
 		if (that.options.zoom && hasTouch && e.touches.length > 1) {
 			c1 = m.abs(e.touches[0].pageX-e.touches[1].pageX);
@@ -383,6 +385,7 @@ iScroll.prototype = {
 	},
 	
 	_move: function (e) {
+
 		var that = this,
 			point = hasTouch ? e.touches[0] : e,
 			deltaX = point.pageX - that.pointX,
@@ -440,12 +443,21 @@ iScroll.prototype = {
 
 		// Lock direction
 		if (that.options.lockDirection) {
-			if (that.absDistX > that.absDistY + 5) {
-				newY = that.y;
-				deltaY = 0;
-			} else if (that.absDistY > that.absDistX + 5) {
+
+			if (that.direction === null) {
+				if (that.absDistY > that.absDistX + 5) {
+					that.direction = 'vertical';
+				} else if (that.absDistX > that.absDistY + 5) {
+					that.direction = 'horizontal';
+				}
+			}
+
+			if (that.direction === 'vertical') {
 				newX = that.x;
 				deltaX = 0;
+			} else if (that.direction === 'horizontal') {
+				newY = that.y;
+				deltaY = 0;
 			}
 		}
 
