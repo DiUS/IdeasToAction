@@ -16,6 +16,7 @@ window.TalkCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}/ideas.json", { cache: dataCache }).success( (data) -> 
         $scope.talk.ideas = data
         $('.loading').removeClass('loading')
+        $navigate.swipeScope.refreshPageHeight()
       )
     )
    

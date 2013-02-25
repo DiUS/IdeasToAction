@@ -1,5 +1,7 @@
 describe 'Actionman', ()->
 
+  beforeEach(module('Actionman')) 
+
   describe 'EventCtrl', () -> 
     eventData = { name: 'Tedex'}
     ideaData = [{body: 'stuff'}]
@@ -8,12 +10,13 @@ describe 'Actionman', ()->
     ctrl = null
     $httpBackend = null
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    beforeEach inject (_$httpBackend_, $rootScope, $controller, $navigate, $cacheFactory) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1.json").respond(eventData)
       $httpBackend.expectGET("#{window.ENDPOINT}/events/1/ideas.json").respond(ideaData)
+      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
       scope = $rootScope.$new()
-      ctrl = $controller( 'EventCtrl', { $scope: scope, $routeParams: { eventId: 1 }, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'EventCtrl', { $scope: scope, $routeParams: { eventId: 1 }, $navigate, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the eventId correctly', () ->
       $httpBackend.flush()

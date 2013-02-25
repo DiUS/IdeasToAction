@@ -445,9 +445,9 @@ iScroll.prototype = {
 		if (that.options.lockDirection) {
 
 			if (that.direction === null) {
-				if (that.absDistY > that.absDistX + 5) {
+				if (that.absDistY > 5) {
 					that.direction = 'vertical';
-				} else if (that.absDistX > that.absDistY + 5) {
+				} else if (that.absDistX > 5) {
 					that.direction = 'horizontal';
 				}
 			}
