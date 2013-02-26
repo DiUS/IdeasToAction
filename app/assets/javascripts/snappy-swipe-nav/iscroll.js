@@ -97,6 +97,7 @@ var m = Math,
 
 			// Events
 			onRefresh: null,
+			onPositioned: null,
 			onBeforeScrollStart: function (e) { e.preventDefault(); },
 			onScrollStart: null,
 			onBeforeScrollMove: null,
@@ -278,6 +279,8 @@ iScroll.prototype = {
 
 		this._scrollbarPos('h');
 		this._scrollbarPos('v');
+
+		if (this.options.onPositioned) this.options.onPositioned(x, y);
 	},
 
 	_scrollbarPos: function (dir, hidden) {

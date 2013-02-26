@@ -63,12 +63,18 @@ body {
 .page {
 
   .main-header {
-
+    background: rgba(255, 255, 255, 0.95);
     padding-bottom: 20px;
+    position: relative;
+    z-index: 999;
 
     border: {
       bottom: 2.5px solid #FF2A06;
     }
+  }
+
+  .header-fill {
+    height: 5em;
   }
 
 }
