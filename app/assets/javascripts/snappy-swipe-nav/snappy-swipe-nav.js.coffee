@@ -26,7 +26,7 @@ angular.module('snappy-swipe-navigate').
       false
 
     $scope.onPositioned = (x, y)->
-      $('.main-header').css({ '-webkit-transform': "translate3d(0px, #{0 - y}px, 0px)" })
+      $('.follow-scroll').css({ '-webkit-transform': "translate3d(0px, #{0 - y}px, 0px)" })
 
     $scope.onUserScrollEnd = ()->
       currentPage = $scope.currentPage()
@@ -56,6 +56,7 @@ angular.module('snappy-swipe-navigate').
     $scope.resetToTop = ()->
       $scope.refreshPageHeight()
       $scope.scroll.scrollToPage($scope.currentPageIndex(), 0, 300)
+      true
 
     $scope.scrollToPath = (path, page)->
       indexOfPage = $scope.indexOfPageForPath(path)

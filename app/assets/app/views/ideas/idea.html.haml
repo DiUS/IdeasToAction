@@ -1,8 +1,9 @@
 #idea.loading
-  .header.main-header
+  .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
     Idea
     .home-page.pull-right(ng-href="/home")
       %i.icon-home
+    &nbsp;
   .tags
     %span.tag{'ng:repeat' => 'tag in idea.tags'}
       {{tag.name}}
