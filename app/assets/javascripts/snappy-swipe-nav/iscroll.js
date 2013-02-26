@@ -845,7 +845,10 @@ iScroll.prototype = {
 			}
 		}
 		if (page == that.currPageY && page > 0 && that.dirY < 0) page--;
-		y = that.pagesY[page];
+
+		if (isNaN(y) || y >= 0) y = 0; // At the top, so snap to the top
+		if (y <= that.maxScrollY) y = that.maxScrollY; // At the bottom, so snap to the bottom
+
 		sizeY = m.abs(y - that.pagesY[that.currPageY]);
 		sizeY = sizeY ? m.abs(that.y - y) / sizeY * 500 : 0;
 		that.currPageY = page;

@@ -38,7 +38,7 @@ angular.module('snappy-swipe-navigate').
 
     $scope.scroll = new iScroll('pageWrapper', {
       snap: true,
-      momentum: false,
+      momentum: true,
       hScrollbar: false,
       vScrollbar: false,
       lockDirection: true,
