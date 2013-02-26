@@ -13,12 +13,14 @@
       %span.big Actions
       .hero
         %p Transforming ideas worth spreading into actions worth taking
-    
+
     %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
+      %strong.action-statement Idea
       {{idea.body}}
       %a.continue
 
     %p.flat-description#random-action(ng-href="/ideas/{{action.idea_id}}")
+      %strong.action-statement Action
       {{action.description}}
       %a.continue
 

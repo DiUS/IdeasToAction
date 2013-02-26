@@ -24,6 +24,11 @@
   width: 220px;
 }
 
+strong.action-statement {
+  background: image-url('arrow_element_red.png') no-repeat right center;
+  padding-right: 13px;
+}
+
 .item .action-statement {
   width: auto; 
   font-size: 17px;
