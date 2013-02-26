@@ -25,6 +25,9 @@ angular.module('snappy-swipe-navigate').
       $scope.refreshPageHeight()
       false
 
+    $scope.onPositioned = (x, y)->
+      $('.main-header').css({ '-webkit-transform': "translate3d(0px, #{0 - y}px, 0px)" })
+
     $scope.onUserScrollEnd = ()->
       currentPage = $scope.currentPage()
       if (!currentPage.is($scope.lastPage)) 
@@ -43,6 +46,7 @@ angular.module('snappy-swipe-navigate').
       vScrollbar: false,
       lockDirection: true,
       onScrollEnd: $scope.onScrollEnd
+      onPositioned: $scope.onPositioned
     })
 
     $scope.refreshPageHeight = ()->
