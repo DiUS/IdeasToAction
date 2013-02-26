@@ -6,6 +6,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
       scope.navigate = $navigate
       elm.bind 'click', () -> 
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
+        false
   ).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
