@@ -31,7 +31,8 @@ if %w(test development qa).include? Rails.env
   paolo_cardini_talk = Talk.create!(
     title: 'Paolo Cardini: Forget Multitasking, try monotasking - a 3-minute talk', 
     description: 'An invitation to "downgrade" our hyper-multitasking phones with clever Mono Task covers that remind us of their essential functions, and more important, to create our own "mono tasking" reality, which is better aligned with how most human minds work.',
-    hero_image_url: 'http://images.ted.com/images/ted/65f24e304cacea90ce4f5fd6e7baad2a57195e82_389x292.jpg'
+    hero_image_url: 'http://images.ted.com/images/ted/65f24e304cacea90ce4f5fd6e7baad2a57195e82_389x292.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/paolo_cardini_forget_multitasking_try_monotasking.html'
   )
 
   paolo_cardini_talk_idea_1 = Idea.new(
@@ -73,7 +74,8 @@ if %w(test development qa).include? Rails.env
   brene_brown_talk = Talk.create!(
     title: 'Brene Brown: The Power of Vulnerability', 
     description: 'Brene Brown studies human connection -- our ability to empathize, belong, love. In a poignant, funny talk, she shares a deep insight from her research, one that sent her on a personal quest to know herself as well as to understand humanity.',
-    hero_image_url: 'http://images.ted.com/images/ted/4e1c25357f3ddd259c2eb15871337c2f0172f5a0_389x292.jpg'
+    hero_image_url: 'http://images.ted.com/images/ted/4e1c25357f3ddd259c2eb15871337c2f0172f5a0_389x292.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/brene_brown_on_vulnerability.html'
   )
 
   brene_brown_talk_idea_1 = Idea.new(
@@ -116,7 +118,8 @@ if %w(test development qa).include? Rails.env
   mitch_resnick_talk = Talk.create!(
     title: "Mitch Resnick: Let's teach kids to code", 
     description: "Coding isn't just for computer whizzes, says Mitch Resnick of MIT Media Lab -- it's for everyone. In a fun, demo-filled talk Resnick outlines the benefits of teaching kids to code, so they can do more than just \"read\" new technologies -- but also create them.",
-    hero_image_url: 'http://i3.ytimg.com/vi/42_30Rgf6F0/mqdefault.jpg'
+    hero_image_url: 'http://i3.ytimg.com/vi/42_30Rgf6F0/mqdefault.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/mitch_resnick_let_s_teach_kids_to_code.html'
   )
 
   mitch_resnick_talk_idea_1 = Idea.new(
@@ -159,7 +162,8 @@ if %w(test development qa).include? Rails.env
   young_ha_kim_talk = Talk.create!(
     title: "Young-ha Kim: Be an artist, right now!", 
     description: "With charm and humor, celebrated Korean author Young-ha Kim invokes the world's greatest artists to urge you to unleash your inner child -- the artist who wanted to play forever.",
-    hero_image_url: 'http://images.ted.com/images/ted/98c37912ea62c89c21f43ef98ee122ebacd8634d_389x292.jpg'
+    hero_image_url: 'http://images.ted.com/images/ted/98c37912ea62c89c21f43ef98ee122ebacd8634d_389x292.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/young_ha_kim_be_an_artist_right_now.html'
   )
 
   young_ha_kim_talk_idea_1 = Idea.new(
@@ -201,7 +205,8 @@ if %w(test development qa).include? Rails.env
   shawn_achor_talk = Talk.create!(
     title: "Shawn Achor: The happy secret to better work", 
     description: "We believe that we should work to be happy, but could that be backwards? In this fast-moving and entertaining talk, psychologist Shawn Achor argues that actually happiness inspires productivity.",
-    hero_image_url: 'http://assets2.bigthink.com/system/idea_thumbnails/24080/original/2256923806_16a80a9a8a.jpg?1284855391'
+    hero_image_url: 'http://assets2.bigthink.com/system/idea_thumbnails/24080/original/2256923806_16a80a9a8a.jpg?1284855391',
+    ted_talk_url: 'http://www.ted.com/talks/shawn_achor_the_happy_secret_to_better_work.html'
   )
 
   shawn_achor_talk_idea_1 = Idea.new(
@@ -242,7 +247,8 @@ if %w(test development qa).include? Rails.env
   #
   esther_perel = Talk.create!(
     title: "Esther Perel: The secret to desire in a long-term relationship", 
-    description: "In long-term relationships, we often expect our beloved to be both best friend and erotic partner. But as Esther Perel argues, good and committed sex draws on two conflicting needs: our need for security and our need for surprise. So how do you sustain desire? With wit and eloquence, Perel lets us in on the mystery of erotic intelligence."
+    description: "In long-term relationships, we often expect our beloved to be both best friend and erotic partner. But as Esther Perel argues, good and committed sex draws on two conflicting needs: our need for security and our need for surprise. So how do you sustain desire? With wit and eloquence, Perel lets us in on the mystery of erotic intelligence.",
+    ted_talk_url: 'http://www.ted.com/talks/esther_perel_the_secret_to_desire_in_a_long_term_relationship.html'
   )
 
   esther_perel_idea_1 = Idea.new(
@@ -285,7 +291,8 @@ if %w(test development qa).include? Rails.env
   drew_dudley = Talk.create!(
     title: "Drew Dudley: Everyday leadership", 
     description: "We have all changed someone's life -- usually without even realizing it. In this funny talk, Drew Dudley calls on all of us to celebrate leadership as the everyday act of improving each other's lives.",
-    hero_image_url: 'http://media.tumblr.com/tumblr_lnx1pukyjb1qedzgi.jpg'
+    hero_image_url: 'http://media.tumblr.com/tumblr_lnx1pukyjb1qedzgi.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/drew_dudley_everyday_leadership.html'
   )
 
   drew_dudley_idea_1 = Idea.new(
@@ -327,7 +334,8 @@ if %w(test development qa).include? Rails.env
   edi_rama = Talk.create!(
     title: "Edi Rama: Take back your city with paint", 
     description: "Make a city beautiful, curb corruption. Edi Rama took this deceptively simple path as mayor of Tirana, Albania, where he instilled pride in his citizens by transforming public spaces with colorful designs. With projects that put the people first, Rama decreased crime -- and showed his citizens they could have faith in their leaders.",
-    hero_image_url: 'http://nimg.sulekha.com/others/original700/edi-rama-2009-11-20-14-11-56.jpg'
+    hero_image_url: 'http://nimg.sulekha.com/others/original700/edi-rama-2009-11-20-14-11-56.jpg',
+    ted_talk_url: 'http://www.ted.com/talks/edi_rama_take_back_your_city_with_paint.html'
   )
 
   edi_rama_idea_1 = Idea.new(
@@ -369,11 +377,13 @@ if %w(test development qa).include? Rails.env
         title: 'Amy Cuddy: Your body language shapes who you are', 
         description: 'Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy shows how "power posing" -- standing in a posture of confidence, even when we don\'t feel confident -- can affect testosterone and cortisol levels in the brain, and might even have an impact on our chances for success.',
         hero_image_url: 'http://images.ted.com/images/ted/a50e3b4c7ba8e8476731498682c169ac07ccae5b_389x292.jpg',
+        ted_talk_url: 'http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html'
      )
 
   steve_jobs_talk = Talk.create!(
       title: 'Steve Jobs: How to live before you die', 
       description: 'At his Stanford University commencement speech, Steve Jobs, CEO and co-founder of Apple and Pixar, urges us to pursue our dreams and see the opportunities in life\'s setbacks -- including death itself.',
+      ted_talk_url: 'http://www.ted.com/talks/steve_jobs_how_to_live_before_you_die.html'
     )
 
   event = Event.create!( 

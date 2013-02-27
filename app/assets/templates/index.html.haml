@@ -41,7 +41,7 @@
         window.ENDPOINT = ''; 
     - elsif Rails.env.qa? or Rails.env.qa_mobile_assets?
       :javascript  
-        window.ENDPOINT = 'http://qa.actionman.zerobot.io';
+        window.ENDPOINT = 'http://192.168.0.95:5000';
     - else
       :javascript  
         window.ENDPOINT = 'http://production.actionman.zerobot.io';

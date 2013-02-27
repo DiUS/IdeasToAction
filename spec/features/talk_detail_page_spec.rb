@@ -17,6 +17,12 @@ describe "Talk detail page", js: true, acceptance: true do
     page.should have_content "Ideas #{talk.ideas.size}"
   end
 
+  it 'should have an external link to the TED talk' do
+    a = page.find('.content a')
+    a.text.should eql 'View this talk on TED.com'
+    a['ng-external'].should eql talk.ted_talk_url
+  end
+
   context "Ideas collapsible" do
     let(:title) { "Ideas" }
     let(:item_contents) { talk.ideas.map(&:body) }
