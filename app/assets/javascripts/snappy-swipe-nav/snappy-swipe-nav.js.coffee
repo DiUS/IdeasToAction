@@ -17,6 +17,12 @@ angular.module('snappy-swipe-navigate').
 
   ).
   controller('swipe-view-controller', ($rootScope, $scope, $element, $location, $route, $controller, $compile)->
+    $scope.disableBackButton = false
+    $scope.element = $element
+    $scope.wrapperWidth = 0
+    $scope.location = $location
+    $scope.lastPage = null
+
     $scope.onScrollEnd = ()->
       currentPage = $scope.currentPage()
       $scope.onUserScrollEnd() unless $scope.swallowNextScroll
@@ -34,10 +40,6 @@ angular.module('snappy-swipe-navigate').
         path = currentPage.attr('path')
         $scope.$apply("location.path('#{path}')")
       true
-
-    $scope.element = $element
-    $scope.wrapperWidth = 0
-    $scope.location = $location
 
     $scope.scroll = new iScroll('pageWrapper', {
       snap: true,
@@ -66,9 +68,20 @@ angular.module('snappy-swipe-navigate').
         $scope.insertPage(path, page)
         # Set index of page
         indexOfPage = $scope.indexOfPageForPath(path)
+      $scope.scrollToPage(indexOfPage)
+
+    $scope.scrollToPage = (indexOfPage)->
       $scope.swallowNextScroll = true
       $scope.scroll.refresh();
       $scope.scroll.scrollToPage(indexOfPage, 0, 500);
+
+    $scope.back = ()->
+      currentPageIndex = $scope.currentPageIndex()
+      if (currentPageIndex > 0)
+        history.go(-1)
+        true
+      else
+        false
 
     $scope.pageScroller = ()->
       $('#pageScroller')
@@ -130,8 +143,6 @@ angular.module('snappy-swipe-navigate').
     $scope.currentPage = ()->
       $($scope.pages()[$scope.currentPageIndex()])
 
-    $scope.lastPage = null
-
     $scope.updateLayout = (event)->
       return if $scope.currentPageCount() <= 0
       currentPage = $scope.currentPageIndex()
@@ -151,10 +162,15 @@ angular.module('snappy-swipe-navigate').
       transclude: true,
       scope: { },
       link: (scope, viewElement, attrs) ->
+        $navigate.swipeScope = scope
         $(window).bind("resize", scope.updateLayout)
         $(window).bind("orientationchange", scope.updateLayout)
-        $(window).bind("ready", scope.updateLayout)
-        $navigate.swipeScope = scope
+        $(window).bind("ready", scope.updateLayout
+        if ((window.cordova || window.phonegap) && window.device && device.platform && device.platform.toLowerCase() == "android")
+          document.addEventListener "deviceready", ()->
+            document.addEventListener "backbutton", ()->
+              unless (scope.disableBackButton)
+                navigator.app.exitApp() unless scope.back() 
 
       controller: 'swipe-view-controller',
       template: '<div id="pageWrapper"><div id="pageScroller"></div></div>',
