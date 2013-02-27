@@ -22,3 +22,5 @@
 public/assets
 mobile/AndroidManifest.xml
 mobile/local.properties
+.rvmrc
+.idea
