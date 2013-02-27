@@ -136,13 +136,14 @@ angular.module('snappy-swipe-navigate').
       return if $scope.currentPageCount() <= 0
       currentPage = $scope.currentPageIndex()
 
+      originalWidth = $scope.wrapperWidth
       $scope.wrapperWidth = $('#pageWrapper').width()
 
       $('#pageScroller').css('width', $scope.wrapperWidth * $scope.currentPageCount())
       $('.page').css('width', $scope.wrapperWidth)
 
       $scope.scroll.refresh();
-      $scope.scroll.scrollToPage(currentPage, 0, 0);
+      $scope.scroll.scrollToPage(currentPage, 0, 0) if (originalWidth != $scope.wrapperWidth)
   ).
   directive('swipeView', ($rootScope, $compile, $controller, $route, $navigate) ->
     return {
@@ -152,7 +153,7 @@ angular.module('snappy-swipe-navigate').
       link: (scope, viewElement, attrs) ->
         $(window).bind("resize", scope.updateLayout)
         $(window).bind("orientationchange", scope.updateLayout)
-        $(window).bind("ready", scope.updateLayout())
+        $(window).bind("ready", scope.updateLayout)
         $navigate.swipeScope = scope
 
       controller: 'swipe-view-controller',
