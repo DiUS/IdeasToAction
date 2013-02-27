@@ -165,7 +165,7 @@ angular.module('snappy-swipe-navigate').
         $navigate.swipeScope = scope
         $(window).bind("resize", scope.updateLayout)
         $(window).bind("orientationchange", scope.updateLayout)
-        $(window).bind("ready", scope.updateLayout
+        $(window).bind("ready", scope.updateLayout)
         if ((window.cordova || window.phonegap) && window.device && device.platform && device.platform.toLowerCase() == "android")
           document.addEventListener "deviceready", ()->
             document.addEventListener "backbutton", ()->
