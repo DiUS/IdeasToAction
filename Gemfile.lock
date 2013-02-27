@@ -6,6 +6,17 @@ GIT
       foreman
 
 GIT
+  remote: git://github.com/karmi/tire.git
+  revision: 09bab36b2b6050b2b34c041a2ba94d4c26477ec2
+  specs:
+    tire (0.5.4)
+      activemodel (>= 3.0)
+      hashr (~> 0.0.19)
+      multi_json (~> 1.3)
+      rake
+      rest-client (~> 1.6)
+
+GIT
   remote: git://github.com/redbeard/politburo.git
   revision: 223be20adca95539625bf0d0bf70f880623fc21a
   specs:
@@ -132,6 +143,7 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
+    hashr (0.0.22)
     highline (1.6.15)
     hike (1.2.1)
     httparty (0.10.0)
@@ -221,6 +233,8 @@ GEM
     ref (1.0.2)
     responders (0.9.3)
       railties (~> 3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -312,5 +326,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda
   therubyracer
+  tire!
   uglifier (>= 1.0.3)
   unicorn
