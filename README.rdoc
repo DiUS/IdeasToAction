@@ -3,3 +3,17 @@
 == Deploy from local machine
 
 $ DEPLOY_KEY=<path_to_deployer_pem> AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> bin/cap canary deploy
+
+== Local Development
+
+=== Install & run elasticsearch
+
+==== Install
+
+wget http://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.20.5.tar.gz
+tar -xvzf elasticsearch-0.20.5.tar.gz
+cd elasticsearch-0.20.5
+
+==== Run
+
+bin/elasticsearch -f 
