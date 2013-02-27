@@ -11,6 +11,8 @@
       %span(ng-switch-when = 'null')
     %p.description
       {{talk.description}}
+    %p
+      %a(ng-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
   .sections
     %collapsible(title='Ideas' type='idea' collection='talk.ideas' item-template='views/ideas/idea_collapsible_item.html')
       .center.row-fluid
