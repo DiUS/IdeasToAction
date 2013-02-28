@@ -4,10 +4,10 @@ describe "ideas/index" do
   before(:each) do
     assign(:ideas, [
       stub_model(Idea,
-        :body => "MyText"
+        :description => "MyText"
       ),
       stub_model(Idea,
-        :body => "MyText"
+        :description => "MyText"
       )
     ])
   end

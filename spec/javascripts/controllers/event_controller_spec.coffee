@@ -4,7 +4,7 @@ describe 'Actionman', ()->
 
   describe 'EventCtrl', () -> 
     eventData = { name: 'Tedex'}
-    ideaData = [{body: 'stuff'}]
+    ideaData = [{description: 'stuff'}]
 
     scope = null
     ctrl = null

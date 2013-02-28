@@ -24,8 +24,8 @@ describe "Idea submission page", js: true, acceptance: true do
     actions_section.find('#new-action-description')
   end
 
-  def idea_body_field
-    actions_section.find('#body')
+  def idea_description_field
+    actions_section.find('#description')
   end
 
   def action_items_container
@@ -138,7 +138,7 @@ describe "Idea submission page", js: true, acceptance: true do
     context "when idea has text" do
 
       before do
-        fill_in "body", with: 'idea content'
+        fill_in "description", with: 'idea content'
       end
 
       context "when actions were added" do

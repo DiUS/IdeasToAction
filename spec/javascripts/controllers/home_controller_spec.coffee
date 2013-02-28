@@ -1,7 +1,7 @@
 describe 'Actionman', ()->
 
   describe 'HomeCtrl', () -> 
-    idea = { body: 'Body language affects how others see us, but it may also change how we see ourselves.'}
+    idea = { description: 'Body language affects how others see us, but it may also change how we see ourselves.'}
     action = { description: 'Body language affects how others see us, but it may also change how we see ourselves.'}
     counts = { members: 5, ideas: 6, actions_taken: 7 }
 

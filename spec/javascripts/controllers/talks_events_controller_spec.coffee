@@ -4,7 +4,7 @@ describe 'Actionman', ()->
 
   describe 'TalksEventsCtrl', () -> 
     eventsData = [{ name: 'Tedex'}]
-    talksData = [{body: 'stuff'}]
+    talksData = [{description: 'stuff'}]
 
     scope = null
     ctrl = null
