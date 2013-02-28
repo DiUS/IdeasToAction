@@ -20,6 +20,7 @@
 package com.ted.actionman;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
@@ -50,8 +51,16 @@ public class Actionman extends DroidGap
         }
         sdk = ZubhiumSDK.getZubhiumSDKInstance(getApplicationContext(), "14f186144b54a8b2ec77dac15e7ce4", appVersion);
 
+        // Get arguments from the external url
+        Intent intent = getIntent();
+        String args = intent.getDataString();
+
         // Get the app going...
-        super.loadUrl("file:///android_asset/www/index.html", 4000);
+        if (args == null) {
+          super.loadUrl("file:///android_asset/www/index.html", 4000);
+        } else {
+          super.loadUrl("file:///android_asset/www/index.html#/ideas/" + args.split("//")[1]);
+        }
     }
 }
 
