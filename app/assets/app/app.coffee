@@ -34,13 +34,13 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
         data
 
       $routeProvider.
-        when('/config',                           { templateUrl: 'views/admin/config.html',       controller: ConfigCtrl }).
-        when('/home',                             { templateUrl: 'views/home/index.html',         controller: HomeCtrl }).
-        when('/events/:eventId',                  { templateUrl: 'views/events/event.html',       controller: EventCtrl }).
-        when('/events/:eventId/talks',            { templateUrl: 'views/talks/talks.html',        controller: TalksCtrl }).
-        when('/events/:eventId/talks/:talkId',    { templateUrl: 'views/talks/talk.html',         controller: TalkCtrl }).
-        when('/ideas/:ideaId',                    { templateUrl: 'views/ideas/idea.html',         controller: IdeaCtrl }).
-        when('/member',                           { templateUrl: 'views/members/member.html',     controller: MemberCtrl }).
-        when('/talks-events',                     { templateUrl: 'views/talks-events/index.html', controller: TalksEventsCtrl }).
+        when('/config',                           { templateUrl: 'assets/views/admin/config.html',       controller: ConfigCtrl }).
+        when('/home',                             { templateUrl: 'assets/views/home/index.html',         controller: HomeCtrl }).
+        when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
+        when('/events/:eventId/talks',            { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
+        when('/events/:eventId/talks/:talkId',    { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
+        when('/ideas/:ideaId',                    { templateUrl: 'assets/views/ideas/idea.html',         controller: IdeaCtrl }).
+        when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
+        when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
         otherwise( {redirectTo: '/home'} )
     ]

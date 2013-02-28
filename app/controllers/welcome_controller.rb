@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    redirect_to '/assets/index.html'
+    render 'app/assets/templates/index', :formats => [:html]
   end
 end

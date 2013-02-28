@@ -13,7 +13,7 @@ describe 'Actionman', ()->
       testCollection = [ { name: 'name 1'}, { name: 'name 2'} ]
 
       $httpBackend = _$httpBackend_
-      $httpBackend.expectGET("views/collapsible/collapsible.html").
+      $httpBackend.expectGET("assets/views/collapsible/collapsible.html").
             respond("<div class='collapsible-template'>collapsible-template <span class='title'>{{title}}</span> <span class='item-template'>{{itemTemplate}}</span> <span ng-repeat='item in collection'>{{item.name}}</span></div>")
 
       elm = angular.element "<collapsible title='Test Items' type='testItem' collection='testCollection' item-template='template url here' />"
