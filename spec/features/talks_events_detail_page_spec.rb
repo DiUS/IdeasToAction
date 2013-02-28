@@ -6,7 +6,7 @@ describe "Talks Events detail page", js: true, acceptance: true do
   let(:talks) { Talk.all }
 
   before :each do
-    visit "/assets/index.html#/talks-events"
+    visit "#/talks-events"
   end
 
   context "Talks collapsible" do

@@ -40,7 +40,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
   before :each do
     talk.should_not be_nil
-    visit "/assets/index.html#/events/1/talks/1"
+    visit "#/events/1/talks/1"
     page.find('#new-idea', text: 'Submit a new idea').click
   end
 

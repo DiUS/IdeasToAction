@@ -13,7 +13,7 @@
           Inspired by...
       .items
         .item{ 'ng-repeat' => "item in idea.talks" }
-          %ng:include(src="'views/talks/talk_in_idea_submission_collapsible_item.html'")
+          %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
     .description.section
       .header
         I had this idea...
@@ -28,7 +28,7 @@
       %p.hint An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
       .items
         .item{ 'ng-repeat' => "item in idea.actions" }
-          %ng:include(src="'views/actions/action_in_idea_submission_collapsible_item.html'")
+          %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
       %form#new-action(name='newAction' ng-submit="addNewAction()")
         .control.content
           %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...')

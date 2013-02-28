@@ -7,7 +7,7 @@ describe "Idea detail page", js: true, acceptance: true do
 
   before :each do
     idea.should_not be_nil
-    visit "/assets/index.html#/ideas/17"
+    visit "#/ideas/17"
   end
 
   it "should have the idea details visible" do

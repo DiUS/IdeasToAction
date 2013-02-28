@@ -12,7 +12,7 @@ angular.module('Actionman').
           $scope.collection_length = newValue
 
       controller: window.CollapsibleCtrl,
-      templateUrl: 'views/collapsible/collapsible.html',
+      templateUrl: 'assets/views/collapsible/collapsible.html',
       replace: true
     }
   )
