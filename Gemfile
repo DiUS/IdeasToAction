@@ -16,6 +16,7 @@ gem 'authlogic', "~> 3.2.0"
 
 # Search
 gem "tire", :git => "git://github.com/karmi/tire.git"
+gem "will_paginate", "~> 3.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
