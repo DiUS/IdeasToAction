@@ -53,7 +53,7 @@ describe "Idea detail page", js: true, acceptance: true do
     end
 
     it 'should link to twitter' do
-      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=Have a look at this idea!&tw_p=tweetbutton&url=http%3A%2F%2Fwww.ideasintoaction.com%2Fideas%2F#{idea.id}"
+      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=Have a look at this idea!&tw_p=tweetbutton&url=http%3A%2F%2Fwww.ideasintoaction.com%2F%23%2Fideas%2F#{idea.id}"
     end
   end
 
