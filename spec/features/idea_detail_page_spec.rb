@@ -47,6 +47,16 @@ describe "Idea detail page", js: true, acceptance: true do
     end
   end
 
+  context "share" do
+    it 'should have a twitter share button' do
+      page.should have_selector('.btn-twitter')
+    end
+
+    it 'should link to twitter' do
+      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=Have a look at this idea!&tw_p=tweetbutton&url=http%3A%2F%2Fwww.ideasintoaction.com%2Fideas%2F#{idea.id}"
+    end
+  end
+
   describe 'when wanting to navigate back to the home page' do
     before do
       page.should_not have_selector('#home')

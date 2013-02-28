@@ -38,7 +38,7 @@
     %p
       Please review your idea before submission. 
     .center
-      %button#submit-idea.center.btn.btn-xlarge.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
+      %button#submit-idea.center.btn.btn-large.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
         Submit your idea
 #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
   .modal-header.header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
