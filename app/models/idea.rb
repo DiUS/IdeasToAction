@@ -13,7 +13,7 @@ class Idea < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
 
-  attr_accessible :body, :actions, :reactions
+  attr_accessible :description, :actions, :reactions
 
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size, tags: tags)

@@ -25,7 +25,7 @@ describe "Talk detail page", js: true, acceptance: true do
 
   context "Ideas collapsible" do
     let(:title) { "Ideas" }
-    let(:item_contents) { talk.ideas.map(&:body) }
+    let(:item_contents) { talk.ideas.map(&:description) }
 
     it_should_behave_like "a collapsible"
 

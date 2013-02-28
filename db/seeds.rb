@@ -37,7 +37,7 @@ if %w(test development qa).include? Rails.env
 
   paolo_cardini_talk_idea_1 = Idea.new(
       talks: [ paolo_cardini_talk ],
-      body: 'Multi-tasking may be managed by only 2% of people, yet the technology that surrounds us puts us all too easliy into a multi-tasking state.',
+      description: 'Multi-tasking may be managed by only 2% of people, yet the technology that surrounds us puts us all too easliy into a multi-tasking state.',
       tags: ['Culture', 'Design', 'Humor', 'Product design', 'Technology'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Call someone instead of texting, and give your full attention.' },
@@ -50,7 +50,7 @@ if %w(test development qa).include? Rails.env
 
   paolo_cardini_talk_idea_2 = Idea.new(
       talks: [ paolo_cardini_talk ],
-      body: 'Tecnhology-induced multi-tasking diminishes our experiences by distracting us from our immediate surroundings.',
+      description: 'Tecnhology-induced multi-tasking diminishes our experiences by distracting us from our immediate surroundings.',
       tags: ['Culture', 'Design', 'Humor', 'Product design', 'Technology'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Turn off your phone next time you are in a place that you wish to explore and experience it unmediated and uninterrupted by technology.  Allow yourself to get lost, if not literally in the place, then in the experience.' }
@@ -80,7 +80,7 @@ if %w(test development qa).include? Rails.env
 
   brene_brown_talk_idea_1 = Idea.new(
       talks: [ brene_brown_talk ],
-      body: 'Connection is what gives our lives purpose and meaning - what life is all about.   People who experience deep connection are "whole-hearted" and embrace vulnerability as necessary to the authenticity that enables deep connection.  Denial of this vulnerability leads to numbing of all emotions, which hinders our relationships.',
+      description: 'Connection is what gives our lives purpose and meaning - what life is all about.   People who experience deep connection are "whole-hearted" and embrace vulnerability as necessary to the authenticity that enables deep connection.  Denial of this vulnerability leads to numbing of all emotions, which hinders our relationships.',
       tags: ['Communication', 'Culture', 'Psychology', 'Self social change'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Make a list of emotions you find difficult and normally try to protect yourself from.  Try to welcome them.' },
@@ -93,7 +93,7 @@ if %w(test development qa).include? Rails.env
 
   brene_brown_talk_idea_2 = Idea.new(
       talks: [ brene_brown_talk ],
-      body: 'Feeling worthy of love and belonging leads to the capacity for compassion toward yourself, which is essential to having true compassion for others.  Shame is the fear of disconnection due to feeling unworthy.  Letting go of shame helps us to be more compassionate, whole-hearted beings.',
+      description: 'Feeling worthy of love and belonging leads to the capacity for compassion toward yourself, which is essential to having true compassion for others.  Shame is the fear of disconnection due to feeling unworthy.  Letting go of shame helps us to be more compassionate, whole-hearted beings.',
       tags: ['Communication', 'Culture', 'Psychology', 'Self social change'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Think of something you would do to show someone you love him or her.  Do it for yourself.' },
@@ -124,7 +124,7 @@ if %w(test development qa).include? Rails.env
 
   mitch_resnick_talk_idea_1 = Idea.new(
       talks: [ mitch_resnick_talk ],
-      body: 'Being comfortable with digital technologies does not necessarily make kids "digital natives."  They may be able to "read" in this language, but we must teach them to code if we want them to "write" as well and fully utilize the technology to express themselves.',
+      description: 'Being comfortable with digital technologies does not necessarily make kids "digital natives."  They may be able to "read" in this language, but we must teach them to code if we want them to "write" as well and fully utilize the technology to express themselves.',
       tags: ['Children', 'Computers', 'Education', 'Internet', 'Parenting', 'Technology', 'Youth'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Go to scratch.mit.edu and make an interactive card for a friend.' },
@@ -137,7 +137,7 @@ if %w(test development qa).include? Rails.env
 
   mitch_resnick_talk_idea_2 = Idea.new(
       talks: [ mitch_resnick_talk ],
-      body: 'Learning to code leads to coding to learn, and many transferrable academic and life skills may be acquired through the practice of coding, in large part because of its relationship to the design process.  This has great educational potential.',
+      description: 'Learning to code leads to coding to learn, and many transferrable academic and life skills may be acquired through the practice of coding, in large part because of its relationship to the design process.  This has great educational potential.',
       tags: ['Children', 'Computers', 'Education', 'Internet', 'Parenting', 'Technology', 'Youth'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Invite your local school board members or a principal or teacher in your community to listen to this TED talk and introduce kids to Scratch.' },
@@ -168,7 +168,7 @@ if %w(test development qa).include? Rails.env
 
   young_ha_kim_talk_idea_1 = Idea.new(
       talks: [ young_ha_kim_talk ],
-      body: 'As children, we are natural artists who sing, dance, draw, paint, and tell stories through our days, but as we grow, the artists within us are banished or locked in, but they do not go away.  Adults still have the natural artist within them, and it needs nourishment and freedom of expression.',
+      description: 'As children, we are natural artists who sing, dance, draw, paint, and tell stories through our days, but as we grow, the artists within us are banished or locked in, but they do not go away.  Adults still have the natural artist within them, and it needs nourishment and freedom of expression.',
       tags: ['Arts', 'Creativity', 'Writing'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.' },
@@ -181,7 +181,7 @@ if %w(test development qa).include? Rails.env
 
   young_ha_kim_talk_idea_2 = Idea.new(
       talks: [ young_ha_kim_talk ],
-      body: 'Many people do not believe they can be artistis, so suppressed is the artist within.  Activities that stay ahead of the judgemental thoughts that sabotage their efforts can help them realize their artistic abilities and, more importantly, the joy of artistic creativity.',
+      description: 'Many people do not believe they can be artistis, so suppressed is the artist within.  Activities that stay ahead of the judgemental thoughts that sabotage their efforts can help them realize their artistic abilities and, more importantly, the joy of artistic creativity.',
       tags: ['Arts', 'Creativity', 'Writing'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Do Kim\'s writing exercise.  Choose a theme such as either a joyful or difficult childhood experience, and "write like crazy" for an hour.  Don\'t stop to think, edit or review.  Just keep writing.  ' }
@@ -211,7 +211,7 @@ if %w(test development qa).include? Rails.env
 
   shawn_achor_talk_idea_1 = Idea.new(
       talks: [ shawn_achor_talk ],
-      body: 'Only 10% of our long-term happiness is determined by external circumstances.  90% is determined by the way our brains process the world.  By taking simple steps to enhance happiness, we can alter the lens through which we see the world and effectively imporve our reality.',
+      description: 'Only 10% of our long-term happiness is determined by external circumstances.  90% is determined by the way our brains process the world.  By taking simple steps to enhance happiness, we can alter the lens through which we see the world and effectively imporve our reality.',
       tags: ['Business', 'Happiness', 'Psychology', 'Science'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Write 3 new things for which you are grateful every day for three weeks, and notice the way your mind starts to focus on the positive.' },
@@ -224,7 +224,7 @@ if %w(test development qa).include? Rails.env
 
   shawn_achor_talk_idea_2 = Idea.new(
       talks: [ shawn_achor_talk ],
-      body: 'Our institutions and companies have it backward by operating as if success is a prerequisite of happiness when, in fact, happiness is a prerequisite of success.  The brain in a positive state is measurably more capable of learning, more productive and more creative.',
+      description: 'Our institutions and companies have it backward by operating as if success is a prerequisite of happiness when, in fact, happiness is a prerequisite of success.  The brain in a positive state is measurably more capable of learning, more productive and more creative.',
       tags: ['Business', 'Happiness', 'Psychology', 'Science'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'To enhance your positive state, commit an intentional act of kindness within your social circle, such as writing an email expressing gratitude or praising someone.  Try to make this a regular practice.' }
@@ -253,7 +253,7 @@ if %w(test development qa).include? Rails.env
 
   esther_perel_idea_1 = Idea.new(
       talks: [ esther_perel ],
-      body: 'The key to sustaining desire in a committed relationshp is the reconciliation of the needs for both love and desire, which can be at odds with each other.  Three desire-enhancing elements stand out:  time apart; seeing your partner in his/her element, radiant; and experiencing novelty together.',
+      description: 'The key to sustaining desire in a committed relationshp is the reconciliation of the needs for both love and desire, which can be at odds with each other.  Three desire-enhancing elements stand out:  time apart; seeing your partner in his/her element, radiant; and experiencing novelty together.',
       tags: ['Culture' , 'Love', 'Relationships', 'Sex'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Take that weekend away with the guys/girlfriends, going guilt-free and with the awareness between you and your partner that absence enhances desire.' },
@@ -266,7 +266,7 @@ if %w(test development qa).include? Rails.env
 
   esther_perel_idea_2 = Idea.new(
       talks: [ esther_perel ],
-      body: '"The myth of spontanaeity."  Let go of dependence on the idea that good sex must be spontaneous.  "Commited sex is premeditated sex."',
+      description: '"The myth of spontanaeity."  Let go of dependence on the idea that good sex must be spontaneous.  "Commited sex is premeditated sex."',
       tags: ['Culture' , 'Love', 'Relationships', 'Sex'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Plan your next sexual encounter with your partner.  Talk about hat you might want.  Ask the same.  Combine it with a date doing something new together.' },
@@ -297,7 +297,7 @@ if %w(test development qa).include? Rails.env
 
   drew_dudley_idea_1 = Idea.new(
       talks: [ drew_dudley ],
-      body: 'We have elevated leadership to something so unattainable that only those who change the world on a massive scale may claim to be leaders.  Doing so diminishes the everyday acts we commit that are, in fact, acts of leadership.',
+      description: 'We have elevated leadership to something so unattainable that only those who change the world on a massive scale may claim to be leaders.  Doing so diminishes the everyday acts we commit that are, in fact, acts of leadership.',
       tags: ['Community', 'Leadership', 'Life', 'TEDxFeatured'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Ask yourself, "am I a leader?"  Note the feelings that arise.  Note who comes to your mind when you think "leader," and whether you accept yourself into that circle of people.' },
@@ -310,7 +310,7 @@ if %w(test development qa).include? Rails.env
 
   drew_dudley_idea_2 = Idea.new(
       talks: [ drew_dudley ],
-      body: 'As long as we make leadership something unattainable, we excuse ourselves from the responsibility of expecting it every day from ourselves and each other.',
+      description: 'As long as we make leadership something unattainable, we excuse ourselves from the responsibility of expecting it every day from ourselves and each other.',
       tags: ['Community', 'Leadership', 'Life', 'TEDxFeatured'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Write Marianne Williamson\'s quote down, and put it somewhere you will see it every day:  "Our greatest fear is not that we are inadequate.  Our greatest fear is that we are powerful beyond measure.  It is our light, and not our darkness, that frightens us."' },
@@ -340,7 +340,7 @@ if %w(test development qa).include? Rails.env
 
   edi_rama_idea_1 = Idea.new(
       talks: [ edi_rama ],
-      body: 'The creation of beauty in a city can change it for the better, even reducing crime rates at lower cost than employing a larger police force.  Beauty can stand as a guardsman, reducing litter and encouraging civic responsibility, such as paying taxes.',
+      description: 'The creation of beauty in a city can change it for the better, even reducing crime rates at lower cost than employing a larger police force.  Beauty can stand as a guardsman, reducing litter and encouraging civic responsibility, such as paying taxes.',
       tags: ['Art', 'Cities', 'Community', 'Global issues', 'Government', 'Politics', 'Urban planning'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Take more ownership of your public surroundings by picking up litter when you go out.' },
@@ -353,7 +353,7 @@ if %w(test development qa).include? Rails.env
 
   edi_rama_idea_2 = Idea.new(
       talks: [ edi_rama ],
-      body: 'Environment has an impact on behavior, and changing an environment in the right way can impact behavior.  Systems and environment play important roles.  Corruption and other undesireable practices may be designed into and out of systems and places intentionally.',
+      description: 'Environment has an impact on behavior, and changing an environment in the right way can impact behavior.  Systems and environment play important roles.  Corruption and other undesireable practices may be designed into and out of systems and places intentionally.',
       tags: ['Art', 'Cities', 'Community', 'Global issues', 'Government', 'Politics', 'Urban planning'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Examine your assumptions about different people in the world.  Challenge the notion that culture or genes detemine things like degrees of corruption.' }
@@ -396,7 +396,7 @@ if %w(test development qa).include? Rails.env
   [
     {  
       talks: [ amy_cuddy_talk ],
-      body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+      description: 'Body language affects how others see us, but it may also change how we see ourselves.',
       tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
       actions: [
         { description: 'Examine your own body language in different social situations.' },
@@ -408,7 +408,7 @@ if %w(test development qa).include? Rails.env
     },
     { 
       talks: [ amy_cuddy_talk, steve_jobs_talk ],      
-      body: 'Power posing can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
+      description: 'Power posing can affect testosterone and cortisol levels in the brain, may impact on our chances for success.',
       tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
         { description: 'Power-pose for two minutes before an important meeting.' },

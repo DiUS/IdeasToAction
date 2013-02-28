@@ -2,14 +2,14 @@
 
 %table
   %tr
-    %th Body
+    %th Description
     %th
     %th
     %th
 
   - @ideas.each do |idea|
     %tr
-      %td= idea.body
+      %td= idea.description
       %td= link_to 'Show', idea
       %td= link_to 'Edit', edit_idea_path(idea)
       %td= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }

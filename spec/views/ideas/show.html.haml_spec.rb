@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "ideas/show" do
   before(:each) do
     @idea = assign(:idea, stub_model(Idea,
-      :body => "MyText"
+      :description => "MyText"
     ))
   end
 

@@ -68,7 +68,7 @@ describe IdeasController do
     let(:talk) { Talk.first }
     let(:valid_attributes) { 
       { 
-        body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+        description: 'Body language affects how others see us, but it may also change how we see ourselves.',
         talks: [
           talk.as_json
         ],
@@ -109,7 +109,7 @@ describe IdeasController do
       it "return the json of the created idea" do
         post :create, { :format => 'json', :idea => valid_attributes}, valid_session
         idea_json = JSON.parse(response.body)
-        idea_json['body'].should eq valid_attributes[:body]
+        idea_json['description'].should eq valid_attributes[:description]
       end
     end
 
@@ -117,7 +117,7 @@ describe IdeasController do
       it "assigns a newly created but unsaved idea as @idea" do
         # Trigger the behavior that occurs when invalid params are submitted
         Idea.any_instance.stub(:save).and_return(false)
-        post :create, { :format => 'json', :idea => { "body" => "invalid value" }}, valid_session
+        post :create, { :format => 'json', :idea => { "description" => "invalid value" }}, valid_session
         assigns(:idea).should be_a_new(Idea)
       end
 

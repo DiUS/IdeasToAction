@@ -6,7 +6,7 @@ describe 'Actionman', ()->
     talkData = { id: 1, title: 'Amy Cuddy: Your body language shapes who you are'}
 
     ideaData = {
-      body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+      description: 'Body language affects how others see us, but it may also change how we see ourselves.',
       talks: [ talkData ],
       actions: [ { description: 'Examine your own body language in different social situations.' } ]
     }

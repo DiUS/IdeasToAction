@@ -2,7 +2,7 @@ describe 'Actionman', ()->
 
   describe 'ActionCtrl', () -> 
     ideaData = { 
-      body: 'Body language affects how others see us, but it may also change how we see ourselves.',
+      description: 'Body language affects how others see us, but it may also change how we see ourselves.',
       action: ['action1', 'action2']
     }
 
