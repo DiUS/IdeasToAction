@@ -1,7 +1,7 @@
 class ChangeEventNameToString < ActiveRecord::Migration
   def up
     remove_column :events, :name
-    add_column :events, :name, :string
+    add_column :events, :name, :text
   end
 
   def down

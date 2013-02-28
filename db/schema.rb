@@ -30,14 +30,14 @@ ActiveRecord::Schema.define(:version => 20130227234212) do
   create_table "events", :force => true do |t|
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "name"
+    t.text     "name"
     t.text     "logo_image_url"
     t.text     "description"
     t.text     "hero_image_url"
   end
 
   create_table "ideas", :force => true do |t|
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "member_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20130227234212) do
   create_table "reactions", :force => true do |t|
     t.integer  "member_id"
     t.integer  "idea_id"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
