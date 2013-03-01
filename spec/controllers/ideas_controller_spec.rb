@@ -47,9 +47,10 @@ describe IdeasController do
     let(:member) { mock_model Member }
     let(:params) { {:id => 1} }
 
-    before :each do
+    before do
       controller.stub(:member).and_return member
-      idea_view_model.should_receive(:as_json).and_return({ :idea => 'cool' })
+      idea_view_model.should_receive(:as_json).and_return({ 'idea' => 'cool' })
+      IdeaViewModel.stub(:new).and_return idea_view_model
     end
 
     it 'uses a view model to construct the json response' do
@@ -57,11 +58,16 @@ describe IdeasController do
       get :show, params.merge(:format => :json), valid_session
     end
 
-    # it "assigns the requested idea as @idea" do
-    #   idea = Idea.create! valid_attributes
-      
-    #   assigns(:idea).should eq(idea)
-    # end
+    it 'renders a open in app layout when showing via html' do
+      IdeaViewModel.should_receive(:new).and_return idea_view_model
+      get :show, params.merge(:format => :html), valid_session
+      controller.should render_template(:layout => 'layouts/open_in_app')
+    end
+
+    it "assigns the requested idea as @idea" do
+      get :show, params.merge(:format => :json), valid_session
+      assigns(:idea).should eq({ 'idea' => 'cool' })
+    end
   end
 
   describe "POST create" do

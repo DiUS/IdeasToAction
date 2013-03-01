@@ -20,10 +20,11 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    idea_view_model = IdeaViewModel.new params.merge(:member => member)
+    @idea = IdeaViewModel.new(params.merge(:member => member)).as_json
 
     respond_to do |format|
-      format.json { render json: idea_view_model.as_json }
+      format.html { render 'app/assets/templates/index', :layout => 'open_in_app' }
+      format.json { render json: @idea }
     end
   end
 
