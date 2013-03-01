@@ -61,7 +61,7 @@ describe IdeasController do
     it 'renders a open in app layout when showing via html' do
       IdeaViewModel.should_receive(:new).and_return idea_view_model
       get :show, params.merge(:format => :html), valid_session
-      controller.should render_template(:layout => 'layouts/open_in_app')
+      controller.should render_template(:open_in_app)
     end
 
     it "assigns the requested idea as @idea" do

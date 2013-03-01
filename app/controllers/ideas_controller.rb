@@ -23,7 +23,7 @@ class IdeasController < ApplicationController
     @idea = IdeaViewModel.new(params.merge(:member => member)).as_json
 
     respond_to do |format|
-      format.html { render 'app/assets/templates/index', :layout => 'open_in_app' }
+      format.html { render :open_in_app }
       format.json { render json: @idea }
     end
   end
