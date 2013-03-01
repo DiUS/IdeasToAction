@@ -3,21 +3,65 @@ require 'benchmark'
 
 namespace :search do
 
-  task :import => :environment do
-    time = Time.new.utc
-    classes_to_index = [ Event, Talk, Idea, Action ]
-    puts "[Import all]\tWill import classes: #{classes_to_index.map(&:name).join(", ")}..."
-    importers = classes_to_index.map { | klass | ClassImporter.new(klass, time: time) }
+  def classes_to_index
+    @classes_to_index ||= [ Event, Talk, Idea, Action ]
+  end
 
+  def create_importers
+    time = Time.new.utc
+    classes_to_index.map { | klass | ClassImporter.new(klass, time: time) }
+  end
+
+  def ensure_aliases_and_indexes_exist(importers)
+    puts "[Import all]\tEnsuring all aliases exist for #{Rails.env}..."
+    for importer in importers
+      unless importer.alias_to_index
+        importer.create_index
+        importer.create_alias_if_doesnt_exist
+      end
+    end
+    setup_all_alias(importers)
+  end
+
+  def setup_all_alias(importers)
+    # collect indexes from aliases
+    target_indexes = importers.map(&:alias_to_index).compact.map(&:indices).flatten
+    # point all to these
+    unless (target_indexes.empty?)
+      puts "[Import all]\tSetting up 'all' alias..."
+      ClassImporter.switch_aliases("#{Rails.env}-all", [], *target_indexes)
+    end
+  end
+
+  task :ensure_aliases_and_indexes_exist => :environment do
+    ensure_aliases_and_indexes_exist(create_importers)
+  end
+
+  task "ensure_aliases_and_indexes_exist:test" => :environment do
+    original_env = Rails.env
+    Rails.env = "test"
+    ensure_aliases_and_indexes_exist(create_importers)
+    Rails.env = original_env
+  end
+
+  task :setup_all_alias => :environment do
+    setup_all_alias(create_importers)
+  end
+
+  task :import => :environment do
+    importers = create_importers
+
+    ensure_aliases_and_indexes_exist(importers)
+
+    puts "[Import all]\tWill import classes: #{@classes_to_index.map(&:name).join(", ")}..."
     importers.map(&:do_import)
     puts
     importers.map(&:switch_aliases)
     puts 
 
-    puts "[Import all]\tSetting up 'all' alias..."
-    old_indexes = []
-    ClassImporter.switch_aliases("#{Rails.env}-all", old_indexes, *importers.map(&:index_name))
+    setup_all_alias(importers)
 
+    old_indexes = []
     delete_old_indexes = ENV['DELETE_OLD_INDEXES'] || (Rails.env.test? or Rails.env.development?)
     if delete_old_indexes
       old_indexes.push(*importers.map(&:old_indexes).flatten).uniq.each do | old_index |
@@ -25,6 +69,14 @@ namespace :search do
         Tire::Index.new(old_index).delete
       end
     end
+  end
+
+  task "import:test" do
+    original_env = Rails.env
+    Rails.env = "test"
+    Rake::Task["search:import"].invoke
+
+    Rails.env = original_env
   end
 
   class ClassImporter
@@ -59,9 +111,7 @@ namespace :search do
       "[Import '#{klass.name}']"
     end
 
-    def do_import
-      index = Tire::Index.new( index_name )
-
+    def create_index
       puts
       unless index.exists?
         mapping = MultiJson.encode(klass.tire.mapping_to_hash, :pretty => Tire::Configuration.pretty)
@@ -72,6 +122,14 @@ namespace :search do
           exit(1)
         end
       end
+    end
+
+    def index
+      @index ||= Tire::Index.new( index_name )
+    end
+
+    def do_import
+      create_index
 
       STDOUT.sync = true
       puts "#{prefix}\tStarting import for '#{klass.name}' class"
@@ -120,12 +178,29 @@ namespace :search do
       self.class.switch_aliases(alias_name, old_indexes, index_name)
     end
 
+    def alias_to_index
+      Tire::Alias.find(alias_name)
+    end
+
+    def create_alias_if_doesnt_exist
+      unless alias_to_index
+        result = self.class.create_new_alias(alias_name, index_name).save
+        raise "Couldn't create alias due to an error. #{result.body.to_s}" unless result.success?
+      end
+    end
+
     def self.switch_aliases(alias_name, old_indexes, *new_index_names)
       _alias = Tire::Alias.find(alias_name, &aliases_proc(alias_name, old_indexes, *new_index_names))
       unless _alias
-        _alias = Tire::Alias.new(name: alias_name, &aliases_proc(alias_name, old_indexes, *new_index_names))
+        _alias = create_new_alias(alias_name, *new_index_names)
       end
-      _alias.save
+      result = _alias.save
+      raise "Couldn't create alias due to an error. #{result.body.to_s}" unless result.success?
+      result
+    end
+
+    def self.create_new_alias(alias_name, *new_index_names)
+      Tire::Alias.new(name: alias_name, &aliases_proc(alias_name, [], *new_index_names))
     end
 
     def old_indexes
