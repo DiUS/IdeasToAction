@@ -1,0 +1,27 @@
+%html{ :lang => "en", "xmlns:ng" => "http://angularjs.org", "ng-app" => 'Actionman'}
+  %head    
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="apple-mobile-web-app-capable" content="yes")
+    %meta(content='True' name='HandheldFriendly')
+    %meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport')
+    %meta(name="viewport" content="width=device-width")
+    
+    %title= "Actionman"
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+    %link(href="favicon.ico" rel="shortcut icon")
+
+%body
+  %a(href="ideasintoaction://#{@idea['id']}") Open in app
+  %br
+  %a(href="http://play.google.com/store/apps/details?id=com.ted.actionman") Download application
+  %hr
+  %iframe(src="/#ideas/#{@idea['id']}" width="100%" height="100%" frameborder="0")
+    = yield 
