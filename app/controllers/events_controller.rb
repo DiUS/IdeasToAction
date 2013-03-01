@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  inherit_resources
 
   def index
     render json: Event.all
