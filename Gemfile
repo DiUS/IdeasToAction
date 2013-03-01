@@ -40,6 +40,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'politburo', :git => 'git://github.com/redbeard/politburo.git'
   gem 'pry'
+  gem 'aws-sdk'
 end
 
 # Deploy with Capistrano
