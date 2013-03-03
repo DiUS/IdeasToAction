@@ -38,6 +38,12 @@ Actionman::Application.routes.draw do
 
   resources :talks
 
+  resources :member_sessions do
+    collection do
+      get 'check'
+    end
+  end
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
