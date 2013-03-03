@@ -1,6 +1,13 @@
 #home
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
     Ideas into action
+    %span(ng-controller = "AuthCtrl" class="hidden-phone")
+      .login-panel
+        %span(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
+          %a(ng-href = "/login") Login
+        %span(ng-show = "memberSession.loggedIn && loggedInStatusDetermined()")
+          ({{memberSession.username}})
+          %a(ng-click = "logout()") Sign out
     .reload.pull-right(onclick = 'location.reload(true);')
       %i.icon-refresh
   .content
