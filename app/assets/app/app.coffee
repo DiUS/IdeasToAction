@@ -42,5 +42,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
         when('/ideas/:ideaId',                    { templateUrl: 'assets/views/ideas/idea.html',         controller: IdeaCtrl }).
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
+        when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
         otherwise( {redirectTo: '/home'} )
     ]

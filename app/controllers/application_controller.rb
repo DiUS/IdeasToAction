@@ -11,10 +11,21 @@ class ApplicationController < ActionController::Base
     @member_session.record
   end
 
+  helper_method :current_member
+
   private
 
   def ensure_session_exists
     member_session
   end
 
+  def current_member_session
+    return @current_member_session if defined?(@current_member_session)
+    @current_member_session = MemberSession.find
+  end
+
+  def current_member
+    return @current_member if defined?(@current_member)
+    @current_member = current_member_session && current_member_session.record
+  end
 end
