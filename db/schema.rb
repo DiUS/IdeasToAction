@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(:version => 20130227234212) do
     t.string   "persistence_token"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "username"
+    t.string   "crypted_password"
+    t.string   "password_salt"
   end
 
   create_table "reactions", :force => true do |t|
