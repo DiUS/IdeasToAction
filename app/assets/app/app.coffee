@@ -1,6 +1,6 @@
 window.ajaxCounter = 0
 
-angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
+angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
       scope.navigate = $navigate
@@ -17,6 +17,13 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
   ).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
+  ).
+  factory('EventResource', ($resource) ->
+    $resource('/events/:eventId', 
+      { eventId: '@eventId' },
+      {
+        update: { method: 'PUT' }
+      })
   ).
   factory('ajaxCounterInterceptor', ($q, $window) ->
     (promise) ->
@@ -36,6 +43,8 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
       $routeProvider.
         when('/config',                           { templateUrl: 'assets/views/admin/config.html',       controller: ConfigCtrl }).
         when('/home',                             { templateUrl: 'assets/views/home/index.html',         controller: HomeCtrl }).
+        when('/events/new',                       { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
+        when('/events/edit/:eventId',             { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
         when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
         when('/events/:eventId/talks',            { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
         when('/events/:eventId/talks/:talkId',    { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
