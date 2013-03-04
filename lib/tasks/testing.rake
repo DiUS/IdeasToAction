@@ -13,8 +13,6 @@ if Rails.env.test? or Rails.env.development?
     end
   end
 
-  task "db:seed" => "search:ensure_aliases_and_indexes_exist"
-
   task :acceptance => [ "db:test:prepare", "spec:acceptance" ]
 
   task :test => [ "jasmine:headless", "spec" ]
