@@ -58,7 +58,7 @@ namespace :deploy do
   namespace :search do
     task :import do
       puts "\n\n=== Re-indexing all data! ===\n\n"
-      run "cd #{release_path}; rake search:import RAILS_ENV=#{rails_env}"
+      run "cd #{release_path}; bundle exec rake search:import RAILS_ENV=#{rails_env}"
     end
   end
 
