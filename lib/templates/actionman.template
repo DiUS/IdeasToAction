@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
 
-  "Description" : "Dupondi.us. Single instance Rails stack using with nginx, a local MySQL database. rails_single_instance.template",
+  "Description" : "Actionman Template. Single instance Rails stack using with nginx, a local MySQL database. Based on Zerobot.io rails_single_instance.template",
 
   "Parameters" : {
 
@@ -290,8 +290,8 @@
 
           "# Use Ruby 1.9\n",
           "rm /usr/bin/ruby\n",
-          "ln -s /usr/bin/ruby1.9 /usr/bin/ruby\n",
-          "ln -s /usr/bin/gem1.9 /usr/bin/gem\n",
+          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
+          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
           "gem install bundler --no-rdoc --no-ri\n",
 
           "# Give the deployer user login rights\n",
@@ -334,6 +334,17 @@
           "/usr/sbin/nrsysmond-config --set license_key=$NEW_RELIC_LICENSE_KEY\n",
           "echo \"/usr/sbin/nrsysmond-config --set license_key=\\$NEW_RELIC_LICENSE_KEY\" >> /etc/rc.local\n",
           "echo \"/etc/init.d/newrelic-sysmond restart\" >> /etc/rc.local\n",
+
+          "# Force ruby1.9 symlinks if overriden by a yum package\n",
+          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
+          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
+
+          "# install babushka \n",
+          "export PATH=/usr/local/bin:$PATH \n",
+          "sh -c \"`curl https://gist.github.com/redbeard/af31558c7912785c3010/raw/a435a2794f6582a5ce61e285e46209eb4a559e06/babushka-install.sh`\"  \n",
+          "which babushka || error_exit 'Failed to install babushka' \n",
+          "# use babushka to install elasticsearch  \n",
+          "ruby1.9 -S `which babushka` --defaults politburo:elasticsearch-running \n",
 
           "# All is well so signal success\n",
           "/opt/aws/bin/cfn-signal -e 0 -r \"Dashboard application setup complete\" '", { "Ref" : "WaitHandle" }, "'\n"
