@@ -245,3 +245,5 @@ namespace :search do
   end
 
 end
+
+task "db:seed" => "search:ensure_aliases_and_indexes_exist"
