@@ -63,8 +63,7 @@ end
 namespace :foreman do
   desc "Export the Procfile to inittab"
   task :export, :roles => :app do
-    run ["mkdir -fp #{release_path}", 
-      "cd #{release_path}",
+    run ["cd #{release_path}",
       # Setup application environment variables
       "mkdir -p tmp/foreman",
       "echo \"RAILS_ENV=#{rails_env}\" > ./tmp/env",
