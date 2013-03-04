@@ -9,5 +9,5 @@ class Event < ActiveRecord::Base
   has_many :talks
   has_many :ideas, :through => :talks
 
-  validates :name, :description, :logo_image_url, :hero_image_url, :presence => true
+  validates :name, :description, :hero_image_url, :presence => true
 end
