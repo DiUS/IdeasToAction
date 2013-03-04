@@ -43,4 +43,4 @@ describe 'Actionman', ()->
     it 'should link the ng-model to the input field', inject ($compile, $rootScope) ->
       $httpBackend.flush()
       
-      expect(elm.find('#name').attr('ng-model')).toEqual('$parent.event.name')
+      expect(elm.find('input').attr('ng-model')).toEqual('$parent.event.name')
