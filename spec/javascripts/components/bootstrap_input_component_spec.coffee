@@ -16,14 +16,14 @@ describe 'Actionman', ()->
       $httpBackend.expectGET("assets/views/form/bootstrap_input.html").
             respond("<div class='control-group' ng-class='{error: !!$parent.errors[key]}'>" +
                       "bootstrap_input" + 
-                      "<label class='control-label' for='{{key}}'>{{localized}}</label>" +
+                      "<label class='control-label' for='{{key}}'>{{description}}</label>" +
                       "<div class='controls'>" +
-                        "<input id='{{key}}' placeholder='{{localized}}' type='text' />" +
+                        "<input id='{{key}}' placeholder='{{description}}' type='text' />" +
                         "<span class='help-inline' ng-class='{hide: !$parent.errors[key]}'>{{$parent.errors[key][0]}}</span>" +
                       "</div>" +
                     "</div>")
 
-      elm = angular.element "<bootstrap-input key='name' localized='Event Name' model='event.name'></bootstrap-input>"
+      elm = angular.element "<bootstrap-input key='name' description='Event Name' model='event.name'></bootstrap-input>"
 
       scope = $rootScope
       scope.testCollection = testCollection
