@@ -32,6 +32,7 @@ require 'capistrano/ext/multistage'
 
 after "deploy:setup", 'deploy:db:create'
 after "deploy:update_code", "deploy:migrate"
+after "deploy:update_code", "deploy:search:import"
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
 
@@ -51,6 +52,13 @@ namespace :deploy do
     task :seed do
       puts "\n\n=== Populating the Database! ===\n\n"
       run "cd #{release_path}; rake db:seed RAILS_ENV=#{rails_env}"
+    end
+  end
+
+  namespace :search do
+    task :import do
+      puts "\n\n=== Re-indexing all data! ===\n\n"
+      run "cd #{release_path}; rake search:import RAILS_ENV=#{rails_env}"
     end
   end
 
