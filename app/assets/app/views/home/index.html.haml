@@ -4,10 +4,15 @@
     %span(ng-controller = "AuthCtrl" class="hidden-phone")
       .login-panel
         %span(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
-          %a(ng-href = "/login") Login
+          %a(ng-href = "/login")
+            %i.icon-user
         %span(ng-show = "memberSession.loggedIn && loggedInStatusDetermined()")
-          ({{memberSession.username}})
-          %a(ng-click = "logout()") Sign out
+          %i.icon-user
+            {{memberSession.username}}
+          %a(ng-click = "logout()")
+            %i.icon-road
+    .search-button.pull-right(ng-href = '/search')
+      %i.icon-search
     .reload.pull-right(onclick = 'location.reload(true);')
       %i.icon-refresh
   .content

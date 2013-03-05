@@ -1,4 +1,7 @@
 Actionman::Application.routes.draw do
+
+  match "search" => "search#index"
+
   get "heartbeat/beat"
 
   match "counts" => "counts#index"
