@@ -11,6 +11,11 @@ window.EventFormCtrl = ($scope, $routeParams, EventResource) ->
   # get if id is provided
   $scope.event.$get { eventId: $routeParams.eventId }, success, error if $routeParams.eventId?
 
-  $scope.create = -> $scope.event.$save   success, error
-  $scope.update = -> $scope.event.$update success, error
-  $scope.delete = -> $scope.event.$delete success, error
+  $scope.create = -> 
+    $scope.event.$save success, error
+
+  $scope.update = -> 
+    $scope.event.$update { eventId: $routeParams.eventId }, success, error
+
+  $scope.delete = -> 
+    $scope.event.$delete { eventId: $routeParams.eventId }, success, error
