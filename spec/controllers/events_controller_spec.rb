@@ -32,4 +32,35 @@ describe EventsController do
       get :index, {:format => 'json'}, valid_session
     end
   end
+
+  describe 'PUT update' do
+    let(:event) {Event.create! valid_attributes}
+    let(:attrs) {valid_attributes}
+
+    before do
+      attrs[:name] = 'my new event name'
+      attrs[:talks] = [Talk.create!.as_json, Talk.create!.as_json]
+    end
+
+    it 'should update the event' do
+      put :update, { :id => event.id, :event => attrs, :format => :json }, valid_session
+      response.should be_success
+      event_json = JSON.parse(response.body)
+      event_json['name'].should eql 'my new event name'
+    end
+  end
+
+  describe 'DELETE destroy' do
+    let(:event) { Event.create!(name: 'temp_event', description: 'my desc', hero_image_url: 'http://www.google.com/image.png') }
+
+    before { Event.find(event.id).should_not be_nil }
+
+    it 'should delete the event' do
+      delete :destroy, {:id => event.id, :format => 'json'}, valid_session
+
+      assert_raise(ActiveRecord::RecordNotFound) do
+        Event.find(event.id)
+      end
+    end
+  end
 end

@@ -8,6 +8,14 @@ class EventsController < ApplicationController
     render json: Event.all
   end
 
+  def update
+    params['event'].delete 'talks'
+
+    update! do |format|
+      format.json { render json: @event, methods: [:talks] }
+    end
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
