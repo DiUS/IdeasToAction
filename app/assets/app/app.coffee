@@ -41,6 +41,8 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
       ), (response) ->
         if response.status == 401
           $location.path("/unauthorised")
+        else if response.status == 500
+          $location.path("/internal_server_error")
         $q.reject response
   ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
@@ -63,5 +65,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
         when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
         when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
+        when('/internal_server_error',            { templateUrl: 'assets/views/errors/internal_server_error.html',controller: ErrorsCtrl }).
         otherwise( {redirectTo: '/home'} )
     ]
