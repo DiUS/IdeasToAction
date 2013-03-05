@@ -1,6 +1,9 @@
 class Idea < ActiveRecord::Base
-  attr_accessible :tags, :talks
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 
+  index_name { "#{Rails.env}-#{table_name}" }
+      
   belongs_to :member
   validates_presence_of :member
 
@@ -13,7 +16,7 @@ class Idea < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
 
-  attr_accessible :description, :actions, :reactions
+  attr_accessible :tags, :talks, :description, :actions, :reactions
 
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size, tags: tags)

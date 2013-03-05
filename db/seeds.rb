@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 if %w(test development qa).include? Rails.env
+  puts "Seeding in #{Idea.connection_config[:database]}..."
 
   Tag.delete_all
   Event.delete_all
