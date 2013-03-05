@@ -9,6 +9,7 @@ if Rails.env.test? or Rails.env.development?
     namespace :test do
       task :prepare => [ :environment, "search:ensure_aliases_and_indexes_exist:test" ] do
         Rake::Task["db:seed"].invoke
+        Rake::Task["search:import"].invoke
       end
     end
   end
