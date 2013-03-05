@@ -4,6 +4,14 @@ class Action < ActiveRecord::Base
 
   index_name { "#{Rails.env}-#{table_name}" }
   
+  mapping do
+    indexes :id,              :index    => :not_analyzed
+    indexes :idea_id,         :index    => :not_analyzed
+    indexes :created_at,      :type => 'date', :include_in_all => false
+    indexes :updated_at,      :type => 'date', :include_in_all => false
+    indexes :description,     :boost => 100
+  end  
+      
   attr_accessible :description
 
   belongs_to :idea

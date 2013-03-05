@@ -3,6 +3,14 @@ class Idea < ActiveRecord::Base
   include Tire::Model::Callbacks
 
   index_name { "#{Rails.env}-#{table_name}" }
+
+  mapping do
+    indexes :id,           :index    => :not_analyzed
+    indexes :member_id,    :index    => :not_analyzed
+    indexes :created_at,   :type => 'date', :include_in_all => false
+    indexes :updated_at,   :type => 'date', :include_in_all => false
+    indexes :description,  :boost => 100
+  end  
       
   belongs_to :member
   validates_presence_of :member
