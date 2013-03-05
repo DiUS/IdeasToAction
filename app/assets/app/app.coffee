@@ -27,8 +27,18 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
         window.ajaxCounter--
         $q.reject(response)
   ).
+  factory("errorsInterceptor", ($q, $location) ->
+    (promise) ->
+      promise.then ((response) ->
+        response
+      ), (response) ->
+        if response.status == 401
+          $location.path("/unauthorised")
+        $q.reject response
+  ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
       $httpProvider.responseInterceptors.push('ajaxCounterInterceptor')
+      $httpProvider.responseInterceptors.push('errorsInterceptor')
       $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
         window.ajaxCounter++
         data
@@ -43,5 +53,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui' ]).
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
         when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
+        when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
         otherwise( {redirectTo: '/home'} )
     ]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227234212) do
+ActiveRecord::Schema.define(:version => 20130304001225) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
@@ -52,11 +52,12 @@ ActiveRecord::Schema.define(:version => 20130227234212) do
 
   create_table "members", :force => true do |t|
     t.string   "persistence_token"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "username"
     t.string   "crypted_password"
     t.string   "password_salt"
+    t.string   "role",              :default => "REGULAR"
   end
 
   create_table "reactions", :force => true do |t|

@@ -1,5 +1,6 @@
 class ActionsController < ApplicationController
   inherit_resources
+  authorize_resource
 
   belongs_to :idea, :optional => true
 
