@@ -18,13 +18,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
   ).
-  factory('EventResource', ($resource) ->
-    $resource('/events/:eventId', 
-      { eventId: '@eventId' },
-      {
-        update: { method: 'PUT' }
-      })
-  ).
   factory('ajaxCounterInterceptor', ($q, $window) ->
     (promise) ->
       promise.then (response) ->
