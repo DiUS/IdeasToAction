@@ -1,0 +1,13 @@
+
+#search
+  .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
+    Search
+    .home-page.pull-right(ng-href="/home")
+      %i.icon-home
+  .navbar.follow-scroll
+    .navbar-inner
+      %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
+        %input#search-text.search-query(type='text' ng-model='query.text' size='30' required='' placeholder='search')
+  .content  
+    .results
+      .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")

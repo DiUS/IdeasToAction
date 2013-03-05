@@ -113,6 +113,17 @@ body {
   font-weight: bold;
 }
 
+.content textarea, .sections textarea, .content input, .content textarea {
+  width: 94%;
+  font-size: 1.15em !important;
+  padding: 10px !important;
+}
+
+.content textarea, .sections textarea {
+  margin: 0 auto;
+  height: 3em;
+}
+
 .content {
 
   padding: {
@@ -269,13 +280,22 @@ body {
   }
 }
 
-.reload, .home-page {
+.login-panel i {
+  font-size: 30px;
+  color: #ddd;
+}
+
+.reload, .home-page, .search-button {
   font-size: 30px;
   color: #ddd;
   position: absolute;
   right: 25px;
   width: 25px;
   top: 22px;
+}
+
+.search-button {
+  right: 60px;
 }
 
 .hint {
