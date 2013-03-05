@@ -14,7 +14,7 @@ describe 'Actionman', ->
       beforeEach inject ($rootScope, $controller) ->
         EventResource = jasmine.createSpy('EventResource').andReturn(event)
         scope = $rootScope.$new()
-        ctrl = $controller( 'EventFormCtrl', { $scope: scope, $routeParams: { }, EventResource: EventResource })
+        ctrl = $controller( 'EventFormCtrl', { $scope: scope, $routeParams: { eventId: '1' }, EventResource: EventResource })
 
       it 'should set the event correctly', ->
         expect(scope.event).toEqual(event);
@@ -32,7 +32,7 @@ describe 'Actionman', ->
       describe 'when deleting an event', ->
         it 'should delete the resource', ->
           scope.delete()
-          expect(event.$delete).toHaveBeenCalled()
+          expect(event.$delete).toHaveBeenCalledWith({ eventId: '1' }, jasmine.any(Function), jasmine.any(Function))
 
     describe 'existing event provided', ->
       beforeEach inject ($rootScope, $controller) ->
