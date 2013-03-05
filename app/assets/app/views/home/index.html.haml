@@ -1,7 +1,7 @@
 #home
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
     Ideas into action
-    %span(ng-controller = "AuthCtrl" class="hidden-phone")
+    %span.hidden-phone(ng-controller = "AuthCtrl")
       .login-panel
         %span(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
           %a(ng-href = "/login")
