@@ -21,7 +21,7 @@ describe "Event edit page", js: true, acceptance: true do
     page.find('#hero_image_url').value.should eql event.hero_image_url
   end
 
-  it 'should be able to change the details of the event' do
+  xit 'should be able to change the details of the event' do
     time = Time.now
     fill_in 'description', with: "changed on: #{time}"
     page.find('button[ng-click="update()"]').click
