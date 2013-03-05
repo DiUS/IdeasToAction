@@ -48,11 +48,18 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
       $routeProvider.
         when('/config',                           { templateUrl: 'assets/views/admin/config.html',       controller: ConfigCtrl }).
         when('/home',                             { templateUrl: 'assets/views/home/index.html',         controller: HomeCtrl }).
+
+        # Events
         when('/events/new',                       { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
         when('/events/edit/:eventId',             { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
         when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
-        when('/events/:eventId/talks',            { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
-        when('/events/:eventId/talks/:talkId',    { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
+
+        # Talks
+        when('/events/:eventId/talks/new',          { templateUrl: 'assets/views/talks/form.html',         controller: TalkFormCtrl }).
+        when('/events/:eventId/talks/edit/:talkId', { templateUrl: 'assets/views/talks/form.html',         controller: TalkFormCtrl }).
+        when('/events/:eventId/talks',              { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
+        when('/events/:eventId/talks/:talkId',      { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
+
         when('/ideas/:ideaId',                    { templateUrl: 'assets/views/ideas/idea.html',         controller: IdeaCtrl }).
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
