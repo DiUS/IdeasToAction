@@ -1,4 +1,9 @@
 class Action < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
+  index_name { "#{Rails.env}-#{table_name}" }
+  
   attr_accessible :description
 
   belongs_to :idea

@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   inherit_resources
   authorize_resource
 
+  respond_to :json
+
   def index
     render json: Event.all
   end

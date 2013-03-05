@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EventsController do
   def valid_attributes
-    { }
+    { :name => 'event', :description => 'description', :hero_image_url => 'http://www.google.com' }
   end
 
   def valid_session
