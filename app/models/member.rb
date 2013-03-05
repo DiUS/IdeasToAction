@@ -1,5 +1,9 @@
 class Member < ActiveRecord::Base
-  attr_accessible :persistence_token, :username, :password
+  ROLE_REGULAR = "REGULAR"
+  ROLE_CONTENT_ADMIN = "CONTENT_ADMIN"
+  ROLE_GLOBAL_ADMIN = "GLOBAL_ADMIN"
+
+  attr_accessible :persistence_token, :username, :password, :role
 
   acts_as_authentic do |c|
     c.validate_password_field = false
@@ -11,4 +15,12 @@ class Member < ActiveRecord::Base
   has_many :reactions
 
   has_many :actions, :through => :actions_taken
+
+  def content_admin?
+    self.role == ROLE_CONTENT_ADMIN
+  end
+
+  def global_admin?
+    self.role ==  ROLE_GLOBAL_ADMIN
+  end
 end

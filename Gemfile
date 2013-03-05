@@ -12,7 +12,9 @@ gem 'foreman-export-initscript', :git => 'git://github.com/Draiken/foreman-expor
 
 gem 'jquery-rails'
 
+# authentication and authorization
 gem 'authlogic', "~> 3.2.0"
+gem 'cancan'
 
 # Search
 gem "tire", :git => "git://github.com/karmi/tire.git"

@@ -1,4 +1,6 @@
 class MemberController < ApplicationController
+  authorize_resource
+
   respond_to :json
 
   def show
