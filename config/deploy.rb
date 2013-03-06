@@ -42,16 +42,17 @@ namespace :deploy do
     desc 'Create the database'
     task :create do
       puts "\n\n=== Creating the Database! ===\n\n"
-      create_sql = <<-SQL
-        CREATE DATABASE $DB_NAME;
-      SQL
-      run "mysql --user=$DB_USERNAME --password=$DB_PASSWORD --execute=\"#{create_sql}\""
+      # create_sql = <<-SQL
+      #   CREATE DATABASE $DB_NAME;
+      # SQL
+      # run "mysql --user=$DB_USERNAME --password=$DB_PASSWORD --execute=\"#{create_sql}\""
+      run "cd #{release_path}; bundle exec rake db:create RAILS_ENV=#{rails_env}"
     end
 
     desc 'Seed the database'
     task :seed do
       puts "\n\n=== Populating the Database! ===\n\n"
-      run "cd #{release_path}; rake db:seed RAILS_ENV=#{rails_env}"
+      run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
     end
   end
 

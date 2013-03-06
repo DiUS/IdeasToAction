@@ -2,7 +2,7 @@ require 'aws-sdk'
 require 'aws/s3'
 
 namespace :actionman do
-  desc 'Upload cloudformation templates to s3'
+  desc 'Upload CloudFormation templates to s3'
   task :upload_templates => :environment do
     s3 = AWS::S3.new(
       :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],

@@ -1,0 +1,449 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "Actionman Production Template. Single instance Rails stack using with nginx and ElasticSearch. Backed by an Amazon RDS database. Combined inspiration: zerobot rails single instance and https://s3.amazonaws.com/cloudformation-templates-us-east-1/Rails_Single_Instance_With_RDS.template ",
+
+  "Parameters" : {
+
+    "KeyName" : {
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
+      "Type" : "String"
+    },
+    "InstanceType" : {
+      "Description" : "WebServer EC2 instance type",
+      "Type" : "String",
+      "Default" : "m1.medium",
+      "AllowedValues" : [ "t1.micro","m1.small","m1.medium","m1.large","m1.xlarge","m2.xlarge","m2.2xlarge","m2.4xlarge","c1.medium","c1.xlarge","cc1.4xlarge","cc2.8xlarge","cg1.4xlarge"],
+      "ConstraintDescription" : "must be a valid EC2 instance type."
+    },
+    "ProjectName" : {
+      "Description" : "Name of your project",
+      "Type" : "String"
+    },
+    "EnvironmentName" : {
+      "Description" : "Name of the environment",
+      "Type" : "String"
+    },
+    "HostedZone" : {
+      "Description" : "The DNS name of an existing Amazon Route 53 hosted zone",
+      "Type" : "String"
+    },
+    "AwsAccessKey" : {
+      "Description" : "Your AWS access key",
+      "Type" : "String"
+    },
+    "AwsSecretAccessKey" : {
+      "Description" : "Your AWS secret access key",
+      "Type" : "String"
+    },
+    "DBName": {
+      "Default": "MyDatabase",
+      "Description" : "MySQL database name",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "64",
+      "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+      "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+    },
+
+    "DBUsername": {
+      "Description" : "Username for MySQL database access",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "16",
+      "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+      "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+    },
+
+    "DBPassword": {
+      "Description" : "Password MySQL database access",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "41",
+      "AllowedPattern" : "[a-zA-Z0-9]*",
+      "ConstraintDescription" : "must contain only alphanumeric characters."
+    },
+
+    "DBAllocatedStorage": {
+      "Default": "5",
+      "Description" : "The size of the database (Gb)",
+      "Type": "Number",
+      "MinValue": "5",
+      "MaxValue": "1024",
+      "ConstraintDescription" : "must be between 5 and 1024Gb."
+    },
+
+    "DBInstanceClass": {
+      "Default": "db.m1.medium",
+      "Description" : "The database instance type",
+      "Type": "String",
+      "AllowedValues" : [ "db.m1.small", "db.m1.medium", "db.m1.large", "db.m1.xlarge", "db.m2.xlarge", "db.m2.2xlarge", "db.m2.4xlarge" ],
+      "ConstraintDescription" : "must select a valid database instance type."
+    }
+  },
+
+  "Mappings" : {
+    "AWSInstanceType2Arch" : {
+      "t1.micro"    : { "Arch" : "64" },
+      "m1.small"    : { "Arch" : "64" },
+      "m1.medium"   : { "Arch" : "64" },
+      "m1.large"    : { "Arch" : "64" },
+      "m1.xlarge"   : { "Arch" : "64" },
+      "m2.xlarge"   : { "Arch" : "64" },
+      "m2.2xlarge"  : { "Arch" : "64" },
+      "m2.4xlarge"  : { "Arch" : "64" },
+      "c1.medium"   : { "Arch" : "64" },
+      "c1.xlarge"   : { "Arch" : "64" },
+      "cc1.4xlarge" : { "Arch" : "64HVM" },
+      "cc2.8xlarge" : { "Arch" : "64HVM" },
+      "cg1.4xlarge" : { "Arch" : "64HVM" }
+    },
+
+    "AWSRegionArch2AMI" : {
+      "us-east-1"      : { "32" : "ami-31814f58", "64" : "ami-1b814f72", "64HVM" : "ami-0da96764" },
+      "us-west-2"      : { "32" : "ami-38fe7308", "64" : "ami-30fe7300", "64HVM" : "NOT_YET_SUPPORTED" },
+      "us-west-1"      : { "32" : "ami-11d68a54", "64" : "ami-1bd68a5e", "64HVM" : "NOT_YET_SUPPORTED" },
+      "eu-west-1"      : { "32" : "ami-973b06e3", "64" : "ami-953b06e1", "64HVM" : "NOT_YET_SUPPORTED" },
+      "ap-southeast-1" : { "32" : "ami-b4b0cae6", "64" : "ami-beb0caec", "64HVM" : "NOT_YET_SUPPORTED" },
+      "ap-southeast-2" : { "32" : "ami-b3990e89", "64" : "ami-bd990e87", "64HVM" : "NOT_YET_SUPPORTED" },
+      "ap-northeast-1" : { "32" : "ami-0644f007", "64" : "ami-0a44f00b", "64HVM" : "NOT_YET_SUPPORTED" },
+      "sa-east-1"      : { "32" : "ami-3e3be423", "64" : "ami-3c3be421", "64HVM" : "NOT_YET_SUPPORTED" }
+    }
+  },
+
+  "Resources" : {
+
+
+    "WebServer": {
+      "Type": "AWS::EC2::Instance",
+      "Metadata" : {
+        "dupondius::template" : "rails_single_instance",
+        "AWS::CloudFormation::Init" : {
+          "config" : {
+            "packages" : {
+              "yum" : {
+                "gcc-c++"      : [],
+                "make"         : [],
+                "libcurl-devel.x86_64" : [],
+                "ruby19-devel.x86_64" :[],
+                "rubygems19"     : [],
+                "libxml2"      : [],
+                "libxml2-devel" : [],
+                "libxslt"       : [],
+                "libxslt-devel" : [],
+                "mysql"        : [],
+                "mysql-server" : [],
+                "mysql-devel"  : [],
+                "mysql-libs"   : [],
+                "nginx"         : [],
+                "git.x86_64"    : []
+              }
+            },
+
+            "groups" : {
+                "www" : {}
+            },
+
+            "users" : {
+              "deployer" : {
+                "groups" : ["www"],
+                "homeDir" : "/home/deployer"
+              }
+            },
+
+            "files" : {
+              "/usr/sbin/update-route53-dns" : {
+                "source" : "https://s3.amazonaws.com/dupondius_config/update-route53-dns",
+                "mode"   : "000744",
+                "owner"  : "root",
+                "group"  : "root"
+              },
+
+              "/usr/sbin/configure-nginx" : {
+                "source" : "https://s3.amazonaws.com/dupondius_config/configure-nginx",
+                "mode"   : "000744",
+                "owner"  : "root",
+                "group"  : "root"
+              },
+
+              "/etc/yum.repos.d/s3tools.repo" : {
+                "content" : { "Fn::Join" : ["", [
+                  "[s3tools]\n",
+                  "name=Tools for managing Amazon S3 - Simple Storage Service (RHEL_6)\n",
+                  "type=rpm-md\n",
+                  "baseurl=http://s3tools.org/repo/RHEL_6/\n",
+                  "gpgcheck=1\n",
+                  "gpgkey=http://s3tools.org/repo/RHEL_6/repodata/repomd.xml.key\n",
+                  "enabled=1\n"
+                  ]] },
+                "mode" : "000644",
+                "owner" : "root",
+                "group" : "root"
+              },
+
+              "/home/deployer/.s3cfg" : {
+                "source" : "https://s3.amazonaws.com/dupondius_config/s3cfg",
+                "mode"   : "000644",
+                "owner"  : "deployer",
+                "group"  : "deployer"
+              },
+
+              "/usr/sbin/update-config" : {
+                "source" : "https://s3.amazonaws.com/dupondius_config/update-config",
+                "mode"   : "000744",
+                "owner"  : "root",
+                "group"  : "root"
+              },
+
+              "/etc/nginx/nginx.conf" : {
+                "source" : "https://s3.amazonaws.com/dupondius_config/nginx.conf",
+                "mode"   : "000644",
+                "owner"  : "root",
+                "group"  : "root"
+              },
+
+              "/tmp/setup.mysql" : {
+                "content" : { "Fn::Join" : ["", [
+                  "CREATE USER '", { "Ref" : "DBUsername" }, "'@'localhost' IDENTIFIED BY '", { "Ref" : "DBPassword" }, "';\n",
+                  "GRANT ALL ON ", { "Ref" : "DBName" }, ".* TO '", { "Ref" : "DBUsername" }, "'@'localhost';\n",
+                  "FLUSH PRIVILEGES;\n"
+                    ]]},
+                "mode"  : "000644",
+                "owner" : "root",
+                "group" : "root"
+              },
+
+              "/etc/default/app" : {
+               "content" : { "Fn::Join" : ["", [
+                  "ENVIRONMENT_NAME=", { "Ref" : "EnvironmentName" }, "\n",
+                  "PROJECT_NAME=", { "Ref" : "ProjectName" }, "\n",
+                  "ZONE=", { "Ref" : "HostedZone" }, "\n",
+                  "TTL=600\n",
+                  "AWS_ACCESS_KEY_ID=", { "Ref" : "AwsAccessKey" }, "\n",
+                  "AWS_SECRET_ACCESS_KEY=", { "Ref" : "AwsSecretAccessKey" }, "\n",
+                  "DB_NAME=", { "Ref" : "DBName" }, "\n",
+                  "DB_USERNAME=", { "Ref" : "DBUsername" }, "\n",
+                  "DB_PASSWORD=", { "Ref" : "DBPassword" }, "\n",
+                  "DB_HOST=", { "Fn::GetAtt": [ "MySQLDatabase", "Endpoint.Address" ] }, "\n",
+                  "DB_PORT=", { "Fn::GetAtt": [ "MySQLDatabase", "Endpoint.Port" ] }, "\n"
+                  ]]},
+
+                "mode"  : "000644",
+                "owner" : "root",
+                "group" : "root"
+              },
+
+              "/etc/profile.d/dupondius.sh" : {
+               "content" : { "Fn::Join" : ["", [
+                  "source /etc/default/app\n"
+                  ]]},
+                "mode"  : "000755",
+                "owner" : "root",
+                "group" : "root"
+              },
+
+              "/home/deployer/.ssh/environment" : {
+               "content" : { "Fn::Join" : ["", [
+                  "DB_NAME=", { "Ref" : "DBName" }, "\n",
+                  "DB_USERNAME=", { "Ref" : "DBUsername" }, "\n",
+                  "DB_PASSWORD=", { "Ref" : "DBPassword" }, "\n",
+                  "DB_SOCKET=/var/lib/mysql/mysql.sock\n"
+                  ]]},
+                "mode"  : "000644",
+                "owner" : "deployer",
+                "group" : "deployer"
+              }
+          },
+          "services" : {
+            "sysvinit" : {
+              "nginx" : {
+                "enabled" : "true",
+                "ensureRunning" : "true",
+                "files" : ["/etc/nginx/nginx.conf"]
+              },
+              "mysqld" : {
+                "enabled"       : "true",
+                "ensureRunning" : "true"
+              }
+              }
+            }
+          }
+        }
+      },
+
+      "Properties": {
+        "KeyName" : { "Ref" : "KeyName" },
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
+                          { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "InstanceType"   : { "Ref" : "InstanceType" },
+        "SecurityGroups" : [ {"Ref" : "FrontendGroup"} ],
+        "Tags" : [ {"Key" : "dupondius:project", "Value" : { "Ref" : "ProjectName"} },
+                   {"Key" : "dupondius:environment", "Value" : { "Ref" : "EnvironmentName"} }
+                 ],
+        "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
+          "#!/bin/bash -v\n",
+          "yum update -y aws-cfn-bootstrap\n",
+
+          "# Helper function\n",
+          "function error_exit\n",
+          "{\n",
+          "  /opt/aws/bin/cfn-signal -e 1 -r \"$1\" '", { "Ref" : "WaitHandle" }, "'\n",
+          "  exit 1\n",
+          "}\n",
+
+          "# Install Rails packages\n",
+          "/opt/aws/bin/cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r WebServer ",
+          "    --access-key ", { "Ref" : "AwsAccessKey" },
+          "    --secret-key ", { "Ref" : "AwsSecretAccessKey" },
+          "    --region ", { "Ref" : "AWS::Region" }, " || error_exit 'Failed to run cfn-init'\n",
+
+          "# Install s3cmd used for deployment\n",
+          "yum install -y s3cmd\n",
+          "echo \"access_key = ", {"Ref" : "AwsAccessKey"}, "\" >> /home/deployer/.s3cfg\n",
+          "echo \"secret_key = ", {"Ref" : "AwsSecretAccessKey"}, "\" >> /home/deployer/.s3cfg\n",
+
+          "# Allow the environment to the loaded for the deployer\n",
+          "echo \"PermitUserEnvironment yes\" >> /etc/ssh/sshd_config\n",
+          "/etc/init.d/sshd restart\n",
+
+          "# Use Ruby 1.9\n",
+          "rm /usr/bin/ruby\n",
+          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
+          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
+          "gem install bundler --no-rdoc --no-ri\n",
+
+          "# Give the deployer user login rights\n",
+          "chsh -s /bin/sh deployer\n",
+          "mkdir -p /home/deployer/.ssh\n",
+          "curl https://s3.amazonaws.com/dupondius_config/", { "Ref" : "ProjectName" }, ".pub >> /home/deployer/.ssh/authorized_keys\n",
+          "chown -R deployer:deployer /home/deployer\n",
+
+          "# Give the deployer permission to /opt\n",
+          "chown root:www /opt\n",
+          "chmod g+rxw /opt\n",
+
+          "# Give the deployer sudo permission to the project /etc/init.d scripts\n",
+          "echo \"deployer ALL=(root)NOPASSWD:/bin/mv,/sbin/chkconfig,/etc/init.d/", {"Ref" : "ProjectName"}, " *\" > /etc/sudoers.d/deployer\n",
+          "chmod 0440 /etc/sudoers.d/deployer\n",
+
+          "# Add nginx to the www group\n",
+          "usermod -a -G www nginx\n",
+
+          "# Tools to support automated DNS update using Route53\n",
+          "easy_install  -U pip\n",
+          "pip install cli53\n",
+
+          "echo \"/usr/sbin/update-route53-dns\" >> /etc/rc.local\n",
+
+          "# Support for config server to allow dynamic config updates\n",
+          "echo \"/usr/sbin/update-config\" >> /etc/rc.local\n",
+          "echo \"source /etc/default/app\" >> /etc/rc.local\n",
+          "/usr/sbin/update-config\n",
+
+          "# Configure nginx\n",
+          "/usr/sbin/configure-nginx rails\n",
+          "/etc/init.d/nginx restart\n",
+
+          "#add new relic server monitoring\n",
+          "rpm -Uv http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm\n",
+          "yum install -y newrelic-sysmond\n",
+
+          "#set newrelic license key\n",
+          "/usr/sbin/nrsysmond-config --set license_key=$NEW_RELIC_LICENSE_KEY\n",
+          "echo \"/usr/sbin/nrsysmond-config --set license_key=\\$NEW_RELIC_LICENSE_KEY\" >> /etc/rc.local\n",
+          "echo \"/etc/init.d/newrelic-sysmond restart\" >> /etc/rc.local\n",
+
+          "# install babushka \n",
+          "export PATH=/usr/local/bin:$PATH \n",
+          "sh -c \"`curl https://gist.github.com/redbeard/af31558c7912785c3010/raw/a435a2794f6582a5ce61e285e46209eb4a559e06/babushka-install.sh`\"  \n",
+          "which babushka || error_exit 'Failed to install babushka' \n",
+
+          "# Force ruby1.9 symlinks if overriden by a yum package\n",
+          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
+          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
+
+          "# use babushka to install elasticsearch  \n",
+          "ruby1.9 -S `which babushka` --defaults politburo:elasticsearch-running \n",
+
+          "# All is well so signal success\n",
+          "/opt/aws/bin/cfn-signal -e 0 -r \"Dashboard application setup complete\" '", { "Ref" : "WaitHandle" }, "'\n"
+        ]]}}
+      }
+    },
+
+    "WaitHandle" : {
+      "Type" : "AWS::CloudFormation::WaitConditionHandle"
+    },
+
+    "WaitCondition" : {
+      "Type" : "AWS::CloudFormation::WaitCondition",
+      "DependsOn" : "WebServer",
+      "Properties" : {
+        "Handle" : {"Ref" : "WaitHandle"},
+        "Timeout" : "1500"
+      }
+    },
+
+    "FrontendGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Enable SSH and HTTP access",
+        "SecurityGroupIngress" : [ {
+          "IpProtocol" : "tcp",
+          "FromPort" : "22",
+          "ToPort" : "22",
+          "CidrIp" : "0.0.0.0/0"
+        }, {
+          "IpProtocol" : "tcp",
+          "FromPort" : "80",
+          "ToPort" : "80",
+          "CidrIp" : "0.0.0.0/0"
+        } ]
+
+      }
+    },
+
+    "DBSecurityGroup": {
+      "Type": "AWS::RDS::DBSecurityGroup",
+      "Properties": {
+        "GroupDescription": "Grant database access to web server",
+        "DBSecurityGroupIngress": {
+          "EC2SecurityGroupName": { "Ref": "FrontendGroup" }
+        }
+      }
+    },
+
+    "MySQLDatabase": {
+      "Type": "AWS::RDS::DBInstance",
+      "Properties": {
+        "Engine" : "MySQL",
+        "DBName" : { "Ref": "DBName" },
+        "MultiAZ" : "false",
+        "MasterUsername": { "Ref": "DBUsername" },
+        "MasterUserPassword": { "Ref" : "DBPassword" },
+        "DBInstanceClass": { "Ref" : "DBInstanceClass" },
+        "DBSecurityGroups": [ { "Ref": "DBSecurityGroup" } ],
+        "AllocatedStorage": { "Ref" : "DBAllocatedStorage" }
+      }
+    },
+
+    "DNSRecord" : {
+      "Type" : "AWS::Route53::RecordSet",
+      "Properties" : {
+        "HostedZoneName" : { "Fn::Join" : [ "", [{"Ref" : "HostedZone"}, "." ]]},
+        "Comment" : "CNAME for the web instance.",
+        "Name" : { "Fn::Join" : [ "", [{"Ref" : "EnvironmentName"}, ".", {"Ref" : "ProjectName"}, ".", {"Ref" : "HostedZone"}, "."]]},
+        "Type" : "CNAME",
+        "TTL" : "600",
+        "ResourceRecords" : [{ "Fn::GetAtt" : [ "WebServer", "PublicDnsName" ]}]
+      }
+    }
+  },
+
+  "Outputs" : {
+    "WebsiteURL" : {
+      "Value" : { "Fn::Join" : ["", ["http://", {"Ref" : "EnvironmentName"}, ".", {"Ref" : "ProjectName"}, ".", {"Ref" : "HostedZone"}]] },
+      "Description" : "URL for newly created Dupondius Instance"
+    }
+  }
+}

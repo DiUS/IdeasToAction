@@ -335,14 +335,15 @@
           "echo \"/usr/sbin/nrsysmond-config --set license_key=\\$NEW_RELIC_LICENSE_KEY\" >> /etc/rc.local\n",
           "echo \"/etc/init.d/newrelic-sysmond restart\" >> /etc/rc.local\n",
 
-          "# Force ruby1.9 symlinks if overriden by a yum package\n",
-          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
-          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
-
           "# install babushka \n",
           "export PATH=/usr/local/bin:$PATH \n",
           "sh -c \"`curl https://gist.github.com/redbeard/af31558c7912785c3010/raw/a435a2794f6582a5ce61e285e46209eb4a559e06/babushka-install.sh`\"  \n",
           "which babushka || error_exit 'Failed to install babushka' \n",
+
+          "# Force ruby1.9 symlinks if overriden by a yum package\n",
+          "ln -sf /usr/bin/ruby1.9 /usr/bin/ruby\n",
+          "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
+
           "# use babushka to install elasticsearch  \n",
           "ruby1.9 -S `which babushka` --defaults politburo:elasticsearch-running \n",
 
