@@ -5,4 +5,9 @@ module LoginMacros
     fill_in "password", :with => member.password
     find("#btn-login").click
   end
+
+  def logout
+    visit "#/home"
+    find(".icon-road").click
+  end
 end
