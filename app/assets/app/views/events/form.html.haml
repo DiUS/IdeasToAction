@@ -2,8 +2,12 @@
   %div(ng-switch="" on="!!event.id")
     .header.main-header(ng-switch-default="")
       New Event
+      .home-page.pull-right(ng-href="/home")
+        %i.icon-home
     .header.main-header(ng-switch-when="true")
       Event {{event.name}}
+      .home-page.pull-right(ng-href="/home")
+        %i.icon-home
   .content
     %form.form-horizontal
       %bootstrap-input(model="event.name" key="name" description="Event Name")
@@ -23,3 +27,6 @@
         .controls(ng-switch-when="true")
           %button.btn(ng-click="update()") Update
           %button.btn.btn-danger(ng-click="delete()") Delete
+
+  .sections
+    %collapsible(title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_edit_collapsible_item.html')
