@@ -10,10 +10,7 @@ class EventsController < ApplicationController
 
   def update
     params['event'].delete 'talks'
-
-    update! do |format|
-      format.json { render json: @event, methods: [:talks] }
-    end
+    update!
   end
 
   # GET /events/1

@@ -51,8 +51,6 @@ describe EventsController do
       it 'should update the event' do
         put :update, { :id => event.id, :event => attrs, :format => :json }, valid_session
         response.should be_success
-        event_json = JSON.parse(response.body)
-        event_json['name'].should eql 'my new event name'
       end
     end
 
