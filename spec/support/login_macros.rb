@@ -3,6 +3,6 @@ module LoginMacros
     visit "#/login"
     fill_in "username", :with => member.username
     fill_in "password", :with => member.password
-    find("#login-btn").click
+    find("#btn-login").click
   end
 end
