@@ -30,7 +30,6 @@ ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 set :stages, %w(production qa canary development)
 require 'capistrano/ext/multistage'
 
-after "deploy:setup", 'deploy:db:create'
 after "deploy:update_code", "deploy:migrate"
 after "deploy:update_code", "deploy:search:import"
 after 'deploy:update', 'foreman:export'
@@ -41,6 +40,7 @@ namespace :deploy do
   namespace :db do
     desc 'Create the database'
     task :create do
+      unless 
       puts "\n\n=== Creating the Database! ===\n\n"
       create_sql = <<-SQL
         CREATE DATABASE $DB_NAME;
