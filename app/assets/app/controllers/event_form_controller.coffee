@@ -1,2 +1,7 @@
-window.EventFormCtrl = ($scope, $routeParams, FormResourceService, EventResource) ->
-  FormResourceService.bind 'event', $scope, EventResource, { eventId: $routeParams.eventId }
+window.EventFormCtrl = ($scope, $routeParams, $navigate, FormResourceService, EventResource) ->
+  FormResourceService.bind
+    id:              'event'
+    scope:           $scope
+    resource:        EventResource
+    params:          { eventId: $routeParams.eventId }
+    onDeleteSuccess: -> $navigate.go('/events/edit', 'slide')

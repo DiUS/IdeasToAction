@@ -19,7 +19,11 @@ describe 'FormResourceService', ->
   describe '#bind', ->
     describe 'adds attributes to the $scope', ->
       beforeEach inject (FormResourceService) ->
-        FormResourceService.bind id, scope, Resource, params
+        FormResourceService.bind
+          id:       id
+          scope:    scope
+          resource: Resource
+          params:   params
 
       it 'should set the resource correctly', ->
         expect(scope[id]).toEqual(resource);
@@ -48,7 +52,11 @@ describe 'FormResourceService', ->
     describe 'existing resource provided', ->
       beforeEach inject (FormResourceService) ->
         params = talkId: 1
-        FormResourceService.bind id, scope, Resource, params
+        FormResourceService.bind
+          id:       id
+          scope:    scope
+          resource: Resource
+          params:   params
 
       it 'should get the resource', ->
         expect(resource.$get).toHaveBeenCalled()
@@ -56,7 +64,11 @@ describe 'FormResourceService', ->
   describe 'successfully interacting with the resource', ->
     beforeEach inject (FormResourceService) ->
         params = talkId: 1
-        FormResourceService.bind id, scope, Resource, params
+        FormResourceService.bind
+          id:       id
+          scope:    scope
+          resource: Resource
+          params:   params
 
     it 'should clear any errors', ->
       scope.errors = 'lalalala'
@@ -79,7 +91,11 @@ describe 'FormResourceService', ->
   describe 'error interacting with the resource', ->
     beforeEach inject (FormResourceService) ->
         params = talkId: 1
-        FormResourceService.bind id, scope, Resource, params
+        FormResourceService.bind
+          id:       id
+          scope:    scope
+          resource: Resource
+          params:   params
 
     it 'should set the errors', ->
       scope.errors = null
