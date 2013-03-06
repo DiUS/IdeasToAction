@@ -1,0 +1,7 @@
+#talks-and-events.loading
+  .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
+    Select Event to Edit
+    .home-page.pull-right(ng-href="/home")
+      %i.icon-home
+  .sections
+    %collapsible(title='Events' type='events' collection='events' item-template='assets/views/events/event_edit_collapsible_item.html')
