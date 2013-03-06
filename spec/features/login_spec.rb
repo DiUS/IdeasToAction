@@ -8,6 +8,13 @@ describe "login", :js => true do
     page.should have_content(content_admin_member.username)
   end
 
+  it 'should allow the logged in user to edit all events' do
+    page.should_not have_selector '[ng-href="/events/edit"]'
+    login(content_admin_member)
+    visit "#/home"
+    page.should have_selector '[ng-href="/events/edit"]'
+  end
+
   it "should logout the content admin" do
     login(content_admin_member)
     logout
