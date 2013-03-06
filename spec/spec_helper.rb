@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 
 require 'capybara/rails'
+require 'capybara/rspec'
 require "authlogic/test_case"
 include Authlogic::TestCase
 
@@ -43,4 +44,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include(LoginMacros)
 end
