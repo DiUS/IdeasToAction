@@ -42,11 +42,10 @@ namespace :deploy do
     desc 'Create the database'
     task :create do
       puts "\n\n=== Creating the Database! ===\n\n"
-      # create_sql = <<-SQL
-      #   CREATE DATABASE $DB_NAME;
-      # SQL
-      # run "mysql --user=$DB_USERNAME --password=$DB_PASSWORD --execute=\"#{create_sql}\""
-      run "cd #{release_path}; bundle exec rake db:create RAILS_ENV=#{rails_env}"
+      create_sql = <<-SQL
+        CREATE DATABASE $DB_NAME;
+      SQL
+      run "mysql --host=$DB_HOST --port=$DB_PORT --user=$DB_USERNAME --password=$DB_PASSWORD --execute=\"#{create_sql}\""
     end
 
     desc 'Seed the database'
