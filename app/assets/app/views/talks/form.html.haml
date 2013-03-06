@@ -7,7 +7,13 @@
   .content
     %form.form-horizontal
       %bootstrap-input(model="talk.title" key="title" description="Talk Title")
-      %bootstrap-input(model="talk.description" key="description" description="Talk Description")
+
+      .control-group(ng-class="{error: !!errors['description']}")
+        %label.control-label(for="description") Talk Description
+        .controls
+          %textarea(id="description" type="text" placeholder="Talk Description" ng-model="talk.description")
+          %span.help-inline(ng-class="{hide: !errors['description']}") {{errors['description'][0]}}
+
       %bootstrap-input(model="talk.hero_image_url" key="hero_image_url" description="Talk Hero Image URL")
       %bootstrap-input(model="talk.ted_talk_url" key="ted_talk_url" description="TED Talk URL")
           

@@ -7,7 +7,13 @@
   .content
     %form.form-horizontal
       %bootstrap-input(model="event.name" key="name" description="Event Name")
-      %bootstrap-input(model="event.description" key="description" description="Event Description")
+
+      .control-group(ng-class="{error: !!errors['description']}")
+        %label.control-label(for="description") Event Description
+        .controls
+          %textarea(id="description" type="text" placeholder="Event Description" ng-model="event.description")
+          %span.help-inline(ng-class="{hide: !errors['description']}") {{errors['description'][0]}}
+
       %bootstrap-input(model="event.logo_image_url" key="logo_image_url" description="Event Logo Image URL")
       %bootstrap-input(model="event.hero_image_url" key="hero_image_url" description="Event Hero Image URL")
           
