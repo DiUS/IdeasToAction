@@ -10,7 +10,7 @@ describe 'FormResourceService', ->
     $get:    jasmine.createSpy('$get')
   params = {}
 
-  beforeEach(module('Actionman'));
+  beforeEach module('Actionman')
 
   beforeEach inject ($rootScope) ->
     Resource = jasmine.createSpy('Resource').andReturn(resource)
