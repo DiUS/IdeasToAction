@@ -1,5 +1,5 @@
 #idea-edit
-  .header.main-header(ng-click = '$parent.resetToTop()')
+  .header.main-header(ng-class="{'follow-scroll': !confirmDialogShown}" ng-click='$parent.resetToTop()')
     Submit an idea
     .cancel-button#cancel-button.pull-right(ng-click="confirmDialogShown=true")
       &nbsp;&nbsp;&nbsp;
