@@ -40,7 +40,6 @@ namespace :deploy do
   namespace :db do
     desc 'Create the database'
     task :create do
-      unless 
       puts "\n\n=== Creating the Database! ===\n\n"
       create_sql = <<-SQL
         CREATE DATABASE $DB_NAME;
