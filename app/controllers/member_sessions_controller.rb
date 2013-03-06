@@ -7,7 +7,7 @@ class MemberSessionsController < ApplicationController
     if @member_session.save
       render json: { success: true, id: current_member.id, username: current_member.username}
     else
-      render json: { error: "Invalid username or password" }, :status => :unauthorized
+      render json: { error: "Invalid username or password" }, :status => :unprocessable_entity
     end
   end
   
