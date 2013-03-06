@@ -1,3 +1,8 @@
-window.TalkFormCtrl = ($scope, $routeParams, FormResourceService, TalkResource) ->
-  FormResourceService.bind 'talk', $scope, TalkResource, { eventId: $routeParams.eventId, talkId: $routeParams.talkId }
+window.TalkFormCtrl = ($scope, $routeParams, $navigate, FormResourceService, TalkResource) ->
+  FormResourceService.bind
+    id:              'talk'
+    scope:           $scope
+    resource:        TalkResource
+    params:          { eventId: $routeParams.eventId, talkId: $routeParams.talkId }
+    onDeleteSuccess: -> $navigate.go("/events/edit/#{$routeParams.eventId}", 'slide')
     
