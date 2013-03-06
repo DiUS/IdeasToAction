@@ -51,6 +51,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
 
         # Events
         when('/events/new',                       { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
+        when('/events/edit',                      { templateUrl: 'assets/views/events/edit.html',        controller: EventsEditCtrl }).
         when('/events/edit/:eventId',             { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
         when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
 
