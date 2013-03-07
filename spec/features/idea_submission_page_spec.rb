@@ -185,7 +185,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
   context "when user clicks the cancel button" do
     def cancel_button
-      submission_dialog.find('.cancel-button')
+      submission_dialog.find('#cancel-button')
     end
 
     before :each do
