@@ -43,6 +43,12 @@ describe 'FormResourceService', ->
         it 'should update the resource', ->
           expect(resource.$update).toHaveBeenCalled()
 
+        describe 'when the success callback happens', ->
+          beforeEach -> resource.$update.mostRecentCall.args[1]()          
+
+          it 'should set update to true', ->
+            expect(scope.updated).toBeTruthy()
+
       describe 'when deleting an resource', ->
         beforeEach -> scope.delete()
 
