@@ -425,7 +425,8 @@
         "DBInstanceClass": { "Ref" : "DBInstanceClass" },
         "DBSecurityGroups": [ { "Ref": "DBSecurityGroup" } ],
         "AllocatedStorage": { "Ref" : "DBAllocatedStorage" }
-      }
+      },
+      "DeletionPolicy" : "Snapshot"
     },
 
     "DNSRecord" : {
