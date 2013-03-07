@@ -1,13 +1,13 @@
 require_relative 'collapsible_shared_examples'
 
-describe "Talks & Events page", js: true, acceptance: true do
+describe "Discover page", js: true, acceptance: true do
   
   describe 'Browsing' do
     let(:events) { Event.all }
     let(:talks) { Talk.all }
 
     before :each do
-      visit "#/talks-events"
+      visit "#/discover"
     end
 
     context "Talks collapsible" do
@@ -38,7 +38,7 @@ describe "Talks & Events page", js: true, acceptance: true do
 
   describe "Searching" do
     before do
-      visit "#/talks-events"
+      visit "#/discover"
     end 
 
     it "should have a search text field" do
