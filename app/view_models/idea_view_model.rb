@@ -1,5 +1,6 @@
-class IdeaViewModel
+require 'bitly'
 
+class IdeaViewModel
   def initialize params
     idea = Idea.find(params[:id])
     @idea_view_model = idea.as_json
@@ -16,6 +17,8 @@ class IdeaViewModel
 
     @idea_view_model['talks'] = idea.talks.as_json
     @idea_view_model['reactions'] = idea.reactions.as_json
+    bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
+    @idea_view_model['idea_url'] = bitly.shorten("http://qa.actionman.zerobot.io/ideas/#{idea.id}").short_url
   end
 
   def as_json
