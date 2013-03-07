@@ -38,9 +38,6 @@ after "deploy:update_code", "deploy:search:import"
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
 
-after 'deploy:setup', 'deploy:search:ensure_aliases_and_indexes_exist'
-after 'deploy:setup', 'deploy:db:seed'
-
 namespace :deploy do
   namespace :db do
     desc 'Create the database'
