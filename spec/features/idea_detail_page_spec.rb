@@ -60,7 +60,7 @@ describe "Idea detail page", js: true, acceptance: true do
   describe 'when wanting to navigate back to the home page' do
     before do
       page.should_not have_selector('#home')
-      page.find('.header .home-page').click
+      page.first('.header .touch-icon').click
     end
 
     it 'should navigate back to home' do
