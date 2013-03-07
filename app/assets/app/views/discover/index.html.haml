@@ -4,7 +4,7 @@
     .home-page.pull-right(ng-href="/home")
       %i.icon-home
   %div(ng-controller="SearchCtrl")
-    .navbar.follow-scroll
+    .navbar.search-navbar.follow-scroll
       .navbar-inner
         %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
           %input#search-text.search-query(type='text' ng-model='query.text' size='30' required='' placeholder='search')
