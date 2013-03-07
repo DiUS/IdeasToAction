@@ -4,7 +4,11 @@ class Action < ActiveRecord::Base
 
   index_name { "#{Rails.env}-#{table_name}" }
   
-  mapping do
+  tire.instance_eval do
+    # This is a work-around to allow setting the mapping without the indexes actually being created by Tire
+
+    @mapping ||= {}
+
     indexes :id,              :index    => :not_analyzed
     indexes :idea_id,         :index    => :not_analyzed
     indexes :created_at,      :type => 'date', :include_in_all => false
