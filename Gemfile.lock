@@ -215,6 +215,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.1.0)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (3.2.11)
       actionmailer (= 3.2.11)
       actionpack (= 3.2.11)
@@ -331,6 +334,7 @@ DEPENDENCIES
   mysql2
   politburo!
   pry
+  rack_session_access
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)

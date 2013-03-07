@@ -46,6 +46,7 @@ group :test, :development do
   gem 'aws-sdk'
   gem 'launchy'
   gem 'awesome_print'
+  gem 'rack_session_access'
 end
 
 # Deploy with Capistrano
