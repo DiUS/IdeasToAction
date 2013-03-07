@@ -7,6 +7,8 @@ require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 require "authlogic/test_case"
+require "rack_session_access/capybara"
+
 include Authlogic::TestCase
 
 # Requires supporting ruby files with custom matchers and macros, etc,

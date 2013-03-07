@@ -34,4 +34,7 @@ Actionman::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Use for testing only
+  config.middleware.use RackSessionAccess::Middleware
 end
