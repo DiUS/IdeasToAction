@@ -5,6 +5,8 @@
     .header.main-header(ng-switch-when="true")
       Talk {{talk.title}}
   .content
+    .alert.alert-success(ng-show="updated==true")
+      Successfully updated
     %form.form-horizontal
       %bootstrap-input(model="talk.title" key="title" description="Talk Title")
 
