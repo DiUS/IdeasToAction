@@ -1,8 +1,10 @@
 #event.loading
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
-    Event
-    .home-page.pull-right(ng-href="/home")
-      %i.icon-home
+    %h1
+      Event
+    .touch-panel
+      %a.touch-icon(ng-href="/home")
+        %i.icon-home
   .content.event
     %div{'ng-switch on' => 'event.logo_image_url'}
       %img(ng-src="{{event.logo_image_url}}" alt="{{event.name}}" ng-switch-default = '')

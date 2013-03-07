@@ -1,8 +1,10 @@
 #idea-edit
   .header.main-header(ng-class="{'follow-scroll': !confirmDialogShown}" ng-click='$parent.resetToTop()')
-    Submit an idea
-    .cancel-button#cancel-button.pull-right(ng-click="confirmDialogShown=true")
-      &nbsp;&nbsp;&nbsp;
+    %h1
+      Submit an idea
+    .touch-panel
+      %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
+        %i.icon-remove
   .content
     %p
       Thank you for taking the time to submit an idea!
