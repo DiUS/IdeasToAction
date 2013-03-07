@@ -364,7 +364,7 @@
           "ln -sf /usr/bin/gem1.9 /usr/bin/gem\n",
 
           "# use babushka to install elasticsearch  \n",
-          "ruby1.9 -S `which babushka` --defaults politburo:elasticsearch-running \n",
+          "ruby1.9 -S `which babushka` --defaults politburo:elasticsearch-running cluster_name=$ENVIRONMENT_NAME \n",
 
           "# All is well so signal success\n",
           "/opt/aws/bin/cfn-signal -e 0 -r \"Dashboard application setup complete\" '", { "Ref" : "WaitHandle" }, "'\n"
