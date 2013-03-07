@@ -31,7 +31,7 @@ set :stages, %w(production qa canary development)
 require 'capistrano/ext/multistage'
 
 after "deploy:update_code", "deploy:migrate"
-before "deploy:migrate", "search:ensure_aliases_and_indexes_exist"
+before "deploy:migrate", "deploy:search:ensure_aliases_and_indexes_exist"
 
 after "deploy:update_code", "deploy:search:import"
 
