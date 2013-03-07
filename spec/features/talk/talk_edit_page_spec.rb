@@ -1,8 +1,11 @@
 describe "Talk edit page", js: true, acceptance: true do
   
   let(:talk) { Talk.first }
-  
+  let(:content_admin) { Member.find_by_role(Member::ROLE_CONTENT_ADMIN) }
+
   before do
+    Capybara.reset_sessions!
+    login(content_admin)
     talk.should_not be_nil
     visit "#/events/#{talk.event_id}/talks/edit/#{talk.id}"
   end
@@ -21,7 +24,7 @@ describe "Talk edit page", js: true, acceptance: true do
     page.find('#ted_talk_url').value.should eql talk.ted_talk_url
   end
 
-  xit 'should be able to change the details of the talk' do
+  it 'should be able to change the details of the talk' do
     time = Time.now
     fill_in 'description', with: "changed on: #{time}"
     page.find('button[ng-click="update()"]').click
