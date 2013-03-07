@@ -21,3 +21,13 @@ edit elasticsearch-0.20.5/config/elasticsearch.yml to change the cluster.name to
 
 cd elasticsearch-0.20.5
 bin/elasticsearch -f 
+
+==== Re-seeding data
+
+To re-seed and re-index:
+
+rake db:seed search:import
+
+Just re-indexing:
+
+rake search:import
