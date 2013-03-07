@@ -9,6 +9,8 @@
       .home-page.pull-right(ng-href="/home")
         %i.icon-home
   .content
+    .alert.alert-success(ng-show="updated==true")
+      Successfully updated
     %form.form-horizontal
       %bootstrap-input(model="event.name" key="name" description="Event Name")
 
