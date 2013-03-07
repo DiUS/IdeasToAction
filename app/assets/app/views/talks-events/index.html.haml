@@ -3,9 +3,17 @@
     Talks & events
     .home-page.pull-right(ng-href="/home")
       %i.icon-home
-  .content  
-    %p.description
-      Introduction paragraph to a featured talk which may be positioned here
-  .sections
-    %collapsible(title='Talks' type='talks' collection='talks' item-template='assets/views/talks/talk_collapsible_item.html')
-    %collapsible(title='Events' type='events' collection='events' item-template='assets/views/events/event_collapsible_item.html')
+  %div(ng-controller="SearchCtrl")
+    .navbar.follow-scroll
+      .navbar-inner
+        %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
+          %input#search-text.search-query(type='text' ng-model='query.text' size='30' required='' placeholder='search')
+    .content(ng-show="results")
+      .results
+        .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")
+    .content(ng-show="!results || !results.length")  
+      %p.description
+        Introduction paragraph to a featured talk which may be positioned here
+    .sections(ng-show="!results || !results.length")  
+      %collapsible(title='Talks' type='talks' collection='talks' item-template='assets/views/talks/talk_collapsible_item.html')
+      %collapsible(title='Events' type='events' collection='events' item-template='assets/views/events/event_collapsible_item.html')
