@@ -30,11 +30,12 @@ ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 set :stages, %w(production qa canary development)
 require 'capistrano/ext/multistage'
 
+before "deploy:finalize_update", "deploy:show_env"
+
 after "deploy:update_code", "deploy:migrate"
 after "deploy:update_code", "deploy:search:import"
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
-
 
 namespace :deploy do
   namespace :db do
@@ -52,6 +53,10 @@ namespace :deploy do
       puts "\n\n=== Populating the Database! ===\n\n"
       run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
     end
+  end
+
+  task :show_env do
+    run "env"
   end
 
   namespace :search do
