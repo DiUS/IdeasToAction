@@ -1,8 +1,10 @@
 #talk.loading(ng-show='!showNewIdeaDialog')
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
-    Talk
-    .home-page.pull-right(ng-href="/home")
-      %i.icon-home
+    %h1
+      Talk
+    .touch-panel
+      %a.touch-icon(ng-href="/home")
+        %i.icon-home
   .content.talk
     %p.title
       {{talk.title}}

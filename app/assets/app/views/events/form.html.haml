@@ -1,13 +1,17 @@
 #event
   %div(ng-switch="" on="!!event.id")
     .header.main-header(ng-switch-default="")
-      New Event
-      .home-page.pull-right(ng-href="/home")
-        %i.icon-home
+      %h1
+        New Event
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
     .header.main-header(ng-switch-when="true")
-      Event {{event.name}}
-      .home-page.pull-right(ng-href="/home")
-        %i.icon-home
+      %h1
+        Event {{event.name}}
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
   .content
     .alert.alert-success(ng-show="updated==true")
       Successfully updated

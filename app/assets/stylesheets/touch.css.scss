@@ -1,0 +1,22 @@
+.touch-panel {
+  float: right;
+
+  i {
+    font-size: 30px;
+    color: #ddd;
+  }
+
+  a.touch-icon {
+    &:hover {
+      text-decoration: none;
+    }
+
+    i {
+      padding: 25px;
+
+      &.icon-remove {
+        color: orangered;
+      }
+    }
+  }
+}

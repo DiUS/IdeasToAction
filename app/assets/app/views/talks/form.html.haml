@@ -1,9 +1,17 @@
 #talk
   %div(ng-switch="" on="!!talk.id")
     .header.main-header(ng-switch-default="")
-      New Talk
+      %h1
+        New Talk
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
     .header.main-header(ng-switch-when="true")
-      Talk {{talk.title}}
+      %h1
+        Talk {{talk.title}}
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
   .content
     .alert.alert-success(ng-show="updated==true")
       Successfully updated

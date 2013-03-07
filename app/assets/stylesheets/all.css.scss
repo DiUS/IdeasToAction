@@ -61,7 +61,7 @@ body {
 
   .main-header {
     background: rgba(255, 255, 255, 0.95);
-    padding-bottom: 20px;
+    padding-bottom: 0;
     position: relative;
     z-index: 999;
     box-shadow: 0px 1.5px 3px rgba(136, 136, 136, 0.75);
@@ -75,22 +75,21 @@ body {
 
 .header {
 
+  h1 {
+    font-weight: normal;
+    display: inline-block;
+    font-size: 1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   padding: {
-    top: 20px;
+    top: 0;
     left: 20px;
   }
 
   sup {
     color: #FF2A06;
-  }
-
-  .cancel-button {
-    padding-right: 10px;
-    background: {
-      image: image-url('cancel-button.png');
-      repeat: no-repeat;
-      position: center center;
-    }
   }
 }
 
@@ -278,11 +277,6 @@ body {
       repeat: no-repeat;
       position: center center;
   }
-}
-
-.login-panel i {
-  font-size: 30px;
-  color: #ddd;
 }
 
 .search-button {

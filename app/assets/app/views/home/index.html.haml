@@ -1,19 +1,20 @@
 #home
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
-    Ideas into action
-    %span.hidden-phone(ng-controller = "AuthCtrl")
-      .login-panel
-        %span(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
+    %h1
+      Ideas into action
+    %span(ng-controller = "AuthCtrl")
+      .touch-panel
+        %span.hidden-phone(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
           %a(ng-href = "/login")
             %i.icon-user
-        %span(ng-show = "memberSession.loggedIn && loggedInStatusDetermined()")
+        %span.hidden-phone(ng-show = "memberSession.loggedIn && loggedInStatusDetermined()")
           %i.icon-user
             {{memberSession.username}}
           %a(ng-click = "logout()")
             %i.icon-road
           %a(ng-href="/events/edit")
             %i.icon-edit
-        %a(onclick = 'location.reload(true);')
+        %a.touch-icon(onclick = 'location.reload(true);')
           %i.icon-refresh
   .content
     .center

@@ -1,9 +1,0 @@
-.collapsible
-  .header
-    Talks  
-    %sup
-      {{ talks.length }}
-  .content.talks
-    .talk{ 'ng-repeat' => "talk in talks" }
-      %p.title{ "ng-href" => "/events/{{talk.event_id}}/talks/{{talk.id}}" }
-        {{talk.title}}
