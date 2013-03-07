@@ -10,14 +10,9 @@ window.TalkCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $navigate.swipeScope.resetToTop()
 
   $scope.update = ->
-    $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}.json", { cache: dataCache }).success( (data) -> 
+    $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}.json", { cache: dataCache }).success (data) -> 
       $scope.talk = data
-
-      $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks/#{$scope.talkId}/ideas.json", { cache: dataCache }).success( (data) -> 
-        $scope.talk.ideas = data
-        $('.loading').removeClass('loading')
-        $navigate.swipeScope.refreshPageHeight()
-      )
-    )
+      $('.loading').removeClass('loading')
+      $navigate.swipeScope.refreshPageHeight()
    
   $scope.update()
