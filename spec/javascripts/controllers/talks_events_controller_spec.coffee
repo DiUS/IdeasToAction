@@ -1,8 +1,8 @@
 describe 'Actionman', ()->
 
-  beforeEach(module('Actionman'))
+  beforeEach module('Actionman')
 
-  describe 'TalksEventsCtrl', () -> 
+  describe 'DiscoverCtrl', () -> 
     eventsData = [{ name: 'Tedex'}]
     talksData = [{description: 'stuff'}]
 
@@ -18,7 +18,7 @@ describe 'Actionman', ()->
 
       $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
 
-      ctrl = $controller( 'TalksEventsCtrl', { $scope: scope, $routeParams: { }, $navigate, dataCache: $cacheFactory('fake cache') })
+      ctrl = $controller( 'DiscoverCtrl', { $scope: scope, $routeParams: { }, $navigate, dataCache: $cacheFactory('fake cache') })
 
     it 'should set the events correctly', () ->
       expect(scope.events).toBeUndefined()
