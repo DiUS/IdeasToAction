@@ -30,10 +30,11 @@ ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 set :stages, %w(production qa canary development)
 require 'capistrano/ext/multistage'
 
-before "deploy:finalize_update", "deploy:show_env"
-
 after "deploy:update_code", "deploy:migrate"
+before "deploy:migrate", "search:ensure_aliases_and_indexes_exist"
+
 after "deploy:update_code", "deploy:search:import"
+
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'
 
@@ -55,11 +56,12 @@ namespace :deploy do
     end
   end
 
-  task :show_env do
-    run "env"
-  end
-
   namespace :search do
+    task :ensure_aliases_and_indexes_exist do
+      puts "\n\n=== Creating search indexes and aliases! ===\n\n"
+      run "cd #{release_path}; bundle exec rake search:ensure_aliases_and_indexes_exist RAILS_ENV=#{rails_env}"
+    end
+
     task :import do
       puts "\n\n=== Re-indexing all data! ===\n\n"
       run "cd #{release_path}; bundle exec rake search:import RAILS_ENV=#{rails_env}"
