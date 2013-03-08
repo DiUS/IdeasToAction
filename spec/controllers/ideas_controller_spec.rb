@@ -70,6 +70,30 @@ describe IdeasController do
     end
   end
 
+  describe 'PUT update' do
+    let(:idea) { Idea.first }
+    let(:attrs) { { :description => 'a description' } }
+
+    let(:admin_member) { Member.create!(:username => "ted", :password => "admin", :role => Member::ROLE_CONTENT_ADMIN) }
+
+    before do
+      controller.stub(:current_member).and_return(admin_member)
+    end
+
+    before do
+      attrs[:actions] = [Action.last.as_json, Action.first.as_json]
+      attrs[:tags] = [Tag.last.as_json, Tag.first.as_json]
+      attrs[:talks] = [Talk.last.as_json, Talk.first.as_json]
+      attrs[:reactions] = [Reaction.last.as_json, Reaction.first.as_json]
+    end
+
+    it 'should update the idea' do
+      put :update, { :id => idea.id, :idea => attrs, :format => :json }, valid_session
+      puts response.body unless response.success?
+      response.should be_success
+    end
+  end
+
   describe "POST create" do
     let(:talk) { Talk.first }
     let(:valid_attributes) { 
