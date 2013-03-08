@@ -7,7 +7,6 @@ describe 'Actionman', ()->
       description: 'Body language affects how others see us, but it may also change how we see ourselves.',
       action: ['action1', 'action2']
       talks: [{title: "The talk"}, {title: "The other talk"}]
-      idea_url: 'http://bit.ly/15z4CPz'
     }
 
     scope = null
@@ -21,6 +20,9 @@ describe 'Actionman', ()->
 
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
             respond(ideaData)
+      $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1/show_idea_url").
+            respond({idea_url: "http://bit.ly/15z4CPz"})
+
 
       $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
 
@@ -45,7 +47,7 @@ describe 'Actionman', ()->
         scope.update()
         expect(scope.twitter).toBeUndefined()
         $httpBackend.flush()
-        expect(scope.twitter.url).toEqual("https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{scope.idea.talks[0].title}&tw_p=tweetbutton&url=#{scope.idea.idea_url}")
+        expect(scope.twitter.url).toEqual("https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{scope.idea.talks[0].title}&tw_p=tweetbutton&url=#{scope.idea_short_url}")
 
       it 'should expose an update method', () ->
         scope.update()

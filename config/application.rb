@@ -61,6 +61,7 @@ module Actionman
   end
 end
 
+Bitly.use_api_version_3
 
 def recursive_symbolize_keys! hash
   hash.symbolize_keys!

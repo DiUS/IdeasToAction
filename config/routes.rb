@@ -26,6 +26,7 @@ Actionman::Application.routes.draw do
 
     member do 
       post 'react'
+      get 'show_idea_url'
     end
   end
 

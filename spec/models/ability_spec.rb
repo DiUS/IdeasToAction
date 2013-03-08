@@ -40,6 +40,7 @@ describe "abilities" do
     it { should be_able_to(:random, Idea.new) }
     it { should be_able_to(:react, Idea.new) }
     it { should be_able_to(:create, Idea.new) }
+    it { should be_able_to(:show_idea_url, Idea.new) }
     it { should_not be_able_to(:manage, Idea.new) }
 
     it { should_not be_able_to(:manage, Talk.new) }
