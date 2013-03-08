@@ -33,6 +33,11 @@ class Idea < ActiveRecord::Base
     super.merge(members_actioned_count: members_actioned.size, tags: tags)
   end
 
+  def bitly_url
+    bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
+    URI::escape(bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url)
+  end
+
   private
   def members_actioned
     Idea.find_by_sql("select distinct at.member_id from " + 
