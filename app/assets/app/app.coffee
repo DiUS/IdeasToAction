@@ -1,5 +1,3 @@
-window.ajaxCounter = 0
-
 angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
@@ -18,15 +16,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
   ).
-  factory('ajaxCounterInterceptor', ($q, $window) ->
-    (promise) ->
-      promise.then (response) ->
-        window.ajaxCounter--
-        response
-      , (response) ->
-        window.ajaxCounter--
-        $q.reject(response)
-  ).
   factory("errorsInterceptor", ($q, $location) ->
     (promise) ->
       promise.then ((response) ->
@@ -39,11 +28,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         $q.reject response
   ).
   config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
-      $httpProvider.responseInterceptors.push('ajaxCounterInterceptor')
       $httpProvider.responseInterceptors.push('errorsInterceptor')
-      $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
-        window.ajaxCounter++
-        data
 
       $routeProvider.
         when('/config',                           { templateUrl: 'assets/views/admin/config.html',       controller: ConfigCtrl }).
