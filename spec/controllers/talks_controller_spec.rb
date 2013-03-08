@@ -22,4 +22,17 @@ describe TalksController do
       assigns(:talk).should eql talk
     end
   end
+
+  describe 'PUT update' do
+    let(:attrs) { { :description => 'a description' } }
+
+    before do
+      attrs[:ideas] = [Idea.last.as_json, Idea.first.as_json]
+    end
+
+    it 'should update the talk' do
+      put :update, { :id => talk.id, :talk => attrs, :format => :json }
+      response.should be_success
+    end
+  end
 end
