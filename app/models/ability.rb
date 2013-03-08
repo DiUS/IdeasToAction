@@ -26,6 +26,7 @@ class Ability
       can :random, Idea
       can :react, Idea
       can :create, Idea
+      can :show_idea_url, Idea
 
       can :manage, Member do |the_member|
         the_member == member
