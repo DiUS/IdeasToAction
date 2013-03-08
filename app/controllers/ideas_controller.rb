@@ -29,6 +29,11 @@ class IdeasController < ApplicationController
     end
   end
 
+  def show_idea_url
+    idea = Idea.find(params[:id])
+    render json: { idea_url: idea.bitly_url }
+  end
+
   # POST /ideas
   # POST /ideas.json
   def create
