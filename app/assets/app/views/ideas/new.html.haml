@@ -19,7 +19,8 @@
     .description.section
       .header
         I had this idea...
-      %p.hint An idea is a 1-3 sentence description of one of the central concepts within the talk.
+      %p.muted
+        %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
       .items
         .item
           %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' ng-click="scrollToPosition($event)")
@@ -27,7 +28,8 @@
       .header
         %span.title
           Into these actions...
-      %p.hint An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
+      %p.muted
+        %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
       .items
         .item{ 'ng-repeat' => "item in idea.actions" }
           %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
