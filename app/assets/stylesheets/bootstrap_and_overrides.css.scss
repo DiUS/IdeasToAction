@@ -1,10 +1,22 @@
+/* Buttons */
 $btnBackgroundHighlight: white;
 $btnDangerBackground: #ff2a06;
 $btnDangerBackgroundHighlight: #ff2a06;
 
+/* Fonts */
 $sansFontFamily: Helvetica, Arial, sans-serif;
 $baseFontSize: 1.15em;
+
+/* Large */
+$borderRadiusLarge: 3px;
+$paddingLarge: 18px 21px;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "font-awesome";
+
+
+/* Overrides which use mixins, cant reference them in other files for some reason */
+.btn-danger {
+  @include buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight, #fff, none);
+}

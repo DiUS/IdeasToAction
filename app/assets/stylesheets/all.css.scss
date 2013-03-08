@@ -9,12 +9,6 @@ body {
   line-height: 1.25em !important;
 }
 
-.modal {
-  .modal-header {
-    padding-top: 20px;
-  }
-}
-
 /* Hack to force the server to download the image so it is always rendered from cache */
 #preload-loader { 
   background: image-url('ajax-loader.gif') no-repeat -9999px -9999px; 
@@ -168,46 +162,6 @@ body {
     }
   }
 
-}
-
-.collapsible {
-
-  &[type="reaction"] {
-    .item {
-      margin-bottom: 12px;
-      background-color: #f4f4f4;
-
-      .description {
-        padding: 0 10px;      
-      }
-    }
-  }
-
-  &.collapsed {
-    .header {
-
-      background: {
-        image: image-url('collapsed-indicator.png');
-        repeat: no-repeat;
-        position: 95% center;
-      }
-    }
-  }
-
-  &.expanded {
-    .header {
-
-      background: {
-        image: image-url('expanded-indicator.png');
-        repeat: no-repeat;
-        position: 95% center;
-      }
-    }
-  }
-
-  .items {
-    display: none;
-  }
 }
 
 .header {
