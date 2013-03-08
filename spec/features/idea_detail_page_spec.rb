@@ -53,7 +53,9 @@ describe "Idea detail page", js: true, acceptance: true do
     end
 
     it 'should link to twitter' do
-      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=Have a look at this idea!&tw_p=tweetbutton&url=http%3A%2F%2Fwww.ideasintoaction.com%2F%23%2Fideas%2F#{idea.id}"
+      bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
+      bitly_url = bitly.shorten("http://qa.actionman.zerobot.io/ideas/#{idea.id}").short_url
+      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{bitly_url}"
     end
   end
 
