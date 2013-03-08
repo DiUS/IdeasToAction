@@ -31,4 +31,16 @@ describe "Talk edit page", js: true, acceptance: true do
     visit "#/events/#{talk.event_id}/talks/edit/#{talk.id}"
     page.find('#description').value.should eql "changed on: #{time}"
   end
+
+  context "Ideas collapsible" do
+    let(:title) { "Ideas" }
+    let(:item_contents) { talk.ideas.map(&:description) }
+
+    it_should_behave_like "a collapsible"
+
+    it 'should link to an edit idea page' do
+      first = page.find(".collapsible[title='#{title}']").find('.item:first .description')
+      first['ng-href'].should eql "/ideas/edit/#{talk.ideas.first.id}"
+    end
+  end
 end

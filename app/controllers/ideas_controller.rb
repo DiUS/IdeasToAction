@@ -18,6 +18,14 @@ class IdeasController < ApplicationController
     render :nothing => true
   end
 
+  def update
+    params['idea'].delete 'talks'
+    params['idea'].delete 'actions'
+    params['idea'].delete 'reactions'
+    params['idea'].delete 'tags'
+    update!
+  end
+
   # GET /ideas/1
   # GET /ideas/1.json
   def show

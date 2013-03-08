@@ -1,14 +1,14 @@
-#talk
-  %div(ng-switch="" on="!!talk.id")
+#idea
+  %div(ng-switch="" on="!!idea.id")
     .header.main-header(ng-switch-default="")
       %h1
-        New Talk
+        New Idea
       .touch-panel
         %a.touch-icon(ng-href="/home")
           %i.icon-home
     .header.main-header(ng-switch-when="true")
       %h1
-        Talk {{talk.title}}
+        Edit Idea
       .touch-panel
         %a.touch-icon(ng-href="/home")
           %i.icon-home
@@ -16,22 +16,18 @@
     .alert.alert-success(ng-show="updated==true")
       Successfully updated
     %form.form-horizontal
-      %bootstrap-input(model="talk.title" key="title" description="Talk Title")
-
       .control-group(ng-class="{error: !!errors['description']}")
-        %label.control-label(for="description") Talk Description
+        %label.control-label(for="description") Idea Description
         .controls
-          %textarea(id="description" type="text" placeholder="Talk Description" ng-model="talk.description")
+          %textarea(id="description" type="text" placeholder="Idea Description" ng-model="idea.description")
           %span.help-inline(ng-class="{hide: !errors['description']}") {{errors['description'][0]}}
 
-      %bootstrap-input(model="talk.hero_image_url" key="hero_image_url" description="Talk Hero Image URL")
-      %bootstrap-input(model="talk.ted_talk_url" key="ted_talk_url" description="TED Talk URL")
-          
-      .control-group(ng-switch="" on="!!talk.id")
+      .control-group(ng-switch="" on="!!idea.id")
         .controls(ng-switch-default="")
           %button.btn(ng-click="create()") Create
         .controls(ng-switch-when="true")
           %button.btn(ng-click="update()") Update
           %button.btn.btn-danger(ng-click="delete()") Delete
-  .sections
-    %collapsible(title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_edit_collapsible_item.html')
+
+  / .sections
+  /   %collapsible(title='Actions' type='action' collection='idea.actions' item-template='assets/views/actions/action_edit_collapsible_item.html')

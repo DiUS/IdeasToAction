@@ -1,0 +1,30 @@
+#action
+  %div(ng-switch="" on="!!action.id")
+    .header.main-header(ng-switch-default="")
+      %h1
+        New Action
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
+    .header.main-header(ng-switch-when="true")
+      %h1
+        Edit Action
+      .touch-panel
+        %a.touch-icon(ng-href="/home")
+          %i.icon-home
+  .content
+    .alert.alert-success(ng-show="updated==true")
+      Successfully updated
+    %form.form-horizontal
+      .control-group(ng-class="{error: !!errors['description']}")
+        %label.control-label(for="description") Action Description
+        .controls
+          %textarea(id="description" type="text" placeholder="Action Description" ng-model="action.description")
+          %span.help-inline(ng-class="{hide: !errors['description']}") {{errors['description'][0]}}
+
+      .control-group(ng-switch="" on="!!action.id")
+        .controls(ng-switch-default="")
+          %button.btn(ng-click="create()") Create
+        .controls(ng-switch-when="true")
+          %button.btn(ng-click="update()") Update
+          %button.btn.btn-danger(ng-click="delete()") Delete

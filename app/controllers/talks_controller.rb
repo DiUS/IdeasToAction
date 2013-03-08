@@ -5,6 +5,11 @@ class TalksController < ApplicationController
 
   respond_to :json
 
+  def update
+    params['talk'].delete 'ideas'
+    update!
+  end
+
   def show
     @talk = Talk.find(params[:id])
 
