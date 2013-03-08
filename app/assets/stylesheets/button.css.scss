@@ -1,3 +1,7 @@
+.btn {
+  border: 0 !important; /* No borders */
+}
+
 .btn-twitter {
   position: relative;
   background-color: #f8f8f8;
@@ -21,28 +25,18 @@
   height: 18px;
   max-width: 98%;
   overflow: hidden;
-}
 
-.btn-twitter:hover {
-  background-position: 0 !important;
-}
+  .icon-twitter {
+    color: #00aeed;
+  }
 
-.icon-twitter {
-  color: #00aeed;
+  &:hover {
+    background-position: 0 !important;
+  }
 }
 
 #btn-login {
   width: 120px;
   background: orangered;
   color: white;
-}
-
-.btn-large {
-  text-shadow: none !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-radius: 3px !important;
-  -webkit-border-radius: 3px !important;
-  padding: 18px 21px !important;
-  font-size: 1.25em !important;
 }

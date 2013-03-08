@@ -1,0 +1,32 @@
+.collapsible {
+
+  &[type="reaction"] {
+    .item {
+      margin-bottom: 12px;
+      background-color: #f4f4f4;
+
+      .description {
+        padding: 0 10px;      
+      }
+    }
+  }
+
+  .header {
+    background: {
+      repeat: no-repeat;
+      position: 95% center;
+    }
+  }
+
+  &.collapsed .header {
+    background-image: image-url('collapsed-indicator.png');
+  }
+
+  &.expanded .header {
+    background-image: image-url('expanded-indicator.png');    
+  }
+
+  .items {
+    display: none;
+  }
+}
