@@ -36,3 +36,13 @@
   background: orangered;
   color: white;
 }
+
+.btn-large {
+  text-shadow: none !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  -webkit-border-radius: 3px !important;
+  padding: 18px 21px !important;
+  font-size: 1.25em !important;
+}
