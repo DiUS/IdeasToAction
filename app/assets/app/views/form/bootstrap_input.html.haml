@@ -1,5 +1,5 @@
 .control-group(ng-class="{error: !!$parent.errors[key]}")
   %label.control-label(for="{{key}}") {{description}}
   .controls
-    %input(id="{{key}}" type="text" placeholder="{{description}}")
+    %input(id="{{key}}" type="text" placeholder="{{description}}" ng-model="model")
     %span.help-inline(ng-class="{hide: !$parent.errors[key]}") {{$parent.errors[key][0]}}
