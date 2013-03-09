@@ -3,8 +3,9 @@ angular.module('Actionman').
     restrict: 'E',
     replace: true,
     scope: {
-      model: '=',
       key: '@',
-      description: '@'
+      description: '@',
+      model: '=',
+      error: '='
     },
     templateUrl: 'assets/views/form/bootstrap_input.html'
