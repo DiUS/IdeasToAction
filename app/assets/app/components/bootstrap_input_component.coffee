@@ -1,5 +1,5 @@
 angular.module('Actionman').
-  directive 'bootstrapInput', ($compile) ->
+  directive 'bootstrapInput', ->
     restrict: 'E',
     replace: true,
     scope: {
