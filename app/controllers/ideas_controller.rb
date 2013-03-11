@@ -29,11 +29,12 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    @idea = IdeaViewModel.new(params.merge(:member => member)).as_json
+    @idea = Idea.find(params[:id])
+    @member = member
 
     respond_to do |format|
       format.html { render :open_in_app }
-      format.json { render json: @idea }
+      format.json { render 'show' }
     end
   end
 

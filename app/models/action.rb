@@ -30,7 +30,6 @@ class Action < ActiveRecord::Base
     super.merge(members_actioned_count: members_actioned.size)
   end
 
-  private
   def members_actioned
     Idea.find_by_sql("select distinct at.member_id from " + 
                       "actions a, actions_taken at where " +
