@@ -38,7 +38,6 @@ class Idea < ActiveRecord::Base
     URI::escape(bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url)
   end
 
-  private
   def members_actioned
     Idea.find_by_sql("select distinct at.member_id from " + 
                       "ideas i, actions_taken at, actions a where " +
