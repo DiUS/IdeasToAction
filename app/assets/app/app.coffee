@@ -27,7 +27,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
           $location.path("/internal_server_error")
         $q.reject response
   ).
-  config [ '$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
+  config ($routeProvider, $httpProvider) ->
       $httpProvider.responseInterceptors.push('errorsInterceptor')
 
       $routeProvider.
@@ -55,10 +55,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
 
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/discover',                         { templateUrl: 'assets/views/discover/index.html',     controller: DiscoverCtrl }).
-        when('/search',                           { templateUrl: 'assets/views/search/index.html',       controller: SearchCtrl }).
-        when('/search/:query_text',               { templateUrl: 'assets/views/search/index.html',       controller: SearchCtrl }).
         when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
         when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
         when('/internal_server_error',            { templateUrl: 'assets/views/errors/internal_server_error.html',controller: ErrorsCtrl }).
         otherwise( {redirectTo: '/home'} )
-    ]
