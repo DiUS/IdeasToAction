@@ -21,6 +21,7 @@ gem "tire", :git => "git://github.com/karmi/tire.git"
 gem "will_paginate", "~> 3.0"
 
 gem "bitly"
+gem "rabl"
 
 # Gems used only for assets and not required
 # in production environments by default.
