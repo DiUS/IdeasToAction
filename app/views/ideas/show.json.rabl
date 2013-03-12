@@ -5,11 +5,16 @@ attributes *Idea.column_names
 node(:members_actioned_count) { |idea| idea.members_actioned.size  }
 
 child :actions do |action|
-  attributes :created_at, :description, :id
+  attributes *Action.column_names
   member_action_taken = action.first.actions_taken.from_member(@member)
   node(:member_action_taken) do
-    attributes :created_at, :description, :id, :member_id, :updated_at
-    node(:created_at) { member_action_taken.created_at.strftime("%b %d %Y") } unless member_action_taken.nil?
+    unless member_action_taken.nil?
+      { :id => member_action_taken.id,
+        :action_id =>  member_action_taken.action_id,
+        :member_id =>  member_action_taken.member_id,
+        :created_at =>  member_action_taken.created_at.strftime("%b %d %Y")
+      }
+    end
   end
   node(:members_actioned_count) { action.first.members_actioned.size }
 end
