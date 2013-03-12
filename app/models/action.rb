@@ -16,7 +16,7 @@ class Action < ActiveRecord::Base
     indexes :description,     :boost => 100
   end  
       
-  attr_accessible :description
+  attr_accessible :description, :featured
 
   belongs_to :idea
 

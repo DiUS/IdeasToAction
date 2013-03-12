@@ -36,7 +36,8 @@ if %w(test development qa).include? Rails.env
     title: 'Paolo Cardini: Forget Multitasking, try monotasking - a 3-minute talk', 
     description: 'An invitation to "downgrade" our hyper-multitasking phones with clever Mono Task covers that remind us of their essential functions, and more important, to create our own "mono tasking" reality, which is better aligned with how most human minds work.',
     hero_image_url: 'http://images.ted.com/images/ted/65f24e304cacea90ce4f5fd6e7baad2a57195e82_389x292.jpg',
-    ted_talk_url: 'http://www.ted.com/talks/paolo_cardini_forget_multitasking_try_monotasking.html'
+    ted_talk_url: 'http://www.ted.com/talks/paolo_cardini_forget_multitasking_try_monotasking.html',
+    featured: true
   )
 
   paolo_cardini_talk_idea_1 = Idea.new(
@@ -89,7 +90,8 @@ if %w(test development qa).include? Rails.env
         actions: [
         { description: 'Make a list of emotions you find difficult and normally try to protect yourself from.  Try to welcome them.' },
         { description: "Talk to someone with whom you want to connect more deeply about these ideas - make room for vulnerability in the  relationship by becoming mutualy aware of it." }
-      ].map() { | action_attrs | Action.new(action_attrs) }
+      ].map() { | action_attrs | Action.new(action_attrs) },
+      featured: true
   )
 
   brene_brown_talk_idea_1.member = member1
@@ -112,7 +114,8 @@ if %w(test development qa).include? Rails.env
     name: 'TEDX Houston', 
     description: 'In 2009, and in the spirit of ideas worth spreading, TED created a program called TEDx - A program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxHouston, where x = an independently organized TED event.',
     talks: [ brene_brown_talk ],
-    hero_image_url: 'http://media.tumblr.com/tumblr_m06bbd2h2q1qe2k72.jpg'
+    hero_image_url: 'http://media.tumblr.com/tumblr_m06bbd2h2q1qe2k72.jpg',
+    featured: true
     )
 
 
@@ -175,7 +178,9 @@ if %w(test development qa).include? Rails.env
       description: 'As children, we are natural artists who sing, dance, draw, paint, and tell stories through our days, but as we grow, the artists within us are banished or locked in, but they do not go away.  Adults still have the natural artist within them, and it needs nourishment and freedom of expression.',
       tags: ['Arts', 'Creativity', 'Writing'].map { | tag_name | Tag.find_by_name(tag_name) },
         actions: [
-        { description: 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.' },
+        { description: 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.',
+          featured: true
+        },
         { description: "Participate with a child in the creative process, without judgement and for the sheer joy of it.  Let him guide the process, and enjoy the ride." }
       ].map() { | action_attrs | Action.new(action_attrs) }
   )
