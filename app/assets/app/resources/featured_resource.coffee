@@ -1,6 +1,6 @@
 angular.module('Actionman').factory('FeaturedResource', ($resource) ->
   $resource(
-    '/featured', 
+    "#{window.ENDPOINT}/featured",
     { }, # no params
     query: {
       method: 'GET', isArray: false
