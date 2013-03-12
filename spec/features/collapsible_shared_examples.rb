@@ -19,7 +19,7 @@ shared_examples_for "a collapsible" do
     items_should_be_visible(false)
   end
 
-  it "should toggle the items when the header is clicked" do
+  it "should toggle the items when the header is clicked", :vcr do
     if (respond_to?(:starts_as_collapsed?) ? starts_as_collapsed? : true)
       items.should_not be_visible
       header.click
@@ -29,7 +29,7 @@ shared_examples_for "a collapsible" do
     items_should_not_be_visible
   end
 
-  it "should have the items content" do
+  it "should have the items content", :vcr do
     item_contents.each do | item_content |
       items.should have_content item_content
     end
