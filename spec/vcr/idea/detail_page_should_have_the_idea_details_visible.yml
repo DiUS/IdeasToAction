@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bit.ly/v3/shorten?longUrl=http%3A%2F%2Fqa.actionman.zerobot.io%2Fideas%2F17&login=diactionman&apiKey=R_dedfe79fe375266f668a1cb1ee050ae1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Tue, 12 Mar 2013 04:47:12 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - close
+      mime-version:
+      - '1.0'
+      content-length:
+      - '209'
+    body:
+      encoding: US-ASCII
+      string: ! '{ "status_code": 200, "status_txt": "OK", "data": { "long_url": "http:\/\/qa.actionman.zerobot.io\/ideas\/17",
+        "url": "http:\/\/bit.ly\/14zIYbx", "hash": "14zIYbx", "global_hash": "14zIYby",
+        "new_hash": 0 } }
+
+'
+    http_version: '1.1'
+  recorded_at: Tue, 12 Mar 2013 04:47:12 GMT
+recorded_with: VCR 2.4.0
