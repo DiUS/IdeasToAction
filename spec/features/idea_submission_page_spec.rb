@@ -49,7 +49,7 @@ describe "Idea submission page", js: true, acceptance: true do
       talks_section.should have_selector(".header", text: 'Inspired by')
     end
 
-    it "should have the inspiring talk's title" do
+    it "should have the inspiring talk's title", :vcr do
       talks_section.should have_content talk.title
     end
   end
@@ -157,7 +157,7 @@ describe "Idea submission page", js: true, acceptance: true do
             submission_dialog.find("#submit-idea").click
           end
 
-          it "should redirect to the new idea's page" do
+          it "should redirect to the new idea's page", :vcr do
             page.should have_selector '#idea', visible: true
             page.should have_selector 'p.description', text: 'idea content'
 
@@ -166,7 +166,7 @@ describe "Idea submission page", js: true, acceptance: true do
         end
       end
 
-      context "when no actions were added" do
+      context "when no actions were added", :vcr do
 
         it "should be disabled" do
           submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
