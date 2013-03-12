@@ -50,6 +50,8 @@ group :test, :development do
   gem 'launchy'
   gem 'awesome_print'
   gem 'rack_session_access'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 # Deploy with Capistrano

@@ -10,7 +10,7 @@ describe "Idea detail page", js: true, acceptance: true do
     visit "#/ideas/17"
   end
 
-  it "should have the idea details visible" do
+  it "should have the idea details visible", :vcr do
     page.should have_content idea.description
 
     page.should have_content "Actions #{idea.actions.size}"
@@ -40,7 +40,7 @@ describe "Idea detail page", js: true, acceptance: true do
   context "tags" do
     let(:tags) { idea.tags }
 
-    it "should have each of the tags displayed" do
+    it "should have each of the tags displayed", :vcr do
       tags.each do | tag | 
         page.should have_selector('.tag', text: tag.name)
       end
@@ -48,11 +48,11 @@ describe "Idea detail page", js: true, acceptance: true do
   end
 
   context "share" do
-    it 'should have a twitter share button' do
+    it 'should have a twitter share button', :vcr do
       page.should have_selector('.btn-twitter')
     end
 
-    it 'should link to twitter' do
+    it 'should link to twitter', :vcr do
       page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{idea.bitly_url}"
     end
   end
@@ -63,7 +63,7 @@ describe "Idea detail page", js: true, acceptance: true do
       page.first('.header .touch-icon').click
     end
 
-    it 'should navigate back to home' do
+    it 'should navigate back to home', :vcr do
       page.should have_selector('#home')
     end
   end
@@ -90,7 +90,7 @@ describe "Idea detail page", js: true, acceptance: true do
       collapsible.find(".btn.done-it").click
     end
 
-    it 'should display the date' do
+    it 'should display the date', :vcr do
       page.should have_selector('p.action-statement', text: 'You did on')
     end
 
@@ -115,7 +115,7 @@ describe "Idea detail page", js: true, acceptance: true do
           end
         end
 
-        it 'should update the reactions' do
+        it 'should update the reactions', :vcr do
           reaction_collapsible.should have_selector('.header sup', text: '3')
 
           reaction_collapsible.find(".header").click
