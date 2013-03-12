@@ -21,6 +21,7 @@ body {
   opacity: 1;
   -webkit-transition: opacity 1s;
   z-index: 999;
+  min-height: 200px;
 
   .tags, .content, .sections {
     visibility: hidden;
