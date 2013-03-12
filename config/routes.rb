@@ -9,6 +9,8 @@ Actionman::Application.routes.draw do
   match "member/actions" => "member#actions"
   match "member/reactions" => "member#reactions"
 
+  resources :featured
+
   resources :actions do
     collection do
       get 'random'

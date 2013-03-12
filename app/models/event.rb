@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
     indexes :hero_image_url,  :index    => :not_analyzed
   end  
       
-  attr_accessible :name, :talks, :description, :logo_image_url, :hero_image_url
+  attr_accessible :name, :talks, :description, :logo_image_url, :hero_image_url, :featured
 
   has_many :talks
   has_many :ideas, :through => :talks
