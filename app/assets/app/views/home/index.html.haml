@@ -27,6 +27,27 @@
       .hero
         %p Transforming ideas worth spreading into actions worth taking
 
+    %div(ng-repeat="feature in featured.events")
+      %p.flat-description(ng-href="/events/{{feature.id}}")
+        %strong.action-statement Featured Event
+        {{feature.name}}
+        %a.continue
+    %div(ng-repeat="feature in featured.talks")
+      %p.flat-description(ng-href="/events/{{feature.event_id}}/talks/{{feature.id}}")
+        %strong.action-statement Featured Talk
+        {{feature.title}}
+        %a.continue
+    %div(ng-repeat="feature in featured.ideas")
+      %p.flat-description(ng-href="/ideas/{{feature.id}}")
+        %strong.action-statement Featured Idea
+        {{feature.description}}
+        %a.continue
+    %div(ng-repeat="feature in featured.actions")
+      %p.flat-description(ng-href="/ideas/{{feature.idea_id}}")
+        %strong.action-statement Featured Action
+        {{feature.description}}
+        %a.continue
+
     %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
       %strong.action-statement Idea
       {{idea.description}}
