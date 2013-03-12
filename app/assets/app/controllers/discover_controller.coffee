@@ -3,5 +3,4 @@ window.DiscoverCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $scope.events = data
     $http.get("#{window.ENDPOINT}/talks.json", { cache: dataCache }).success (data) -> 
       $scope.talks = data
-      $('.loading').removeClass('loading')
       $navigate.swipeScope.refreshPageHeight()

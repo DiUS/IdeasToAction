@@ -1,4 +1,4 @@
-#member.loading
+#member(ng-class="{loading: !member || !member.reactions || !member.actions}")
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
     %h1
       My profile
