@@ -1,5 +1,3 @@
-require_relative '../view_models/idea_view_model'
-
 class IdeasController < ApplicationController
   inherit_resources
   authorize_resource
