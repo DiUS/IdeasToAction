@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304001225) do
+ActiveRecord::Schema.define(:version => 20130311223711) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
     t.integer  "idea_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "featured",    :default => false
   end
 
   create_table "actions_taken", :force => true do |t|
@@ -28,19 +29,21 @@ ActiveRecord::Schema.define(:version => 20130304001225) do
   end
 
   create_table "events", :force => true do |t|
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.text     "name"
     t.text     "logo_image_url"
     t.text     "description"
     t.text     "hero_image_url"
+    t.boolean  "featured",       :default => false
   end
 
   create_table "ideas", :force => true do |t|
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "member_id"
+    t.boolean  "featured",    :default => false
   end
 
   create_table "ideas_tags", :force => true do |t|
@@ -84,11 +87,12 @@ ActiveRecord::Schema.define(:version => 20130304001225) do
   create_table "talks", :force => true do |t|
     t.text     "title"
     t.text     "description"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "event_id"
     t.text     "hero_image_url"
     t.text     "ted_talk_url"
+    t.boolean  "featured",       :default => false
   end
 
 end
