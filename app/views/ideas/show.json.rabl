@@ -19,6 +19,6 @@ child :actions do |action|
   node(:members_actioned_count) { action.first.members_actioned.size }
 end
 
-child(:talks) { attributes :title }
+child(:talks) { attributes *Talk.column_names }
 child(:reactions) { attributes *Reaction.column_names }
 child(:tags) { attributes *Tag.column_names }
