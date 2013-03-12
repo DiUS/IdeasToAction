@@ -46,6 +46,7 @@ namespace :phonegap do
   end
 
   namespace :build do
+    desc "Build the Phonegap packaged application for distribution (production)"
     task :default => [ :clean, :precompiled_assets, :cordova_in_assets, :assets_in_www_directory ] do
       raise "Couldn't build Phonegap package" unless Kernel.system('mobile/cordova/build')
     end
