@@ -23,4 +23,20 @@ describe "Home page", js: true, acceptance: true do
     random_action.should_not be_nil
     random_action.text.should_not be_empty
   end
+
+  it 'should display featured events' do
+    page.should have_text Event.find_by_featured(true).name
+  end
+
+  it 'should display featured talks' do
+    page.should have_text Talk.find_by_featured(true).title
+  end
+
+  it 'should display featured ideas' do
+    page.should have_text Idea.find_by_featured(true).description
+  end
+
+  it 'should display featured actions' do
+    page.should have_text Action.find_by_featured(true).description
+  end
 end
