@@ -14,7 +14,7 @@ describe "Member page", js: true, acceptance: true do
 
   before :each do
     member.should_not be_nil
-    @action_taken = ActionsTaken.create! action: Action.first, member: member
+    @action_taken = ActionsTaken.create! idea_action: IdeaAction.first, member: member
     @reaction = Reaction.create! idea: Idea.first, member: member, :text => 'thats bloody good'
     visit "#/member"
   end 
@@ -26,7 +26,7 @@ describe "Member page", js: true, acceptance: true do
   end
 
   it "should have the actions taken visible" do
-    page.should have_content "Actions Taken #{member.actions.size}"
+    page.should have_content "Actions Taken #{member.idea_actions.size}"
   end
 
   it "should have the reactions visible" do
@@ -35,7 +35,7 @@ describe "Member page", js: true, acceptance: true do
 
   context "Actions collapsible" do
     let(:title) { "Actions Taken" }
-    let(:item_contents) { member.actions.map(&:description) }
+    let(:item_contents) { member.idea_actions.map(&:description) }
 
     it_should_behave_like "a collapsible"
   end

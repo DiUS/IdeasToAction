@@ -4,7 +4,7 @@ describe MemberController do
   let(:member)   { Member.create! }
 
   before do
-    ActionsTaken.create! :member => member, :action => Action.create!
+    ActionsTaken.create! :member => member, :idea_action => IdeaAction.create!
     Reaction.create! idea: Idea.first, :member => member, :text => 'what else can I say?'
     controller.stub!(:member).and_return(member)
   end
@@ -19,7 +19,7 @@ describe MemberController do
   describe "GET actions" do
     it "responds with member actions" do
       get :actions
-      response.body.should eql member.actions.to_json
+      response.body.should eql member.idea_actions.to_json
     end
   end
 

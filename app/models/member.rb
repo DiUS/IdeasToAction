@@ -14,7 +14,7 @@ class Member < ActiveRecord::Base
 
   has_many :reactions
 
-  has_many :actions, :through => :actions_taken
+  has_many :idea_actions, :through => :actions_taken
 
   def content_admin?
     self.role == ROLE_CONTENT_ADMIN

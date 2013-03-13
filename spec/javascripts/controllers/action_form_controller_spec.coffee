@@ -1,5 +1,5 @@
-describe 'ActionFormCtrl', -> 
-  ActionResource = {}
+describe 'IdeaActionFormCtrl', ->
+  IdeaActionResource = {}
   FormResourceService = { bind: jasmine.createSpy('bind') }
   params = {}
   scope = null
@@ -9,11 +9,11 @@ describe 'ActionFormCtrl', ->
 
   beforeEach inject ($rootScope, $controller, $navigate) ->
     scope = $rootScope.$new()
-    ctrl = $controller( 'ActionFormCtrl', { $scope: scope, $routeParams: params, $navigate: $navigate, FormResourceService: FormResourceService, ActionResource: ActionResource })
+    ctrl = $controller( 'IdeaActionFormCtrl', { $scope: scope, $routeParams: params, $navigate: $navigate, FormResourceService: FormResourceService, IdeaActionResource: IdeaActionResource })
 
   it 'should invoke form resource service to bind to the scope', ->
     expect(FormResourceService.bind).toHaveBeenCalledWith 
-      id: 'action'
+      id: 'idea_action'
       scope: scope
-      resource: ActionResource
+      resource: IdeaActionResource
       params: params

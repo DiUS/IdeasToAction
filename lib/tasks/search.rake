@@ -4,7 +4,7 @@ require 'benchmark'
 namespace :search do
 
   def classes_to_index
-    @classes_to_index ||= [ Event, Talk, Idea, Action ]
+    @classes_to_index ||= [ Event, Talk, Idea, IdeaAction ]
   end
 
   def create_importers

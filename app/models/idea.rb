@@ -22,12 +22,12 @@ class Idea < ActiveRecord::Base
   has_many :talks, through: :talk_to_idea_associations
   validates_length_of :talks, minimum: 1
 
-  has_many :actions
+  has_many :idea_actions
   has_many :reactions
 
   has_and_belongs_to_many :tags
 
-  attr_accessible :tags, :talks, :description, :actions, :reactions, :featured
+  attr_accessible :tags, :talks, :description, :idea_actions, :reactions, :featured
 
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size, tags: tags)
@@ -40,7 +40,7 @@ class Idea < ActiveRecord::Base
 
   def members_actioned
     Idea.find_by_sql("select distinct at.member_id from " + 
-                      "ideas i, actions_taken at, actions a where " +
-                      "a.idea_id = i.id and at.action_id = a.id and i.id = #{self.id}")
+                      "ideas i, actions_taken at, idea_actions a where " +
+                      "a.idea_id = i.id and at.idea_action_id = a.id and i.id = #{self.id}")
   end
 end
