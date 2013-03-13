@@ -49,8 +49,10 @@ describe "Idea submission page", js: true, acceptance: true do
       talks_section.should have_selector(".header", text: 'Inspired by')
     end
 
-    it "should have the inspiring talk's title", :vcr do
-      talks_section.should have_content talk.title
+    it "should have the inspiring talk's title" do
+      VCR.use_cassette('bitly_url') do
+        talks_section.should have_content talk.title
+      end
     end
   end
 
@@ -157,19 +159,22 @@ describe "Idea submission page", js: true, acceptance: true do
             submission_dialog.find("#submit-idea").click
           end
 
-          it "should redirect to the new idea's page", :vcr do
-            page.should have_selector '#idea', visible: true
-            page.should have_selector 'p.description', text: 'idea content'
+          it "should redirect to the new idea's page" do
+            VCR.use_cassette('bitly_url') do
+              page.should have_selector '#idea', visible: true
+              page.should have_selector 'p.description', text: 'idea content'
 
-            page.current_url.should include "/ideas/"
+              page.current_url.should include "/ideas/"
+            end
           end
         end
       end
 
-      context "when no actions were added", :vcr do
-
-        it "should be disabled" do
-          submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
+      context "when no actions were added" do
+        VCR.use_cassette('bitly_url') do
+          it "should be disabled" do
+            submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
+          end
         end
       end
     end
