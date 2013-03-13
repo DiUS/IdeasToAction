@@ -29,10 +29,11 @@
           
       .control-group(ng-switch="" on="!!event.id")
         .controls(ng-switch-default="")
-          %button.btn(ng-click="create()") Create
+          %button.btn.btn-large.btn-danger(ng-click="create()") Create
         .controls(ng-switch-when="true")
-          %button.btn(ng-click="update()") Update
-          %button.btn.btn-danger(ng-click="delete()") Delete
+          %button.btn.btn-large.btn-danger(ng-click="update()") Update Event
+          %button.btn.btn-large.btn-danger(ng-click="delete()") Delete Event
+          %button.btn.btn-large.btn-danger(ng-href="/events/{{event.id}}/talks/new") Add a Talk
 
   .sections
     %collapsible(title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_edit_collapsible_item.html')
