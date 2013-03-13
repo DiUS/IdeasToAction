@@ -1057,6 +1057,9 @@ iScroll.prototype = {
 			if (y < that.maxScrollY) y = that.maxScrollY;
 		}
 
+		that.moved = true;
+		that.dirX = 1;
+
 		that.scrollTo(x, y, time);
 	},
 
