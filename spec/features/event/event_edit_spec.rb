@@ -56,6 +56,12 @@ describe "Event edit page", js: true, acceptance: true do
       page.find('#description').value.should eql "changed on: #{time}"
     end
 
+    it 'should be able to add a talk' do
+      button = page.find('button', text: 'Add a Talk')
+      button.should_not be_nil
+      button['ng-href'].should eql "/events/#{event.id}/talks/new"
+    end
+
     context "Talks collapsible" do
       let(:title) { "Talks" }
       let(:item_contents) { event.talks.map(&:title) }
