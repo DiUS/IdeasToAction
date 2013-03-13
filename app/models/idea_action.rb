@@ -1,4 +1,4 @@
-class Action < ActiveRecord::Base
+class IdeaAction < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
@@ -32,7 +32,7 @@ class Action < ActiveRecord::Base
 
   def members_actioned
     Idea.find_by_sql("select distinct at.member_id from " + 
-                      "actions a, actions_taken at where " +
-                      "at.action_id = a.id and a.id = #{self.id}")
+                      "idea_actions a, actions_taken at where " +
+                      "at.idea_action_id = a.id and a.id = #{self.id}")
   end
 end

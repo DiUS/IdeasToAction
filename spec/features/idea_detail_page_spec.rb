@@ -3,7 +3,7 @@ require_relative 'collapsible_shared_examples'
 describe "Idea detail page", js: true, acceptance: true do
   
   let(:idea) { Idea.find(17) }
-  let(:action) { idea.actions.first }
+  let(:action) { idea.idea_actions.first }
 
   before :each do
     VCR.use_cassette('bitly_url') do
@@ -15,12 +15,12 @@ describe "Idea detail page", js: true, acceptance: true do
   it "should have the idea details visible" do
     page.should have_content idea.description
 
-    page.should have_content "Actions #{idea.actions.size}"
+    page.should have_content "Actions #{idea.idea_actions.size}"
   end
 
   context "Actions collapsible" do
     let(:title) { "Actions" }
-    let(:item_contents) { idea.actions.map(&:description) }
+    let(:item_contents) { idea.idea_actions.map(&:description) }
 
     it_should_behave_like "a collapsible"
   end

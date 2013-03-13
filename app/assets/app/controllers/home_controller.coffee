@@ -7,5 +7,5 @@ window.HomeCtrl = ($scope, $http, $routeParams, FeaturedResource, dataCache) ->
   $http.get("#{window.ENDPOINT}/ideas/random.json", { cache: dataCache }).success (data) -> 
     $scope.idea = data
 
-  $http.get("#{window.ENDPOINT}/actions/random.json", { cache: dataCache }).success (data) -> 
+  $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
     $scope.action = data

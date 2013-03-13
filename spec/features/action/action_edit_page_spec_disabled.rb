@@ -1,6 +1,6 @@
 describe "Action edit page", js: true, acceptance: true do
   
-  let(:action) { Action.first }
+  let(:action) { IdeaAction.first }
   let(:content_admin) { Member.find_by_role(Member::ROLE_CONTENT_ADMIN) }
 
   before do

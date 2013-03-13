@@ -37,6 +37,6 @@ describe "Home page", js: true, acceptance: true do
   end
 
   it 'should display featured actions' do
-    page.should have_text Action.find_by_featured(true).description
+    page.should have_text IdeaAction.find_by_featured(true).description
   end
 end

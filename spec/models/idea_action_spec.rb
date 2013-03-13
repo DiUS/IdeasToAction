@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Action do
+describe IdeaAction do
   describe 'as_json' do
     before do
-      @action = Action.first
+      @action = IdeaAction.first
       @action.should_receive(:members_actioned).and_return [1,2,3,4,5,6]
     end
 
@@ -17,7 +17,7 @@ describe Action do
   end
 
   describe 'members_actioned' do
-    let(:action) { Action.first }
+    let(:action) { IdeaAction.first }
 
     it 'should find unique members who have actioned' do
       action.send(:members_actioned).size.should == 3
@@ -26,7 +26,7 @@ describe Action do
 
   describe 'actions_taken.from_member' do
     let(:member) { Member.first }
-    let(:action) { Action.first }
+    let(:action) { IdeaAction.first }
     let(:member_action_taken) { ActionsTaken.first }
 
     it 'should find a single action taken from a member' do

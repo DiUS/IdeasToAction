@@ -18,7 +18,7 @@ class IdeasController < ApplicationController
 
   def update
     params['idea'].delete 'talks'
-    params['idea'].delete 'actions'
+    params['idea'].delete 'idea_actions'
     params['idea'].delete 'reactions'
     params['idea'].delete 'tags'
     update!
@@ -45,7 +45,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     idea_hash = params[:idea]
-    idea_hash[:actions] = idea_hash[:actions].blank? ? [] : idea_hash[:actions].map { | action_attrs | Action.new(action_attrs) }
+    idea_hash[:idea_actions] = idea_hash[:idea_actions].blank? ? [] : idea_hash[:idea_actions].map { | action_attrs | IdeaAction.new(action_attrs) }
     idea_hash[:talks] = idea_hash[:talks].blank? ? [] : idea_hash[:talks].map { | talk_attrs | Talk.find(talk_attrs[:id]) }
 
     @idea = Idea.new(idea_hash)
