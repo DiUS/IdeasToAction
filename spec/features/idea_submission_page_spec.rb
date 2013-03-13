@@ -164,7 +164,7 @@ describe "Idea submission page", js: true, acceptance: true do
               page.should have_selector '#idea', visible: true
               page.should have_selector 'p.description', text: 'idea content'
 
-              page.current_url.should addinclude "/ideas/"
+              page.current_url.should include "/ideas/"
             end
           end
         end
