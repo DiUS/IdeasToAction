@@ -10,23 +10,17 @@ describe "Idea detail web page", js: true, acceptance: true do
   end
 
   it "should have a link to open the app" do
-    VCR.use_cassette('bitly_url') do
-      link = page.find_link('Open in application')
-      link['href'].should eql 'ideasintoaction://17'
-    end
+    link = page.find_link('Open in application')
+    link['href'].should eql 'ideasintoaction://17'
   end
 
   it "should have a link to download the app" do
-    VCR.use_cassette('bitly_url') do
-      link = page.find('.download')
-      link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.actionman'
-    end
+    link = page.find('.download')
+    link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.actionman'
   end
 
   it 'should display the idea' do
-    VCR.use_cassette('bitly_url') do
-      page.find('iframe')['src'].should eql '/#ideas/17'
-    end
+    page.find('iframe')['src'].should eql '/#ideas/17'
   end
 
 end
