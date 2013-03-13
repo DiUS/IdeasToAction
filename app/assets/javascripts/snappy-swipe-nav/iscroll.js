@@ -70,6 +70,7 @@ var m = Math,
 			bounce: true,
 			bounceLock: false,
 			momentum: true,
+			hMomentum: true,
 			lockDirection: true,
 			useTransform: true,
 			useTransition: false,
@@ -571,6 +572,10 @@ iScroll.prototype = {
 
  			if ((that.x > 0 && newPosX > 0) || (that.x < that.maxScrollX && newPosX < that.maxScrollX)) momentumX = { dist:0, time:0 };
  			if ((that.y > that.minScrollY && newPosY > that.minScrollY) || (that.y < that.maxScrollY && newPosY < that.maxScrollY)) momentumY = { dist:0, time:0 };
+		}
+
+		if (that.options.hMomentum === false) {
+			momentumX = { dist:0, time:0 };
 		}
 
 		if (momentumX.dist || momentumY.dist) {
