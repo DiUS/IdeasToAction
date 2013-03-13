@@ -12,10 +12,12 @@ describe "Idea edit page", js: true, acceptance: true do
 
   it "should have the form to edit the idea" do
     page.should have_selector '#description'
+    page.should have_selector '#featured'
   end
 
   it 'should have the fields pre-populated with the idea details' do
     page.find('#description').value.should eql idea.description
+    page.find('#featured').checked?.should eql idea.featured
   end
 
   it 'should be able to change the details of the idea' do

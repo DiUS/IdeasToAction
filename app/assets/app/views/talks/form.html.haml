@@ -26,6 +26,12 @@
 
       %bootstrap-input(key="hero_image_url" description="Talk Hero Image URL" model="talk.hero_image_url" error="errors['hero_image_url']")
       %bootstrap-input(key="ted_talk_url" description="TED Talk URL" model="talk.ted_talk_url" error="errors['ted_talk_url']")
+
+      .control-group
+        %label.control-label(for="featured") Talk Featured?
+        .controls
+          %label.checkbox
+            %input(id="featured" type="checkbox" ng-model="talk.featured")
           
       .control-group(ng-switch="" on="!!talk.id")
         .controls(ng-switch-default="")

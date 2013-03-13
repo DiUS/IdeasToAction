@@ -80,7 +80,7 @@ body {
   font-weight: bold;
 }
 
-.content textarea, .sections textarea, .content input, .content textarea {
+.content textarea, .sections textarea, .content input[type="text"], .content textarea {
   width: 94%;
   font-size: 1.15em !important;
   padding: 10px !important;
