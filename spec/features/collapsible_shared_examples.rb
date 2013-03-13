@@ -19,19 +19,23 @@ shared_examples_for "a collapsible" do
     items_should_be_visible(false)
   end
 
-  it "should toggle the items when the header is clicked", :vcr do
-    if (respond_to?(:starts_as_collapsed?) ? starts_as_collapsed? : true)
-      items.should_not be_visible
+  it "should toggle the items when the header is clicked" do
+    VCR.use_cassette('bitly_url') do
+      if (respond_to?(:starts_as_collapsed?) ? starts_as_collapsed? : true)
+        items.should_not be_visible
+        header.click
+      end
+      items_should_be_visible
       header.click
+      items_should_not_be_visible
     end
-    items_should_be_visible
-    header.click
-    items_should_not_be_visible
   end
 
-  it "should have the items content", :vcr do
-    item_contents.each do | item_content |
-      items.should have_content item_content
+  it "should have the items content" do
+    VCR.use_cassette('bitly_url') do
+      item_contents.each do | item_content |
+        items.should have_content item_content
+      end
     end
   end
 end 

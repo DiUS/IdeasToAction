@@ -6,14 +6,18 @@ describe "Idea detail page", js: true, acceptance: true do
   let(:action) { idea.actions.first }
 
   before :each do
-    idea.should_not be_nil
-    visit "#/ideas/17"
+    VCR.use_cassette('bitly_url') do
+      idea.should_not be_nil
+      visit "#/ideas/17"
+    end
   end
 
-  it "should have the idea details visible", :vcr do
-    page.should have_content idea.description
+  it "should have the idea details visible" do
+    VCR.use_cassette('bitly_url') do
+      page.should have_content idea.description
 
-    page.should have_content "Actions #{idea.actions.size}"
+      page.should have_content "Actions #{idea.actions.size}"
+    end
   end
 
   context "Actions collapsible" do
@@ -40,20 +44,26 @@ describe "Idea detail page", js: true, acceptance: true do
   context "tags" do
     let(:tags) { idea.tags }
 
-    it "should have each of the tags displayed", :vcr do
-      tags.each do | tag | 
-        page.should have_selector('.tag', text: tag.name)
+    it "should have each of the tags displayed" do
+      VCR.use_cassette('bitly_url') do
+        tags.each do | tag |
+          page.should have_selector('.tag', text: tag.name)
+        end
       end
     end
   end
 
   context "share" do
-    it 'should have a twitter share button', :vcr do
-      page.should have_selector('.btn-twitter')
+    it 'should have a twitter share button' do
+      VCR.use_cassette('bitly_url') do
+        page.should have_selector('.btn-twitter')
+      end
     end
 
-    it 'should link to twitter', :vcr do
-      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{idea.bitly_url}"
+    it 'should link to twitter' do
+      VCR.use_cassette('bitly_url') do
+        page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{idea.bitly_url}"
+      end
     end
   end
 
@@ -63,8 +73,10 @@ describe "Idea detail page", js: true, acceptance: true do
       page.first('.header .touch-icon').click
     end
 
-    it 'should navigate back to home', :vcr do
-      page.should have_selector('#home')
+    it 'should navigate back to home' do
+      VCR.use_cassette('bitly_url') do
+        page.should have_selector('#home')
+      end
     end
   end
 
@@ -90,36 +102,42 @@ describe "Idea detail page", js: true, acceptance: true do
       collapsible.find(".btn.done-it").click
     end
 
-    it 'should display the date', :vcr do
-      page.should have_selector('p.action-statement', text: 'You did on')
+    it 'should display the date' do
+      VCR.use_cassette('bitly_url') do
+        page.should have_selector('p.action-statement', text: 'You did on')
+      end
     end
 
     describe 'when reacting to an idea' do
 
       describe 'checking the number of reactions' do
         before :each do
-          begin
-            idea.reload.reactions.size.should eq 2
-            reaction_collapsible.should have_selector('.header sup', text: '2')
+          VCR.use_cassette('bitly_url') do
+            begin
+              idea.reload.reactions.size.should eq 2
+              reaction_collapsible.should have_selector('.header sup', text: '2')
 
-            page.should have_selector(".reaction textarea")
-            page.should have_selector(".reaction textarea", visible: true)
+              page.should have_selector(".reaction textarea")
+              page.should have_selector(".reaction textarea", visible: true)
 
-            page.find(".reaction textarea").set('This is my reaction')
-            page.find(".reaction textarea").value.should eq 'This is my reaction'
+              page.find(".reaction textarea").set('This is my reaction')
+              page.find(".reaction textarea").value.should eq 'This is my reaction'
 
-            page.find('.submit-reaction').click
-          rescue => e
-            puts page.html
-            raise e
+              page.find('.submit-reaction').click
+            rescue => e
+              puts page.html
+              raise e
+            end
           end
         end
 
-        it 'should update the reactions', :vcr do
-          reaction_collapsible.should have_selector('.header sup', text: '3')
+        it 'should update the reactions' do
+          VCR.use_cassette('bitly_url') do
+            reaction_collapsible.should have_selector('.header sup', text: '3')
 
-          reaction_collapsible.find(".header").click
-          reaction_collapsible.should have_text('This is my reaction')
+            reaction_collapsible.find(".header").click
+            reaction_collapsible.should have_text('This is my reaction')
+          end
         end
       end
     end
