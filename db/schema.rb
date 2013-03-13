@@ -11,21 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311223711) do
-
-  create_table "actions", :force => true do |t|
-    t.text     "description"
-    t.integer  "idea_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "featured",    :default => false
-  end
+ActiveRecord::Schema.define(:version => 20130312224647) do
 
   create_table "actions_taken", :force => true do |t|
-    t.integer  "action_id"
+    t.integer  "idea_action_id"
     t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -36,6 +28,14 @@ ActiveRecord::Schema.define(:version => 20130311223711) do
     t.text     "description"
     t.text     "hero_image_url"
     t.boolean  "featured",       :default => false
+  end
+
+  create_table "idea_actions", :force => true do |t|
+    t.text     "description"
+    t.integer  "idea_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "featured",    :default => false
   end
 
   create_table "ideas", :force => true do |t|

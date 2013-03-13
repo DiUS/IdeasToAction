@@ -1,7 +1,7 @@
-window.ActionFormCtrl = ($scope, $routeParams, $navigate, FormResourceService, ActionResource) ->
+window.IdeaActionFormCtrl = ($scope, $routeParams, $navigate, FormResourceService, IdeaActionResource) ->
   FormResourceService.bind
-    id:              'action'
+    id:              'idea_action'
     scope:           $scope
-    resource:        ActionResource
-    params:          { actionId: $routeParams.actionId }
+    resource:        IdeaActionResource
+    params:          { ideaActionId: $routeParams.ideaActionId }
     # onDeleteSuccess: -> $navigate.go('/talks/edit', 'slide')

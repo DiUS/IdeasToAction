@@ -8,7 +8,7 @@ describe "abilities" do
   context "when member is a content admin" do
     let(:member){ Member.find_by_role(Member::ROLE_CONTENT_ADMIN) }
 
-    it { should be_able_to(:manage, Action.new) }
+    it { should be_able_to(:manage, IdeaAction.new) }
     it { should be_able_to(:manage, Event.new) }
     it { should be_able_to(:manage, Idea.new) }
     it { should be_able_to(:manage, Talk.new) }
@@ -19,7 +19,7 @@ describe "abilities" do
   context "when member is a global admin" do
     let(:member){ Member.find_by_role(Member::ROLE_GLOBAL_ADMIN) }
 
-    it { should be_able_to(:manage, Action.new) }
+    it { should be_able_to(:manage, IdeaAction.new) }
     it { should be_able_to(:manage, Event.new) }
     it { should be_able_to(:manage, Idea.new) }
     it { should be_able_to(:manage, Talk.new) }
@@ -32,10 +32,10 @@ describe "abilities" do
     it { should be_able_to(:ideas, Event.new) }
     it { should_not be_able_to(:manage, Event.new) }
 
-    it { should be_able_to(:random, Action.new) }
-    it { should be_able_to(:recent, Action) }
-    it { should be_able_to(:doneIt, Action) }
-    it { should_not be_able_to(:manage, Action) }
+    it { should be_able_to(:random, IdeaAction.new) }
+    it { should be_able_to(:recent, IdeaAction) }
+    it { should be_able_to(:doneIt, IdeaAction) }
+    it { should_not be_able_to(:manage, IdeaAction) }
 
     it { should be_able_to(:random, Idea.new) }
     it { should be_able_to(:react, Idea.new) }
