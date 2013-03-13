@@ -39,6 +39,7 @@ describe "Event edit page", js: true, acceptance: true do
       page.should have_selector '#description'
       page.should have_selector '#logo_image_url'
       page.should have_selector '#hero_image_url'
+      page.should have_selector '#featured'
     end
 
     it 'should have the fields pre-populated with the event details' do
@@ -46,6 +47,7 @@ describe "Event edit page", js: true, acceptance: true do
       page.find('#description').value.should eql event.description
       page.find('#logo_image_url').value.should eql event.logo_image_url
       page.find('#hero_image_url').value.should eql event.hero_image_url
+      page.find('#featured').checked?.should eql event.featured
     end
 
     it 'should be able to change the details of the event' do

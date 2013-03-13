@@ -15,6 +15,7 @@ describe "Talk edit page", js: true, acceptance: true do
     page.should have_selector '#description'
     page.should have_selector '#hero_image_url'
     page.should have_selector '#ted_talk_url'
+    page.should have_selector '#featured'
   end
 
   it 'should have the fields pre-populated with the talk details' do
@@ -22,6 +23,7 @@ describe "Talk edit page", js: true, acceptance: true do
     page.find('#description').value.should eql talk.description
     page.find('#hero_image_url').value.should eql talk.hero_image_url
     page.find('#ted_talk_url').value.should eql talk.ted_talk_url
+    page.find('#featured').checked?.should eql talk.featured
   end
 
   it 'should be able to change the details of the talk' do

@@ -22,6 +22,12 @@
           %textarea(id="description" type="text" placeholder="Idea Description" ng-model="idea.description")
           %span.help-inline(ng-class="{hide: !errors['description']}") {{errors['description'][0]}}
 
+      .control-group
+        %label.control-label(for="featured") Idea Featured?
+        .controls
+          %label.checkbox
+            %input(id="featured" type="checkbox" ng-model="idea.featured")
+
       .control-group(ng-switch="" on="!!idea.id")
         .controls(ng-switch-default="")
           %button.btn.btn-large.btn-danger(ng-click="create()") Create
