@@ -1,10 +1,8 @@
-window.ReactionCtrl = ($scope, $http, $routeParams, $element, dataCache) ->
+window.ReactionCtrl = ($scope, $http, dataCache) ->
   $scope.react = (ideaId, ideaActionId) ->
-    $button = $element.find('.submit-reaction')
-    return if $button.hasClass('disabled')
+    $scope.inProgress = true
 
-    $button.addClass('disabled')
-    $http.post("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", { text: $("#reaction-#{ideaActionId}").find('textarea').val() }).success (data) ->
+    $http.post("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", { text: $scope.reactionText }).success (data) ->
       $("#reaction-#{ideaActionId}").slideToggle 300, () ->
         dataCache.removeAll()
         $("#idea").scope().update()
