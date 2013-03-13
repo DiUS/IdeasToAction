@@ -1,23 +1,19 @@
-describe 'Actionman', ()->
+describe 'ReactionCtrl', -> 
 
-  describe 'ReactionCtrl', () -> 
+  ideaId = 1
+  scope = null
 
-    scope = null
-    ctrl = null
-    $httpBackend = null
+  beforeEach inject ($httpBackend, $rootScope, $controller, $cacheFactory) ->
+    window.ENDPOINT = 'window_endpoint'
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
-      ideaId = 1
-      element = $('<div></div>')
+    $httpBackend.expectPOST("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", {text: 'my reaction'}).respond({})
 
-      $httpBackend = _$httpBackend_
+    scope = $rootScope.$new()
+    $controller( 'ReactionCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
 
-      window.ENDPOINT = 'window_endpoint'
+  it 'should be in process when reacting', ->
+    scope.reactionText = 'my reaction'
+    scope.inProgress = false
+    scope.react(ideaId)
+    expect(scope.inProgress).toBeTruthy()
 
-      $httpBackend.expectPOST("#{window.ENDPOINT}/ideas/#{ideaId}/react.json", {text: 'my reaction'}).respond({})
-
-      scope = $rootScope.$new()
-      ctrl = $controller( 'ReactionCtrl', { $scope: scope, $element: element, dataCache: $cacheFactory('fake cache') })
-
-    it 'should create a react function', () ->
-      expect(scope.react).toBeDefined()
