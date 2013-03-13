@@ -16,7 +16,7 @@ describe "Idea detail web page", js: true, acceptance: true do
 
   it "should have a link to download the app" do
     link = page.find('.download')
-    link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.actionman'
+    link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.ideasintoaction'
   end
 
   it 'should display the idea' do
