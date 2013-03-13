@@ -327,6 +327,8 @@ iScroll.prototype = {
 
 		if (that.options.useTransition || that.options.zoom) that._transitionTime(0);
 
+		if (that.moved === true && that.dirX !== 0) return;
+
 		that.moved = false;
 		that.animating = false;
 		that.zoomed = false;
