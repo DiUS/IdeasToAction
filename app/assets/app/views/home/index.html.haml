@@ -42,7 +42,7 @@
         %strong.action-statement Featured Idea
         {{feature.description}}
         %a.continue
-    %div(ng-repeat="feature in featured.actions")
+    %div(ng-repeat="feature in featured.idea_actions")
       %p.flat-description(ng-href="/ideas/{{feature.idea_id}}")
         %strong.action-statement Featured Action
         {{feature.description}}

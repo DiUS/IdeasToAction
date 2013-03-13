@@ -11,7 +11,7 @@ Actionman::Application.routes.draw do
 
   resources :featured
 
-  resources :actions do
+  resources :idea_actions do
     collection do
       get 'random'
     end

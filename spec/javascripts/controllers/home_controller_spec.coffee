@@ -21,7 +21,7 @@ describe 'HomeCtrl', ->
     $httpBackend = _$httpBackend_
     $httpBackend.expectGET("#{window.ENDPOINT}/counts.json").respond(counts)
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/random.json").respond(idea)
-    $httpBackend.expectGET("#{window.ENDPOINT}/actions/random.json").respond(action)
+    $httpBackend.expectGET("#{window.ENDPOINT}/idea_actions/random.json").respond(action)
     scope = $rootScope.$new()
     ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
 

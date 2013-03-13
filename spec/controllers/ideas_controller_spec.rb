@@ -78,7 +78,7 @@ describe IdeasController do
     end
 
     before do
-      attrs[:actions] = [Action.last.as_json, Action.first.as_json]
+      attrs[:idea_actions] = [IdeaAction.last.as_json, IdeaAction.first.as_json]
       attrs[:tags] = [Tag.last.as_json, Tag.first.as_json]
       attrs[:talks] = [Talk.last.as_json, Talk.first.as_json]
       attrs[:reactions] = [Reaction.last.as_json, Reaction.first.as_json]
@@ -99,7 +99,7 @@ describe IdeasController do
         talks: [
           talk.as_json
         ],
-        actions: [
+        idea_actions: [
           { description: 'Examine your own body language in different social situations.' },
         ]        
       }
@@ -130,7 +130,7 @@ describe IdeasController do
 
       it "adds subordinate action entities" do
         post :create, { :format => 'json', :idea => valid_attributes}, valid_session
-        assigns(:idea).actions.first.should be_a(Action)
+        assigns(:idea).idea_actions.first.should be_a(IdeaAction)
       end
 
       it "return the json of the created idea" do

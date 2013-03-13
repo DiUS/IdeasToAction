@@ -8,7 +8,7 @@ class Ability
       can :manage, :all
     elsif member.content_admin?
       can :read, :all
-      can :manage, Action
+      can :manage, IdeaAction
       can :manage, Event
       can :manage, Idea
       can :manage, Talk
@@ -19,9 +19,9 @@ class Ability
       can :read, :all
       can :ideas, Event
 
-      can :random, Action
-      can :recent, Action
-      can :doneIt, Action
+      can :random, IdeaAction
+      can :recent, IdeaAction
+      can :doneIt, IdeaAction
 
       can :random, Idea
       can :react, Idea
