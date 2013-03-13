@@ -24,10 +24,10 @@
 
       .control-group(ng-switch="" on="!!idea.id")
         .controls(ng-switch-default="")
-          %button.btn(ng-click="create()") Create
+          %button.btn.btn-large.btn-danger(ng-click="create()") Create
         .controls(ng-switch-when="true")
-          %button.btn(ng-click="update()") Update
-          %button.btn.btn-danger(ng-click="delete()") Delete
+          %button.btn.btn-large.btn-danger(ng-click="update()") Update
+          %button.btn.btn-large.btn-danger(ng-click="delete()") Delete
 
   / .sections
   /   %collapsible(title='Actions' type='action' collection='idea.actions' item-template='assets/views/actions/action_edit_collapsible_item.html')
