@@ -13,11 +13,9 @@ describe "Idea detail page", js: true, acceptance: true do
   end
 
   it "should have the idea details visible" do
-    VCR.use_cassette('bitly_url') do
-      page.should have_content idea.description
+    page.should have_content idea.description
 
-      page.should have_content "Actions #{idea.actions.size}"
-    end
+    page.should have_content "Actions #{idea.actions.size}"
   end
 
   context "Actions collapsible" do
@@ -45,10 +43,8 @@ describe "Idea detail page", js: true, acceptance: true do
     let(:tags) { idea.tags }
 
     it "should have each of the tags displayed" do
-      VCR.use_cassette('bitly_url') do
-        tags.each do | tag |
-          page.should have_selector('.tag', text: tag.name)
-        end
+      tags.each do | tag |
+        page.should have_selector('.tag', text: tag.name)
       end
     end
   end
@@ -74,9 +70,7 @@ describe "Idea detail page", js: true, acceptance: true do
     end
 
     it 'should navigate back to home' do
-      VCR.use_cassette('bitly_url') do
-        page.should have_selector('#home')
-      end
+      page.should have_selector('#home')
     end
   end
 
@@ -89,17 +83,19 @@ describe "Idea detail page", js: true, acceptance: true do
       page.find(".collapsible[title='Reactions']")
     end
     
-    before :each do 
-      self.use_transactional_fixtures.should be true
+    before :each do
+      VCR.use_cassette('bitly_url') do
+        self.use_transactional_fixtures.should be true
 
-      idea.reload.reactions.size.should eq 2
+        idea.reload.reactions.size.should eq 2
 
-      page.should_not have_selector('p.action-statement', text: 'You did on')
-      reaction_collapsible.should have_selector('.header sup', text: '2')
+        page.should_not have_selector('p.action-statement', text: 'You did on')
+        reaction_collapsible.should have_selector('.header sup', text: '2')
 
-      collapsible.find(".header").click
-      page.should have_selector(".btn.done-it", visible: true)
-      collapsible.find(".btn.done-it").click
+        collapsible.find(".header").click
+        page.should have_selector(".btn.done-it", visible: true)
+        collapsible.find(".btn.done-it").click
+      end
     end
 
     it 'should display the date' do
@@ -142,6 +138,4 @@ describe "Idea detail page", js: true, acceptance: true do
       end
     end
   end
-
-
 end

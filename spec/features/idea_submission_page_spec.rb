@@ -39,9 +39,11 @@ describe "Idea submission page", js: true, acceptance: true do
   end
 
   before :each do
-    talk.should_not be_nil
-    visit "#/events/1/talks/1"
-    page.find('#new-idea', text: 'Submit a new idea').click
+    VCR.use_cassette('bitly_url') do
+      talk.should_not be_nil
+      visit "#/events/1/talks/1"
+      page.find('#new-idea', text: 'Submit a new idea').click
+    end
   end
 
   context "talks section" do
@@ -50,9 +52,7 @@ describe "Idea submission page", js: true, acceptance: true do
     end
 
     it "should have the inspiring talk's title" do
-      VCR.use_cassette('bitly_url') do
         talks_section.should have_content talk.title
-      end
     end
   end
 
@@ -160,21 +160,17 @@ describe "Idea submission page", js: true, acceptance: true do
           end
 
           it "should redirect to the new idea's page" do
-            VCR.use_cassette('bitly_url') do
-              page.should have_selector '#idea', visible: true
-              page.should have_selector 'p.description', text: 'idea content'
+            page.should have_selector '#idea', visible: true
+            page.should have_selector 'p.description', text: 'idea content'
 
-              page.current_url.should include "/ideas/"
-            end
+            page.current_url.should include "/ideas/"
           end
         end
       end
 
       context "when no actions were added" do
-        VCR.use_cassette('bitly_url') do
-          it "should be disabled" do
-            submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
-          end
+        it "should be disabled" do
+          submission_dialog.should have_selector("#submit-idea[disabled='disabled']")
         end
       end
     end
