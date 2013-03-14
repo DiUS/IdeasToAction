@@ -13,7 +13,8 @@ describe 'IdeaActionFormCtrl', ->
 
   it 'should invoke form resource service to bind to the scope', ->
     expect(FormResourceService.bind).toHaveBeenCalledWith 
-      id: 'idea_action'
+      id: 'ideaAction'
       scope: scope
       resource: IdeaActionResource
       params: params
+      onDeleteSuccess: jasmine.any(Function)

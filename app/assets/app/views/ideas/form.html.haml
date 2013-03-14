@@ -34,6 +34,7 @@
         .controls(ng-switch-when="true")
           %button.btn.btn-large.btn-danger(ng-click="update()") Update
           %button.btn.btn-large.btn-danger(ng-click="delete()") Delete
+          %button.btn.btn-large.btn-danger(ng-href="/ideas/{{idea.id}}/actions/new") Add a Action
 
-  / .sections
-  /   %collapsible(title='Actions' type='action' collection='idea.actions' item-template='assets/views/actions/action_edit_collapsible_item.html')
+    .sections
+      %collapsible(title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_edit_collapsible_item.html')
