@@ -1,4 +1,4 @@
-window.HomeCtrl = ($scope, $http, $routeParams, FeaturedResource, dataCache) ->
+window.HomeCtrl = ($scope, $http, $routeParams, $navigate, FeaturedResource, dataCache) ->
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
 
@@ -9,3 +9,5 @@ window.HomeCtrl = ($scope, $http, $routeParams, FeaturedResource, dataCache) ->
 
   $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
     $scope.action = data
+
+  $scope.doSearch = -> $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')

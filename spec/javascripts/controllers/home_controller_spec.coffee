@@ -13,6 +13,7 @@ describe 'HomeCtrl', ->
   ctrl = null
   FeaturedResource = null
   $httpBackend = null
+  navigate = null
 
   beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
     FeaturedResource = {
@@ -22,8 +23,11 @@ describe 'HomeCtrl', ->
     $httpBackend.expectGET("#{window.ENDPOINT}/counts.json").respond(counts)
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/random.json").respond(idea)
     $httpBackend.expectGET("#{window.ENDPOINT}/idea_actions/random.json").respond(action)
+
+    navigate = go: jasmine.createSpy('go')
+
     scope = $rootScope.$new()
-    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
+    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
 
   it 'should set the idea correctly', ->
     expect(scope.idea).toBeUndefined()
@@ -43,3 +47,8 @@ describe 'HomeCtrl', ->
   it 'should fetch featured', ->
     expect(FeaturedResource.query).toHaveBeenCalled()
     expect(scope.featured).toEqual(featured)
+
+  it 'should navigate when a search occurs', ->
+    scope.query = text: 'stuff'
+    scope.doSearch()
+    expect(navigate.go).toHaveBeenCalledWith('/found?query_text=stuff', 'slide')
