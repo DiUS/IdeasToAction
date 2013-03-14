@@ -55,7 +55,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         when('/ideas/:ideaId/actions/edit/:ideaActionId',       { templateUrl: 'assets/views/actions/form.html',       controller: IdeaActionFormCtrl }).
 
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
-        when('/discover',                         { templateUrl: 'assets/views/discover/index.html',     controller: DiscoverCtrl }).
+        when('/found',                            { templateUrl: 'assets/views/found/index.html',        controller: FoundCtrl }).
         when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
         when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
         when('/internal_server_error',            { templateUrl: 'assets/views/errors/internal_server_error.html',controller: ErrorsCtrl }).
