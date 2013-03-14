@@ -29,6 +29,6 @@ angular.module('Actionman').service 'FormResourceService', ($timeout) ->
 
     scope[id].$get params, success, error if params[id + 'Id']
 
-    scope.create = -> scope[id].$save success, error
+    scope.create = -> scope[id].$save params, success, error
     scope.update = -> scope[id].$update params, updateSuccess, error
     scope.delete = -> scope[id].$delete params, deleteSuccess, error

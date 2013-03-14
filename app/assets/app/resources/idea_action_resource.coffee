@@ -1,6 +1,6 @@
 angular.module('Actionman').factory('IdeaActionResource', ($resource) ->
-  $resource('/idea_actions/:ideaActionId',
-    { ideaActionId: '@ideaActionId' },
+  $resource('ideas/:ideaId/idea_actions/:ideaActionId',
+    { ideadId: '@ideaId', ideaActionId: '@ideaActionId' },
     {
       update: { method: 'PUT' }
     })
