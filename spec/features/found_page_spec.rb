@@ -10,15 +10,41 @@ describe "Found page", js: true, acceptance: true do
     end
 
     context "when typing a search query and submitting" do
-      before do 
-        fill_in "search-text", with: "body language"
-        find('button').click()
+      context 'a successful search' do
+        before do 
+          fill_in "search-text", with: "body language"
+          find('button').click()
+        end
+
+        it "should have results" do
+          sleep 1
+          page.should have_selector(".result", text: "Examine your own body language")
+          page.should have_selector(".result", text: "Body language affects how others see us, but it may also change how we see ourselves.")
+        end
       end
 
-      it "should have results" do
-        sleep 1
-        page.should have_selector(".result", text: "Examine your own body language")
-        page.should have_selector(".result", text: "Body language affects how others see us, but it may also change how we see ourselves.")
+      context 'a query with no results' do
+        before do 
+          fill_in "search-text", with: "seriously not going to find this"
+          find('button').click()
+        end
+
+        it "should have no results" do
+          sleep 1
+          page.should have_selector(".description", text: "No results found!")
+        end
+      end
+
+      context 'an empty query' do
+        before do 
+          fill_in "search-text", with: ""
+          find('button').click()
+        end
+
+        it "should have no results" do
+          sleep 1
+          page.should have_selector(".description", text: "No results found!")
+        end
       end
     end
   end
