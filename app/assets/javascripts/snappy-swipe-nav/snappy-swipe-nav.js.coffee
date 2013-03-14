@@ -7,7 +7,7 @@ angular.module('snappy-swipe-navigate', [])
 angular.module('snappy-swipe-navigate').
   service('$navigate', ($rootScope, $location)->
     @go = (path, transition)->
-      $location.path(path)
+      $location.url(path)
 
     self = this 
 
