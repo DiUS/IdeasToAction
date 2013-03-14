@@ -1,23 +1,18 @@
 describe 'SearchCtrl', -> 
   scope = null
-  ctrl = null
-  httpBackend = null
-  navigate = null
+  $httpBackend = null
   searchResults = [{}, {}, {}]
 
   beforeEach module('Actionman')
 
-  beforeEach inject (_$httpBackend_, $rootScope, $controller, $navigate, $cacheFactory) ->
-    httpBackend = _$httpBackend_
-    navigate = $navigate
+  beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
+    $httpBackend = _$httpBackend_
 
     window.ENDPOINT = "window_endpoint"
 
     scope = $rootScope.$new()
 
-    $navigate.swipeScope = { name: "mock swipe scope", resetToTop: jasmine.createSpy('resetToTop') }
-
-    ctrl = $controller( 'SearchCtrl', { $scope: scope, $routeParams: { query_text: 'body language' } })
+    $controller 'SearchCtrl', { $scope: scope, $routeParams: { query_text: 'body language' } }
 
   it 'should initialise the query from route params', ->
     expect(scope.query).toBeDefined()
@@ -25,6 +20,16 @@ describe 'SearchCtrl', ->
     expect(scope.query.text).toEqual('body language')
 
   describe "#doSearch", ->
-    it "should perform an http call with the specified query", ->
-      httpBackend.expectGET("#{window.ENDPOINT}/search?text=body%20language").respond(searchResults)
+    beforeEach -> scope.results = null
+
+    it "should set the results when successfully responding", ->
+      $httpBackend.whenGET("#{window.ENDPOINT}/search?text=body%20language").respond(200, searchResults)
       scope.doSearch()
+      $httpBackend.flush()
+      expect(scope.results).toEqual(searchResults)
+
+    it 'should set the results to empty on an error response', ->
+      $httpBackend.whenGET("#{window.ENDPOINT}/search?text=body%20language").respond(500)
+      scope.doSearch()
+      $httpBackend.flush()
+      expect(scope.results).toEqual([])

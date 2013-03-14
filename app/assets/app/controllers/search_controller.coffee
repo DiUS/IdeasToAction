@@ -1,9 +1,11 @@
 window.SearchCtrl = ($scope, $http, $routeParams) ->
   $scope.query = { text: $routeParams.query_text }
 
-  resultsReceived = (results) -> $scope.results = results
+  resultsReceived = (results) -> 
+    $scope.results = results
+
+  errorReceived = (error) -> 
+    $scope.results = []
 
   $scope.doSearch = ->
-    $http(method: 'GET', url: "#{window.ENDPOINT}/search", params: $scope.query, cache: false).success(resultsReceived)
-
-  
+    $http.get("#{window.ENDPOINT}/search", params: $scope.query, cache: false ).success(resultsReceived).error(errorReceived)
