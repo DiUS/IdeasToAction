@@ -22,6 +22,7 @@ Actionman::Application.routes.draw do
   end
 
   resources :ideas do
+    resources :idea_actions
     collection do
       get 'random'
     end
