@@ -12,6 +12,8 @@ describe 'SearchCtrl', ->
 
     scope = $rootScope.$new()
 
+    $httpBackend.expectGET("#{window.ENDPOINT}/search?text=body%20language").respond()
+
     $controller 'SearchCtrl', { $scope: scope, $routeParams: { query_text: 'body language' } }
 
   it 'should initialise the query from route params', ->
