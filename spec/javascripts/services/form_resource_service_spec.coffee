@@ -35,13 +35,13 @@ describe 'FormResourceService', ->
         beforeEach -> scope.create()
 
         it 'should save the resource', ->
-          expect(resource.$save).toHaveBeenCalled()
+          expect(resource.$save).toHaveBeenCalledWith(params, jasmine.any(Function), jasmine.any(Function))
 
       describe 'when updating an resource', ->
         beforeEach -> scope.update()
 
         it 'should update the resource', ->
-          expect(resource.$update).toHaveBeenCalled()
+          expect(resource.$update).toHaveBeenCalledWith(params, jasmine.any(Function), jasmine.any(Function))
 
         describe 'when the success callback happens', ->
           beforeEach -> resource.$update.mostRecentCall.args[1]()          

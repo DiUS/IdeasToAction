@@ -28,15 +28,15 @@ describe "Idea edit page", js: true, acceptance: true do
     page.find('#description').value.should eql "changed on: #{time}"
   end
 
-  # context "Actions collapsible" do
-  #   let(:title) { "Actions" }
-  #   let(:item_contents) { idea.actions.map(&:description) }
+  context "Actions collapsible" do
+     let(:title) { "Actions" }
+     let(:item_contents) { idea.idea_actions.map(&:description) }
 
-  #   it_should_behave_like "a collapsible"
+     it_should_behave_like "a collapsible"
 
-  #   xit 'should link to an edit action page' do
-  #     first = page.find(".collapsible[title='#{title}']").find('.item:first .description')
-  #     first['ng-href'].should eql "/actions/edit/#{idea.actions.first.id}"
-  #   end
-  # end
+     it 'should link to an edit action page' do
+       first = page.find(".collapsible[title='#{title}']").find('.item:first .description')
+       first['ng-href'].should eql "ideas/#{idea.id}/actions/edit/#{idea.idea_actions.first.id}"
+     end
+  end
 end
