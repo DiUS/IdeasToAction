@@ -39,4 +39,10 @@ describe "Home page", js: true, acceptance: true do
   it 'should display featured actions' do
     page.should have_text IdeaAction.find_by_featured(true).description
   end
+
+  it 'should search' do
+    fill_in "search-text", with: "stuff"
+    find('button').click()
+    page.current_url.should match /#\/found\?query_text=stuff/
+  end
 end
