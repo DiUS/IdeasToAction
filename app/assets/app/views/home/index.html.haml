@@ -59,6 +59,9 @@
       %a.continue
 
   .collapsible.section
-    .header(ng-href="/found") Found
-  .collapsible.section
     .header(ng-href="/member") My profile
+  .collapsible.section
+    .header
+      %form(name='searchQuery')
+        %input#search-text(type='text' ng-model='query.text' size='30' placeholder='search')
+        %button.btn(ng-click="doSearch()") Search
