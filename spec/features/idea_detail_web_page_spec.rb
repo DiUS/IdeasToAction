@@ -9,11 +9,6 @@ describe "Idea detail web page", js: true, acceptance: true do
     end
   end
 
-  it "should have a link to open the app" do
-    link = page.find_link('Open in app')
-    link['href'].should eql 'ideasintoaction://17'
-  end
-
   xit "should have a link to download the app" do
     link = page.find('.download')
     link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.ideasintoaction'
@@ -22,5 +17,4 @@ describe "Idea detail web page", js: true, acceptance: true do
   it 'should display the idea' do
     page.should have_content idea.description
   end
-
 end
