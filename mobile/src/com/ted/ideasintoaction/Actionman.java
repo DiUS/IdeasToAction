@@ -59,7 +59,8 @@ public class Actionman extends DroidGap
         if (args == null) {
           super.loadUrl("file:///android_asset/www/index.html", 4000);
         } else {
-          super.loadUrl("file:///android_asset/www/index.html#/ideas/" + args.split("//")[1]);
+          String [] splitUrl = args.split("/");
+          super.loadUrl("file:///android_asset/www/index.html#/ideas/" + splitUrl[splitUrl.length - 1]);
         }
     }
 }
