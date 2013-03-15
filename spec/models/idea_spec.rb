@@ -76,4 +76,14 @@ describe Idea do
       idea.tags.should include another_tag
     end
   end
+
+  describe "featured only" do
+    let(:featured_ideas) { Idea.featured_only }
+
+    it "should scope featured ideas" do
+      featured_ideas.each do |idea|
+        idea.featured.should be_true
+      end
+    end
+  end
 end

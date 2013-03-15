@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   respond_to :json
 
   def random
-    render json: Idea.find(:first, :order => 'rand()')
+    render json: Idea.featured_only.random
   end
 
   def react

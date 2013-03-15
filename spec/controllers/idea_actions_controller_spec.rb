@@ -11,9 +11,9 @@ describe IdeaActionsController do
   end
 
   describe 'GET random' do
-    it 'gets recent ideas' do
-      action = IdeaAction.first
-      IdeaAction.should_receive(:find).with(:first, :order => 'rand()').and_return action
+    it 'gets featured ideas' do
+      action = IdeaAction.featured_only.first
+      IdeaAction.stub_chain(:featured_only, :random).and_return action
       get :random, { :format => :json }
       response.body.should eql action.to_json
     end
