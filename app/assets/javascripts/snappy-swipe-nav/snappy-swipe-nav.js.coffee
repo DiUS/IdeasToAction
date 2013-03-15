@@ -109,8 +109,8 @@ angular.module('snappy-swipe-navigate').
 
       page.element.attr('path', path)
 
-      # Clear all pages forward in history
-      $scope.currentPage().next().remove() while ($scope.currentPage().next().length)
+      $scope.clearAllPagesForward()
+      
 
       # Add this forward page
       $scope.pageScroller().append(page.element);
@@ -119,6 +119,8 @@ angular.module('snappy-swipe-navigate').
       #page.scope.$eval(attrs.onLoad);
       page.element
     
+    $scope.clearAllPagesForward = ->
+      $scope.currentPage().next().remove() while ($scope.currentPage().next().length)
 
     $scope.indexOfPageForPath = (path)->
       index = -1
