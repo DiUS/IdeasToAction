@@ -33,4 +33,14 @@ describe IdeaAction do
       action.actions_taken.from_member(member).should eql member_action_taken
     end    
   end
+
+  describe "featured only" do
+    let(:featured_idea_actions) { IdeaAction.featured_only }
+
+    it "should scope featured idea actions" do
+      featured_idea_actions.each do |idea_action|
+        idea_action.featured.should be_true
+      end
+    end
+  end
 end

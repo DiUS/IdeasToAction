@@ -7,7 +7,7 @@ class IdeaActionsController < ApplicationController
   respond_to :json
 
   def random
-    render json: IdeaAction.find(:first, :order => 'rand()')
+    render json: IdeaAction.featured_only.random
   end
 
   def recent
