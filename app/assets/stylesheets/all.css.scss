@@ -2,6 +2,29 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
 }
 
+.open-in-app {
+  padding: 0;
+  > div {
+    margin: 0 auto;
+    max-width: 400px;
+
+    .page {
+      height: auto;
+      border: 1px solid #d8d8d8;
+    }
+
+    .app-links {
+      float: left;
+      width: 100%;
+      padding-top: 10px;
+
+      .row button {
+        margin: 10px auto;
+      }
+    }
+  }
+}
+
 body {
   overflow-x: hidden;
   -webkit-user-select: none;
