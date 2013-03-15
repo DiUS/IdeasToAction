@@ -29,6 +29,14 @@ class Idea < ActiveRecord::Base
 
   attr_accessible :tags, :talks, :description, :idea_actions, :reactions, :featured
 
+  def self.featured_only
+    where(:featured => true)
+  end
+
+  def self.random
+    Idea.first(:offset => rand(Idea.count))
+  end
+
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size, tags: tags)
   end

@@ -26,6 +26,14 @@ class IdeaAction < ActiveRecord::Base
     end
   end
 
+  def self.featured_only
+    where(:featured => true)
+  end
+
+  def self.random
+    IdeaAction.first(:offset => rand(IdeaAction.count))
+  end
+
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size)
   end
