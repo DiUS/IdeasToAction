@@ -18,10 +18,33 @@
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="favicon.ico" rel="shortcut icon")
 
-%body
-  %a.download(href="https://play.google.com/store/apps/details?id=com.ted.ideasintoaction")
-    %img(alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png")
-  %br
-  %a.hidden-desktop(href="ideasintoaction://#{@idea['id']}") Open in application
-  %hr
-  %iframe(src="/#ideas/#{@idea['id']}" width="100%" height="100%" frameborder="0")
+%body.open-in-app
+  %div
+    .page
+      .header.main-header
+        %h1
+          TEDx Ideas into action
+      .tags
+        - @idea.tags.each do |tag|
+          %span.tag #{tag.name}
+      .content
+        %p.description
+          #{@idea.description}
+      .sections
+        .collapsible.section
+          .header
+            %span.title
+              Inspired by
+          .items(style="display: block")
+            - @idea.talks.each do |talk|
+              .item
+                %div
+                  %p.description
+                    #{talk.title}
+                    %a.continue
+    .app-links.center
+      %span.center
+        %a.download(href="#")
+          %img(alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png")
+      %span.center
+        %button.btn.btn-large.btn-danger.visible-phone.center(href="ideasintoaction://#{@idea['id']}") Open in app
