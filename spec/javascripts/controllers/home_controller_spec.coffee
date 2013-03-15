@@ -24,7 +24,10 @@ describe 'HomeCtrl', ->
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/random.json").respond(idea)
     $httpBackend.expectGET("#{window.ENDPOINT}/idea_actions/random.json").respond(action)
 
-    navigate = go: jasmine.createSpy('go')
+    navigate = 
+      go: jasmine.createSpy('go')
+      swipeScope: 
+        clearAllPagesForward: jasmine.createSpy('clearAllPagesForward')
 
     scope = $rootScope.$new()
     ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
@@ -52,3 +55,8 @@ describe 'HomeCtrl', ->
     scope.query = text: 'stuff'
     scope.doSearch()
     expect(navigate.go).toHaveBeenCalledWith('/found?query_text=stuff', 'slide')
+
+  it 'should clear all pages forward', ->
+    scope.query = text: 'stuff'
+    scope.doSearch()
+    expect(navigate.swipeScope.clearAllPagesForward).toHaveBeenCalled()

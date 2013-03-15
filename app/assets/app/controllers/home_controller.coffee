@@ -10,4 +10,6 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, FeaturedResource, dat
   $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
     $scope.action = data
 
-  $scope.doSearch = -> $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
+  $scope.doSearch = -> 
+    $navigate.swipeScope.clearAllPagesForward()
+    $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
