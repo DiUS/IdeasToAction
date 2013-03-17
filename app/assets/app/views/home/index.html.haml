@@ -41,8 +41,7 @@
 
   .collapsible.section
     .header(ng-href="/member") My profile
-  .collapsible.section
-    .header
-      %form(name='searchQuery')
-        %input#search-text(type='text' ng-model='query.text' size='30' placeholder='search')
-        %button.btn(ng-click="doSearch()") Search
+  %div
+    %form#search(name='searchQuery' ng-submit="doSearch()")
+      %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search' mobile-focus-click)
+      %button.btn(ng-click="doSearch()") Search
