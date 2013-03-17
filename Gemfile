@@ -52,6 +52,7 @@ group :test, :development do
   gem 'rack_session_access'
   gem 'vcr'
   gem 'fakeweb'
+  gem 'json_spec'
 end
 
 # Deploy with Capistrano

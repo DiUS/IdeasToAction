@@ -47,5 +47,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include JsonSpec::Helpers
+
   config.include(LoginMacros)
 end
