@@ -49,7 +49,7 @@ public class Actionman extends DroidGap
         {
             Log.v("onCreate", e.getMessage());
         }
-        sdk = ZubhiumSDK.getZubhiumSDKInstance(getApplicationContext(), "14f186144b54a8b2ec77dac15e7ce4", appVersion);
+        sdk = ZubhiumSDK.getZubhiumSDKInstance(getApplicationContext(), "372b9e276603220259f18d63eeee61", appVersion);
 
         // Get arguments from the external url
         Intent intent = getIntent();
