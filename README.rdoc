@@ -31,3 +31,56 @@ rake db:seed search:import
 Just re-indexing:
 
 rake search:import
+
+== Performance testing with httperf
+
+=== Setup
+
+Note: To reduce latency deviation I would installing the httperf and running the test from the EC2 instance (i.e. QA),
+ but not from the production machine itself as the test take a lot of resources.
+
+Clone the httperf that supports big sessions:
+
+git clone git://github.com/Gregg/httperf_big_cookies.git
+
+Build and install httperf:
+
+sudo mv httperf_big_cookies /usr/local/lib
+cd /usr/local/lib/httperf_big_cookies
+./configure
+make
+sudo make install
+
+Verify that httperf has installed correctly:
+
+httpferf -h
+
+=== Running the test
+
+Prepare the path_sequence.txt.  The file basically describes the sequence for requests
+
+httperf --wsesslog=40,2,path_sequence.txt --rate=1 --timeout=5 --session-cookie --server=production.actionman.zerobot.io --port=80
+
+==== Explanation
+
+The above command will be means the following:
+
+40 session, each starts withing 1 second of each other firing events in path_sequence.txt every two seconds.
+
+==== Important Metrics
+
+Request rate: 13.3 req/s (75.4 ms/req)
+Reply rate [replies/s]: min 1.4 avg 13.6 max 16.8 stddev 4.3 (41 samples)
+
+Thie basically means that fore every 13.3 req on everage 13.6 req came back per second (the second number is bigger in this
+case due to rump up).  Watch the standard deviation stays relatively low.
+
+Reply time [ms]: response 297.6 transfer 173.5
+Make sure this stays with acceptable rate (< 500ms??)
+
+It is also good to personally play with the app while the test is executing.
+
+=== Future Improvements
+
+It would be good to investigate how to pass JSON to POST requests in path_sequence.txt (i.e. for posting a reaction)
+
