@@ -39,11 +39,9 @@ describe "Idea submission page", js: true, acceptance: true do
   end
 
   before :each do
-    VCR.use_cassette('bitly_url') do
-      talk.should_not be_nil
-      visit "#/events/1/talks/1"
-      page.find('#new-idea', text: 'Submit a new idea').click
-    end
+    talk.should_not be_nil
+    visit "#/events/1/talks/1"
+    page.find('#new-idea', text: 'Submit a new idea').click
   end
 
   context "talks section" do
@@ -160,12 +158,10 @@ describe "Idea submission page", js: true, acceptance: true do
           end
 
           it "should redirect to the new idea's page" do
-            VCR.use_cassette('bitly_url') do
-              page.should have_selector '#idea', visible: true
-              page.should have_selector 'p.description', text: 'idea content'
+            page.should have_selector '#idea', visible: true
+            page.should have_selector 'p.description', text: 'idea content'
 
-              page.current_url.should include "/ideas/"
-            end
+            page.current_url.should include "/ideas/"
           end
         end
       end
