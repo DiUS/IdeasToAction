@@ -52,6 +52,7 @@ group :test, :development do
   gem 'rack_session_access'
   gem 'webmock'
   gem 'json_spec'
+  gem 'database_cleaner', '~> 0.9.1'
 end
 
 # Deploy with Capistrano

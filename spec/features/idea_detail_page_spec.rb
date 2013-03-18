@@ -1,13 +1,19 @@
 require_relative 'collapsible_shared_examples'
 
 describe "Idea detail page", js: true, acceptance: true do
+  self.use_transactional_fixtures = false
   
   let(:idea) { Idea.find(17) }
   let(:action) { idea.idea_actions.first }
 
   before :each do
+    DatabaseCleaner.start
     idea.should_not be_nil
     visit "#/ideas/17"
+  end
+
+  after :each do
+    DatabaseCleaner.clean
   end
 
   it "should have the idea details visible" do
@@ -78,8 +84,6 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before :each do
-      self.use_transactional_fixtures.should be true
-
       idea.reload.reactions.size.should eq 2
 
       page.should_not have_selector('p.action-statement', text: 'You did on')
