@@ -13,7 +13,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}/show_idea_url", { cache: dataCache }).success (data) ->
         $scope.idea_short_url = data.idea_url
         $scope.twitter = {
-          url: "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{$scope.talk_title}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
+          url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{$scope.talk_title}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
         }
 
   $scope.update()
