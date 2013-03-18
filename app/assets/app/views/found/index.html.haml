@@ -10,7 +10,7 @@
       .navbar-inner
         %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
           %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search')
-          %button.btn(ng-click="doSearch()") Search
+          %button.btn(ng-click="doSearch()") Find
     .content(ng-show="results")
       .results
         .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")
