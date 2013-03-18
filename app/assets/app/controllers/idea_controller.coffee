@@ -5,6 +5,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 
       $scope.idea = data
       $scope.talk_title = $scope.idea.talks[0].title
+      $('.loading').removeClass('loading')
       $navigate.swipeScope.refreshPageHeight()
       callback() if callback?
 
