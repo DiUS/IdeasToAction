@@ -6,10 +6,8 @@ describe "Idea detail page", js: true, acceptance: true do
   let(:action) { idea.idea_actions.first }
 
   before :each do
-    VCR.use_cassette('bitly_url') do
-      idea.should_not be_nil
-      visit "#/ideas/17"
-    end
+    idea.should_not be_nil
+    visit "#/ideas/17"
   end
 
   it "should have the idea details visible" do
@@ -51,15 +49,11 @@ describe "Idea detail page", js: true, acceptance: true do
 
   context "share" do
     it 'should have a twitter share button' do
-      VCR.use_cassette('bitly_url') do
-        page.should have_selector('.btn-twitter')
-      end
+      page.should have_selector('.btn-twitter')
     end
 
     it 'should link to twitter' do
-      VCR.use_cassette('bitly_url') do
-        page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{idea.bitly_url}"
-      end
+      page.find('.btn-twitter')[:href].should eql "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{idea.talks.first.title}&tw_p=tweetbutton&url=#{idea.bitly_url}"
     end
   end
 
@@ -84,56 +78,48 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before :each do
-      VCR.use_cassette('bitly_url') do
-        self.use_transactional_fixtures.should be true
+      self.use_transactional_fixtures.should be true
 
-        idea.reload.reactions.size.should eq 2
+      idea.reload.reactions.size.should eq 2
 
-        page.should_not have_selector('p.action-statement', text: 'You did on')
-        reaction_collapsible.should have_selector('.header sup', text: '2')
+      page.should_not have_selector('p.action-statement', text: 'You did on')
+      reaction_collapsible.should have_selector('.header sup', text: '2')
 
-        collapsible.find(".header").click
-        page.should have_selector(".btn.done-it", visible: true)
-        collapsible.find(".btn.done-it").click
-      end
+      collapsible.find(".header").click
+      page.should have_selector(".btn.done-it", visible: true)
+      collapsible.find(".btn.done-it").click
     end
 
     it 'should display the date' do
-      VCR.use_cassette('bitly_url') do
-        page.should have_selector('p.action-statement', text: 'You did on')
-      end
+      page.should have_selector('p.action-statement', text: 'You did on')
     end
 
     describe 'when reacting to an idea' do
 
       describe 'checking the number of reactions' do
         before :each do
-          VCR.use_cassette('bitly_url') do
-            begin
-              idea.reload.reactions.size.should eq 2
-              reaction_collapsible.should have_selector('.header sup', text: '2')
+          begin
+            idea.reload.reactions.size.should eq 2
+            reaction_collapsible.should have_selector('.header sup', text: '2')
 
-              page.should have_selector(".reaction textarea")
-              page.should have_selector(".reaction textarea", visible: true)
+            page.should have_selector(".reaction textarea")
+            page.should have_selector(".reaction textarea", visible: true)
 
-              page.find(".reaction textarea").set('This is my reaction')
-              page.find(".reaction textarea").value.should eq 'This is my reaction'
+            page.find(".reaction textarea").set('This is my reaction')
+            page.find(".reaction textarea").value.should eq 'This is my reaction'
 
-              page.find('.submit-reaction').click
-            rescue => e
-              puts page.html
-              raise e
-            end
+            page.find('.submit-reaction').click
+          rescue => e
+            puts page.html
+            raise e
           end
         end
 
         it 'should update the reactions' do
-          VCR.use_cassette('bitly_url') do
-            reaction_collapsible.should have_selector('.header sup', text: '3')
+          reaction_collapsible.should have_selector('.header sup', text: '3')
 
-            reaction_collapsible.find(".header").click
-            reaction_collapsible.should have_text('This is my reaction')
-          end
+          reaction_collapsible.find(".header").click
+          reaction_collapsible.should have_text('This is my reaction')
         end
       end
     end

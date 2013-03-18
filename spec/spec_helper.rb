@@ -8,6 +8,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require "authlogic/test_case"
 require "rack_session_access/capybara"
+require 'webmock/rspec'
 
 include Authlogic::TestCase
 
@@ -17,7 +18,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 # Capybara configuration
 Capybara.javascript_driver = :webkit
-
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -46,6 +46,14 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before :each do
+    bitly_response = {}
+    bitly_response["status_code"] = 200
+    bitly_response["status_txt"] = "OK"
+    bitly_response["data"] = {"long_url" => "http:\/\/qa.actionman.zerobot.io\/ideas\/17", "url" => "http:\/\/bit.ly\/14zIYbx", "hash" => "14zIYbx", "global_hash" => "14zIYby", "new_hash" => 0}
+    stub_request(:any, /.*api.bit.ly*/).to_return(:status => 200, :body => bitly_response.to_json, :headers => {"content-type" => "application/json"})
+  end
 
   config.include JsonSpec::Helpers
 

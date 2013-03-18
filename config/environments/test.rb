@@ -38,3 +38,5 @@ Actionman::Application.configure do
   # Use for testing only
   config.middleware.use RackSessionAccess::Middleware
 end
+
+WebMock.disable_net_connect!(:allow_localhost => true)

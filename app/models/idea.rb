@@ -43,7 +43,8 @@ class Idea < ActiveRecord::Base
 
   def bitly_url
     bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
-    URI::escape(bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url)
+    bitly_short_url = bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url
+    URI::escape(bitly_short_url)
   end
 
   def members_actioned
