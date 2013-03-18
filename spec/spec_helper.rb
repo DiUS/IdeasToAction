@@ -52,7 +52,7 @@ RSpec.configure do |config|
     bitly_response["status_code"] = 200
     bitly_response["status_txt"] = "OK"
     bitly_response["data"] = {"long_url" => "http:\/\/qa.actionman.zerobot.io\/ideas\/17", "url" => "http:\/\/bit.ly\/14zIYbx", "hash" => "14zIYbx", "global_hash" => "14zIYby", "new_hash" => 0}
-    stub_request(:any, /.*api.bit.ly*/).to_return(:status => 200, :body => bitly_response.to_json, :headers => {"content-type" => "application/json"})
+    stub_request(:any, /.*/).to_return(:status => 200, :body => bitly_response.to_json, :headers => {"content-type" => "application/json"})
   end
 
   config.include JsonSpec::Helpers
