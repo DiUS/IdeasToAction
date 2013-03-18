@@ -5,4 +5,5 @@ window.MemberCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $scope.member.reactions = data
       $http.get("#{window.ENDPOINT}/member/actions.json", { cache: dataCache }).success (data) -> 
         $scope.member.actions = data
+        $('.loading').removeClass('loading')
         $navigate.swipeScope.refreshPageHeight()
