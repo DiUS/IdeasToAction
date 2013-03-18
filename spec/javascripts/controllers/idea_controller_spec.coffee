@@ -47,7 +47,7 @@ describe 'Actionman', ()->
         scope.update()
         expect(scope.twitter).toBeUndefined()
         $httpBackend.flush()
-        expect(scope.twitter.url).toEqual("https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.ideasintoaction.com&text=#{scope.idea.talks[0].title}&tw_p=tweetbutton&url=#{scope.idea_short_url}")
+        expect(scope.twitter.url).toEqual("https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{scope.idea.talks[0].title}&tw_p=tweetbutton&url=#{scope.idea_short_url}")
 
       it 'should expose an update method', () ->
         scope.update()
