@@ -18,6 +18,15 @@
       width: 100%;
       padding: 10px;
     }
+
+    .actioned {
+      padding: 15px 0 2px;
+      width: 100%;
+
+      .action-statement {
+        font-weight: bold;
+      }
+    }
   }
 }
 
