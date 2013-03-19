@@ -24,6 +24,10 @@ describe "Home page", js: true, acceptance: true do
     random_action.text.should_not be_empty
   end
 
+  it 'should link to talks and events' do
+    page.should have_selector('[ng-href="/talks-events"]')
+  end
+
   it 'should search' do
     fill_in "search-text", with: "stuff"
     find('input.btn').click()
