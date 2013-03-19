@@ -8,7 +8,7 @@ describe 'Actionman', ()->
     ideaData = {
       description: 'Body language affects how others see us, but it may also change how we see ourselves.',
       talks: [ talkData ],
-      actions: [ { description: 'Examine your own body language in different social situations.' } ]
+      idea_actions: [ { description: 'Examine your own body language in different social situations.' } ]
     }
 
     ideaDataWithId = $.extend($.extend(true, {}, ideaData), { id: 1 })

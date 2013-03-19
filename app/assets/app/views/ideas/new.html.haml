@@ -31,7 +31,7 @@
       %p.muted
         %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
       .items
-        .item{ 'ng-repeat' => "item in idea.actions" }
+        .item{ 'ng-repeat' => "item in idea.idea_actions" }
           %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
       %form#new-action(name='newAction' ng-submit="addNewAction()")
         .control.content
