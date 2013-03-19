@@ -44,5 +44,5 @@
     .header(ng-href="/member") My profile
   %div
     %form(name='searchQuery' ng-submit="doSearch()")
-      %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search' mobile-focus-click)
+      %input#search-text(type='text' ng-model='query.text' size='30' placeholder='search' mobile-focus-click)
       %input.btn(type="submit" value="Find") 
