@@ -17,3 +17,5 @@
     .content(ng-show="results && results.length == 0")
       %p.description
         No results found!
+    .content(ng-show="!results")
+      %p.description.loading
