@@ -4,6 +4,7 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $scope.idea = { description: '', talks: [ ], idea_actions: [ ] }
     $scope.idea.talks.push(talk) if talk
     $scope.newActionDescription = ''
+    $scope.submitted = false
     $scope
 
   $scope.cancel = ->
@@ -19,13 +20,14 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     @idea.idea_actions.splice(action, 1)
 
   $scope.validIdea = ->
-    (@idea.idea_actions.length > 0) and (@idea.description)
+    (@idea.idea_actions.length > 0) and (@idea.description) && !$scope.submitted
 
   $scope.retrieveTalkById = (talkId) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json", { cache: dataCache }).success (talk) -> 
       $scope.idea.talks.push(talk)
 
   $scope.submitIdea = (idea) ->
+    $scope.submitted = true
     $http.post("#{window.ENDPOINT}/ideas", idea).success (ideaWithId) -> 
       dataCache.removeAll()
       $("#talk").scope().update().success (data)->
