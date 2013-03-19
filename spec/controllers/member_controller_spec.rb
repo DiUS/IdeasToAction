@@ -5,7 +5,7 @@ describe MemberController do
 
   before do
     ActionsTaken.create! :member => member, :idea_action => IdeaAction.create!
-    Reaction.create! idea: Idea.first, :member => member, :text => 'what else can I say?'
+    Reaction.create! idea_action: IdeaAction.first, :member => member, :text => 'what else can I say?'
     controller.stub!(:member).and_return(member)
   end
 

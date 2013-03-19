@@ -20,6 +20,8 @@ class IdeaAction < ActiveRecord::Base
 
   belongs_to :idea
 
+  has_many :reactions
+
   has_many :actions_taken do
     def from_member member
       find(:first, :conditions => ['member_id = ?', member.id])
