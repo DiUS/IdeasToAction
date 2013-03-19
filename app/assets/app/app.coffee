@@ -33,6 +33,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
       $routeProvider.
         when('/config',                           { templateUrl: 'assets/views/admin/config.html',       controller: ConfigCtrl }).
         when('/home',                             { templateUrl: 'assets/views/home/index.html',         controller: HomeCtrl }).
+        when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
 
         # Events
         when('/events/new',                       { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
