@@ -13,5 +13,5 @@
       .span12
         %textarea(placeholder = 'Add my reaction' name='reaction-text' ng-model="reactionText" mobile-focus-click)
       .span4.offset8
-        %button.btn.btn-large.btn-danger.submit-reaction(ng-disabled="!reactionText || inProgress" ng-click="react(item.idea_id, item.id)") 
+        %button.btn.btn-large.btn-danger.submit-reaction(ng-disabled="!reactionText || inProgress" ng-click="react(item.id)") 
           Add my reaction
