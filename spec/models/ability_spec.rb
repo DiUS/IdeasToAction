@@ -35,10 +35,10 @@ describe "abilities" do
     it { should be_able_to(:random, IdeaAction.new) }
     it { should be_able_to(:recent, IdeaAction) }
     it { should be_able_to(:doneIt, IdeaAction) }
+    it { should be_able_to(:react, IdeaAction) }
     it { should_not be_able_to(:manage, IdeaAction) }
 
     it { should be_able_to(:random, Idea.new) }
-    it { should be_able_to(:react, Idea.new) }
     it { should be_able_to(:create, Idea.new) }
     it { should be_able_to(:show_idea_url, Idea.new) }
     it { should_not be_able_to(:manage, Idea.new) }

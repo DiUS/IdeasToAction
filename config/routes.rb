@@ -17,6 +17,7 @@ Actionman::Application.routes.draw do
     end
 
     member do 
+      post 'react'
       post 'doneIt'
     end
   end
@@ -28,7 +29,6 @@ Actionman::Application.routes.draw do
     end
 
     member do 
-      post 'react'
       get 'show_idea_url'
     end
   end

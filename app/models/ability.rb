@@ -24,7 +24,7 @@ class Ability
       can :doneIt, IdeaAction
 
       can :random, Idea
-      can :react, Idea
+      can :react, IdeaAction
       can :create, Idea
       can :show_idea_url, Idea
 

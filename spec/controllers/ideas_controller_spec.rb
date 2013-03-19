@@ -27,21 +27,6 @@ describe IdeasController do
     {}
   end
 
-  describe 'POST react' do
-    let(:member) { mock_model Member }
-    let(:idea) { mock_model Idea }
-
-    before :each do
-      Idea.should_receive(:find).and_return idea
-      controller.stub(:member).and_return member
-    end
-
-    it 'creates an actions taken entry' do
-      Reaction.should_receive(:create!).with(:idea => idea, :member => member, :text => 'this is my reaction')
-      post :react, {:id => 1, :text => 'this is my reaction', :format => 'json'}, valid_session 
-    end
-  end
-
   describe "GET show" do
     let(:idea) { mock_model Idea }
     let(:member) { mock_model Member }

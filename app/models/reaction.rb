@@ -1,6 +1,6 @@
 class Reaction < ActiveRecord::Base
-  attr_accessible :member, :idea, :text
+  attr_accessible :member, :text, :idea_action
 
-  belongs_to :idea
+  belongs_to :idea_action
   belongs_to :member
 end

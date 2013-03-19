@@ -409,11 +409,7 @@ if %w(test development qa).include? Rails.env
       tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
       idea_actions: [
         { description: 'Examine your own body language in different social situations.' },
-      ].map() { | action_attrs | IdeaAction.new(action_attrs) },
-      reactions: [
-        { text: 'This is a good idea' },
-        { text: 'I think I will try one of these actions' }
-      ].map() { | reaction_attrs | Reaction.new(reaction_attrs) }
+      ].map() { | action_attrs | IdeaAction.new(action_attrs) }
     },
     { 
       talks: [ amy_cuddy_talk, steve_jobs_talk ],      
@@ -421,11 +417,7 @@ if %w(test development qa).include? Rails.env
       tags: %w(Brain Business Psychology Self Success).map { | tag_name | Tag.find_by_name(tag_name) },
         idea_actions: [
         { description: 'Power-pose for two minutes before an important meeting.' },
-      ].map() { | action_attrs | IdeaAction.new(action_attrs) },
-      reactions: [
-        { text: 'This is a good idea' },
-        { text: 'I think I will try one of these actions' }
-      ].map() { | reaction_attrs | Reaction.new(reaction_attrs) }
+      ].map() { | action_attrs | IdeaAction.new(action_attrs) }
     }
   ].map() { | idea_attrs | idea = Idea.new(idea_attrs); idea.member = member1; idea.save! }
 
@@ -436,19 +428,19 @@ if %w(test development qa).include? Rails.env
     ActionsTaken.create! idea_action: IdeaAction.first, member: member3
 
     Reaction.create!({ 
-      idea: Idea.first, 
+      idea_action: IdeaAction.first,
       member: member1, 
       :text => 'i think you have come up with something big here',
     })
 
     Reaction.create!({
-      idea: Idea.first, 
+      idea_action: IdeaAction.first, 
       member: member1, 
       text: 'what else can I say?',
     })
 
     Reaction.create!({
-      idea: Idea.first, 
+      idea_action: IdeaAction.first,
       member: member1, 
       text: 'There is some useful information here',
     })

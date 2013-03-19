@@ -10,12 +10,6 @@ class IdeasController < ApplicationController
     render json: Idea.featured_only.random
   end
 
-  def react
-    idea = Idea.find(params[:id])
-    Reaction.create! idea: idea, member: member, :text => params[:text]
-    render :nothing => true
-  end
-
   def update
     params['idea'].delete 'talks'
     params['idea'].delete 'idea_actions'

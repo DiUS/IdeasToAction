@@ -3,13 +3,13 @@ require_relative 'collapsible_shared_examples'
 describe "Idea detail page", js: true, acceptance: true do
   self.use_transactional_fixtures = false
   
-  let(:idea) { Idea.find(17) }
+  let(:idea) { Idea.find(1) }
   let(:action) { idea.idea_actions.first }
 
   before :each do
     DatabaseCleaner.start
     idea.should_not be_nil
-    visit "#/ideas/17"
+    visit "#/ideas/1"
   end
 
   after :each do
@@ -84,14 +84,14 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before :each do
-      idea.reload.reactions.size.should eq 2
+      idea.reload.reactions.size.should eq 3
 
       page.should_not have_selector('p.action-statement', text: 'You did on')
-      reaction_collapsible.should have_selector('.header sup', text: '2')
+      reaction_collapsible.should have_selector('.header sup', text: '3')
 
       collapsible.find(".header").click
       page.should have_selector(".btn.done-it", visible: true)
-      collapsible.find(".btn.done-it").click
+      collapsible.all(".btn.done-it").first.click
     end
 
     it 'should display the date' do
@@ -103,16 +103,16 @@ describe "Idea detail page", js: true, acceptance: true do
       describe 'checking the number of reactions' do
         before :each do
           begin
-            idea.reload.reactions.size.should eq 2
-            reaction_collapsible.should have_selector('.header sup', text: '2')
+            idea.reload.reactions.size.should eq 3
+            reaction_collapsible.should have_selector('.header sup', text: '3')
 
             page.should have_selector(".reaction textarea")
             page.should have_selector(".reaction textarea", visible: true)
 
-            page.find(".reaction textarea").set('This is my reaction')
-            page.find(".reaction textarea").value.should eq 'This is my reaction'
+            page.all(".reaction textarea").first.set('This is my reaction')
+            page.all(".reaction textarea").first.value.should eq 'This is my reaction'
 
-            page.find('.submit-reaction').click
+            page.all('.submit-reaction').first.click
           rescue => e
             puts page.html
             raise e
@@ -120,7 +120,7 @@ describe "Idea detail page", js: true, acceptance: true do
         end
 
         it 'should update the reactions' do
-          reaction_collapsible.should have_selector('.header sup', text: '3')
+          reaction_collapsible.should have_selector('.header sup', text: '4')
 
           reaction_collapsible.find(".header").click
           reaction_collapsible.should have_text('This is my reaction')

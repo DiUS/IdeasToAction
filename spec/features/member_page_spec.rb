@@ -15,7 +15,7 @@ describe "Member page", js: true, acceptance: true do
   before :each do
     member.should_not be_nil
     @action_taken = ActionsTaken.create! idea_action: IdeaAction.first, member: member
-    @reaction = Reaction.create! idea: Idea.first, member: member, :text => 'thats bloody good'
+    @reaction = Reaction.create! idea_action: IdeaAction.first, member: member, :text => 'thats bloody good'
     visit "#/member"
   end 
 
