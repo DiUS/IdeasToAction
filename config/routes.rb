@@ -1,5 +1,9 @@
 Actionman::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   match "search" => "search#index"
 
   get "heartbeat/beat"
