@@ -1,7 +1,7 @@
 window.IdeaEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
 
   $scope.startNewIdea = (talk) ->
-    $scope.idea = { description: '', talks: [ ], actions: [ ] }
+    $scope.idea = { description: '', talks: [ ], idea_actions: [ ] }
     $scope.idea.talks.push(talk) if talk
     $scope.newActionDescription = ''
     $scope
@@ -12,14 +12,14 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
 
   $scope.addNewAction = ->
     return unless @newActionDescription.length > 0
-    @idea.actions.push({ description: @newActionDescription })
+    @idea.idea_actions.push({ description: @newActionDescription })
     @newActionDescription = ''
 
   $scope.removeAction = (action)->
-    @idea.actions.splice(action, 1)
+    @idea.idea_actions.splice(action, 1)
 
   $scope.validIdea = ->
-    (@idea.actions.length > 0) and (@idea.description)
+    (@idea.idea_actions.length > 0) and (@idea.description)
 
   $scope.retrieveTalkById = (talkId) ->
     $http.get("#{window.ENDPOINT}/talks/#{talkId}.json", { cache: dataCache }).success (talk) -> 
