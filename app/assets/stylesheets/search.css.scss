@@ -1,6 +1,20 @@
 #home form {
-  padding: 25px 0px;
-  height: 50px;
+  text-align: center;
+  padding: 3px 0 5px;
+
+
+  #search-text {
+    width: 72%;
+    height: 50px;
+    font-size: 2em;
+    line-height: 41px;
+    margin-bottom: 0;
+  }
+
+  .btn {
+    width: 20%;
+    height: 60px;
+  }
 }
 
 .search-navbar {
