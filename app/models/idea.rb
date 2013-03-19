@@ -27,7 +27,9 @@ class Idea < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
 
-  attr_accessible :tags, :talks, :description, :idea_actions, :reactions, :featured
+  attr_accessible :tags, :talks, :description, :idea_actions, :reactions, :featured, :member_id, :talk_ids
+
+  delegate :username, :id, :to => :member, :prefix => true
 
   def self.featured_only
     where(:featured => true)
