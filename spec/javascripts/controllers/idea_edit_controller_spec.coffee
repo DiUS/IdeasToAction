@@ -47,9 +47,19 @@ describe 'Actionman', ()->
       it 'should set an empty new action description', () ->
         expect(scope.newActionDescription).toEqual('')
 
-    describe '#submitIdea', ()->
+      it 'should reset submitted', ->
+        expect(scope.submitted).toEqual(false)
 
-      it 'should do a POST to the server', ()->
+    describe '#submitIdea', ->
+      beforeEach ->
+        scope.submitted = false
+        httpBackend.whenPOST("#{window.ENDPOINT}/ideas", ideaData).respond(ideaDataWithId)
+
+      it 'should set submitted to true', ->
+        scope.submitIdea(ideaData)
+        expect(scope.submitted).toEqual(true)
+
+      it 'should do a POST to the server', ->
         httpBackend.expectPOST("#{window.ENDPOINT}/ideas", ideaData).respond(ideaDataWithId)
         scope.submitIdea(ideaData)
 
