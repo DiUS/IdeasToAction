@@ -47,7 +47,7 @@ qa_mobile_assets:
   <<: *test
 
 android:
-  <<: *base
+  <<: *test
 
 canary:
   <<: *base
