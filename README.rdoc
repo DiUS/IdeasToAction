@@ -32,6 +32,12 @@ Just re-indexing:
 
 rake search:import
 
+NOTE: you may see "Too amny open files" in the elasticsearch logs. This causes indexing to fail sometimes. 
+
+Solution for this problem can be found here:
+
+http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html
+
 == Performance testing with httperf
 
 === Setup
