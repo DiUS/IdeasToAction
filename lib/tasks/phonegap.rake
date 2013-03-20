@@ -37,6 +37,9 @@ namespace :phonegap do
   task :assets_in_www_directory => [ 'mobile/assets/www', :android_manifest ] do
     FileUtils.mv('public/assets', 'mobile/assets/www/.')
     FileUtils.mv(%w(mobile/assets/www/assets/index.html), 'mobile/assets/www/', verbose: true)
+    FileUtils.rm_rf('mobile/assets/www/assets/active_admin', verbose: true)
+    FileUtils.rm_rf('mobile/assets/www/assets/active_admin.css', verbose: true)
+    FileUtils.rm_rf('mobile/assets/www/assets/active_admin.js', verbose: true)
     FileUtils.rm_rf(Dir.glob('mobile/assets/www/assets/*.gz'), verbose: true)
     FileUtils.rm(Dir.glob('mobile/assets/www/**/*').select { | fn | fn =~ /.*-([\w\d]{32})\.[\w]+/ }, verbose: true)
 
