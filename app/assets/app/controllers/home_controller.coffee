@@ -13,3 +13,4 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, FeaturedResource, dat
   $scope.doSearch = -> 
     $navigate.swipeScope.clearAllPagesForward()
     $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
+    false
