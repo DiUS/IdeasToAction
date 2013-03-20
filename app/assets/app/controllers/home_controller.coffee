@@ -1,4 +1,4 @@
-window.HomeCtrl = ($scope, $http, $routeParams, $navigate, FeaturedResource, dataCache) ->
+window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, FeaturedResource, dataCache) ->
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
 
@@ -11,6 +11,8 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, FeaturedResource, dat
     $scope.action = data
 
   $scope.doSearch = -> 
-    $navigate.swipeScope.clearAllPagesForward()
-    $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
+    $timeout ->
+      $navigate.swipeScope.clearAllPagesForward()
+      $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
+    , 600
     false

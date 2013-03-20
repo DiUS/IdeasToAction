@@ -14,6 +14,7 @@ describe 'HomeCtrl', ->
   FeaturedResource = null
   $httpBackend = null
   navigate = null
+  timeout = null
 
   beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
     FeaturedResource = {
@@ -29,8 +30,10 @@ describe 'HomeCtrl', ->
       swipeScope: 
         clearAllPagesForward: jasmine.createSpy('clearAllPagesForward')
 
+    timeout = jasmine.createSpy('timeout').andCallFake (fn, time) -> fn()
+
     scope = $rootScope.$new()
-    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
+    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
 
   it 'should set the idea correctly', ->
     expect(scope.idea).toBeUndefined()
