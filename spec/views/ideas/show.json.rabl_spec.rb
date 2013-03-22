@@ -9,7 +9,7 @@ describe 'harbors/index.json.rabl' do
 
   it 'includes all idea attributes' do
     attributes = @idea.to_hash.to_json # first converting to hash to bypass 'to_json' method on the model itself
-    @rendered.should be_json_eql(attributes).excluding(:members_actioned_count, :tags, :idea_actions, :reactions, :talks)
+    @rendered.should be_json_eql(attributes).excluding(:members_actioned_count, :tags, :idea_actions, :interactions, :talks)
   end
 
   it "includes member actioned count" do
@@ -32,8 +32,8 @@ describe 'harbors/index.json.rabl' do
     @rendered.should have_json_type(Array).at_path("talks")
   end
 
-  it "includes the collection of reactions" do
-    @rendered.should have_json_path("reactions")
-    @rendered.should have_json_type(Array).at_path("reactions")
+  it "includes the collection of interactions" do
+    @rendered.should have_json_path("interactions")
+    @rendered.should have_json_type(Array).at_path("interactions")
   end
 end

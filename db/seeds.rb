@@ -14,9 +14,8 @@ if %w(test development qa).include? Rails.env
   Talk.delete_all
   Idea.delete_all
   Member.delete_all
-  ActionsTaken.delete_all
+  Interaction.delete_all
   IdeaAction.delete_all
-  Reaction.delete_all
 
   # Setup
   member1 = Member.create! persistence_token: '1234'
@@ -423,27 +422,9 @@ if %w(test development qa).include? Rails.env
 
 
   if %w(test development).include? Rails.env
-    ActionsTaken.create! idea_action: IdeaAction.first, member: member1
-    ActionsTaken.create! idea_action: IdeaAction.first, member: member2
-    ActionsTaken.create! idea_action: IdeaAction.first, member: member3
-
-    Reaction.create!({ 
-      idea_action: IdeaAction.first,
-      member: member1, 
-      :text => 'i think you have come up with something big here',
-    })
-
-    Reaction.create!({
-      idea_action: IdeaAction.first, 
-      member: member1, 
-      text: 'what else can I say?',
-    })
-
-    Reaction.create!({
-      idea_action: IdeaAction.first,
-      member: member1, 
-      text: 'There is some useful information here',
-    })
+    Interaction.create! idea_action: IdeaAction.first, member: member1, reaction_text: 'i think you have come up with something big here'
+    Interaction.create! idea_action: IdeaAction.first, member: member2, reaction_text: 'what else can I say?'
+    Interaction.create! idea_action: IdeaAction.first, member: member3, reaction_text: 'There is some useful information here'
   end
 
 end

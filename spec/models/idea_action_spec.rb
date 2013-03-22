@@ -27,10 +27,10 @@ describe IdeaAction do
   describe 'actions_taken.from_member' do
     let(:member) { Member.first }
     let(:action) { IdeaAction.first }
-    let(:member_action_taken) { ActionsTaken.first }
+    let(:interaction) { Interaction.first }
 
     it 'should find a single action taken from a member' do
-      action.actions_taken.from_member(member).should eql member_action_taken
+      action.interactions.from_member(member).should eql interaction
     end    
   end
 

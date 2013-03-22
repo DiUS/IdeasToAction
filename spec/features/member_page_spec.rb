@@ -14,15 +14,13 @@ describe "Member page", js: true, acceptance: true do
 
   before :each do
     member.should_not be_nil
-    @action_taken = ActionsTaken.create! idea_action: IdeaAction.first, member: member
-    @reaction = Reaction.create! idea_action: IdeaAction.first, member: member, :text => 'thats bloody good'
+    @interaction = Interaction.create! idea_action: IdeaAction.first, member: member, :reaction_text => 'thats bloody good'
     visit "#/member"
   end 
 
   after :each do
     member.destroy
-    @action_taken.destroy
-    @reaction.destroy
+    @interaction.destroy
   end
 
   it "should have the actions taken visible" do

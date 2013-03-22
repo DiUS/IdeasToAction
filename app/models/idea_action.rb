@@ -20,9 +20,7 @@ class IdeaAction < ActiveRecord::Base
 
   belongs_to :idea
 
-  has_many :reactions
-
-  has_many :actions_taken do
+  has_many :interactions do
     def from_member member
       find(:first, :conditions => ['member_id = ?', member.id])
     end
@@ -40,9 +38,9 @@ class IdeaAction < ActiveRecord::Base
     super.merge(members_actioned_count: members_actioned.size)
   end
 
-  def members_actioned
-    Idea.find_by_sql("select distinct at.member_id from " + 
-                      "idea_actions a, actions_taken at where " +
-                      "at.idea_action_id = a.id and a.id = #{self.id}")
+  def members_actioned #TODO: do we need this ? just go through interaction model
+    Idea.find_by_sql("select distinct ins.member_id from " + 
+                      "idea_actions a, interactions ins where " +
+                      "ins.idea_action_id = a.id and a.id = #{self.id}")
   end
 end
