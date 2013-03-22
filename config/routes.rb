@@ -11,7 +11,6 @@ Actionman::Application.routes.draw do
   match "counts" => "counts#index"
   match "member" => "member#show"
   match "member/actions" => "member#actions"
-  match "member/reactions" => "member#reactions"
 
   resources :featured
 

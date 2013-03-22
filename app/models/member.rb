@@ -10,11 +10,9 @@ class Member < ActiveRecord::Base
     c.validate_login_field = false
   end
 
-  has_many :actions_taken
+  has_many :interactions
 
-  has_many :reactions
-
-  has_many :idea_actions, :through => :actions_taken
+  has_many :idea_actions, :through => :interactions #needed?
 
   def content_admin?
     self.role == ROLE_CONTENT_ADMIN

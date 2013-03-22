@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319012456) do
-
-  create_table "actions_taken", :force => true do |t|
-    t.integer  "idea_action_id"
-    t.integer  "member_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130321232537) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -86,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20130319012456) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "interactions", :force => true do |t|
+    t.integer  "idea_action_id"
+    t.integer  "member_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.text     "reaction_text"
+  end
+
   create_table "members", :force => true do |t|
     t.string   "persistence_token"
     t.datetime "created_at",                               :null => false
@@ -94,14 +95,6 @@ ActiveRecord::Schema.define(:version => 20130319012456) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "role",              :default => "REGULAR"
-  end
-
-  create_table "reactions", :force => true do |t|
-    t.integer  "member_id"
-    t.text     "text"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "idea_action_id", :default => 0
   end
 
   create_table "tags", :force => true do |t|

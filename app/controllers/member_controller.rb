@@ -10,8 +10,4 @@ class MemberController < ApplicationController
   def actions
     render json: member.idea_actions
   end
-
-  def reactions
-    render json: member.reactions
-  end
 end
