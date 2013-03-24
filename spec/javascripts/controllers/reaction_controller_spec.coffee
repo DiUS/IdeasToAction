@@ -1,19 +1,27 @@
 describe 'ReactionCtrl', -> 
 
-  ideaActionId = 1
-  scope = null
+  $scope = null
+  Interaction = null
 
   beforeEach inject ($httpBackend, $rootScope, $controller, $cacheFactory) ->
-    window.ENDPOINT = 'window_endpoint'
+    resource = reaction_text: null, $update: jasmine.createSpy('$update')
 
-    $httpBackend.expectPOST("#{window.ENDPOINT}/idea_actions/#{ideaActionId}/react.json", {text: 'my reaction'}).respond({})
+    Interaction = 
+      resource: jasmine.createSpy('resource').andCallFake -> resource
 
-    scope = $rootScope.$new()
-    $controller( 'ReactionCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache') })
+    $scope = $rootScope.$new()
+    $controller 'ReactionCtrl', { $scope: $scope, Interaction: Interaction, dataCache: $cacheFactory('fake cache') }
 
   it 'should be in process when reacting', ->
-    scope.reactionText = 'my reaction'
-    scope.inProgress = false
-    scope.react(ideaActionId)
-    expect(scope.inProgress).toBeTruthy()
+    $scope.inProgress = false
+    $scope.react()
+    expect($scope.inProgress).toBeTruthy()
 
+  it 'should set the reaction text', ->
+    $scope.reactionText = 'my lovely text'
+    $scope.react()
+    expect(Interaction.resource().reaction_text).toEqual('my lovely text')
+
+  it 'should update the interaction', ->
+    $scope.react()
+    expect(Interaction.resource().$update).toHaveBeenCalled()
