@@ -36,24 +36,14 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
 
         # Events
-        when('/events/new',                       { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
-        when('/events/edit',                      { templateUrl: 'assets/views/events/edit.html',        controller: EventsEditCtrl }).
-        when('/events/edit/:eventId',             { templateUrl: 'assets/views/events/form.html',        controller: EventFormCtrl }).
         when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
 
         # Talks
-        when('/events/:eventId/talks/new',          { templateUrl: 'assets/views/talks/form.html',         controller: TalkFormCtrl }).
-        when('/events/:eventId/talks/edit/:talkId', { templateUrl: 'assets/views/talks/form.html',         controller: TalkFormCtrl }).
         when('/events/:eventId/talks',              { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
         when('/events/:eventId/talks/:talkId',      { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
 
         # Ideas
         when('/ideas/:ideaId',                    { templateUrl: 'assets/views/ideas/idea.html',         controller: IdeaCtrl }).
-        when('/ideas/edit/:ideaId',               { templateUrl: 'assets/views/ideas/form.html',         controller: IdeaFormCtrl }).
-
-        # Actions
-        when('/ideas/:ideaId/actions/new',                      { templateUrl: 'assets/views/actions/form.html',       controller: IdeaActionFormCtrl }).
-        when('/ideas/:ideaId/actions/edit/:ideaActionId',       { templateUrl: 'assets/views/actions/form.html',       controller: IdeaActionFormCtrl }).
 
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/found',                            { templateUrl: 'assets/views/found/index.html',        controller: FoundCtrl }).
