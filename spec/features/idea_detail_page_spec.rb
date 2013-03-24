@@ -38,7 +38,7 @@ describe "Idea detail page", js: true, acceptance: true do
 
   context "Reactions collapsible" do
     let(:title) { "Reactions" }
-    let(:item_contents) { idea.reactions.map(&:text) }
+    let(:item_contents) { idea.interactions.map(&:reaction_text) }
 
     it_should_behave_like "a collapsible"
   end
@@ -84,8 +84,6 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before :each do
-      idea.reload.reactions.size.should eq 3
-
       page.should_not have_selector('p.action-statement', text: 'You did on')
       reaction_collapsible.should have_selector('.header sup', text: '3')
 
@@ -103,7 +101,6 @@ describe "Idea detail page", js: true, acceptance: true do
       describe 'checking the number of reactions' do
         before :each do
           begin
-            idea.reload.reactions.size.should eq 3
             reaction_collapsible.should have_selector('.header sup', text: '3')
 
             page.should have_selector(".reaction textarea")
