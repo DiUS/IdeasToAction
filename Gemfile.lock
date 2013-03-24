@@ -17,8 +17,8 @@ GIT
       rest-client (~> 1.6)
 
 GIT
-  remote: git://github.com/redbeard/politburo.git
-  revision: 223be20adca95539625bf0d0bf70f880623fc21a
+  remote: git://github.com/politburo/politburo.git
+  revision: bd7a671042aa5d9c7dfd74123ecb9e638b8b6443
   specs:
     politburo (0.0.1)
       fog
@@ -148,7 +148,7 @@ GEM
       aws-sdk
       net-dns
     erubis (2.7.0)
-    excon (0.16.10)
+    excon (0.20.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.6)
