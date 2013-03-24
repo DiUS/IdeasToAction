@@ -1,8 +1,10 @@
-window.ReactionCtrl = ($scope, $http, dataCache) ->
-  $scope.react = (ideaActionId) ->
+window.ReactionCtrl = ($scope, $http, Interaction, dataCache) ->
+  $scope.react = ->
     $scope.inProgress = true
 
-    $http.post("#{window.ENDPOINT}/idea_actions/#{ideaActionId}/react.json", { text: $scope.reactionText }).success (data) ->
-      $("#reaction-#{ideaActionId}").slideToggle 300, () ->
+    interaction = Interaction.resource()
+    interaction.reaction_text = $scope.reactionText
+    interaction.$update ->
+      $("#reaction-#{interaction.id}").slideToggle 300, ->
         dataCache.removeAll()
         $("#idea").scope().update()

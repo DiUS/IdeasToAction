@@ -1,12 +1,15 @@
-window.IdeaActionCtrl = ($scope, $http, $element, $routeParams, dataCache) ->
+window.IdeaActionCtrl = ($scope, $http, $element, $routeParams, Interaction, dataCache) ->
   $scope.doneIt = (ideaActionId) ->
     $button = $element.find('.done-it')
     return if $button.hasClass('disabled')
 
     $button.addClass('disabled')
-    $http.post("#{window.ENDPOINT}/idea_actions/#{ideaActionId}/doneIt.json").success (data) ->
+
+    interaction = Interaction.new()
+    interaction.idea_action_id = ideaActionId
+    interaction.$save ->
       dataCache.removeAll()
-      $('#idea').scope().update () ->
-        setTimeout( () ->
-          $("#reaction-#{ideaActionId}").slideToggle 300
-        , 300)
+      $('#idea').scope().update ->
+        setTimeout ->
+          $("#reaction-#{interaction.id}").slideToggle 300
+        , 300
