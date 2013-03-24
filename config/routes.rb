@@ -12,7 +12,7 @@ Actionman::Application.routes.draw do
   match "member" => "member#show"
   match "member/actions" => "member#actions"
 
-  resources :featured
+  # resources :featured
 
   resources :idea_actions do
     resources :interactions

@@ -1,8 +1,6 @@
-window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, FeaturedResource, dataCache) ->
+window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) ->
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
-
-  $scope.featured = FeaturedResource.query()
 
   $http.get("#{window.ENDPOINT}/ideas/random.json", { cache: dataCache }).success (data) -> 
     $scope.idea = data
