@@ -27,6 +27,10 @@ class Ability
       can :react, IdeaAction
       can :create, Idea
       can :show_idea_url, Idea
+      can :create, Interaction
+      can :update, Interaction do |interation|
+        member == interation.member
+      end
 
       can :manage, Member do |the_member|
         the_member == member
