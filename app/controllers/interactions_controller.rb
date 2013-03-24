@@ -1,11 +1,11 @@
-  # def react
-  #   idea_action = IdeaAction.find(params[:id])
-  #   Reaction.create! idea_action: idea_action, member: member, :text => params[:text]
-  #   render :nothing => true
-  # end
+ class InteractionsController < ApplicationController
+  inherit_resources
+  authorize_resource
 
-  # def doneIt
-  #   idea_action = IdeaAction.find(params[:id])
-  #   Interaction.create! :member => member, :idea_action => idea_action
-  #   render :nothing => true
-  # end
+  respond_to :json
+
+  def create
+    interaction = Interaction.create! :idea_action_id => params[:idea_action_id], :member => member
+    render :json => interaction
+  end
+end
