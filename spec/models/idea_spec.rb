@@ -2,6 +2,18 @@ require 'spec_helper'
 
 describe Idea do
 
+  it { should be_accessible(:tags) }
+  it { should be_accessible(:talks) }
+  it { should be_accessible(:description) }
+  it { should be_accessible(:idea_actions) }
+  it { should be_accessible(:reactions) }
+  it { should be_accessible(:featured) }
+  it { should be_accessible(:member_id) }
+  it { should be_accessible(:talk_ids) }
+
+  it { should delegate(:id).to(:member).with_prefix }
+  it { should delegate(:username).to(:member).with_prefix }
+
   describe 'as_json' do
     let(:idea) { Idea.first }
 
