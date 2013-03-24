@@ -6,7 +6,7 @@ describe Idea do
   it { should be_accessible(:talks) }
   it { should be_accessible(:description) }
   it { should be_accessible(:idea_actions) }
-  it { should be_accessible(:reactions) }
+  it { should be_accessible(:interactions) }
   it { should be_accessible(:featured) }
   it { should be_accessible(:member_id) }
   it { should be_accessible(:talk_ids) }
