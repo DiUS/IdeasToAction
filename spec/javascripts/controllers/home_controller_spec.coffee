@@ -11,15 +11,11 @@ describe 'HomeCtrl', ->
 
   scope = null
   ctrl = null
-  FeaturedResource = null
   $httpBackend = null
   navigate = null
   timeout = null
 
   beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
-    FeaturedResource = {
-      query: jasmine.createSpy('query').andReturn(featured)
-    }
     $httpBackend = _$httpBackend_
     $httpBackend.expectGET("#{window.ENDPOINT}/counts.json").respond(counts)
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/random.json").respond(idea)
@@ -33,7 +29,7 @@ describe 'HomeCtrl', ->
     timeout = jasmine.createSpy('timeout').andCallFake (fn, time) -> fn()
 
     scope = $rootScope.$new()
-    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, FeaturedResource: FeaturedResource, dataCache: $cacheFactory('fake cache') })
+    ctrl = $controller( 'HomeCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, dataCache: $cacheFactory('fake cache') })
 
   it 'should set the idea correctly', ->
     expect(scope.idea).toBeUndefined()
@@ -49,10 +45,6 @@ describe 'HomeCtrl', ->
     expect(scope.counts).toBeUndefined()
     $httpBackend.flush()
     expect(scope.counts).toEqual(counts)
-
-  it 'should fetch featured', ->
-    expect(FeaturedResource.query).toHaveBeenCalled()
-    expect(scope.featured).toEqual(featured)
 
   it 'should navigate when a search occurs', ->
     scope.query = text: 'stuff'
