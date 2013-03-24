@@ -2,15 +2,15 @@ attributes *IdeaAction.column_names
 
 node(:members_actioned_count) { root_object.members_actioned.size }
 
-member_action_taken = root_object.actions_taken.from_member(@member)
+member_interaction = root_object.interactions.from_member(@member)
 
-node(:member_action_taken) do
-  if member_action_taken.present?
+node(:member_interaction) do
+  if member_interaction.present?
     {
-      :id => member_action_taken.id,
-      :idea_action_id =>  member_action_taken.idea_action_id,
-      :member_id =>  member_action_taken.member_id,
-      :created_at =>  member_action_taken.created_at.strftime("%b %d %Y")
+      :id => member_interaction.id,
+      :idea_action_id =>  member_interaction.idea_action_id,
+      :member_id =>  member_interaction.member_id,
+      :created_at =>  member_interaction.created_at.strftime("%b %d %Y")
     }
   end
 end
