@@ -24,7 +24,7 @@ describe IdeaAction do
     end
   end
 
-  describe 'actions_taken.from_member' do
+  describe 'interactions.from_member' do
     let(:member) { Member.first }
     let(:action) { IdeaAction.first }
     let(:interaction) { Interaction.first }
