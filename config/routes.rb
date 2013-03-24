@@ -15,13 +15,9 @@ Actionman::Application.routes.draw do
   resources :featured
 
   resources :idea_actions do
+    resources :interactions
     collection do
       get 'random'
-    end
-
-    member do 
-      post 'react'
-      post 'doneIt'
     end
   end
 
