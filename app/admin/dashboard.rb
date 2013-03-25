@@ -30,11 +30,27 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recently Created Ideas" do
           table_for Idea.order("created_at desc").limit(5) do
             column :description do |idea|
-              truncate idea.description, :length => 200
+              div :class => "text_column" do
+                truncate idea.description, :length => 150, :omission => '...'
+              end
             end
             column :created_at
           end
           strong { link_to "View All Ideas", admin_ideas_path }
+        end
+      end
+
+      column do
+        panel "Recently Created Actions" do
+          table_for IdeaAction.order("created_at desc").limit(5) do
+            column :description do |idea_action|
+              div :class => "text_column" do
+                truncate idea_action.description, :length => 150, :omission => '...'
+              end
+            end
+            column :created_at
+          end
+          strong { link_to "View All Actions", admin_actions_path }
         end
       end
     end

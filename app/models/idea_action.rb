@@ -16,7 +16,7 @@ class IdeaAction < ActiveRecord::Base
     indexes :description,     :boost => 100
   end  
       
-  attr_accessible :description, :featured
+  attr_accessible :description, :featured, :idea_id
 
   belongs_to :idea
 
@@ -25,6 +25,8 @@ class IdeaAction < ActiveRecord::Base
       find(:first, :conditions => ['member_id = ?', member.id])
     end
   end
+
+  delegate :description, :to => :idea, :prefix => true
 
   def self.featured_only
     where(:featured => true)
