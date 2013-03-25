@@ -1,0 +1,10 @@
+%p.description(ng-href="/ideas/{{item.idea_action.idea_id}}")
+  {{item.idea_action.description}}
+  %a.continue
+  %p.action-statement.pull-left
+    %b {{item.idea_action.members_actioned_count}} 
+    %span People did this
+  %div.pull-right
+    %p.action-statement
+      %span You did on
+      %b {{item.created_at | date: 'd MMM yyyy'}}
