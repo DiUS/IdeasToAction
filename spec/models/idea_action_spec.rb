@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe IdeaAction do
+  it { should delegate(:description).to(:idea).with_prefix }
+
   describe 'as_json' do
     before do
       @action = IdeaAction.first
