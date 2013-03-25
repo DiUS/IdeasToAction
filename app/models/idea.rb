@@ -29,7 +29,7 @@ class Idea < ActiveRecord::Base
 
   attr_accessible :tags, :talks, :description, :idea_actions, :interactions, :featured, :member_id, :talk_ids
 
-  delegate :username, :id, :to => :member, :prefix => true
+  delegate :username, :to => :member, :prefix => true
 
   def self.featured_only
     where(:featured => true)
