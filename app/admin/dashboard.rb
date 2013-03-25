@@ -54,5 +54,17 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel "Recently Created Interactions" do
+          table_for Interaction.order("created_at desc").limit(5) do
+            column :reaction_text
+            column :created_at
+          end
+          strong { link_to "View All Interactions", admin_interactions_path }
+        end
+      end
+    end
   end
 end
