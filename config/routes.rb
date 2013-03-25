@@ -9,8 +9,7 @@ Actionman::Application.routes.draw do
   get "heartbeat/beat"
 
   match "counts" => "counts#index"
-  match "member" => "member#show"
-  match "member/actions" => "member#actions"
+  match "member/interactions" => "member#interactions"
 
   # resources :featured
 

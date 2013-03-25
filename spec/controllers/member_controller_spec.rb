@@ -1,24 +1,26 @@
 require 'spec_helper'
 
 describe MemberController do
-  let(:member)   { Member.create! }
+  let(:member) { Member.first }
+  let(:interactions) { [Interaction.first, Interaction.last] }
 
   before do
-    Interaction.create! :member => member, :idea_action => IdeaAction.create!, :reaction_text => 'what else can I say?'
     controller.stub!(:member).and_return(member)
+    Interaction.stub!(:find_by_member).with(member).and_return(interactions)
   end
 
-  describe "GET show" do
-    it "responds with member" do
-      get :show
-      response.body.should eql member.to_json
-    end
-  end
+  describe "GET interactions" do
+    it "responds with member interactions and dependant idea actions" do
+      get :interactions
+      
+      response_interactions = JSON.parse(response.body)
+      response_interactions.size.should eql 2
 
-  describe "GET actions" do
-    it "responds with member actions" do
-      get :actions
-      response.body.should eql member.idea_actions.to_json
+      response_interactions.first['id'].should eql interactions.first.id
+      response_interactions.first['idea_action']['id'].should eql interactions.first.idea_action.id.as_json
+
+      response_interactions.last['id'].should eql interactions.last.id
+      response_interactions.last['idea_action']['id'].should eql interactions.last.idea_action.id.as_json
     end
   end
 end
