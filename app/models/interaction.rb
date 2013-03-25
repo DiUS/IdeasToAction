@@ -6,4 +6,8 @@ class Interaction < ActiveRecord::Base
 
   delegate :description, :to => :idea_action, :prefix => true
   delegate :username, :to => :member, :prefix => true
+
+  def self.find_by_member member
+    find(:all, :conditions => ['member_id = ?', member.id])
+  end
 end
