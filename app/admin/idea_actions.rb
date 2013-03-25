@@ -1,6 +1,5 @@
 ActiveAdmin.register IdeaAction, :as => "Action" do
   config.per_page = 10
-  #menu :label => "Actions"
 
   index do
     column :description, :sortable => :description do |idea_action|
@@ -49,18 +48,19 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
   filter :updated_at
   filter :featured
 
-  member_action :new, :method => :get do
-    @action = IdeaAction.new
-  end
-
-  member_action :create, :method => :post do
-    @action = IdeaAction.new(params[:idea_action])
-
-    if @action.save
-      redirect_to admin_actions_path, :notice => "Action created successfully."
-    else
-      render 'new'
+  controller do
+    def new
+      @action = IdeaAction.new
     end
 
+    def create
+      @action = IdeaAction.new(params[:idea_action])
+
+      if @action.save
+        redirect_to admin_actions_path, :notice => "Action created successfully."
+      else
+        render 'new'
+      end
+    end
   end
 end
