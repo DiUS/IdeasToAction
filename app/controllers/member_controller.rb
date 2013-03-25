@@ -3,11 +3,7 @@ class MemberController < ApplicationController
 
   respond_to :json
 
-  def show
-    render json: member
-  end
-
-  def actions
-    render json: member.idea_actions
+  def interactions
+    render json: Interaction.find_by_member(member), methods: :idea_action
   end
 end
