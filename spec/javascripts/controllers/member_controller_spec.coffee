@@ -1,46 +1,20 @@
-describe 'Actionman', ()->
+describe 'MemberCtrl', ->
+  $scope = null
+  MemberInteractionsResource = null
+  interactions = [ { reaction_text: 'some reaction text' }, { reaction_text: 'some more reaction text' } ]
 
-  beforeEach(module('Actionman'))
+  beforeEach module('Actionman')
 
-  describe 'MemberCtrl', () -> 
-    memberData = {}
-    actionsData = [ { description: 'Examine your own body language in different social situations.'} ]
-    reactionsData = [ { text: 'that was a good action'} ]
+  beforeEach ->
+    MemberInteractionsResource = query: jasmine.createSpy('query').andReturn(interactions)
 
-    scope = null
-    ctrl = null
-    $httpBackend = null
+  beforeEach inject ($rootScope, $navigate, $controller) ->
+    $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
+    $scope = $rootScope.$new()
+    $controller 'MemberCtrl', { $scope: $scope, MemberInteractionsResource: MemberInteractionsResource, $navigate }
 
-    beforeEach inject (_$httpBackend_, $rootScope, $navigate, $controller, $cacheFactory) ->
-      $httpBackend = _$httpBackend_
+  it 'should query member interactions', ->
+    expect(MemberInteractionsResource.query).toHaveBeenCalled()
 
-      window.ENDPOINT = 'window_endpoint'
-
-      $httpBackend.expectGET("#{window.ENDPOINT}/member.json").
-            respond(memberData)
-
-      $httpBackend.expectGET("#{window.ENDPOINT}/member/reactions.json").
-            respond(reactionsData)
-
-      $httpBackend.expectGET("#{window.ENDPOINT}/member/actions.json").
-            respond(actionsData)
-
-      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
-
-      scope = $rootScope.$new()
-      ctrl = $controller( 'MemberCtrl', { $scope: scope, dataCache: $cacheFactory('fake cache'), $navigate })
-
-    it 'should create "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined()
-      $httpBackend.flush()
-      expect(scope.member).toEqual(memberData);
-    
-    it 'should create "actions" in "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined()
-      $httpBackend.flush()
-      expect(scope.member.actions).toEqual(actionsData);
-
-    it 'should create "reactions" in "member" model obtained restfully', () ->
-      expect(scope.member).toBeUndefined()
-      $httpBackend.flush()
-      expect(scope.member.reactions).toEqual(reactionsData);
+  it 'should set the interactions on the scope', ->
+    expect($scope.interactions).toEqual(interactions)
