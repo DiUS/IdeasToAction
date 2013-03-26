@@ -1,0 +1,35 @@
+<div id='found'>
+  <div class='header main-header follow-scroll' ng-click='$parent.resetToTop()'>
+    <h1>
+      Found
+    </h1>
+    <div class='touch-panel'>
+      <a class='touch-icon' ng-href='/home'>
+        <i class='icon-home'></i>
+      </a>
+    </div>
+  </div>
+  <div ng-controller='SearchCtrl'>
+    <div class='navbar search-navbar follow-scroll'>
+      <div class='navbar-inner'>
+        <form class='navbar-search pull-left' id='search' name='searchQuery' ng-submit='doSearch()'>
+          <input class='search-query' id='search-text' ng-model='query.text' placeholder='search' size='30' type='text' />
+          <button class='btn' type='submit'>Find</button>
+        </form>
+      </div>
+    </div>
+    <div class='content' ng-show='results'>
+      <div class='results'>
+        <div class='result' ng-include="'assets/views/search/' + result._type + '_item.html'" ng-repeat='result in results'></div>
+      </div>
+    </div>
+    <div class='content' ng-show='results &amp;&amp; results.length == 0'>
+      <p class='description'>
+        No results found!
+      </p>
+    </div>
+    <div class='content' ng-show='!results'>
+      <p class='description loading'></p>
+    </div>
+  </div>
+</div>

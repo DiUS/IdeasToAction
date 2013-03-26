@@ -1,0 +1,32 @@
+<div id='login'>
+  <div class='header main-header follow-scroll' ng-click='$parent.resetToTop()'>
+    <h1>
+      Log In
+    </h1>
+    <div class='touch-panel'>
+      <a class='touch-icon' ng-href='/home'>
+        <i class='icon-home'></i>
+      </a>
+    </div>
+    &nbsp;
+  </div>
+  <div class='content'>
+    <div class='center'>
+      <p>Please login to Actionman to access administrative interface.</p>
+      <div id='error-container'>
+        {{memberSession.errorMsg}}
+      </div>
+      <form ng-submit='login()'>
+        <div class='inputdata'>
+          <label for='username'>Username:</label>
+          <input id='username' ng-model='loginForm.username' type='text' />
+        </div>
+        <div class='inputdata'>
+          <label for='password'>Password:</label>
+          <input id='password' ng-model='loginForm.password' type='password' />
+        </div>
+        <input class='btn-large' id='btn-login' type='Submit' value='Login' />
+      </form>
+    </div>
+  </div>
+</div>

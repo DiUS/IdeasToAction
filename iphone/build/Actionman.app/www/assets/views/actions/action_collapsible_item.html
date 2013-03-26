@@ -1,0 +1,26 @@
+<div ng-controller='IdeaActionCtrl'>
+  <p>{{item.description}}</p>
+  <p class='action-statement pull-left'>
+    <b>{{item.members_actioned_count}}</b>
+    <span>People did this</span>
+  </p>
+  <div class='pull-right' ng-switch on='item.member_interaction'>
+    <button class='btn btn-danger done-it' ng-click='doneIt(item.id)' ng-switch-when='null'>Done it</button>
+    <p class='action-statement' ng-switch-default=''>
+      <span>You did on</span>
+      <b>{{item.member_interaction.created_at}}</b>
+    </p>
+  </div>
+  <div class='container'>
+    <div class='row-fluid reaction' id='reaction-{{item.member_interaction.id}}' ng-controller='ReactionCtrl'>
+      <div class='span12'>
+        <textarea mobile-focus-click='mobile-focus-click' name='reaction-text' ng-model='reactionText' placeholder='Add my reaction'></textarea>
+      </div>
+      <div class='span4 offset8'>
+        <button class='btn btn-large btn-danger submit-reaction' ng-click='react()' ng-disabled='!reactionText || inProgress'>
+          Add my reaction
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
