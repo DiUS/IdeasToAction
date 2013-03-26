@@ -1,604 +1,0 @@
-TActionman
-v5
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Info.plist Actionman/Actionman-Info.plist
-cPhaseScriptExecution "Copy www directory" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh
-cCpResource Actionman/Resources/icons/icon-72.png build/Actionman.app/icon-72.png
-cCpResource Actionman/config.xml build/Actionman.app/config.xml
-cCpResource Actionman/Resources/icons/icon.png build/Actionman.app/icon.png
-cCpResource Actionman/Resources/icons/icon@2x.png build/Actionman.app/icon@2x.png
-cCpResource Actionman/Resources/Capture.bundle build/Actionman.app/Capture.bundle
-cCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/en.lproj/Localizable.strings Actionman/Resources/en.lproj/Localizable.strings
-cCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/es.lproj/Localizable.strings Actionman/Resources/es.lproj/Localizable.strings
-cCompileXIB /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib
-cCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/de.lproj/Localizable.strings Actionman/Resources/de.lproj/Localizable.strings
-cCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/se.lproj/Localizable.strings Actionman/Resources/se.lproj/Localizable.strings
-cCpResource Actionman/Resources/splash/Default-Landscape@2x~ipad.png build/Actionman.app/Default-Landscape@2x~ipad.png
-cCpResource Actionman/Resources/splash/Default-Landscape~ipad.png build/Actionman.app/Default-Landscape~ipad.png
-cCpResource Actionman/Resources/splash/Default-Portrait@2x~ipad.png build/Actionman.app/Default-Portrait@2x~ipad.png
-cCpResource Actionman/Resources/splash/Default-Portrait~ipad.png build/Actionman.app/Default-Portrait~ipad.png
-cCpResource Actionman/Resources/splash/Default@2x~iphone.png build/Actionman.app/Default@2x~iphone.png
-cCpResource Actionman/Resources/splash/Default~iphone.png build/Actionman.app/Default~iphone.png
-cCpResource Actionman/Resources/splash/Default-568h@2x~iphone.png build/Actionman.app/Default-568h@2x~iphone.png
-cProcessPCH /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth Actionman/Actionman-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman normal i386
-cGenerateDSYMFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman
-cTouch /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk
-c0000000050EDEAFB0000000000000110
-t1357769467
-s272
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
-c00000000514A55F300000000001EB540
-t1363826163
-s2012480
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
-c00000000514A55F300000000000C1030
-t1363826163
-s790576
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
-c00000000514A55F30000000000193640
-t1363826163
-s1652288
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
-c00000000514A55F300000000000226E0
-t1363826163
-s141024
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
-c00000000514A55F300000000003D4DF0
-t1363826163
-s4017648
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
-c00000000514A55F30000000000215DB0
-t1363826163
-s2186672
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c00000000514A55F30000000000228FE0
-t1363826163
-s2265056
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c00000000514A55F3000000000009C590
-t1363826163
-s640400
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
-c00000000514A55F40000000000085620
-t1363826164
-s546336
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c00000000514A55F500000000003DDFA0
-t1363826165
-s4054944
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-c00000000514A55F600000000002DBA50
-t1363826166
-s2996816
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c00000000514A55F700000000000BCC20
-t1363826167
-s773152
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c00000000514A55F700000000001D5750
-t1363826167
-s1922896
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
-c00000000514A55F7000000000006CC50
-t1363826167
-s445520
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c00000000514A55F90000000000AB6230
-t1363826169
-s11231792
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Actionman-Prefix.pch
-c000000005150DA9500000000000003C3
-t1364253333
-s963
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m
-c000000005150DA95000000000000122A
-t1364253333
-s4650
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m
-c000000005150DA95000000000000126A
-t1364253333
-s4714
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib
-c000000005150DA950000000000001759
-t1364253333
-s5977
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/Capture.bundle
-c000000005150DA95000000000000030E
-t1364253333
-s782
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/de.lproj/Localizable.strings
-c000000005150DA950000000000000485
-t1364253333
-s1157
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/en.lproj/Localizable.strings
-c000000005150DA950000000000000470
-t1364253333
-s1136
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/es.lproj/Localizable.strings
-c000000005150DA95000000000000047D
-t1364253333
-s1149
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon-72.png
-c000000005150DA950000000000001350
-t1364253333
-s4944
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon.png
-c000000005150DA950000000000000F3E
-t1364253333
-s3902
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon@2x.png
-c000000005150DA950000000000001EBD
-t1364253333
-s7869
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/se.lproj/Localizable.strings
-c000000005150DA950000000000000471
-t1364253333
-s1137
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-568h@2x~iphone.png
-c000000005150DA9500000000000074F8
-t1364253333
-s29944
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Landscape@2x~ipad.png
-c000000005150DA950000000000012735
-t1364253333
-s75573
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Landscape~ipad.png
-c000000005150DA95000000000000817B
-t1364253333
-s33147
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Portrait@2x~ipad.png
-c000000005150DA950000000000012171
-t1364253333
-s74097
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Portrait~ipad.png
-c000000005150DA950000000000007F9A
-t1364253333
-s32666
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default@2x~iphone.png
-c000000005150DA950000000000007323
-t1364253333
-s29475
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default~iphone.png
-c000000005150DA95000000000000289A
-t1364253333
-s10394
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/config.xml
-c000000005150DA950000000000000B13
-t1364253333
-s2835
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m
-c000000005150DA95000000000000045B
-t1364253333
-s1115
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Capture.bundle
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-568h@2x~iphone.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Landscape@2x~ipad.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Landscape~ipad.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Portrait@2x~ipad.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Portrait~ipad.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default@2x~iphone.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default~iphone.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Info.plist
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/MainViewController.nib
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/PkgInfo
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/config.xml
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/de.lproj/Localizable.strings
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/en.lproj/Localizable.strings
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/es.lproj/Localizable.strings
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon-72.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon@2x.png
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/se.lproj/Localizable.strings
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/Actionman.LinkFileList
-c000000005150E85B00000000000001C5
-t1364256859
-s453
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o
-t2
-s0
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh
-c000000005150E85B000000000000042B
-t1364256859
-s1067
-
-N/Users/aarontriantafyllidis/Development/actionman/iphone/build/libCordova.a
-c000000005150E85B0000000000348F18
-t1364256859
-s3444504
-
-N/var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth
-t2
-s0
-
-NActionman/Actionman-Info.plist
-c000000005150DA9500000000000009CC
-t1364253333
-s2508
-
-CCheck dependencies
-r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies7afe74db1f01b741^55fa75db1f01b741^---0#1#0#--18"Check dependencies36"17A3419E-97B1-4635-8D22-59238F29613E-
-
-CCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s385949660.512612
-e385949660.634572
-r1
-xCompileC
-xbuild/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o
-x/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-o/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m:68:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]
-o    self.viewController.useSplashScreen = YES;
-o                        ^
-o/Users/aarontriantafyllidis/Development/actionman/iphone/build/include/Cordova/CDVViewController.h:47:47: note: 'useSplashScreen' declared here
-o@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");
-o                                              ^
-o1 warning generated.
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.me36f83dc1f01b741^eb72a2dc1f01b741^-703"/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m:68:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]    self.viewController.useSplashScreen = YES;                        ^/Users/aarontriantafyllidis/Development/actionman/iphone/build/include/Cordova/CDVViewController.h:47:47: note: 'useSplashScreen' declared here@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");                                              ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property.-385949660#18446744073709551615#0#1(2@31"'useSplashScreen' declared here-385949660#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@111"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/CordovaLib/Classes/CDVViewController.h0000000000000000^46#46#46#46#1832#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@104"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m0000000000000000^67#24#67#24#2266#0#12"Deprecations--0#0#0#-19%DVTDocumentLocation4@104"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m0000000000000000^4215"CompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o Actionman/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-generated-files.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-own-target-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-all-target-headers.hmap -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-project-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/usr/local/lib/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/UninstalledProducts/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources/i386 -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources -F/Users/aarontriantafyllidis/Development/actionman/iphone/build -include /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch -MMD -MT dependencies -MF /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.dia -c /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/AppDelegate.m -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/AppDelegate.o36"A8BFCC8C-3C09-48D9-BF6C-CAF804A1FAA7-
-
-CCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s385949660.513499
-e385949660.604968
-r1
-xCompileC
-xbuild/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o
-x/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m05a283dc1f01b741^4feb9adc1f01b741^---0#0#0#-19%DVTDocumentLocation2@111"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m0000000000000000^4257"CompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o Actionman/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-generated-files.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-own-target-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-all-target-headers.hmap -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-project-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/usr/local/lib/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/UninstalledProducts/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources/i386 -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources -F/Users/aarontriantafyllidis/Development/actionman/iphone/build -include /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch -MMD -MT dependencies -MF /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.dia -c /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.m -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/MainViewController.o36"7E366854-C6B7-436B-8428-F1757D44B094-
-
-CCompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s385949660.512599
-e385949660.540830
-r1
-xCompileC
-xbuild/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o
-x/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m986d83dc1f01b741^f88a8adc1f01b741^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m0000000000000000^4157"CompileC build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o Actionman/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-generated-files.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-own-target-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-all-target-headers.hmap -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-project-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/usr/local/lib/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/UninstalledProducts/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources/i386 -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources -F/Users/aarontriantafyllidis/Development/actionman/iphone/build -include /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch -MMD -MT dependencies -MF /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.dia -c /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/main.m -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/main.o36"C566A437-116E-439A-A7A2-996D160D7538-
-
-CCompileXIB /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib
-s385949659.688294
-e385949660.242951
-r1
-xCompileXIB
-x/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Compiling /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib2558b0db1f01b741^533c3edc1f01b741^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib0000000000000000^1507"CompileXIB Actionman/Classes/MainViewController.xib    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/MainViewController.nib /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Classes/MainViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk36"9484E2C9-282F-41F1-90DE-9F50D8A07AE9-
-
-CCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/de.lproj/Localizable.strings Actionman/Resources/de.lproj/Localizable.strings
-s385949659.692062
-e385949659.695909
-r1
-xCopyStringsFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/de.lproj/Localizable.strings
-xActionman/Resources/de.lproj/Localizable.strings
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy Actionman/Resources/de.lproj/Localizable.strings6059b1db1f01b741^8d27b2db1f01b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/de.lproj/Localizable.strings0000000000000000^1155"CopyStringsFile build/Actionman.app/de.lproj/Localizable.strings Actionman/Resources/de.lproj/Localizable.strings    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/de.lproj -- Actionman/Resources/de.lproj/Localizable.strings36"8B5DF8BF-6E8B-440E-9A24-79D57CE907C6-
-
-CCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/en.lproj/Localizable.strings Actionman/Resources/en.lproj/Localizable.strings
-s385949659.685893
-e385949659.690703
-r1
-xCopyStringsFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/en.lproj/Localizable.strings
-xActionman/Resources/en.lproj/Localizable.strings
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy Actionman/Resources/en.lproj/Localizable.stringsafb1afdb1f01b741^fad1b0db1f01b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/en.lproj/Localizable.strings0000000000000000^1155"CopyStringsFile build/Actionman.app/en.lproj/Localizable.strings Actionman/Resources/en.lproj/Localizable.strings    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/en.lproj -- Actionman/Resources/en.lproj/Localizable.strings36"EA4190CC-FE7F-4424-914D-6E3DE8B97863-
-
-CCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/es.lproj/Localizable.strings Actionman/Resources/es.lproj/Localizable.strings
-s385949659.686998
-e385949659.691640
-r1
-xCopyStringsFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/es.lproj/Localizable.strings
-xActionman/Resources/es.lproj/Localizable.strings
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy Actionman/Resources/es.lproj/Localizable.strings8ffeafdb1f01b741^5017b1db1f01b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/es.lproj/Localizable.strings0000000000000000^1155"CopyStringsFile build/Actionman.app/es.lproj/Localizable.strings Actionman/Resources/es.lproj/Localizable.strings    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/es.lproj -- Actionman/Resources/es.lproj/Localizable.strings36"CF1D018F-DB9F-4D5F-9F31-919F9048831C-
-
-CCopyStringsFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/se.lproj/Localizable.strings Actionman/Resources/se.lproj/Localizable.strings
-s385949659.692979
-e385949659.696530
-r1
-xCopyStringsFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/se.lproj/Localizable.strings
-xActionman/Resources/se.lproj/Localizable.strings
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy Actionman/Resources/se.lproj/Localizable.strings558ab1db1f01b741^764fb2db1f01b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/se.lproj/Localizable.strings0000000000000000^1155"CopyStringsFile build/Actionman.app/se.lproj/Localizable.strings Actionman/Resources/se.lproj/Localizable.strings    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/se.lproj -- Actionman/Resources/se.lproj/Localizable.strings36"65637249-BBDC-4327-81CD-F29EE38C1462-
-
-CCpResource Actionman/Resources/Capture.bundle build/Actionman.app/Capture.bundle
-s385949659.684751
-e385949659.693779
-r1
-xCpResource
-xActionman/Resources/Capture.bundle
-xbuild/Actionman.app/Capture.bundle
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection39"Copy build/Actionman.app/Capture.bundle1b63afdb1f01b741^b29bb1db1f01b741^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Capture.bundle000000000080d041^1175"CpResource Actionman/Resources/Capture.bundle build/Actionman.app/Capture.bundle    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/Capture.bundle /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"2F9D8D61-16F6-462C-B705-395B5CAF4633-
-
-CCpResource Actionman/Resources/icons/icon-72.png build/Actionman.app/icon-72.png
-s385949659.680610
-e385949659.684736
-r1
-xCpResource
-xActionman/Resources/icons/icon-72.png
-xbuild/Actionman.app/icon-72.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Copy build/Actionman.app/icon-72.pngd460aedb1f01b741^994aafdb1f01b741^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon-72.png000000000080d041^1178"CpResource Actionman/Resources/icons/icon-72.png build/Actionman.app/icon-72.png    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon-72.png /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"2C457C52-CA92-4AAA-AE47-7066D127C60B-
-
-CCpResource Actionman/Resources/icons/icon.png build/Actionman.app/icon.png
-s385949659.680622
-e385949659.683576
-r1
-xCpResource
-xActionman/Resources/icons/icon.png
-xbuild/Actionman.app/icon.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection33"Copy build/Actionman.app/icon.png1362aedb1f01b741^b5feaedb1f01b741^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon.png000000000080d041^1169"CpResource Actionman/Resources/icons/icon.png build/Actionman.app/icon.png    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon.png /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"4FBEF65F-F37B-471F-8ADF-B86D415FC58E-
-
-CCpResource Actionman/Resources/icons/icon@2x.png build/Actionman.app/icon@2x.png
-s385949659.681799
-e385949659.687074
-r1
-xCpResource
-xActionman/Resources/icons/icon@2x.png
-xbuild/Actionman.app/icon@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Copy build/Actionman.app/icon@2x.png3d9eaedb1f01b741^26e4afdb1f01b741^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/icon@2x.png000000000080d041^1184"CpResource "Actionman/Resources/icons/icon@2x.png" "build/Actionman.app/icon@2x.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/icons/icon@2x.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"DE9A88E8-6130-469C-A56E-13EB7D0E0140-
-
-CCpResource Actionman/Resources/splash/Default-568h@2x~iphone.png build/Actionman.app/Default-568h@2x~iphone.png
-s385949659.702792
-e385949659.706434
-r1
-xCpResource
-xActionman/Resources/splash/Default-568h@2x~iphone.png
-xbuild/Actionman.app/Default-568h@2x~iphone.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection51"Copy build/Actionman.app/Default-568h@2x~iphone.png6d02b4db1f01b741^d6e1b4db1f01b741^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-568h@2x~iphone.png000000000080d041^1231"CpResource "Actionman/Resources/splash/Default-568h@2x~iphone.png" "build/Actionman.app/Default-568h@2x~iphone.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-568h@2x~iphone.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"13C29D8F-499A-4365-91B0-40D8DF7364A1-
-
-CCpResource Actionman/Resources/splash/Default-Landscape@2x~ipad.png build/Actionman.app/Default-Landscape@2x~ipad.png
-s385949659.695213
-e385949659.697786
-r1
-xCpResource
-xActionman/Resources/splash/Default-Landscape@2x~ipad.png
-xbuild/Actionman.app/Default-Landscape@2x~ipad.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection54"Copy build/Actionman.app/Default-Landscape@2x~ipad.png321db2db1f01b741^16a3b2db1f01b741^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Landscape@2x~ipad.png000000000080d041^1240"CpResource "Actionman/Resources/splash/Default-Landscape@2x~ipad.png" "build/Actionman.app/Default-Landscape@2x~ipad.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Landscape@2x~ipad.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"2B9632CB-7A5E-4DF9-A62E-56D35E219C3C-
-
-CCpResource Actionman/Resources/splash/Default-Landscape~ipad.png build/Actionman.app/Default-Landscape~ipad.png
-s385949659.697029
-e385949659.700409
-r1
-xCpResource
-xActionman/Resources/splash/Default-Landscape~ipad.png
-xbuild/Actionman.app/Default-Landscape~ipad.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection51"Copy build/Actionman.app/Default-Landscape~ipad.png2993b2db1f01b741^f04db3db1f01b741^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Landscape~ipad.png000000000080d041^1231"CpResource "Actionman/Resources/splash/Default-Landscape~ipad.png" "build/Actionman.app/Default-Landscape~ipad.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Landscape~ipad.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"63EE00A0-45C1-423D-B337-68AAB99627C0-
-
-CCpResource Actionman/Resources/splash/Default-Portrait@2x~ipad.png build/Actionman.app/Default-Portrait@2x~ipad.png
-s385949659.697047
-e385949659.699377
-r1
-xCpResource
-xActionman/Resources/splash/Default-Portrait@2x~ipad.png
-xbuild/Actionman.app/Default-Portrait@2x~ipad.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy build/Actionman.app/Default-Portrait@2x~ipad.pngf792b2db1f01b741^6f12b3db1f01b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Portrait@2x~ipad.png000000000080d041^1237"CpResource "Actionman/Resources/splash/Default-Portrait@2x~ipad.png" "build/Actionman.app/Default-Portrait@2x~ipad.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Portrait@2x~ipad.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"CB8FE600-C0CB-4695-9827-69CFD0060757-
-
-CCpResource Actionman/Resources/splash/Default-Portrait~ipad.png build/Actionman.app/Default-Portrait~ipad.png
-s385949659.698982
-e385949659.701607
-r1
-xCpResource
-xActionman/Resources/splash/Default-Portrait~ipad.png
-xbuild/Actionman.app/Default-Portrait~ipad.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection50"Copy build/Actionman.app/Default-Portrait~ipad.png1613b3db1f01b741^959cb3db1f01b741^---0#0#0#-19%DVTDocumentLocation2@118"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default-Portrait~ipad.png000000000080d041^1228"CpResource "Actionman/Resources/splash/Default-Portrait~ipad.png" "build/Actionman.app/Default-Portrait~ipad.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default-Portrait~ipad.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"1B2C6BC1-DD91-48DF-93E1-8E9F26C4F113-
-
-CCpResource Actionman/Resources/splash/Default@2x~iphone.png build/Actionman.app/Default@2x~iphone.png
-s385949659.700592
-e385949659.702630
-r1
-xCpResource
-xActionman/Resources/splash/Default@2x~iphone.png
-xbuild/Actionman.app/Default@2x~iphone.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection46"Copy build/Actionman.app/Default@2x~iphone.pngab78b3db1f01b741^b1dfb3db1f01b741^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default@2x~iphone.png000000000080d041^1216"CpResource "Actionman/Resources/splash/Default@2x~iphone.png" "build/Actionman.app/Default@2x~iphone.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default@2x~iphone.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"284E5663-B0F1-468E-9B81-74B17B73E5D7-
-
-CCpResource Actionman/Resources/splash/Default~iphone.png build/Actionman.app/Default~iphone.png
-s385949659.700597
-e385949659.705900
-r1
-xCpResource
-xActionman/Resources/splash/Default~iphone.png
-xbuild/Actionman.app/Default~iphone.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection43"Copy build/Actionman.app/Default~iphone.pngc87db3db1f01b741^48c4b4db1f01b741^---0#0#0#-19%DVTDocumentLocation2@111"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Default~iphone.png000000000080d041^1207"CpResource "Actionman/Resources/splash/Default~iphone.png" "build/Actionman.app/Default~iphone.png"    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Resources/splash/Default~iphone.png" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"C776BE60-C92C-43F1-BD6F-4C91A213122F-
-
-CCpResource Actionman/config.xml build/Actionman.app/config.xml
-s385949659.680616
-e385949659.685809
-r1
-xCpResource
-xActionman/config.xml
-xbuild/Actionman.app/config.xml
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Copy build/Actionman.app/config.xml3d60aedb1f01b741^3e95afdb1f01b741^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/config.xml000000000080d041^1143"CpResource Actionman/config.xml build/Actionman.app/config.xml    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/config.xml /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"02FF072B-F6AF-4F57-BE17-BB27F7E2C4B4-
-
-CGenerateDSYMFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman
-s385949660.775521
-e385949660.901857
-r1
-xGenerateDSYMFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Generate /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM06bec6dc1f01b741^a8e2e6dc1f01b741^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM000000000080d041^1157"GenerateDSYMFile build/Actionman.app.dSYM build/Actionman.app/Actionman    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app.dSYM36"C3BB2C80-AD05-4960-A922-58C665611A75-
-
-CLd /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman normal i386
-s385949660.641234
-e385949660.768064
-r1
-xLd
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman
-xnormal
-xi386
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Link /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionmana452a4dc1f01b741^2ca0c4dc1f01b741^---0#0#0#--2229"Ld build/Actionman.app/Actionman normal i386    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -L/Users/aarontriantafyllidis/Development/actionman/iphone/build -F/Users/aarontriantafyllidis/Development/actionman/iphone/build -filelist /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/Actionman.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -all_load -Obj-C -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework AssetsLibrary /Users/aarontriantafyllidis/Development/actionman/iphone/build/libCordova.a -framework Foundation -weak_framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework AudioToolbox -weak_framework AVFoundation -framework CFNetwork -framework CoreLocation -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework MobileCoreServices -weak_framework CoreMedia -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Actionman36"6F556CFB-18C2-4407-8AF6-51BCA2D7C664-
-
-CPhaseScriptExecution "Copy www directory" /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh
-s385949659.478866
-e385949659.670389
-r1
-xPhaseScriptExecution
-xCopy www directory
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh
-o
-oreal	0m0.166s
-ouser	0m0.072s
-osys	0m0.083s
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'c1a97bdb1f01b741^b8afabdb1f01b741^-42"real	0m0.166suser	0m0.072ssys	0m0.083s3(21%IDEActivityLogMessage2@14"real	0m0.166s-385949659#1#14#-0#-----2@14"user	0m0.072s-385949659#15#14#-0#-----2@13"sys	0m0.083s-385949659#29#13#-0#-----0#0#0#--21668"PhaseScriptExecution "Copy www directory" build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER aarontriantafyllidis    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv BUILD_ROOT /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv CACHE_ROOT /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC NO    setenv CLANG_WARN_CONSTANT_CONVERSION YES    setenv CLANG_WARN_ENUM_CONVERSION YES    setenv CLANG_WARN_INT_CONVERSION YES    setenv CLANG_WARN__DUPLICATE_METHOD_MATCH YES    setenv CLASS_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv CONFIGURATION_TEMP_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH Actionman.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH Actionman.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Actionman.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME Actionman.app.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH Actionman.app/Executables    setenv EXECUTABLE_FOLDER_PATH Actionman.app    setenv EXECUTABLE_NAME Actionman    setenv EXECUTABLE_PATH Actionman.app/Actionman    setenv FILE_LIST /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH Actionman.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/aarontriantafyllidis/Development/actionman/iphone/build\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME Actionman.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER Actionman/Actionman-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_THUMB_SUPPORT NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNINITIALIZED_AUTOS YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/aarontriantafyllidis/Development/actionman/iphone/build/include\" \"/Users/aarontriantafyllidis/Development/actionman/iphone/build/usr/local/lib/include\" \"/Users/aarontriantafyllidis/Development/actionman/iphone/build/UninstalledProducts/include\" \"/Users/aarontriantafyllidis/Development/actionman/iphone/build\""    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE Actionman/Actionman-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH Actionman.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH Actionman.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/Actionman.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER aarontriantafyllidis    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/Actionman.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH Actionman.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/aarontriantafyllidis/Development/actionman/iphone/build\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal/i386/Actionman.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH Actionman.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 12D78    setenv MAC_OS_X_VERSION_ACTUAL 1083    setenv MAC_OS_X_VERSION_MAJOR 1080    setenv MAC_OS_X_VERSION_MINOR 0803    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Objects-normal    setenv OBJROOT /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -all_load -Obj-C"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH Actionman.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/PkgInfo    setenv PKGINFO_PATH Actionman.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 10B141    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 60100    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH Actionman.app/PlugIns    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH Actionman.app/PrivateHeaders    setenv PRODUCT_NAME Actionman    setenv PRODUCT_SETTINGS_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Actionman-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT Actionman    setenv PROJECT_DERIVED_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/DerivedSources    setenv PROJECT_DIR /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PROJECT_FILE_PATH /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman.xcodeproj    setenv PROJECT_NAME Actionman    setenv PROJECT_TEMP_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build    setenv PROJECT_TEMP_ROOT /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv PUBLIC_HEADERS_FOLDER_PATH Actionman.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/aarontriantafyllidis/Development/actionman/iphone/build\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH Actionman.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_NAME iphonesimulator6.1    setenv SDK_PRODUCT_BUILD_VERSION 10B141    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH Actionman.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH Actionman.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/aarontriantafyllidis/Development/actionman/iphone    setenv SRCROOT /Users/aarontriantafyllidis/Development/actionman/iphone    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME Actionman    setenv TARGET_BUILD_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv TARGET_NAME Actionman    setenv TARGET_TEMP_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build    setenv TEMP_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build    setenv TEMP_FILES_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build    setenv TEMP_FILE_DIR /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build    setenv TEMP_ROOT /Users/aarontriantafyllidis/Development/actionman/iphone/build    setenv TEST_AFTER_BUILD NO    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH Actionman.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER aarontriantafyllidis    setenv USER_APPS_DIR /Users/aarontriantafyllidis/Applications    setenv USER_LIBRARY_DIR /Users/aarontriantafyllidis/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH Actionman.app/version.plist    setenv VERSION_INFO_BUILDER aarontriantafyllidis    setenv VERSION_INFO_FILE Actionman_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Actionman  PROJECT:Actionman-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME Actionman.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4H512    setenv XCODE_VERSION_ACTUAL 0461    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0460    setenv YACC yacc    /bin/sh -c /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Script-304B58A110DAC018002A0835.sh36"BA4E5FCF-B3F9-45D5-B447-4C085135EE65-
-
-CProcessInfoPlistFile /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Info.plist Actionman/Actionman-Info.plist
-s385949659.467195
-e385949659.470997
-r1
-xProcessInfoPlistFile
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Info.plist
-xActionman/Actionman-Info.plist
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Process Actionman/Actionman-Info.plist4dc077db1f01b741^afb078db1f01b741^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Actionman-Info.plist0000000000000000^1206"ProcessInfoPlistFile build/Actionman.app/Info.plist Actionman/Actionman-Info.plist    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Actionman/Actionman-Info.plist -genpkginfo /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app/Info.plist36"E57BEEE0-E47D-4E60-B931-3CE4DC57EA14-
-
-CProcessPCH /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth Actionman/Actionman-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s385949660.259634
-e385949660.505946
-r1
-xProcessPCH
-x/var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth
-xActionman/Actionman-Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection41"Precompile Actionman/Actionman-Prefix.pch0da542dc1f01b741^179c81dc1f01b741^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Actionman-Prefix.pch0000000000000000^4161"ProcessPCH /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth Actionman/Actionman-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-generated-files.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-own-target-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-all-target-headers.hmap -iquote /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/Actionman-project-headers.hmap -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/usr/local/lib/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/UninstalledProducts/include -I/Users/aarontriantafyllidis/Development/actionman/iphone/build -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources/i386 -I/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.build/Debug-iphonesimulator/Actionman.build/DerivedSources -F/Users/aarontriantafyllidis/Development/actionman/iphone/build --serialize-diagnostics /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.dia -c /Users/aarontriantafyllidis/Development/actionman/iphone/Actionman/Actionman-Prefix.pch -o /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/69/hmt4w1w56hl6dnx1n7xch3jh0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Actionman-Prefix-bywsctotapwkoxglgmqffzaqzivo/Actionman-Prefix.pch.d36"BE32E74A-7D6D-4B07-A264-D0ED9212E37C-
-
-CTouch /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app
-s385949660.909918
-e385949660.916255
-r1
-xTouch
-x/Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Touch /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app630be9dc1f01b741^b08feadc1f01b741^---0#0#0#--938"Touch build/Actionman.app    cd /Users/aarontriantafyllidis/Development/actionman/iphone    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bin:/Users/aarontriantafyllidis/.rbenv/versions/1.9.3-p194/bin:/usr/local/Cellar/rbenv/0.3.0/libexec:/Users/aarontriantafyllidis/.rbenv/plugins/bundler/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/bin:/usr/X11/bin:/usr/local/share/npm/bin:/Users/aarontriantafyllidis/.rbenv/shims:/Users/aarontriantafyllidis/bin:/opt/local/bin:/opt/local/sbin:/usr/share/groovy/bin:/usr/share/grails/bin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/aarontriantafyllidis/Development/actionman/iphone/build/Actionman.app36"4922878D-55A3-48DF-8A4D-D2EEC0D300C2-
-
