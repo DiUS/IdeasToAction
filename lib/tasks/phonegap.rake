@@ -38,19 +38,19 @@ namespace :phonegap do
     @assets_env = "qa_mobile_assets"
   end
 
-  namespace :iphone do
+  namespace :ios do
     task :set_www_directory do
-      @www_directory = "iphone/www"
+      @www_directory = "mobile/ios/www"
     end
 
     task :clean => :clean_www_directory do
-      FileUtils.rm_rf 'iphone/build' if File.exists?('iphone/build')
+      FileUtils.rm_rf 'mobile/ios/build' if File.exists?('mobile/ios/build')
     end
 
     namespace :build do
       desc "Build iPhone Application (production)"
       task :default => [ :set_www_directory, :clean, :precompiled_assets, :cordova_in_assets, :assets_in_www_directory ] do
-        raise "Couldn't build Phonegap package" unless Kernel.system('iphone/cordova/build')
+        raise "Couldn't build Phonegap package" unless Kernel.system('mobile/ios/cordova/build')
       end
 
       desc "Build iPhone Application (qa)"
@@ -60,18 +60,18 @@ namespace :phonegap do
 
   namespace :android do
     task :set_www_directory do
-      @www_directory = "mobile/assets/www"
+      @www_directory = "mobile/android/assets/www"
     end
 
     task :clean => :clean_www_directory do
-      FileUtils.rm_rf 'mobile/bin' if File.exists?('mobile/bin')
-      FileUtils.rm_rf 'mobile/gen' if File.exists?('mobile/gen')
-      FileUtils.rm 'mobile/AndroidManifest.xml' if File.exists?('mobile/AndroidManifest.xml')
+      FileUtils.rm_rf 'mobile/android/bin' if File.exists?('mobile/android/bin')
+      FileUtils.rm_rf 'mobile/android/gen' if File.exists?('mobile/android/gen')
+      FileUtils.rm 'mobile/android/AndroidManifest.xml' if File.exists?('mobile/android/AndroidManifest.xml')
     end
 
     task :android_manifest do
-      android_manifest_template = Pathname.new('mobile/AndroidManifest.xml.erb')
-      android_manifest = Pathname.new('mobile/AndroidManifest.xml')
+      android_manifest_template = Pathname.new('mobile/android/AndroidManifest.xml.erb')
+      android_manifest = Pathname.new('mobile/android/AndroidManifest.xml')
 
       android_manifest.open("w") { | manifest | manifest.puts ERB.new(android_manifest_template.read).result }
     end
@@ -79,7 +79,7 @@ namespace :phonegap do
     namespace :build do
       desc "Build Android Application (production)"
       task :default => [ :set_www_directory, :clean, :precompiled_assets, :cordova_in_assets, :android_manifest, :assets_in_www_directory ] do
-        raise "Couldn't build Phonegap package" unless Kernel.system('mobile/cordova/build')
+        raise "Couldn't build Phonegap package" unless Kernel.system('mobile/android/cordova/build')
       end
 
       desc "Build Android Application (qa)"
