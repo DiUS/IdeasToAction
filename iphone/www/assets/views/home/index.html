@@ -1,0 +1,71 @@
+<div id='home'>
+  <div class='header main-header follow-scroll' ng-click='$parent.resetToTop()'>
+    <h1>
+      Ideas into action
+    </h1>
+    <span ng-controller='AuthCtrl'>
+      <div class='touch-panel'>
+        <span class='hidden-phone' ng-show='!memberSession.loggedIn &amp;&amp; loggedInStatusDetermined()'>
+          <a ng-href='/login'>
+            <i class='icon-user'></i>
+          </a>
+        </span>
+        <span class='hidden-phone' ng-show='memberSession.loggedIn &amp;&amp; loggedInStatusDetermined()'>
+          <i class='icon-user'>
+            {{memberSession.username}}
+          </i>
+          <a ng-click='logout()'>
+            <i class='icon-road'></i>
+          </a>
+          <a ng-href='/events/edit'>
+            <i class='icon-edit'></i>
+          </a>
+        </span>
+      </div>
+    </span>
+  </div>
+  <div class='content'>
+    <div class='center'>
+      <span class='big'>1314</span>
+      <span class='big'>People</span>
+      <span class='big'>289</span>
+      <span class='big'>Ideas</span>
+      <span class='big'>633</span>
+      <span class='big'>Actions</span>
+      <div class='hero'>
+        <p>Transforming ideas worth spreading into actions worth taking</p>
+      </div>
+    </div>
+    <div class='panel'>
+      <div class='corner-panel'>
+        <span class='touch-panel'>
+          <a class='touch-icon' onclick='location.reload(true);'>
+            <i class='icon-refresh'></i>
+          </a>
+        </span>
+      </div>
+      <div class='body'>
+        <p class='flat-description' id='random-idea' ng-href='/ideas/{{idea.id}}'>
+          <strong class='featured-action-statement'>FEATURED IDEA</strong>
+          {{idea.description}}
+          <a class='continue'></a>
+        </p>
+        <p class='flat-description' id='random-action' ng-href='/ideas/{{action.idea_id}}'>
+          <strong class='featured-action-statement'>FEATURED ACTION</strong>
+          {{action.description}}
+          <a class='continue'></a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class='collapsible section'>
+    <div class='header' ng-href='/talks-events'>Talks & events</div>
+    <div class='header' ng-href='/member'>My profile</div>
+  </div>
+  <div>
+    <form name='searchQuery' ng-submit='doSearch()'>
+      <input id='search-text' mobile-focus-click='mobile-focus-click' ng-model='query.text' placeholder='Search' size='30' type='text' />
+      <input class='btn' type='submit' value='Find' />
+    </form>
+  </div>
+</div>

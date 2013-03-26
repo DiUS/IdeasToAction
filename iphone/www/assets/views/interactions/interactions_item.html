@@ -1,0 +1,14 @@
+<p class='description' ng-href='/ideas/{{item.idea_action.idea_id}}'>
+  {{item.idea_action.description}}
+  <a class='continue'></a>
+  <p class='action-statement pull-left'>
+    <b>{{item.idea_action.members_actioned_count}}</b>
+    <span>People did this</span>
+  </p>
+  <div class='pull-right'>
+    <p class='action-statement'>
+      <span>You did on</span>
+      <b>{{item.created_at | date: 'd MMM yyyy'}}</b>
+    </p>
+  </div>
+</p>
