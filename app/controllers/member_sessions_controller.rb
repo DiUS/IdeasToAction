@@ -1,22 +1,38 @@
 
 class MemberSessionsController < ApplicationController
-  respond_to :json
+  layout "web_login"
+
+  def new
+    @member_session = MemberSession.new
+  end
 
   def create
     @member_session = MemberSession.new(params[:member_session])
-    if @member_session.save
-      render json: { success: true, id: current_member.id, username: current_member.username}
-    else
-      render json: { error: "Invalid username or password" }, :status => :unprocessable_entity
+
+    respond_to do |format|
+      if @member_session.save
+        format.html { redirect_to admin_root_path }
+        format.json { render json: { success: true, id: current_member.id, username: current_member.username} }
+      else
+        format.html { render 'new' }
+        format.json { render json: { error: "Invalid username or password" }, :status => :unprocessable_entity }
+      end
     end
   end
   
-  def destroy
+  def logout
     @member_session = MemberSession.find
-    if @member_session.destroy
-      render json: { success: "true" }
-    else
-      render json: { errors: @member_session.errors }, :status => :unprocessable_entity
+
+    respond_to do |format|
+      if @member_session.destroy
+        format.html { redirect_to new_member_session_path, :notice => "You have logged out successfully." }
+        format.json { render json: { success: "true" } }
+      else
+        format.json { render json: { errors: @member_session.errors }, :status => :unprocessable_entity }
+        format.html do
+          redirect_to admin_root_path, :error => "Logout failed, please try again."
+        end
+      end
     end
   end
 

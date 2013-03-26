@@ -1,0 +1,11 @@
+- content_for :title, "Actionman | Admin Login"
+
+%h2 Actionman Admin Login
+
+= semantic_form_for @member_session, :html => {:class => "formtastic admin_user", :id => "session_new"} do |f|
+  = f.inputs do
+    = f.input :username
+    = f.input :password
+
+  = f.actions do
+    = f.submit("Login")

@@ -2,8 +2,6 @@ Actionman::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   match "search" => "search#index"
 
   get "heartbeat/beat"
@@ -11,8 +9,6 @@ Actionman::Application.routes.draw do
   match "counts" => "counts#index"
   match "member" => "member#show"
   match "member/actions" => "member#actions"
-
-  # resources :featured
 
   resources :idea_actions do
     resources :interactions
@@ -47,6 +43,7 @@ Actionman::Application.routes.draw do
   resources :member_sessions do
     collection do
       get 'check'
+      delete 'logout'
     end
   end
 

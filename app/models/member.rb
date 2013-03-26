@@ -6,6 +6,7 @@ class Member < ActiveRecord::Base
   attr_accessible :persistence_token, :username, :password, :role
 
   acts_as_authentic do |c|
+    c.session_class = MemberSession
     c.validate_password_field = false
     c.validate_login_field = false
   end
