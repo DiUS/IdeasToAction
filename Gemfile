@@ -54,6 +54,8 @@ group :test, :development do
   gem 'webmock'
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
+  gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git'
+  gem 'cocoapods'
 end
 
 # Deploy with Capistrano
