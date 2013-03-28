@@ -55,8 +55,11 @@ group :test, :development do
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
 
-  gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git', :require => false
-  gem 'cocoapods', :require => false
+  # OSX only
+  if RUBY_PLATFORM.downcase.include?("darwin")
+    gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git', :require => false
+    gem 'cocoapods', :require => false
+  end
 end
 
 # Deploy with Capistrano
