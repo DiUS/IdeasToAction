@@ -22,9 +22,10 @@ class Ability
       can :random, IdeaAction
       can :recent, IdeaAction
       can :doneIt, IdeaAction
+      can :react, IdeaAction
+      can :create, IdeaAction
 
       can :random, Idea
-      can :react, IdeaAction
       can :create, Idea
       can :show_idea_url, Idea
       can :create, Interaction

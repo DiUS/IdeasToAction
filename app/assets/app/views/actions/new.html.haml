@@ -1,0 +1,41 @@
+#idea-action-edit
+  .header.main-header(ng-class="{'follow-scroll': !confirmDialogShown}" ng-click='$parent.resetToTop()')
+    %h1
+      Suggest an action
+    .touch-panel
+      %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
+        %i.icon-remove
+  .content
+    %p
+      Thank you for taking the time to suggest an action!
+  .sections
+    .description.section
+      .header
+        I suggest this action...
+      %p.muted
+        %small An action is a 1-3 sentence description the action related to the idea.
+      .items
+        .item
+          %textarea#description(placeholder='My action is...' ng-model='idea_action.description' required='' mobile-focus-click)
+  .content
+    %p
+      Please review your action before submission.
+    .center
+      %button#submit-idea-action.center.btn.btn-large.btn-danger(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
+        Submit your action
+
+#cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
+  .modal-header.header.main-header(ng-click = '$parent.resetToTop()')
+    Cancel action submission?
+  .moday-body
+    .content
+      %p
+        Are you sure you want to cancel your submission?
+        %em
+          You will lose all your data.
+  .modal-footer
+    %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
+      Confirm
+    %a#close-button.btn(ng-click="confirmDialogShown=false")
+      Close
+#modal-backdrop.modal-backdrop.fade.in(ng-show='confirmDialogShown')
