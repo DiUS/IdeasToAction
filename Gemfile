@@ -54,14 +54,12 @@ group :test, :development do
   gem 'webmock'
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
-end
 
-# OSX only
-if RUBY_PLATFORM.downcase.include?("darwin")
-  group :darwin do
-    gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git'
-    gem 'cocoapods'
-  end
+  # # OSX only
+  # if RUBY_PLATFORM.downcase.include?("darwin")
+  #   gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git', :require => false
+  #   gem 'cocoapods', :require => false
+  # end
 end
 
 # Deploy with Capistrano
