@@ -25,5 +25,8 @@ mobile/android/local.properties
 mobile/ios/build/
 mobile/ios/CordovaLib/build/
 mobile/ios/cordova/console.log
+mobile/ios/Actionman.xcodeproj/project.xcworkspace/
+mobile/ios/Actionman.xcodeproj/xcuserdata/
+mobile/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/
 .rvmrc
 .idea
