@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_member)
   end
 
+  def require_admin_member
+    if current_member.nil? || current_member.role == Member::ROLE_REGULAR
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_member_session_url
+      false
+    end
+  end
+
   helper_method :current_member
 
   private
@@ -35,5 +44,9 @@ class ApplicationController < ActionController::Base
   def current_member
     return @current_member if defined?(@current_member)
     @current_member = current_member_session && current_member_session.record
+  end
+
+  def store_location
+    session[:return_to] = request.url
   end
 end
