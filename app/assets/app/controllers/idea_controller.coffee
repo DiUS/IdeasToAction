@@ -20,4 +20,11 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
           url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{$scope.talk_title}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
         }
 
+  $scope.showNewIdeaActionDialog = false
+
+  $scope.createNewIdeaAction = (idea) ->
+    $("#new-idea-action-dialog").scope().startNewIdeaAction(idea)
+    $scope.showNewIdeaActionDialog = true
+    $navigate.swipeScope.resetToTop()
+
   $scope.update()

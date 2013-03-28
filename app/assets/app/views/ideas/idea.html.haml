@@ -1,4 +1,4 @@
-#idea.loading
+#idea.loading(ng-show='!showNewIdeaActionDialog')
   .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
     %h1
       Idea
@@ -23,5 +23,10 @@
           Tweet
   .sections
     %collapsible(title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
+      .center.row-fluid
+        .span12
+          %button#new-idea-action.btn.btn-large.btn-danger(ng-click="createNewIdeaAction(idea)")
+            Suggest an action
     %collapsible(title='Reactions' type='reaction' collection='idea.reactions' item-template='assets/views/reactions/reaction_collapsible_item.html')
     %collapsible(title='Inspired by' type='talk' collection='idea.talks' item-template='assets/views/talks/talk_collapsible_item.html')
+%ng-include#new-idea-action-dialog(src="'assets/views/actions/new.html'" ng-controller='IdeaActionEditCtrl' ng-show='showNewIdeaActionDialog')
