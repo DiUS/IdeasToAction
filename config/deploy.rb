@@ -24,6 +24,7 @@ set :aws_access_key_id,     ENV['AWS_ACCESS_KEY_ID']
 set :aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY']
 set :aws_releases_bucket, 'actionman-releases'
 set :aws_calling_format, 'SUBDOMAIN'
+set :bundle_without, [:darwin, :development, :test]
 
 ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 
