@@ -1,0 +1,35 @@
+# group :adhoc do
+#   use 'Clock.xcworkspace', :scheme => 'Clock'
+#   #target => :Relativity, :config => :Release
+#   profile 'Provisioning/Clock_AdHoc.mobileprovision'
+#   keychain 'Provisioning/build.keychain', 'build'
+   
+#   deploy :testflight, 
+#     :api_token => '', 
+#     :team_token => '',
+#     :notify => true, 
+#     :lists => ['Testers'], 
+#     :notes => `git log -n 1`
+#   end
+# end
+
+# Assumes identity is first in keychain
+group :adhoc do
+
+  # Which project/target/config, or workspace/scheme to use
+  use :Actionman, :target => :Actionman, :config => :Debug
+
+  # The mobile provision that should be used
+  profile 'Provisioning/TED_Ideas_into_action_DEV.mobileprovision'
+
+  # Keychain is option, allows isolation of identities per-project without 
+  # poluting global keychain
+  # keychain 'Provisioning/build.keychain', 'build'
+
+  deploy :testflight, 
+    :api_token => '2f58b2553f1d243b9cc0e49e445e47ce_OTU0NzEzMjAxMy0wMy0yNiAxOToxNzoyNi41MTEwNTA', 
+    :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
+    :notify => true, 
+    :lists => ['Developers'], 
+    :notes => `git log -n 1`
+end
