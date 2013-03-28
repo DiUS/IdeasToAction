@@ -57,7 +57,7 @@ group :test, :development do
 
   # # OSX only
   # if RUBY_PLATFORM.downcase.include?("darwin")
-  #   gem 'xcoder', :git => 'git://github.com/rayh/xcoder.git', :require => false
+    gem 'xcoder', '0.1.15', :require => false
   #   gem 'cocoapods', :require => false
   # end
 end
