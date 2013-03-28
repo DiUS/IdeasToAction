@@ -32,19 +32,6 @@ GIT
       trollop
 
 GIT
-  remote: git://github.com/rayh/xcoder.git
-  revision: f094dbb4b044da99e354153512678f3d2df85ef5
-  specs:
-    xcoder (0.1.17)
-      aws-sdk
-      builder
-      colorize
-      multi_json
-      nokogiri
-      plist
-      rest-client
-
-GIT
   remote: git://github.com/srbartlett/capistrano-s3-copy.git
   revision: 1f10c3cbb465c5bcc53d9e6abcbeb842d3be8006
   specs:
@@ -148,7 +135,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    colorize (0.5.8)
     crack (0.3.2)
     database_cleaner (0.9.1)
     devise (2.2.3)
@@ -273,7 +259,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.2)
     orm_adapter (0.4.0)
-    plist (3.1.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -430,4 +415,3 @@ DEPENDENCIES
   unicorn
   webmock
   will_paginate (~> 3.0)
-  xcoder!
