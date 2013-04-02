@@ -8,6 +8,7 @@ if RUBY_PLATFORM.downcase.include?("darwin")
       desc "Deploy application to testflight"
       task :testflight do
         Xcode::Buildspec.parse 'mobile/ios'
+        Rake::Task['adhoc:deploy:testflight'].invoke
         
         # config = Xcode.project(:Actionman).target(:Actionman).config(:Debug)
         # builder = config.builder
