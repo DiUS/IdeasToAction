@@ -9,18 +9,6 @@
     %meta(name="viewport" content="width=device-width")
     
     %title= "Actionman"
-    - if env_has_analytics?
-      :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}']);
-        _gaq.push(['_setDomainName', 'none']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
     = stylesheet_link_tag "application", :media => "all"
     %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
@@ -55,4 +43,16 @@
       :javascript  
         window.ENDPOINT = 'http://production.actionman.zerobot.io';
     = javascript_include_tag "cordova-2.5.0"
-    = javascript_include_tag "application"  
+    = javascript_include_tag "application"
+    - if env_has_analytics?
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
