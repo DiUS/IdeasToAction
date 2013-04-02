@@ -29,7 +29,6 @@ group :adhoc do
   deploy :testflight, 
     :api_token => '2f58b2553f1d243b9cc0e49e445e47ce_OTU0NzEzMjAxMy0wMy0yNiAxOToxNzoyNi41MTEwNTA', 
     :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
-    :notify => true, 
     :lists => ['Developers'], 
     :notes => `git log -n 1`
 end
