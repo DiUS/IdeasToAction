@@ -6,6 +6,19 @@ GIT
       foreman
 
 GIT
+  remote: git://github.com/azzamallow/xcoder.git
+  revision: 19431b19de4cb0c91aa00b47bb1b073925d5aafc
+  specs:
+    xcoder (0.1.17)
+      aws-sdk
+      builder
+      colorize
+      multi_json
+      nokogiri
+      plist
+      rest-client
+
+GIT
   remote: git://github.com/karmi/tire.git
   revision: 09bab36b2b6050b2b34c041a2ba94d4c26477ec2
   specs:
@@ -135,6 +148,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    colorize (0.5.8)
     crack (0.3.2)
     database_cleaner (0.9.1)
     devise (2.2.3)
@@ -369,12 +383,6 @@ GEM
       crack (>= 0.3.2)
     websocket (1.0.7)
     will_paginate (3.0.4)
-    xcoder (0.1.15)
-      builder
-      json
-      nokogiri
-      plist
-      rest-client
     xpath (1.0.0)
       nokogiri (~> 1.3)
 
@@ -422,4 +430,4 @@ DEPENDENCIES
   unicorn
   webmock
   will_paginate (~> 3.0)
-  xcoder (= 0.1.15)
+  xcoder!
