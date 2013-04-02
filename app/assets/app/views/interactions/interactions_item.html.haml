@@ -1,6 +1,10 @@
 %p.description(ng-href="/ideas/{{item.idea_action.idea_id}}")
+  %strong.featured-action-statement Action:
   {{item.idea_action.description}}
   %a.continue
+%p.description(ng-href="/ideas/{{item.idea_action.idea_id}}" ng-show="item.reaction_text")
+  %strong.featured-action-statement Your Reaction:
+  {{item.reaction_text}}
   %p.action-statement.pull-left
     %b {{item.idea_action.members_actioned_count}} 
     %span People did this

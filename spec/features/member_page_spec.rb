@@ -31,7 +31,7 @@ describe "Member page", js: true, acceptance: true do
   context "My actions collapsible" do
     let(:title) { "My actions" }
     let(:starts_as_collapsed?) { false }
-    let(:item_contents) { member.interactions.map(&:idea_action).map(&:description) }
+    let(:item_contents) { [member.interactions.map(&:idea_action).map(&:description), member.interactions.map(&:reaction_text)] }
 
     it_should_behave_like "a collapsible"
   end
