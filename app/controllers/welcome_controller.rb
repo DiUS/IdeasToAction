@@ -1,7 +1,6 @@
 require 'pathname'
 
 class WelcomeController < ApplicationController
-  include ApplicationHelper
 
   def index
     case Rails.env
@@ -11,4 +10,4 @@ class WelcomeController < ApplicationController
         render :file => 'public/assets/index.html', :formats => [:html]
     end
   end
-end 
+end
