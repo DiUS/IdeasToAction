@@ -31,7 +31,13 @@ shared_examples_for "a collapsible" do
 
   it "should have the items content" do
     item_contents.each do | item_content |
-      items.should have_content item_content
+      if item_content.kind_of?(Array)
+        item_content.each do | content |
+          items.should have_content content
+        end
+      else
+        items.should have_content item_content
+      end
     end
   end
 end 
