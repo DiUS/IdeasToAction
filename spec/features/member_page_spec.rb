@@ -24,6 +24,10 @@ describe "Member page", js: true, acceptance: true do
     @interaction.destroy
   end
 
+  it 'should display total number of actions done' do
+    page.should have_content '1 Action Done'
+  end
+
   context "My actions collapsible" do
     let(:title) { "My actions" }
     let(:starts_as_collapsed?) { false }

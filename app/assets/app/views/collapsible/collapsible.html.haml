@@ -1,5 +1,5 @@
 .collapsible.section(ng-class="{collapsed : !expanded, expanded: !!expanded}")
-  .header(ng-click="expandCollapse()")
+  .header(ng-click="expandCollapse()" ng-class="{fixed: canCollapse == false}")
     %span.title
       {{title}}
       %sup
