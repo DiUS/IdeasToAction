@@ -1,6 +1,8 @@
 require 'pathname'
 
 class WelcomeController < ApplicationController
+  include ApplicationHelper
+
   def index
     case Rails.env
       when 'development', 'test'
