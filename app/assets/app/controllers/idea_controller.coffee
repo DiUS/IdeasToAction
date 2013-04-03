@@ -1,6 +1,10 @@
 window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
   $scope.ideaId = $routeParams.ideaId
 
+  $scope.identityClass = (idea) ->
+    return '' unless idea
+    "idea-#{idea.id}"
+
   $scope.update = (callback) ->
     $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 
       $scope.idea = data
