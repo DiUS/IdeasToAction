@@ -14,7 +14,9 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
         $scope.idea.reactions = $scope.idea.interactions.filter (interaction) -> interaction.reaction_text?
 
       $('.loading').removeClass('loading')
-      $navigate.swipeScope.refreshPageHeight()
+      setTimeout ->
+        new iScroll('idea-scroll', {hScrollbar: false, vScrollbar: false, lockDirection: true});
+      , 300
       callback() if callback?
 
       # assyncronously loading twitter button beacuase calling external service

@@ -178,7 +178,7 @@ angular.module('snappy-swipe-navigate').
                 navigator.app.exitApp() unless scope.back() 
 
       controller: 'swipe-view-controller',
-      template: '<div id="pageWrapper"><div id="pageScroller"></div></div>',
+      template: '<div id="pageWrapper" class="scrollable-content"><div id="pageScroller"></div></div>',
     }
   )
 
