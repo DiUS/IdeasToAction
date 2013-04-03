@@ -5,10 +5,11 @@
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
-  %div(ng-controller="TalksEventsCtrl")
-    .content
-      %p.description
-        Introduction paragraph to a featured talk which may be positioned here
-    .sections
-      %collapsible(title='Talks' type='talks' collection='talks' item-template='assets/views/talks/talk_collapsible_item.html')
-      %collapsible(title='Events' type='events' collection='events' item-template='assets/views/events/event_collapsible_item.html')
+  %scrollable
+    %div(ng-controller="TalksEventsCtrl")
+      .content
+        %p.description
+          Introduction paragraph to a featured talk which may be positioned here
+      .sections
+        %collapsible(scroller="scroller" title='Talks' type='talks' collection='talks' item-template='assets/views/talks/talk_collapsible_item.html')
+        %collapsible(scroller="scroller" title='Events' type='events' collection='events' item-template='assets/views/events/event_collapsible_item.html')

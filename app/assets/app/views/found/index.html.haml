@@ -5,17 +5,18 @@
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
-  %div(ng-controller="SearchCtrl")
-    .navbar.search-navbar.follow-scroll
-      .navbar-inner
-        %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
-          %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search')
-          %button.btn(type="submit") Find
-    .content(ng-show="results")
-      .results
-        .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")
-    .content(ng-show="results && results.length == 0")
-      %p.description
-        No results found!
-    .content(ng-show="!results")
-      %p.description.loading
+  %scrollable
+    %div(ng-controller="SearchCtrl")
+      .navbar.search-navbar.follow-scroll
+        .navbar-inner
+          %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
+            %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search')
+            %button.btn(type="submit") Find
+      .content(ng-show="results")
+        .results
+          .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")
+      .content(ng-show="results && results.length == 0")
+        %p.description
+          No results found!
+      .content(ng-show="!results")
+        %p.description.loading

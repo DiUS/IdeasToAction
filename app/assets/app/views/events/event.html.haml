@@ -5,17 +5,17 @@
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
-  .content.event
-    %div{'ng-switch on' => 'event.logo_image_url'}
-      %img(ng-src="{{event.logo_image_url}}" alt="{{event.name}}" ng-switch-default = '')
-      %span(ng-switch-when='null')
-        {{event.name}}
-    .hero{'ng-switch on' => 'event.hero_image_url'}
-      %img(ng-src="{{event.hero_image_url}}" alt="{{event.name}}" ng-switch-default = '')
-      %span(ng-switch-when = 'null')
-    %p.description
-      {{event.description}}
-  .sections
-    %collapsible(title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
-    %collapsible(title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
-    
+  %scrollable
+    .content.event
+      %div{'ng-switch on' => 'event.logo_image_url'}
+        %img(ng-src="{{event.logo_image_url}}" alt="{{event.name}}" ng-switch-default = '')
+        %span(ng-switch-when='null')
+          {{event.name}}
+      .hero{'ng-switch on' => 'event.hero_image_url'}
+        %img(ng-src="{{event.hero_image_url}}" alt="{{event.name}}" ng-switch-default = '')
+        %span(ng-switch-when = 'null')
+      %p.description
+        {{event.description}}
+    .sections
+      %collapsible(scroller="scroller" title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
+      %collapsible(scroller="scroller" title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
