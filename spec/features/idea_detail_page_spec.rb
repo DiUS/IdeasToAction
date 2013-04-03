@@ -93,6 +93,7 @@ describe "Idea detail page", js: true, acceptance: true do
     end
 
     it 'should display the date' do
+      page.html #force refetch from the DOM
       page.should have_selector('p.action-statement', text: 'You did on')
     end
 
