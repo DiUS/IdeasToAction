@@ -6,13 +6,18 @@
      color: #333333;
   }
 
-  #search-text {
-    width: 72%;
-    height: 50px;
-    font-size: 1.8em;
-    line-height: 41px;
-    margin-bottom: 0;
-    padding-left: 16px;
+  .search-text-wrapper {
+    width: 77%;
+    display: inline-block;    
+
+    #search-text {
+      width: 90%;
+      height: 50px;
+      font-size: 1.8em;
+      line-height: 41px;
+      margin-bottom: 0;
+      padding-left: 16px;
+    }
   }
 
   .btn {
