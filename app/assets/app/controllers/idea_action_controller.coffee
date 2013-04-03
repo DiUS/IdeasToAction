@@ -9,7 +9,7 @@ window.IdeaActionCtrl = ($scope, $http, $element, $routeParams, Interaction, dat
     interaction.idea_action_id = ideaActionId
     interaction.$save ->
       dataCache.removeAll()
-      $('#idea').scope().update ->
+      $(".idea-#{$scope.item.idea_id}").scope().update ->
         setTimeout ->
           $("#reaction-#{interaction.id}").slideToggle 300
         , 300
