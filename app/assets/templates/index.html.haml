@@ -47,9 +47,5 @@
     = javascript_include_tag "application"
 
     - if env_has_analytics?
-      = javascript_include_tag "ga"
       :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}']);
-        _gaq.push(['_setDomainName', 'none']);
-        _gaq.push(['_trackPageview']);
+        window.plugins.analytics.start("#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}", function(){}, function(){);});
