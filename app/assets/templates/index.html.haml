@@ -49,3 +49,4 @@
     - if env_has_analytics?
       :javascript
         window.plugins.analytics.start("#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}", function(){}, function(){);});
+        window.plugins.analytics.trackPageView("application", function(){};}, function(){});
