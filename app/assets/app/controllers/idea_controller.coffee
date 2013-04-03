@@ -5,8 +5,11 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     return '' unless idea
     "idea-#{idea.id}"
 
-  $scope.onBeforeScrollStart = ->
+  $scope.onBeforeScrollStart = (event) ->
+    event.preventDefault()
+    event.stopPropagation()
     $scope.scroller.refresh()
+    false
 
   $scope.update = (callback) ->
     $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 

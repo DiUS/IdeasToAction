@@ -2,7 +2,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
   directive('ngHref', ($navigate)->
     (scope, elm, attrs) -> 
       scope.navigate = $navigate
-      elm.bind 'click', () -> 
+      elm.bind 'click', -> 
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
         false
   ).
