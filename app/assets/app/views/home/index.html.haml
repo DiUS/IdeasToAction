@@ -14,38 +14,37 @@
             %i.icon-road
           %a(ng-href="/events/edit")
             %i.icon-edit
-  #home-scroll.scrollable-content
-    .scroller
-      .content
-        .center
-          %span.big 1314
-          %span.big People
-          %span.big 289
-          %span.big Ideas
-          %span.big 633
-          %span.big Actions
-          .hero
-            %p Transforming ideas worth spreading into actions worth taking
-        .panel
-          .corner-panel
-            %span.touch-panel
-              %a.touch-icon(onclick = 'location.reload(true);')
-                %i.icon-refresh
-          .body
-            %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
-              %strong.featured-action-statement FEATURED IDEA
-              {{idea.description}}
-              %a.continue
+  %scrollable
+    .content
+      .center
+        %span.big 1314
+        %span.big People
+        %span.big 289
+        %span.big Ideas
+        %span.big 633
+        %span.big Actions
+        .hero
+          %p Transforming ideas worth spreading into actions worth taking
+      .panel
+        .corner-panel
+          %span.touch-panel
+            %a.touch-icon(onclick = 'location.reload(true);')
+              %i.icon-refresh
+        .body
+          %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
+            %strong.featured-action-statement FEATURED IDEA
+            {{idea.description}}
+            %a.continue
 
-            %p.flat-description#random-action(ng-href="/ideas/{{action.idea_id}}")
-              %strong.featured-action-statement FEATURED ACTION
-              {{action.description}}
-              %a.continue
-      .collapsible.section
-        .header(ng-href="/talks-events") Talks & events
-        .header(ng-href="/member") My profile
-      %div
-        %form(name='searchQuery' ng-submit="doSearch()")
-          .search-text-wrapper
-            %input#search-text(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-          %input.btn(type="submit" value="Find") 
+          %p.flat-description#random-action(ng-href="/ideas/{{action.idea_id}}")
+            %strong.featured-action-statement FEATURED ACTION
+            {{action.description}}
+            %a.continue
+    .collapsible.section
+      .header(ng-href="/talks-events") Talks & events
+      .header(ng-href="/member") My profile
+    %div
+      %form(name='searchQuery' ng-submit="doSearch()")
+        .search-text-wrapper
+          %input#search-text(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
+        %input.btn(type="submit" value="Find") 

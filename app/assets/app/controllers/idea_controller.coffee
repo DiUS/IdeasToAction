@@ -5,12 +5,6 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     return '' unless idea
     "idea-#{idea.id}"
 
-  $scope.onBeforeScrollStart = (event) ->
-    event.preventDefault()
-    event.stopPropagation()
-    $scope.scroller.refresh()
-    false
-
   $scope.update = (callback) ->
     $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 
       $scope.idea = data
@@ -20,13 +14,6 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
         $scope.idea.reactions = $scope.idea.interactions.filter (interaction) -> interaction.reaction_text?
 
       $('.loading').removeClass('loading')
-      setTimeout ->
-        $scope.scroller = new iScroll 'idea-scroll', 
-          hScrollbar: false 
-          vScrollbar: false
-          lockDirection: true
-          onBeforeScrollStart: $scope.onBeforeScrollStart
-      , 300
       callback() if callback?
 
       # assyncronously loading twitter button beacuase calling external service

@@ -5,10 +5,11 @@
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
-  .content.center
-    .big {{interactions.length}}
-    .big 
-      %ng:pluralize(count="interactions.length" when="{'one': 'Action', 'other': 'Actions'}")
-      Done
-  .sections
-    %collapsible(title='My actions' expanded="true" can-collapse="false" type='interaction' collection='interactions' item-template='assets/views/interactions/interactions_item.html')
+  %scrollable
+    .content.center
+      .big {{interactions.length}}
+      .big 
+        %ng:pluralize(count="interactions.length" when="{'one': 'Action', 'other': 'Actions'}")
+        Done
+    .sections
+      %collapsible(scroller="scroller" title='My actions' expanded="true" can-collapse="false" type='interaction' collection='interactions' item-template='assets/views/interactions/interactions_item.html')
