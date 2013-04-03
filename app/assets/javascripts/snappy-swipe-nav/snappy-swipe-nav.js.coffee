@@ -41,6 +41,7 @@ angular.module('snappy-swipe-navigate').
       snap: true,
       momentum: true,
       hMomentum: false,
+      vMoveDisabled: true,
       hScrollbar: false,
       vScrollbar: false,
       lockDirection: true,
