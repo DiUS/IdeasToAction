@@ -76,7 +76,6 @@ var m = Math,
 			useTransition: false,
 			topOffset: 0,
 			checkDOMChanges: false,		// Experimental
-			disabledMove: false,
 
 			// Scrollbar
 			hScrollbar: true,
@@ -180,10 +179,7 @@ iScroll.prototype = {
 				if (!hasTouch && e.button !== 0) return;
 				that._start(e);
 				break;
-			case MOVE_EV: 
-				if (that.options.disabledMove) return;
-				that._move(e); 
-				break;
+			case MOVE_EV: that._move(e); break;
 			case END_EV:
 			case CANCEL_EV: that._end(e); break;
 			case RESIZE_EV: that._resize(); break;

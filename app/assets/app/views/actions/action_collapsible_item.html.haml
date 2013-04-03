@@ -11,7 +11,7 @@
   .container
     .row-fluid.reaction{'id' => 'reaction-{{item.member_interaction.id}}', 'ng-controller' => 'ReactionCtrl'}
       .span12
-        %textarea(placeholder = 'Add my reaction' name='reaction-text' ng-model="reactionText" mobile-focus-click)
+        %textarea(placeholder = 'Add my reaction' name='reaction-text' ng-model="reactionText")
       .span4.offset8
         %button.btn.btn-large.btn-danger.submit-reaction(ng-disabled="!reactionText || inProgress" ng-click="react()") 
           Add my reaction
