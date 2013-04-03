@@ -2,11 +2,14 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) 
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
 
-  $http.get("#{window.ENDPOINT}/ideas/random.json", { cache: dataCache }).success (data) -> 
-    $scope.idea = data
+    $http.get("#{window.ENDPOINT}/ideas/random.json", { cache: dataCache }).success (data) -> 
+      $scope.idea = data
 
-  $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
-    $scope.action = data
+      $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
+        $scope.action = data
+        setTimeout ->
+          new iScroll('home-scroll', {hScrollbar: false, vScrollbar: false, lockDirection: true});
+        , 300
 
   $scope.doSearch = -> 
     $timeout ->
