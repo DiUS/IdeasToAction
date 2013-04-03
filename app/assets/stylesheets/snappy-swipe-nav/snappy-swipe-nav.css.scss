@@ -8,24 +8,34 @@
 .scrollable-content {
     position:absolute;
     z-index:1;
-    overflow:hidden;
     top:0px;
     right:0px;
     bottom:0px;
     left:0px;
     width: 100%;
+    overflow:hidden;
 
     .scrollable-content {
       top: 80px;
+      overflow:auto;
     }
 }
 
-#pageScroller {
+.contentWrapper, .contentWrapper > *, #pageScroller {
   height: 100%;
 }
 
+swipe-view {
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
 .scroller {
-  position:absolute; z-index:1;
+  position:absolute; 
+  z-index:1;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   width:100%;
   padding:0;

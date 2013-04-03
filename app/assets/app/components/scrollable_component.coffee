@@ -8,7 +8,6 @@ angular.module('Actionman').
     link: ($scope, $element) ->
       onBeforeScrollStart = (event) ->
         event.preventDefault()
-        event.stopPropagation()
         $scope.scroller.refresh()
         false
 
