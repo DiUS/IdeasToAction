@@ -3,7 +3,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
     (scope, elm, attrs) -> 
       scope.navigate = $navigate
       elm.bind 'click', () -> 
-        scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
+        # scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
         false
   ).
   directive('ngExternal', () ->
