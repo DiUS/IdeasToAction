@@ -10,12 +10,11 @@
     
     %title= "Actionman"
     - if env_has_analytics?
-      = javascript_include_tag "ga"
+      = javascript_include_tag "GALocalStorage"
       :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}']);
-        _gaq.push(['_setDomainName', 'none']);
-        _gaq.push(['_trackPageview']);
+        ga_storage._setAccount('#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}');
+        ga_storage._trackPageview('/index.html');
+
     = stylesheet_link_tag "application", :media => "all"
     %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
