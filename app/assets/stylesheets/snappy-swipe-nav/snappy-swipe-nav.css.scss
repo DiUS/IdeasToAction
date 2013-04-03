@@ -5,7 +5,7 @@
     padding: 0px;
 }
 
-#pageWrapper {
+#pageWrapper, #home-scroll {
     position:absolute;
     z-index:1;
     overflow:hidden;
@@ -16,9 +16,22 @@
     width: 100%;
 }
 
+#home-scroll {
+  top: 80px;
+}
+
+#pageScroller {
+  height: 100%;
+}
+
 .scroller {
   position:absolute; z-index:1;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   width:100%;
   padding:0;
+}
+
+.home-scroller {
+  position:absolute;
+  width:100%;
 }

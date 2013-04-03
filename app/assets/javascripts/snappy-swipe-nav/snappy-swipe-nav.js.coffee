@@ -47,14 +47,15 @@ angular.module('snappy-swipe-navigate').
       hMomentum: false,
       hScrollbar: false,
       vScrollbar: false,
+      disabledMove: true,
       lockDirection: true,
       onScrollEnd: $scope.onScrollEnd
       onPositioned: $scope.onPositioned
     })
 
     $scope.refreshPageHeight = ()->
-      $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
-      $scope.scroll.refresh();
+      # $('#pageScroller').css('height', $("> *", $scope.currentPage()).height()) 
+      # $scope.scroll.refresh();
 
     $scope.resetToTop = ()->
       $scope.refreshPageHeight()
@@ -116,7 +117,8 @@ angular.module('snappy-swipe-navigate').
       $scope.pageScroller().append(page.element);
       $scope.updateLayout()
       page.scope.$emit('$viewContentLoaded');
-      #page.scope.$eval(attrs.onLoad);
+      #page.scope.$eval(attrs.onLoad);      
+
       page.element
     
     $scope.clearAllPagesForward = ->
