@@ -5,6 +5,9 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     return '' unless idea
     "idea-#{idea.id}"
 
+  $scope.onBeforeScrollStart = ->
+    $scope.scroller.refresh()
+
   $scope.update = (callback) ->
     $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 
       $scope.idea = data
@@ -15,7 +18,11 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
 
       $('.loading').removeClass('loading')
       setTimeout ->
-        new iScroll('idea-scroll', {hScrollbar: false, vScrollbar: false, lockDirection: true});
+        $scope.scroller = new iScroll 'idea-scroll', 
+          hScrollbar: false 
+          vScrollbar: false
+          lockDirection: true
+          onBeforeScrollStart: $scope.onBeforeScrollStart
       , 300
       callback() if callback?
 
