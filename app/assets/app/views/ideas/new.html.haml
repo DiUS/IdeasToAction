@@ -5,57 +5,58 @@
     .touch-panel
       %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
         %i.icon-remove
-  .content
-    %p
-      Thank you for taking the time to submit an idea!
-  .sections
-    .section.talks
-      .header
-        %span.title
-          Inspired by...
-      .items
-        .item{ 'ng-repeat' => "item in idea.talks" }
-          %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
-    .description.section
-      .header
-        I had this idea...
-      %p.muted
-        %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
-      .items
-        .item
-          %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
-    .section.actions
-      .header
-        %span.title
-          Into these actions...
-      %p.muted
-        %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
-      .items
-        .item{ 'ng-repeat' => "item in idea.idea_actions" }
-          %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
-      %form#new-action(name='newAction' ng-submit="addNewAction()")
-        .control.content
-          %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...' mobile-focus-click)
-        .control.content
-          %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
-  .content
-    %p
-      Please review your idea before submission. 
-    .center
-      %button#submit-idea.center.btn.btn-large.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
-        Submit your idea
-#cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
-  .modal-header.header.main-header(ng-click = '$parent.resetToTop()')
-    Cancel idea submission?
-  .moday-body
+  %scrollable
     .content
-      %p 
-        Are you sure you want to cancel your submission?
-        %em 
-          You will lose all your data.
-  .modal-footer
-    %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
-      Confirm
-    %a#close-button.btn(ng-click="confirmDialogShown=false")
-      Close
+      %p
+        Thank you for taking the time to submit an idea!
+    .sections
+      .section.talks
+        .header
+          %span.title
+            Inspired by...
+        .items
+          .item{ 'ng-repeat' => "item in idea.talks" }
+            %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
+      .description.section
+        .header
+          I had this idea...
+        %p.muted
+          %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
+        .items
+          .item
+            %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='')
+      .section.actions
+        .header
+          %span.title
+            Into these actions...
+        %p.muted
+          %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
+        .items
+          .item{ 'ng-repeat' => "item in idea.idea_actions" }
+            %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
+        %form#new-action(name='newAction' ng-submit="addNewAction()")
+          .control.content
+            %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...')
+          .control.content
+            %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
+    .content
+      %p
+        Please review your idea before submission. 
+      .center
+        %button#submit-idea.center.btn.btn-large.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
+          Submit your idea
+  #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
+    .modal-header.header.main-header(ng-click = '$parent.resetToTop()')
+      Cancel idea submission?
+    .moday-body
+      .content
+        %p 
+          Are you sure you want to cancel your submission?
+          %em 
+            You will lose all your data.
+    .modal-footer
+      %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
+        Confirm
+      %a#close-button.btn(ng-click="confirmDialogShown=false")
+        Close
 #modal-backdrop.modal-backdrop.fade.in(ng-show='confirmDialogShown')
