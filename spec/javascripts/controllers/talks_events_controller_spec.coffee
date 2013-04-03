@@ -14,8 +14,6 @@ describe 'TalksEventsCtrl', ->
     $httpBackend.expectGET("#{window.ENDPOINT}/talks.json").respond(talksData)
     scope = $rootScope.$new()
 
-    $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
-
     ctrl = $controller( 'TalksEventsCtrl', { $scope: scope, $routeParams: { }, $navigate, dataCache: $cacheFactory('fake cache') })
 
   it 'should set the events correctly', ->

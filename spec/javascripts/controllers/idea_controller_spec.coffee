@@ -24,9 +24,6 @@ describe 'Actionman', ->
       $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1/show_idea_url").
             respond({idea_url: "http://bit.ly/15z4CPz"})
 
-
-      $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
-
       scope = $rootScope.$new()
       $controller 'IdeaCtrl', { $scope: scope, $routeParams: { ideaId: 1 }, dataCache: $cacheFactory('fake cache'), $navigate }
 
