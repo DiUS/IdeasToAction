@@ -177,6 +177,7 @@ iScroll.prototype = {
 			case START_EV:
 				if (e.target.nodeName.toLowerCase() == "select" || e.target.tagName.toLowerCase() == 'input' || e.target.tagName.toLowerCase() == 'textarea') return;
 				if (!hasTouch && e.button !== 0) return;
+				e.stopPropagation()
 				that._start(e);
 				break;
 			case MOVE_EV: that._move(e); break;
