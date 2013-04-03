@@ -9,7 +9,6 @@ describe 'MemberCtrl', ->
     MemberInteractionsResource = query: jasmine.createSpy('query').andReturn(interactions)
 
   beforeEach inject ($rootScope, $navigate, $controller) ->
-    $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
     $scope = $rootScope.$new()
     $controller 'MemberCtrl', { $scope: $scope, MemberInteractionsResource: MemberInteractionsResource, $navigate }
 

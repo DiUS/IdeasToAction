@@ -16,7 +16,6 @@ describe 'TalkCtrl', ->
     navigate = $navigate
     $httpBackend = _$httpBackend_
     $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks/1.json").respond(talkData)
-    $navigate.swipeScope = { name: "mock swipe scope", refreshPageHeight: jasmine.createSpy('refreshPageHeight') }
     scope = $rootScope.$new()
     ctrl = $controller( 'TalkCtrl', { $scope: scope, $routeParams: { talkId: 1, eventId: 1 }, $navigate, dataCache: $cacheFactory('fake cache') })
 
@@ -28,7 +27,3 @@ describe 'TalkCtrl', ->
     expect(scope.talk).toBeUndefined()
     $httpBackend.flush()
     expect(scope.talk).not.toBeUndefined()
-
-  it 'should refresh the page height', ->
-    $httpBackend.flush()
-    expect(navigate.swipeScope.refreshPageHeight).toHaveBeenCalled()

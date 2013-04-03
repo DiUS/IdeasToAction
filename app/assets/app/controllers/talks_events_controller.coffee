@@ -4,4 +4,3 @@ window.TalksEventsCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $http.get("#{window.ENDPOINT}/talks.json", { cache: dataCache }).success (data) ->
       $scope.talks = data
       $('.loading').removeClass('loading')
-      $navigate.swipeScope.refreshPageHeight()

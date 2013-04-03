@@ -5,4 +5,3 @@ window.EventCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/ideas.json", { cache: dataCache }).success (data) -> 
       $scope.ideas = data
       $('.loading').removeClass('loading')
-      $navigate.swipeScope.refreshPageHeight()
