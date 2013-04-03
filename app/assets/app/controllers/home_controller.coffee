@@ -8,6 +8,8 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) 
   $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
     $scope.action = data
 
+  $scope.query = text: ''
+
   $scope.doSearch = -> 
     $timeout ->
       $navigate.swipeScope.clearAllPagesForward()

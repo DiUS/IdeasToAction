@@ -1,22 +1,23 @@
 #login
-  .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
+  .header.main-header(ng-click = '$parent.resetToTop()')
     %h1
       Log In
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
     &nbsp;
-  .content
-    .center
-      %p Please login to Actionman to access administrative interface.
-      #error-container
-        {{memberSession.errorMsg}}
-      %form(ng-submit="login()")
-        .inputdata
-          %label(for="username") Username:
-          %input#username(type="text" ng-model="loginForm.username")
+  %scrollable
+    .content
+      .center
+        %p Please login to Actionman to access administrative interface.
+        #error-container
+          {{memberSession.errorMsg}}
+        %form(ng-submit="login()")
+          .inputdata
+            %label(for="username") Username:
+            %input#username(type="text" ng-model="loginForm.username")
 
-        .inputdata
-          %label(for="password") Password:
-          %input#password(type="password" ng-model="loginForm.password")
-        %input#btn-login.btn-large(type="Submit" value="Login")
+          .inputdata
+            %label(for="password") Password:
+            %input#password(type="password" ng-model="loginForm.password")
+          %input#btn-login.btn-large(type="Submit" value="Login")
