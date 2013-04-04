@@ -13,7 +13,6 @@ qa:
   host: "http://qa.actionman.zerobot.io"
 qa_mobile_assets:
   host: "http://qa.actionman.zerobot.io"
-  analytics_tracking_key: "UA-39769967-1"
 test:
   host: "http://poo.actionman.zerobot.io"
 
