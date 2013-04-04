@@ -1,0 +1,38 @@
+.landing
+  .header.main-header(ng-click = '$parent.resetToTop()')
+    %h1
+      Events
+    .touch-panel
+      %a.touch-icon(ng-href="/home")
+        %i.icon-home
+  %scrollable
+    .content(ng-href="/events/{{events.featured[0].id}}")
+      %tile:featured(heading="FEATURED EVENTS" title="events.featured[0].name" description="events.featured[0].description" img="events.featured[0].hero_image_url")
+      .totals
+        %tile:count(count="14" title="ideas")
+        %tile:count(count="12" title="actions")
+        %tile:count(count="19" title="reactions")
+    .content(ng-href="/events/{{events.popular[0].id}}")
+      %tile:default(title="events.popular[0].name")
+      .totals
+        %tile:count(count="4" title="ideas")
+        %tile:count(count="12" title="actions")
+        %tile:count(count="19" title="reactions")
+    .content(ng-href="/events/{{events.popular[1].id}}")
+      %tile:default(title="events.popular[1].name")
+      .totals
+        %tile:count(count="4" title="ideas")
+        %tile:count(count="12" title="actions")
+        %tile:count(count="19" title="reactions")
+    .content(ng-href="/events/{{events.random[0].id}}")
+      %tile:default(title="events.random[0].name")
+      .totals
+        %tile:count(count="4" title="ideas")
+        %tile:count(count="12" title="actions")
+        %tile:count(count="19" title="reactions")
+    .content(ng-href="/events/{{events.random[1].id}}")
+      %tile:default(title="events.random[1].name")
+      .totals
+        %tile:count(count="4" title="ideas")
+        %tile:count(count="12" title="actions")
+        %tile:count(count="19" title="reactions")
