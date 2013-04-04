@@ -37,6 +37,10 @@ body {
   line-height: 1.25em !important;
 }
 
+h6 {
+  font-weight: normal;
+}
+
 /* Hack to force the server to download the image so it is always rendered from cache */
 #preload-loader { 
   background: image-url('ajax-loader.gif') no-repeat -9999px -9999px; 
