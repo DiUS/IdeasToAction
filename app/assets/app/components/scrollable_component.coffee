@@ -1,7 +1,7 @@
 angular.module('Actionman').
   directive 'scrollable', ->
     restrict: 'E'
-    template: '<div class="scrollable-content"><div class="scroller"><div ng-transclude></div></div></div>'
+    template: '<div class="scrollable-content"><div class="scroller" ng-transclude></div></div>'
     transclude: true
     replace: true
     scope: false
