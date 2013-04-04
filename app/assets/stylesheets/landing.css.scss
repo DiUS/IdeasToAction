@@ -1,0 +1,33 @@
+.landing {
+  .content {
+    padding-top: 10px;
+    border-bottom: 1px solid black;
+
+    img, strong {
+      float: left;
+    }
+
+    strong.featured-action-statement {
+      width: 60%;
+      margin-bottom: 5px;
+    }
+
+    img {
+      width: 35%;
+      min-height: 80px;
+      min-width: 115px;
+      margin-right: 12px;
+    }
+
+    &:first-child {
+      .totals {
+        padding-top: 18px;
+      }
+    }
+
+    .totals {
+      color: #FF2A06;
+      padding-bottom: 18px;
+    }
+  }
+}
