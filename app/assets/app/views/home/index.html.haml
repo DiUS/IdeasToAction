@@ -2,18 +2,6 @@
   .header.main-header(ng-click = '$parent.resetToTop()')
     %h1
       Ideas into action
-    %span(ng-controller = "AuthCtrl")
-      .touch-panel
-        %span.hidden-phone(ng-show = "!memberSession.loggedIn && loggedInStatusDetermined()")
-          %a(ng-href = "/login")
-            %i.icon-user
-        %span.hidden-phone(ng-show = "memberSession.loggedIn && loggedInStatusDetermined()")
-          %i.icon-user
-            {{memberSession.username}}
-          %a(ng-click = "logout()")
-            %i.icon-road
-          %a(ng-href="/events/edit")
-            %i.icon-edit
   %scrollable
     .content
       .center
