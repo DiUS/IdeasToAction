@@ -7,6 +7,11 @@ angular.module('Actionman').
     scope: false
     link: ($scope, $element) ->
       onBeforeScrollStart = (event) ->
+        ##
+        ## NOTE: Nasty hack to prevent double clicking issue on the collapsible headers
+        ##
+        event.stopPropagation() if event.target.className == 'header' || event.target.className.indexOf('title') != -1
+          
         event.preventDefault()
         $scope.scroller.refresh()
         false
