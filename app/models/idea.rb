@@ -31,6 +31,9 @@ class Idea < ActiveRecord::Base
 
   delegate :username, :to => :member, :prefix => true
 
+  after_create :increment_counter_on_events
+  after_destroy :decrement_counter_on_events
+
   def self.featured_only
     where(:featured => true)
   end
@@ -53,5 +56,19 @@ class Idea < ActiveRecord::Base
     Idea.find_by_sql("select distinct ins.member_id from " + 
                       "ideas i, interactions ins, idea_actions a where " +
                       "a.idea_id = i.id and ins.idea_action_id = a.id and i.id = #{self.id}")
+  end
+
+  private
+
+  def increment_counter_on_events
+    self.talks.each do |talk|
+      Event.increment_counter(:ideas_count, talk.event.id)
+    end
+  end
+
+  def decrement_counter_on_events
+    self.talks.each do |talk|
+      Event.decrement_counter(:ideas_count, talk.event.id)
+    end
   end
 end

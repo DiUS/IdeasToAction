@@ -5,7 +5,12 @@ class EventsController < ApplicationController
   respond_to :json
 
   def index
-    render json: Event.all
+    if params[:mix] && params[:mix] == "true"
+      @event_view = EventView.new
+      render 'index'
+    else
+      render json: Event.all
+    end
   end
 
   def update

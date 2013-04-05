@@ -22,6 +22,27 @@ class Event < ActiveRecord::Base
 
   has_many :talks
   has_many :ideas, :through => :talks
+  has_many :idea_actions, :through => :talks
 
   validates :name, :description, :hero_image_url, :presence => true
+
+  def self.random(number = 1)
+    Event.offset(rand(Event.count - number)).first(number)
+  end
+
+  def self.featured
+    where(:featured => true)
+  end
+
+  def self.recent
+    Event.order("created_at desc").limit(10)
+  end
+
+  def self.popular
+    Event.order("idea_actions_count desc").limit(10)
+  end
+
+  def self.excluding_events(events)
+    Event.where("id not in (?)", events.collect(&:id))
+  end
 end
