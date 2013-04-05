@@ -29,6 +29,13 @@ describe "Events page", js: true, acceptance: true do
     end
   end
 
+  it 'should search' do
+    find("input[type='text']").set("stuff")
+    find('input.btn').click()
+    sleep 1
+    page.current_url.should match /#\/found\?query_text=stuff/
+  end
+
   describe 'when wanting to navigate back to the home page' do
     before do
       page.should_not have_selector('#home')
