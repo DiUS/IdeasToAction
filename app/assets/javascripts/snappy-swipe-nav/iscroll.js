@@ -1021,6 +1021,21 @@ iScroll.prototype = {
 		that.scrollTo(pos.left, pos.top, time);
 	},
 
+    scrollElementToTop: function (el, offset, time) {
+       var that = this, pos;
+
+       pos = that._offset(el);
+       pos.left += that.wrapperOffsetLeft;
+
+       pos.left = pos.left > 0 ? 0 : pos.left < that.maxScrollX ? that.maxScrollX : pos.left;
+
+       pos.top = 0 - el.offsetTop + offset;
+
+       that._pos(pos.left, pos.top);
+
+       // that.scrollTo(pos.left, pos.top, time);
+    },
+
 	scrollToPage: function (pageX, pageY, time) {
 		var that = this, x, y;
 		

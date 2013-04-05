@@ -24,7 +24,7 @@
           %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
         .items
           .item
-            %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='')
+            %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
       .section.actions
         .header
           %span.title
@@ -36,7 +36,7 @@
             %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
         %form#new-action(name='newAction' ng-submit="addNewAction()")
           .control.content
-            %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...')
+            %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...' mobile-focus-click)
           .control.content
             %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
     .content
