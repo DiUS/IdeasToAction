@@ -8,10 +8,9 @@ class TalksController < ApplicationController
   def index
     if params[:mix] && params[:mix] == "true"
       @talk_view = TalkView.new
-      render 'index'
+      render 'talks'
     else
-      @event = Event.find(params[:event_id])
-      @talks = @event.talks
+      index!
     end
   end
 
