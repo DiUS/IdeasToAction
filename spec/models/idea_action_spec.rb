@@ -45,4 +45,27 @@ describe IdeaAction do
       end
     end
   end
+
+  describe "counter on events" do
+    let(:event) { Event.first }
+    let(:talk) { event.talks.first }
+    let(:idea) { talk.ideas.first }
+
+    it "should increment the counter on events when created" do
+      prev_idea_actions_count = event.idea_actions_count
+      expect {
+        IdeaAction.create!(:idea_id => idea.id, :description => "test action")
+        event.reload # model needs to get reloaded since counter_cache is getting updated in the database directly
+      }.to change{ event.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count+1)
+    end
+
+    it "should decrement the counter on events when created" do
+      idea_action = IdeaAction.create!(:idea_id => idea.id, :description => "test action")
+      prev_idea_actions_count = event.reload.idea_actions_count
+      expect {
+        idea_action.destroy
+        event.reload # model needs to get reloaded since counter_cache is getting updated in the database directly
+      }.to change{ event.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count-1)
+    end
+  end
 end
