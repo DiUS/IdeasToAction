@@ -12,6 +12,7 @@ class Interaction < ActiveRecord::Base
   end
 
   after_save :manage_counter_on_events
+  after_destroy :decrement_counter_on_events
 
   private
 
@@ -26,6 +27,12 @@ class Interaction < ActiveRecord::Base
       self.idea_action.idea.talks.each do |talk|
         Event.decrement_counter(:reactions_count, talk.event.id)
       end
+    end
+  end
+
+  def decrement_counter_on_events
+    self.idea_action.idea.talks.each do |talk|
+      Event.decrement_counter(:reactions_count, talk.event.id)
     end
   end
 end
