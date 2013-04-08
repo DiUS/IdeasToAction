@@ -1,9 +1,9 @@
-describe 'TalksCtrl', -> 
+describe 'IdeasCtrl', -> 
   
   scope = null
   navigate = null
   timeout = null
-  TalkResource = null
+  IdeaResource = null
 
   beforeEach inject ($httpBackend, $rootScope, $controller, $cacheFactory) ->
     navigate = 
@@ -13,13 +13,13 @@ describe 'TalksCtrl', ->
 
     timeout = jasmine.createSpy('timeout').andCallFake (fn, time) -> fn()
 
-    TalkResource = mix: jasmine.createSpy('mix')
+    IdeaResource = mix: jasmine.createSpy('mix')
 
     scope = $rootScope.$new()
-    $controller( 'TalksCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, TalkResource: TalkResource, dataCache: $cacheFactory('fake cache') })
+    $controller( 'IdeasCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, IdeaResource: IdeaResource, dataCache: $cacheFactory('fake cache') })
 
   it 'should find a mix of the resource', ->
-    expect(TalkResource.mix).toHaveBeenCalled()
+    expect(IdeaResource.mix).toHaveBeenCalled()
 
   it 'should navigate when a search occurs', ->
     scope.query = text: 'stuff'
