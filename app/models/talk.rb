@@ -28,4 +28,24 @@ class Talk < ActiveRecord::Base
   belongs_to :event
 
   delegate :name, :to => :event, :prefix => true
+
+  def self.random(number = 1)
+    Talk.offset(rand(Talk.count - number)).first(number)
+  end
+
+  def self.featured
+    where(:featured => true)
+  end
+
+  def self.recent
+    Talk.order("created_at desc").limit(10)
+  end
+
+  def self.popular
+    Talk.order("idea_actions_count desc").limit(10)
+  end
+
+  def self.excluding_talks(talks)
+    Talk.where("id not in (?)", talks.collect(&:id))
+  end
 end

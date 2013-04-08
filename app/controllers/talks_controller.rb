@@ -5,6 +5,15 @@ class TalksController < ApplicationController
 
   respond_to :json
 
+  def index
+    if params[:mix] && params[:mix] == "true"
+      @talk_view = TalkView.new
+      render 'index'
+    else
+      render json: Talk.all
+    end
+  end
+
   def update
     params['talk'].delete 'ideas'
     update!

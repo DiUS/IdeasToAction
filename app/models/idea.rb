@@ -31,8 +31,8 @@ class Idea < ActiveRecord::Base
 
   delegate :username, :to => :member, :prefix => true
 
-  after_create :increment_counter_on_events
-  after_destroy :decrement_counter_on_events
+  after_create :increment_counters
+  after_destroy :decrement_counters
 
   def self.featured_only
     where(:featured => true)
@@ -60,15 +60,17 @@ class Idea < ActiveRecord::Base
 
   private
 
-  def increment_counter_on_events
+  def increment_counters
     self.talks.each do |talk|
       Event.increment_counter(:ideas_count, talk.event.id)
+      Talk.increment_counter(:ideas_count, talk.id)
     end
   end
 
-  def decrement_counter_on_events
+  def decrement_counters
     self.talks.each do |talk|
       Event.decrement_counter(:ideas_count, talk.event.id)
+      Talk.decrement_counter(:ideas_count, talk.id)
     end
   end
 end
