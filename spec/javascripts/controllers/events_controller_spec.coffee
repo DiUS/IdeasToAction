@@ -3,6 +3,7 @@ describe 'EventsCtrl', ->
   scope = null
   navigate = null
   timeout = null
+  EventResource = null
 
   beforeEach inject ($httpBackend, $rootScope, $controller, $cacheFactory) ->
     navigate = 
@@ -16,6 +17,9 @@ describe 'EventsCtrl', ->
 
     scope = $rootScope.$new()
     $controller( 'EventsCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, EventResource: EventResource, dataCache: $cacheFactory('fake cache') })
+
+  it 'should find a mix of the resource', ->
+    expect(EventResource.mix).toHaveBeenCalled()
 
   it 'should navigate when a search occurs', ->
     scope.query = text: 'stuff'

@@ -1,4 +1,4 @@
-require_relative 'collapsible_shared_examples'
+require_relative '../collapsible_shared_examples'
 
 describe "Idea submission page", js: true, acceptance: true do
   

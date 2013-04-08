@@ -1,4 +1,4 @@
-require_relative 'collapsible_shared_examples'
+require_relative '../collapsible_shared_examples'
 
 describe "Idea detail page", js: true, acceptance: true do
   self.use_transactional_fixtures = false
