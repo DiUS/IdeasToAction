@@ -97,4 +97,26 @@ describe Idea do
       end
     end
   end
+
+  describe "counter on events" do
+    let (:event) { Event.first }
+    let (:talk) { event.talks.first }
+
+    it "should increment the counter on events when created" do
+      prev_ideas_count = event.ideas_count
+      expect {
+        Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
+        event.reload # model needs to get reloaded since counter_cache is getting updated in the database directly
+      }.to change{ event.ideas_count }.from(prev_ideas_count).to(prev_ideas_count+1)
+    end
+
+    it "should decrement the counter on events when destroyed" do
+      idea = Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
+      prev_ideas_count = event.reload.ideas_count
+      expect {
+        idea.destroy
+        event.reload
+      }.to change{ event.ideas_count }.from(prev_ideas_count).to(prev_ideas_count-1)
+    end
+  end
 end
