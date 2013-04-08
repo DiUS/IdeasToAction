@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     if params[:mix] && params[:mix] == "true"
       @event_view = EventView.new
-      render 'index'
+      render 'events'
     else
       render json: Event.all
     end
