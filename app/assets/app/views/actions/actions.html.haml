@@ -1,0 +1,33 @@
+.landing
+  .header.main-header(ng-click = '$parent.resetToTop()')
+    %h1
+      actions
+    .touch-panel
+      %a.touch-icon(ng-href="/home")
+        %i.icon-home
+  %scrollable
+    .content(ng-href="/actions/{{actions.featured[0].id}}")
+      %tile:featured(heading="FEATURED actions" title="actions.featured[0].name" description="actions.featured[0].description" img="actions.featured[0].hero_image_url")
+      .totals
+        %tile:count(count="actions.featured[0].reactions_count" title="reactions")
+    .content(ng-href="/actions/{{actions.popular[0].id}}")
+      %tile:default(title="actions.popular[0].name")
+      .totals
+        %tile:count(count="actions.popular[0].reactions_count" title="reactions")
+    .content(ng-href="/actions/{{actions.popular[1].id}}")
+      %tile:default(title="actions.popular[1].name")
+      .totals
+        %tile:count(count="actions.popular[1].reactions_count" title="reactions")
+    .content(ng-href="/actions/{{actions.random[0].id}}")
+      %tile:default(title="actions.recent[0].name")
+      .totals
+        %tile:count(count="actions.recent[0].reactions_count" title="reactions")
+    .content(ng-href="/actions/{{actions.random[1].id}}")
+      %tile:default(title="actions.recent[1].name")
+      .totals
+        %tile:count(count="actions.recent[1].reactions_count" title="reactions")
+    %div
+      %form(name='searchQuery' ng-submit="doSearch()")
+        .search-text-wrapper
+          %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
+        %input.btn(type="submit" value="Find") 
