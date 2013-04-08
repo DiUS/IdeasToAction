@@ -10,7 +10,8 @@ class TalksController < ApplicationController
       @talk_view = TalkView.new
       render 'index'
     else
-      render json: Talk.all
+      @event = Event.find(params[:event_id])
+      @talks = @event.talks
     end
   end
 
