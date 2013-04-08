@@ -1,7 +1,10 @@
-angular.module('Actionman').factory('IdeaActionResource', ($resource) ->
-  $resource('ideas/:ideaId/idea_actions/:ideaActionId',
-    { ideadId: '@ideaId', ideaActionId: '@ideaActionId' },
-    {
-      update: { method: 'PUT' }
-    })
-)
+angular.module('Actionman').
+  factory 'IdeaActionResource', ($resource) ->
+    $resource '/idea_actions/:ideaActionId', { ideaActionId: '@ideaActionId' },
+      {
+        mix:
+          method: 'GET'
+          isArray: false
+          params:
+            mix: true
+      }

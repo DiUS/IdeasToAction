@@ -1,4 +1,4 @@
-window.TalksCtrl = ($scope, $timeout, $navigate, TalkResource) ->
+window.IdeaActionsCtrl = ($scope, $timeout, $navigate, IdeaActionResource) ->
   $scope.query = text: ''
   $scope.doSearch = ->
     $timeout ->
@@ -7,4 +7,4 @@ window.TalksCtrl = ($scope, $timeout, $navigate, TalkResource) ->
     , 600
     false
 
-  $scope.talks = TalkResource.mix()
+  $scope.ideas = IdeaActionResource.mix()
