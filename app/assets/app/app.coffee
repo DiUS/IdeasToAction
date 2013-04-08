@@ -36,12 +36,12 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         when('/talks-events',                     { templateUrl: 'assets/views/talks-events/index.html', controller: TalksEventsCtrl }).
 
         # Events
-        when('/events',                           { templateUrl: 'assets/views/events/events.html',       controller: EventsCtrl }).
+        when('/events',                           { templateUrl: 'assets/views/events/events.html',      controller: EventsCtrl }).
         when('/events/:eventId',                  { templateUrl: 'assets/views/events/event.html',       controller: EventCtrl }).
 
         # Talks
-        when('/events/:eventId/talks',              { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
-        when('/events/:eventId/talks/:talkId',      { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
+        when('/talks',                            { templateUrl: 'assets/views/talks/talks.html',        controller: TalksCtrl }).
+        when('/events/:eventId/talks/:talkId',    { templateUrl: 'assets/views/talks/talk.html',         controller: TalkCtrl }).
 
         # Ideas
         when('/ideas/:ideaId',                    { templateUrl: 'assets/views/ideas/idea.html',         controller: IdeaCtrl }).

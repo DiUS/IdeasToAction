@@ -1,8 +1,10 @@
+window.TalksCtrl = ($scope, $timeout, $navigate, TalkResource) ->
+  $scope.query = text: ''
+  $scope.doSearch = ->
+    $timeout ->
+      $navigate.swipeScope.clearAllPagesForward()
+      $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
+    , 600
+    false
 
-window.TalksCtrl = ($scope, $http, $routeParams, dataCache) ->
-  $scope.eventId = $routeParams.eventId
-  $http.get("#{window.ENDPOINT}/events/#{$scope.eventId}/talks.json", { cache: dataCache }).success( (data) -> 
-    $scope.talks = data
-  )
-
- 
+  $scope.events = TalkResource.mix()

@@ -1,36 +1,28 @@
-describe 'Actionman', ()->
+describe 'TalksCtrl', -> 
+  
+  scope = null
+  navigate = null
+  timeout = null
 
-  describe 'TalksCtrl', () -> 
-    talksData = [{ 
-                title: 'Amy Cuddy: Your body language shapes who you are', 
-                description: 'Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy shows how "power posing" -- standing in a posture of confidence, even when we don\'t feel confident -- can affect testosterone and cortisol levels in the brain, and might even have an impact on our chances for success.'
-                ideas: [
-                  { description: 'Body language affects how others see us, but it may also change how we see ourselves.'},
-                  { description: '"power posing” can affect testosterone and cortisol levels in the brain, may impact on our chances for success.'}
-                ]
-              },
-              { 
-                title: 'Steve Jobs: How to live before you die', 
-                description: 'At his Stanford University commencement speech, Steve Jobs, CEO and co-founder of Apple and Pixar, urges us to pursue our dreams and see the opportunities in life\'s setbacks -- including death itself.'
-                ideas: [
-                  { description: 'Idea 1'},
-                  { description: 'Idea 2'}
-                ]
-              }]
+  beforeEach inject ($httpBackend, $rootScope, $controller, $cacheFactory) ->
+    navigate = 
+      go: jasmine.createSpy('go')
+      swipeScope: 
+        clearAllPagesForward: jasmine.createSpy('clearAllPagesForward')
 
-    scope = null
-    ctrl = null
-    $httpBackend = null
+    timeout = jasmine.createSpy('timeout').andCallFake (fn, time) -> fn()
 
-    beforeEach inject (_$httpBackend_, $rootScope, $controller, $cacheFactory) ->
-      $httpBackend = _$httpBackend_
-      $httpBackend.expectGET("#{window.ENDPOINT}/events/1/talks.json").
-            respond(talksData)
-      scope = $rootScope.$new()
-      ctrl = $controller( 'TalksCtrl', { $scope: scope, $routeParams: { eventId: 1 }, dataCache: $cacheFactory('fake cache') })
+    TalkResource = mix: jasmine.createSpy('mix')
 
-    it 'should create "talks" model with talks obtained restfully', () ->
-      expect(scope.talks).toBeUndefined()
-      $httpBackend.flush()
-      expect(scope.talks).toEqual(talksData);
-    
+    scope = $rootScope.$new()
+    $controller( 'TalksCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, TalkResource: TalkResource, dataCache: $cacheFactory('fake cache') })
+
+  it 'should navigate when a search occurs', ->
+    scope.query = text: 'stuff'
+    scope.doSearch()
+    expect(navigate.go).toHaveBeenCalledWith('/found?query_text=stuff', 'slide')
+
+  it 'should clear all pages forward', ->
+    scope.query = text: 'stuff'
+    scope.doSearch()
+    expect(navigate.swipeScope.clearAllPagesForward).toHaveBeenCalled()

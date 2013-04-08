@@ -1,7 +1,10 @@
-angular.module('Actionman').factory('TalkResource', ($resource) ->
-  $resource('/events/:eventId/talks/:talkId', 
-    { eventId: '@eventId', talkId: '@talkId' },
-    {
-      update: { method: 'PUT' }
-    })
-)
+angular.module('Actionman').
+  factory 'TalkResource', ($resource) ->
+    $resource '/talks', {},
+      {
+        mix:
+          method: 'GET'
+          isArray: false
+          params:
+            mix: true
+      }

@@ -11,9 +11,10 @@ describe "Events page", js: true, acceptance: true do
     end
 
     it 'should show total' do
-      featured_element.should have_content 'ideas'
-      featured_element.should have_content 'actions'
-      featured_element.should have_content 'reactions'
+      text = featured_element.text
+      text.should match /\d{1,2} ideas/
+      text.should match /\d{1,2} actions/
+      text.should match /\d{1,2} reactions/
     end
   end
 
@@ -22,9 +23,10 @@ describe "Events page", js: true, acceptance: true do
 
     it 'should show total' do
       other_elements.to_enum.with_index(0).each do | event, index |
-        other_elements[index].should have_content 'ideas'
-        other_elements[index].should have_content 'actions'
-        other_elements[index].should have_content 'reactions'
+        text = other_elements[index].text
+        text.should match /\d{1,2} ideas/
+        text.should match /\d{1,2} actions/
+        text.should match /\d{1,2} reactions/
       end
     end
   end
