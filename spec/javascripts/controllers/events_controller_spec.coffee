@@ -12,9 +12,7 @@ describe 'EventsCtrl', ->
 
     timeout = jasmine.createSpy('timeout').andCallFake (fn, time) -> fn()
 
-    EventResource = {
-      mix: jasmine.createSpy('mix')
-    }
+    EventResource = mix: jasmine.createSpy('mix')
 
     scope = $rootScope.$new()
     $controller( 'EventsCtrl', { $scope: scope, $routeParams: { }, $navigate: navigate, $timeout: timeout, EventResource: EventResource, dataCache: $cacheFactory('fake cache') })
