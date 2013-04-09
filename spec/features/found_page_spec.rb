@@ -5,14 +5,10 @@ describe "Found page", js: true, acceptance: true do
       visit "#/found"
     end 
 
-    it "should have a search text field" do
-      page.should have_selector("#search-text", visible: true)
-    end
-
     context "when typing a search query and submitting" do
       context 'a successful search' do
         before do 
-          fill_in "search-text", with: "body language"
+          find("#search input").set("body language")
           find('button').click()
         end
 
@@ -25,7 +21,7 @@ describe "Found page", js: true, acceptance: true do
 
       context 'a query with no results' do
         before do 
-          fill_in "search-text", with: "seriously not going to find this"
+          find("#search input").set("seriously not going to find this")
           find('button').click()
         end
 
@@ -37,7 +33,7 @@ describe "Found page", js: true, acceptance: true do
 
       context 'an empty query' do
         before do 
-          fill_in "search-text", with: ""
+          find("#search input").set("")
           find('button').click()
         end
 
