@@ -1,0 +1,1 @@
+attributes *Idea.column_names

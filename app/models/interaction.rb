@@ -21,6 +21,7 @@ class Interaction < ActiveRecord::Base
       self.idea_action.idea.talks.each do |talk|
         Event.increment_counter(:reactions_count, talk.event.id)
         Talk.increment_counter(:reactions_count, talk.id)
+        Idea.increment_counter(:reactions_count, talk.id)
       end
     end
 
@@ -28,6 +29,7 @@ class Interaction < ActiveRecord::Base
       self.idea_action.idea.talks.each do |talk|
         Event.decrement_counter(:reactions_count, talk.event.id)
         Talk.decrement_counter(:reactions_count, talk.id)
+        Idea.decrement_counter(:reactions_count, talk.id)
       end
     end
   end
@@ -36,6 +38,7 @@ class Interaction < ActiveRecord::Base
     self.idea_action.idea.talks.each do |talk|
       Event.decrement_counter(:reactions_count, talk.event.id)
       Talk.decrement_counter(:reactions_count, talk.id)
+      Idea.decrement_counter(:reactions_count, talk.id)
     end
   end
 end
