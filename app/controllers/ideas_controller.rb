@@ -16,7 +16,7 @@ class IdeasController < ApplicationController
   end
 
   def random
-    render json: Idea.featured.random
+    render json: Idea.featured.random.first
   end
 
   def update
