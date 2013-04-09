@@ -42,12 +42,15 @@
     - if Rails.env.test? or Rails.env.development?
       :javascript  
         window.ENDPOINT = ''; 
-    - elsif Rails.env.qa? or Rails.env.qa_mobile_assets?
+    - elsif Rails.env.qa_mobile_assets?
+      :javascript  
+        window.ENDPOINT = 'http://qa.actionman.zerobot.io';
+      = javascript_include_tag "cordova-2.5.0"
+    - elsif Rails.env.qa?
       :javascript  
         window.ENDPOINT = 'http://qa.actionman.zerobot.io';
     - else
       :javascript  
         window.ENDPOINT = 'http://production.actionman.zerobot.io';
 
-    = javascript_include_tag "cordova-2.5.0"
     = javascript_include_tag "application"
