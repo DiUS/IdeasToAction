@@ -6,12 +6,6 @@ namespace :phonegap do
     raise "Couldn't precompile assets" unless Kernel.system("rake RAILS_ENV=#{@assets_env || 'android'} assets:precompile")
   end
 
-  file 'public/assets/cordova-2.5.0.js' do
-    FileUtils.cp 'app/assets/javascripts/cordova-2.5.0.js', 'public/assets/cordova-2.5.0.js'
-  end
-
-  task :cordova_in_assets => 'public/assets/cordova-2.5.0.js'
-
   task :clean_www_directory do
     FileUtils.rm_rf(@www_directory, verbose: true) if File.exists?(@www_directory)
   end
@@ -39,6 +33,10 @@ namespace :phonegap do
   end
 
   namespace :ios do
+    task :cordova_in_assets do
+      FileUtils.cp 'mobile/ios/cordova-2.5.0.js', 'public/assets/cordova-2.5.0.js'
+    end
+
     task :set_www_directory do
       @www_directory = "mobile/ios/www"
     end
@@ -59,6 +57,10 @@ namespace :phonegap do
   end
 
   namespace :android do
+    task :cordova_in_assets do
+      FileUtils.cp 'mobile/android/cordova-2.5.0.js', 'public/assets/cordova-2.5.0.js'
+    end
+
     task :set_www_directory do
       @www_directory = "mobile/android/assets/www"
     end
