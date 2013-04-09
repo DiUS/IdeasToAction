@@ -1,6 +1,6 @@
 angular.module('Actionman').
   factory 'TalkResource', ($resource) ->
-    $resource '/talks', {},
+    $resource "#{window.ENDPOINT}/talks", {},
       {
         mix:
           method: 'GET'

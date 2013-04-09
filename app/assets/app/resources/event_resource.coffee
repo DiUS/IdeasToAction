@@ -1,6 +1,6 @@
 angular.module('Actionman').
   factory 'EventResource', ($resource) ->
-    $resource '/events/:eventId', { eventId: '@eventId' },
+    $resource "#{window.ENDPOINT}/events/:eventId", { eventId: '@eventId' },
       {
         mix:
           method: 'GET'
