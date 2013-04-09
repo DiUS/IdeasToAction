@@ -88,13 +88,25 @@ describe Idea do
     end
   end
 
-  describe "featured only" do
-    let(:featured_ideas) { Idea.featured_only }
+  describe "scoping" do
+    it "should return featured ideas" do
+      ideas = Idea.featured
+      ideas.each{ |idea| idea.featured?.should be_true }
+    end
 
-    it "should scope featured ideas" do
-      featured_ideas.each do |idea|
-        idea.featured.should be_true
-      end
+    it 'should return recent ideas' do
+      ideas = Idea.recent
+      ideas.should include(Idea.order("created_at desc").first)
+    end
+
+    it 'should return popular ideas' do
+      ideas = Idea.popular
+      ideas.should include(Idea.order("idea_actions_count desc").first)
+    end
+
+    it 'should return exclude specific idea' do
+      idea_to_exclude = Idea.first
+      Idea.excluding_ideas([idea_to_exclude]).should_not include(idea_to_exclude)
     end
   end
 
@@ -103,7 +115,7 @@ describe Idea do
     let (:talk) { event.talks.first }
 
     describe "on events" do
-      it "sdescribeould increment the counter when created" do
+      it "should increment the counter when created" do
         prev_ideas_count = event.ideas_count
         expect {
           Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")

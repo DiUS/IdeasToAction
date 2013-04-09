@@ -33,7 +33,7 @@ describe IdeaAction do
 
     it 'should find a single action taken from a member' do
       action.interactions.from_member(member).should eql interaction
-    end    
+    end
   end
 
   describe "featured only" do
@@ -60,7 +60,7 @@ describe IdeaAction do
         }.to change{ event.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count+1)
       end
 
-      it "should decrement the counter when created" do
+      it "should decrement the counter when destroyed" do
         idea_action = IdeaAction.create!(:idea_id => idea.id, :description => "test action")
         prev_idea_actions_count = event.reload.idea_actions_count
         expect {
@@ -79,13 +79,32 @@ describe IdeaAction do
         }.to change{ talk.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count+1)
       end
 
-      it "should decrement the counter when created" do
+      it "should decrement the counter when destroyed" do
         idea_action = IdeaAction.create!(:idea_id => idea.id, :description => "test action")
         prev_idea_actions_count = talk.reload.idea_actions_count
         expect {
           idea_action.destroy
           talk.reload
         }.to change{ talk.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count-1)
+      end
+    end
+
+    describe "on ideas" do
+      it "should increment the counter when created" do
+        prev_idea_actions_count = idea.idea_actions_count
+        expect {
+          IdeaAction.create!(:idea_id => idea.id, :description => "test action")
+          idea.reload
+        }.to change { idea.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count+1)
+      end
+
+      it "should decrement the counter when destroyed" do
+        idea_action = IdeaAction.create!(:idea_id => idea.id, :description => "test action")
+        prev_idea_actions_count = idea.reload.idea_actions_count
+        expect {
+          idea_action.destroy
+          idea.reload
+        }.to change { idea.idea_actions_count }.from(prev_idea_actions_count).to(prev_idea_actions_count-1)
       end
     end
   end
