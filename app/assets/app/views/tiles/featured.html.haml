@@ -1,7 +1,7 @@
 .tile
-  %img(ng-src="{{img}}" alt="{{title}}")
-  %strong.featured-action-statement 
+  %img(ng-src="{{img}}" alt="{{title}}" ng-show="img")
+  %strong.featured-action-statement
     {{heading}}
-  %h5 
+  %h5(ng-class="{clearfix: !img}")
     {{title}}
   {{description}}
