@@ -29,6 +29,10 @@
 .search-navbar {
   position: relative;
   z-index: 999;
+
+  input {
+    margin-bottom: 0;
+  }
 }
 
 .results {
