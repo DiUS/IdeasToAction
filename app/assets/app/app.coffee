@@ -6,13 +6,6 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         scope.$apply("navigate.go('#{attrs.ngHref}', 'slide')")
         false
   ).
-  directive('ngExternal', () ->
-    (scope, elm, attrs) -> 
-      elm.bind 'click', () -> 
-        if navigator.app?
-          navigator.app.loadUrl(attrs.ngExternal, { openExternal:true }) 
-          false
-  ).
   factory('dataCache', ($cacheFactory)->
     $cacheFactory('Actionman Cache')
   ).
