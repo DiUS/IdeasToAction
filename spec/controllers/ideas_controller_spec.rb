@@ -139,7 +139,7 @@ describe IdeasController do
   describe 'GET random' do
     it 'gets recent ideas' do
       idea = Idea.featured.first
-      Idea.stub_chain(:featured, :random).and_return idea
+      Idea.stub_chain(:featured, :random).and_return [idea]
       get :random, { :format => :json }
       response.body.should eql idea.to_json
     end
