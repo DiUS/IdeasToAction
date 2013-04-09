@@ -9,7 +9,7 @@
     .navbar.search-navbar
       .navbar-inner
         %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
-          %input#search-text.search-query(type='text' ng-model='query.text' size='30' placeholder='search')
+          %input(type='text' ng-model='query.text' size='30' placeholder='search')
           %button.btn(type="submit") Find
     %scrollable
       .content(ng-show="results")
