@@ -1,6 +1,6 @@
 angular.module('Actionman').
   factory 'IdeaResource', ($resource) ->
-    $resource '/ideas/:ideaId', { ideaId: '@ideaId' },
+    $resource "#{window.ENDPOINT}/ideas/:ideaId", { ideaId: '@ideaId' },
       {
         mix:
           method: 'GET'

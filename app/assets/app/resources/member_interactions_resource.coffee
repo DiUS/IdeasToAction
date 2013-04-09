@@ -1,2 +1,2 @@
 angular.module('Actionman').factory 'MemberInteractionsResource', ($resource) ->
-  $resource '/member/interactions'
+  $resource "#{window.ENDPOINT}/member/interactions"
