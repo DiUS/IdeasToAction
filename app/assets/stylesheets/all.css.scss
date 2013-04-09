@@ -112,6 +112,11 @@ h6 {
   font-weight: bold;
 }
 
+.sections {
+  margin-top: 10px;
+  clear: both;
+}
+
 .content textarea, .sections textarea, .content input[type="text"], .content textarea {
   width: 94%;
   font-size: 1.15em !important;
@@ -221,7 +226,7 @@ h6 {
 }
 
 .hero {
-  font-size: 30px;
+  font-size: 1.65em;
   line-height: 35px;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -229,7 +234,7 @@ h6 {
 
 .flat-description {
   clear: both;
-  font-size: 20px;
+  font-size: 1.1em;
   padding: 10px;
   padding-bottom: 12px !important;
   background-color: #f2f2f2;
