@@ -20,7 +20,7 @@ describe "Talk detail page", js: true, acceptance: true do
   it 'should have an external link to the TED talk' do
     a = page.find('.content a')
     a.text.should eql 'View this talk on TED.com'
-    a['ng-external'].should eql talk.ted_talk_url
+    a['phonegap-external'].should eql talk.ted_talk_url
   end
 
   context "Ideas collapsible" do
