@@ -18,7 +18,7 @@ class IdeaAction < ActiveRecord::Base
       
   attr_accessible :description, :featured, :idea_id
 
-  belongs_to :idea
+  belongs_to :idea, :counter_cache => true
 
   has_many :interactions do
     def from_member member
