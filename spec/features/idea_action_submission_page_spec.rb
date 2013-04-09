@@ -1,4 +1,4 @@
-describe "Action submission page", js: true do
+describe "Action submission page", js: true, acceptance: true do
   let(:idea) { Idea.find(1) }
 
   before :each do
