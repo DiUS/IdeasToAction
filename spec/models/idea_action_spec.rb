@@ -36,13 +36,25 @@ describe IdeaAction do
     end
   end
 
-  describe "featured only" do
-    let(:featured_idea_actions) { IdeaAction.featured_only }
+  describe "scoping" do
+    it "should return featured idea actions" do
+      idea_actions = IdeaAction.featured
+      idea_actions.each{ |idea_action| idea_action.featured?.should be_true }
+    end
 
-    it "should scope featured idea actions" do
-      featured_idea_actions.each do |idea_action|
-        idea_action.featured.should be_true
-      end
+    it 'should return recent idea actions' do
+      idea_actions = IdeaAction.recent
+      idea_actions.should include(IdeaAction.order("created_at desc").first)
+    end
+
+    it 'should return popular idea actions' do
+      idea_actions = IdeaAction.popular
+      idea_actions.should include(IdeaAction.order("reactions_count desc").first)
+    end
+
+    it 'should return exclude specific idea actions' do
+      idea_action_to_exclude = IdeaAction.first
+      IdeaAction.excluding_idea_actions([idea_action_to_exclude]).should_not include(idea_action_to_exclude)
     end
   end
 

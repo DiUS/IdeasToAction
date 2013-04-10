@@ -6,8 +6,17 @@ class IdeaActionsController < ApplicationController
 
   respond_to :json
 
+  def index
+    if params[:mix] && params[:mix] == "true"
+      @idea_action_view = IdeaActionView.new
+      render 'idea_actions'
+    else
+      index!
+    end
+  end
+
   def random
-    render json: IdeaAction.featured_only.random
+    render json: IdeaAction.featured.random.first
   end
 
   def recent

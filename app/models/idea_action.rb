@@ -31,12 +31,24 @@ class IdeaAction < ActiveRecord::Base
   after_create :increment_counter
   after_destroy :decrement_counter
 
-  def self.featured_only
+  def self.random(number = 1)
+    IdeaAction.offset(rand(IdeaAction.count - number)).first(number)
+  end
+
+  def self.featured
     where(:featured => true)
   end
 
-  def self.random
-    IdeaAction.first(:offset => rand(IdeaAction.count))
+  def self.recent
+    IdeaAction.order("created_at desc").limit(10)
+  end
+
+  def self.popular
+    IdeaAction.order("reactions_count desc").limit(10)
+  end
+
+  def self.excluding_idea_actions(idea_actions)
+    IdeaAction.where("id not in (?)", idea_actions.collect(&:id))
   end
 
   def as_json options = nil

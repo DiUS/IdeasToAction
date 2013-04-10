@@ -23,6 +23,7 @@ class Interaction < ActiveRecord::Base
         Talk.increment_counter(:reactions_count, talk.id)
       end
       Idea.increment_counter(:reactions_count, self.idea_action.idea.id)
+      IdeaAction.increment_counter(:reactions_count, self.idea_action.id)
     end
 
     if reaction_text_changed? && reaction_text_was.present? && !reaction_text.present?
@@ -31,6 +32,7 @@ class Interaction < ActiveRecord::Base
         Talk.decrement_counter(:reactions_count, talk.id)
       end
       Idea.decrement_counter(:reactions_count, self.idea_action.idea.id)
+      IdeaAction.decrement_counter(:reactions_count, self.idea_action.id)
 
     end
   end
@@ -41,5 +43,6 @@ class Interaction < ActiveRecord::Base
       Talk.decrement_counter(:reactions_count, talk.id)
     end
     Idea.decrement_counter(:reactions_count, self.idea_action.idea.id)
+    IdeaAction.decrement_counter(:reactions_count, self.idea_action.id)
   end
 end
