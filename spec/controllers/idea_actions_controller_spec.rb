@@ -13,7 +13,7 @@ describe IdeaActionsController do
   describe 'GET random' do
     it 'gets featured ideas' do
       action = IdeaAction.featured.first
-      IdeaAction.stub_chain(:featured, :random).and_return action
+      IdeaAction.stub_chain(:featured, :random).and_return [action]
       get :random, { :format => :json }
       response.body.should eql action.to_json
     end
