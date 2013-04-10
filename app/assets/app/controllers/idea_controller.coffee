@@ -19,9 +19,8 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       # assyncronously loading twitter button beacuase calling external service
       $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}/show_idea_url", { cache: dataCache }).success (data) ->
         $scope.idea_short_url = data.idea_url
-        $scope.twitter = {
-          url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{$scope.talk_title}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
-        }
+        $scope.twitter = url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{encodeURIComponent($scope.talk_title)}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
+        # url: "twitter://post?message=#{encodeURIComponent($scope.talk_title + ' ')}#{$scope.idea_short_url}" #iphone stuff
 
   $scope.showNewIdeaActionDialog = false
 
