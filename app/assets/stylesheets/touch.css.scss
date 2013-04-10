@@ -1,5 +1,7 @@
 .touch-panel {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 
   i {
     font-size: 0.9em;
@@ -12,7 +14,7 @@
     }
 
     i {
-      padding: 25px 10px;
+      padding: 25px;
 
       &.icon-remove {
         color: orangered;
