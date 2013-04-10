@@ -1,22 +1,24 @@
 .big {
-  display: inline-block;
-  font-size: 2.6em;
-  line-height: 1em;
-  font-family: Helvetica;
-  text-align: right;
-}
+  border: 1px solid #eee;
+  margin: 1px 0;
 
-.big:nth-child(odd) {
-  font-weight: bold;
-  color: #FF2A06;
-  width: 38%;
-  padding-right: 10px;
-}
+  span {
+    display: inline-block;
+    font-size: 2.6em;
+    line-height: 1.8em;
 
-.big:nth-child(even) {
-  color: #1A1A1A;
-  width: 55%;
-  text-align: left; 
+    &:nth-child(odd) {
+      color: #FF2A06;
+      width: 40%;
+      text-align: right;
+    }
+
+    &:nth-child(even) {
+      color: #4d4949;
+      width: 40%;
+      text-align: left; 
+    }
+  }
 }
 
 .action-statement {
