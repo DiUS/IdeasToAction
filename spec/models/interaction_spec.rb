@@ -33,141 +33,81 @@ describe Interaction do
 
     describe "on events" do
       it "should increment the counter when reaction text is entered" do
-        prev_reactions_count = @event.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, "My reaction")
-          @event.reload
-        }.to change{ @event.reactions_count }.from(prev_reactions_count).to(prev_reactions_count+1)
+        expect { @interaction.update_attribute(:reaction_text, "My reaction") }.to increment_counter_on(@event).for("Reaction")
       end
 
       it "should not increment the counter when interaction is created with blank reaction text" do
-        expect {
-          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
-          @event.reload
-        }.not_to change{ @event.reactions_count }
+        expect { Interaction.create!(:member => Member.first, :idea_action => @idea_action) }.not_to increment_counter_on(@event).for("Reaction")
       end
 
       it "should decrement the counter when reaction text is removed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @event.reload.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, nil)
-          @event.reload
-        }.to change{ @event.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.update_attribute(:reaction_text, nil) }.to decrement_counter_on(@event).for("Reaction")
       end
 
       it "should decrement the counter when interaction is destroyed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @event.reload.reactions_count
-        expect {
-          @interaction.destroy
-          @event.reload
-        }.to change{ @event.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.destroy }.to decrement_counter_on(@event).for("Reaction")
       end
     end
 
     describe "on talks" do
       it "should increment the counter when reaction text is entered" do
-        prev_reactions_count = @talk.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, "My reaction")
-          @talk.reload
-        }.to change{ @talk.reactions_count }.from(prev_reactions_count).to(prev_reactions_count+1)
+        expect { @interaction.update_attribute(:reaction_text, "My reaction") }.to increment_counter_on(@talk).for("Reaction")
       end
 
       it "should not increment the counter when interaction is created with blank reaction text" do
-        expect {
-          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
-          @talk.reload
-        }.not_to change{ @talk.reactions_count }
+        expect { Interaction.create!(:member => Member.first, :idea_action => @idea_action) }.not_to increment_counter_on(@talk).for("Reaction")
       end
 
       it "should decrement the counter when reaction text is removed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @talk.reload.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, nil)
-          @talk.reload
-        }.to change{ @talk.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.update_attribute(:reaction_text, nil) }.to decrement_counter_on(@talk).for("Reaction")
       end
 
       it "should decrement the counter when interaction is destroyed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @talk.reload.reactions_count
-        expect {
-          @interaction.destroy
-          @talk.reload
-        }.to change{ @talk.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.destroy }.to decrement_counter_on(@talk).for("Reaction")
       end
     end
 
     describe "on ideas" do
       it "should increment the counter when reaction text is entered" do
-        prev_reactions_count = @idea.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, "My reaction")
-          @idea.reload
-        }.to change{ @idea.reactions_count }.from(prev_reactions_count).to(prev_reactions_count+1)
+        expect { @interaction.update_attribute(:reaction_text, "My reaction") }.to increment_counter_on(@idea).for("Reaction")
       end
 
       it "should not increment the counter when interaction is created with blank reaction text" do
-        expect {
-          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
-          @idea.reload
-        }.not_to change{ @idea.reactions_count }
+        expect { Interaction.create!(:member => Member.first, :idea_action => @idea_action) }.not_to increment_counter_on(@idea).for("Reaction")
       end
 
       it "should decrement the counter when reaction text is removed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @idea.reload.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, nil)
-          @idea.reload
-        }.to change{ @idea.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.update_attribute(:reaction_text, nil) }.to decrement_counter_on(@idea).for("Reaction")
       end
 
       it "should decrement the counter when interaction is destroyed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @idea.reload.reactions_count
-        expect {
-          @interaction.destroy
-          @idea.reload
-        }.to change{ @idea.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.destroy }.to decrement_counter_on(@idea).for("Reaction")
       end
     end
 
     describe "on idea actions" do
       it "should increment the counter when reaction text is entered" do
-        prev_reactions_count = @idea_action.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, "My reaction")
-          @idea_action.reload
-        }.to change{ @idea_action.reactions_count }.from(prev_reactions_count).to(prev_reactions_count+1)
+        expect { @interaction.update_attribute(:reaction_text, "My reaction") }.to increment_counter_on(@idea_action).for("Reaction")
       end
 
       it "should not increment the counter when interaction is created with blank reaction text" do
-        expect {
-          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
-          @idea_action.reload
-        }.not_to change{ @idea_action.reactions_count }
+        expect { Interaction.create!(:member => Member.first, :idea_action => @idea_action) }.not_to increment_counter_on(@idea_action).for("Reaction")
       end
 
       it "should decrement the counter when reaction text is removed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @idea_action.reload.reactions_count
-        expect {
-          @interaction.update_attribute(:reaction_text, nil)
-          @idea_action.reload
-        }.to change{ @idea_action.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.update_attribute(:reaction_text, nil) }.to decrement_counter_on(@idea_action).for("Reaction")
       end
 
       it "should decrement the counter when interaction is destroyed" do
         @interaction.update_attribute(:reaction_text, "My reaction")
-        prev_reactions_count = @idea_action.reload.reactions_count
-        expect {
-          @interaction.destroy
-          @idea_action.reload
-        }.to change{ @idea_action.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+        expect { @interaction.destroy }.to decrement_counter_on(@idea_action).for("Reaction")
       end
     end
   end

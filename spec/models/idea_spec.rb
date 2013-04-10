@@ -115,40 +115,32 @@ describe Idea do
     let (:talk) { event.talks.first }
 
     describe "on events" do
-      it "should increment the counter when created" do
-        prev_ideas_count = event.ideas_count
+      it "should be incremented when idea is created" do
         expect {
           Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
-          event.reload # model needs to get reloaded since counter_cache is getting updated in the database directly
-        }.to change{ event.ideas_count }.from(prev_ideas_count).to(prev_ideas_count+1)
+        }.to increment_counter_on(event).for(Idea)
       end
 
-      it "should decrement the counter when destroyed" do
-        idea = Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
-        prev_ideas_count = event.reload.ideas_count
+      it "should be decremented when idea is destroyed" do
+        new_idea = Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
         expect {
-          idea.destroy
-          event.reload
-        }.to change{ event.ideas_count }.from(prev_ideas_count).to(prev_ideas_count-1)
+          new_idea.destroy
+        }.to decrement_counter_on(event).for(Idea)
       end
     end
 
     describe "on talks" do
-      it "should increment the counter when created" do
-        prev_ideas_count = talk.ideas_count
+      it "should be incremented when idea is created" do
         expect {
           Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
-          talk.reload
-        }.to change{ talk.ideas_count }.from(prev_ideas_count).to(prev_ideas_count+1)
+        }.to increment_counter_on(talk).for(Idea)
       end
 
-      it "should decrement the counter when destroyed" do
-        idea = Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
-        prev_ideas_count = talk.reload.ideas_count
+      it "should be decremented when idea is destroyed" do
+        new_idea = Idea.create!(:talks => [talk], :member_id => Member.first.id, :description => "test idea")
         expect {
-          idea.destroy
-          talk.reload
-        }.to change{ talk.ideas_count }.from(prev_ideas_count).to(prev_ideas_count-1)
+          new_idea.destroy
+        }.to decrement_counter_on(talk).for(Idea)
       end
     end
   end
