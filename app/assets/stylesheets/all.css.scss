@@ -37,6 +37,10 @@ body {
   line-height: 1.25em !important;
 }
 
+h5 {
+  margin: 0;
+}
+
 h6 {
   font-weight: normal;
 }
@@ -71,13 +75,12 @@ h6 {
 
 .page {
   .main-header {
-    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
     padding-bottom: 0;
-    position: relative;
-    z-index: 999;
+    padding-left: 0;
 
     border: {
-      bottom: 2.5px solid rgba(255, 42, 6, 1.0);
+      bottom: 1px solid rgba(255, 42, 6, 1.0);
     }
   }
 }
@@ -137,13 +140,13 @@ h6 {
 }
 
 .content {
+  padding: 5px;
 
-  padding: {
-    top: 20px;
-    bottom: 5px;
-    left: 20px;
-    right: 20px;
-  }  
+  .content-item {
+    border: 1px solid #eee;
+    margin: 1px 0;
+    padding: 5px 8px;
+  }
 
   .title {
     font: {
@@ -221,6 +224,7 @@ h6 {
   font-size: 1.25em;
   font-color: #4d4949;
   line-height: 35px;
+  margin: 10px 0;
 }
 
 .flat-description {
