@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe 'ideas/ideas.json.rabl' do
+describe 'idea_actions/idea_actions.json.rabl' do
   before :each do
-    @idea_view = IdeaView.new
-    @rendered = Rabl.render(@idea_view, 'ideas/ideas', :view_path => 'app/views')
+    @idea_action_view = IdeaActionView.new
+    @rendered = Rabl.render(@idea_action_view, 'idea_actions/idea_actions', :view_path => 'app/views')
   end
 
   context "featured ideas" do
