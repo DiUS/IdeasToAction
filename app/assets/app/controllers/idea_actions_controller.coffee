@@ -7,4 +7,4 @@ window.IdeaActionsCtrl = ($scope, $timeout, $navigate, IdeaActionResource) ->
     , 600
     false
 
-  $scope.ideas = IdeaActionResource.mix()
+  $scope.actions = IdeaActionResource.mix()

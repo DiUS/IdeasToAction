@@ -6,24 +6,24 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .content(ng-href="/actions/{{actions.featured[0].id}}")
-      %tile:featured(heading="FEATURED actions" title="actions.featured[0].name" description="actions.featured[0].description" img="actions.featured[0].hero_image_url")
+    .content(ng-href="/ideas/{{actions.featured[0].idea_id}}")
+      %tile:featured(heading="FEATURED ACTIONS" description="actions.featured[0].description")
       .totals
         %tile:count(count="actions.featured[0].reactions_count" title="reactions")
-    .content(ng-href="/actions/{{actions.popular[0].id}}")
-      %tile:default(title="actions.popular[0].name")
+    .content(ng-href="/ideas/{{actions.popular[0].idea_id}}")
+      %tile:default(title="actions.popular[0].description")
       .totals
         %tile:count(count="actions.popular[0].reactions_count" title="reactions")
-    .content(ng-href="/actions/{{actions.popular[1].id}}")
-      %tile:default(title="actions.popular[1].name")
+    .content(ng-href="/ideas/{{actions.popular[1].idea_id}}")
+      %tile:default(title="actions.popular[1].description")
       .totals
         %tile:count(count="actions.popular[1].reactions_count" title="reactions")
-    .content(ng-href="/actions/{{actions.recent[0].id}}")
-      %tile:default(title="actions.recent[0].name")
+    .content(ng-href="/ideas/{{actions.recent[0].idea_id}}")
+      %tile:default(title="actions.recent[0].description")
       .totals
         %tile:count(count="actions.recent[0].reactions_count" title="reactions")
-    .content(ng-href="/actions/{{actions.recent[1].id}}")
-      %tile:default(title="actions.recent[1].name")
+    .content(ng-href="/ideas/{{actions.recent[1].idea_id}}")
+      %tile:default(title="actions.recent[1].description")
       .totals
         %tile:count(count="actions.recent[1].reactions_count" title="reactions")
     %div
