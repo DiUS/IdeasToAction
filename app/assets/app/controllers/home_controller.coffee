@@ -14,5 +14,8 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) 
     $timeout ->
       $navigate.swipeScope.clearAllPagesForward()
       $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
-    , 600
+      $timeout -> 
+        $scope.scroller.scrollToPage(0, 0, 300)
+      , 400
+    , 400
     false
