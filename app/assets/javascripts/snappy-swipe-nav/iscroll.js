@@ -175,7 +175,7 @@ iScroll.prototype = {
 		var that = this;
 		switch(e.type) {
 			case START_EV:
-				if (e.target.nodeName.toLowerCase() == "select" || e.target.tagName.toLowerCase() == 'input' || e.target.tagName.toLowerCase() == 'textarea') return;
+				if (e.target.nodeName.toLowerCase() == "select" || e.target.tagName.toLowerCase() == 'input' || e.target.tagName.toLowerCase() == 'textarea' || e.target.tagName.toLowerCase() == 'a') return;
 				if (!hasTouch && e.button !== 0) return;
 				that._start(e);
 				break;
