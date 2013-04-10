@@ -25,7 +25,8 @@ describe Interaction do
     before :each do
       @interaction = Interaction.new(:member => Member.first, :idea_action => IdeaAction.first)
       @interaction.save
-      @idea = @interaction.idea_action.idea
+      @idea_action = @interaction.idea_action
+      @idea = @idea_action.idea
       @talk = @idea.talks.first
       @event = @talk.event
     end
@@ -41,7 +42,7 @@ describe Interaction do
 
       it "should not increment the counter when interaction is created with blank reaction text" do
         expect {
-          Interaction.create!(:member => Member.first, :idea_action => IdeaAction.first)
+          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
           @event.reload
         }.not_to change{ @event.reactions_count }
       end
@@ -76,7 +77,7 @@ describe Interaction do
 
       it "should not increment the counter when interaction is created with blank reaction text" do
         expect {
-          Interaction.create!(:member => Member.first, :idea_action => IdeaAction.first)
+          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
           @talk.reload
         }.not_to change{ @talk.reactions_count }
       end
@@ -111,7 +112,7 @@ describe Interaction do
 
       it "should not increment the counter when interaction is created with blank reaction text" do
         expect {
-          Interaction.create!(:member => Member.first, :idea_action => IdeaAction.first)
+          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
           @idea.reload
         }.not_to change{ @idea.reactions_count }
       end
@@ -132,6 +133,41 @@ describe Interaction do
           @interaction.destroy
           @idea.reload
         }.to change{ @idea.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+      end
+    end
+
+    describe "on idea actions" do
+      it "should increment the counter when reaction text is entered" do
+        prev_reactions_count = @idea_action.reactions_count
+        expect {
+          @interaction.update_attribute(:reaction_text, "My reaction")
+          @idea_action.reload
+        }.to change{ @idea_action.reactions_count }.from(prev_reactions_count).to(prev_reactions_count+1)
+      end
+
+      it "should not increment the counter when interaction is created with blank reaction text" do
+        expect {
+          Interaction.create!(:member => Member.first, :idea_action => @idea_action)
+          @idea_action.reload
+        }.not_to change{ @idea_action.reactions_count }
+      end
+
+      it "should decrement the counter when reaction text is removed" do
+        @interaction.update_attribute(:reaction_text, "My reaction")
+        prev_reactions_count = @idea_action.reload.reactions_count
+        expect {
+          @interaction.update_attribute(:reaction_text, nil)
+          @idea_action.reload
+        }.to change{ @idea_action.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
+      end
+
+      it "should decrement the counter when interaction is destroyed" do
+        @interaction.update_attribute(:reaction_text, "My reaction")
+        prev_reactions_count = @idea_action.reload.reactions_count
+        expect {
+          @interaction.destroy
+          @idea_action.reload
+        }.to change{ @idea_action.reactions_count}.from(prev_reactions_count).to(prev_reactions_count-1)
       end
     end
   end
