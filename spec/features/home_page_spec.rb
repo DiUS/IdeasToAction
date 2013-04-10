@@ -6,26 +6,27 @@ describe "Home page", js: true, acceptance: true do
   end 
 
   it "should display welcome text that rattles the bones" do
-    page.text.should =~ /(\d+) People/
     page.text.should =~ /(\d+) Ideas/
     page.text.should =~ /(\d+) Actions/
+    page.text.should =~ /(\d+) Talks/
+    page.text.should =~ /(\d+) Events/
     page.text.should =~ /Transforming ideas worth spreading into actions worth taking/
   end
 
-  it "should display a random idea" do
-    random_idea = page.find("#random-idea")
-    random_idea.should_not be_nil
-    random_idea.text.should_not be_empty
+  it 'should link to ideas' do
+    page.should have_selector('[ng-href="/ideas"]')
   end
 
-  it "should display a random action" do
-    random_action = page.find("#random-action")
-    random_action.should_not be_nil
-    random_action.text.should_not be_empty
+  it 'should link to actions' do
+    page.should have_selector('[ng-href="/actions"]')
   end
 
-  it 'should link to talks and events' do
-    page.should have_selector('[ng-href="/talks-events"]')
+  it 'should link to talks' do
+    page.should have_selector('[ng-href="/talks"]')
+  end
+
+  it 'should link to events' do
+    page.should have_selector('[ng-href="/events"]')
   end
 
   it 'should search' do

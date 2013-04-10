@@ -3,33 +3,22 @@
     %h1
       Ideas into action
   %scrollable
-    .content
-      .center
-        %span.big 1314
-        %span.big People
-        %span.big 289
-        %span.big Ideas
-        %span.big 633
-        %span.big Actions
-        .hero
-          %p Transforming ideas worth spreading into actions worth taking
-      .panel
-        .corner-panel
-          %span.touch-panel
-            %a.touch-icon(onclick = 'location.reload(true);')
-              %i.icon-refresh
-        .body
-          %p.flat-description#random-idea(ng-href="/ideas/{{idea.id}}")
-            %strong.featured-action-statement FEATURED IDEA
-            {{idea.description}}
-            %a.continue
-
-          %p.flat-description#random-action(ng-href="/ideas/{{action.idea_id}}")
-            %strong.featured-action-statement FEATURED ACTION
-            {{action.description}}
-            %a.continue
+    .jumbo.center
+      %p.hero Transforming ideas worth spreading into actions worth taking
+      %div
+        .big(ng-href="/ideas")
+          %span {{289 | number }}
+          %span Ideas
+        .big(ng-href="/actions")
+          %span {{633 | number }}
+          %span Actions
+        .big(ng-href="/talks")
+          %span {{1314 | number }}
+          %span Talks
+        .big(ng-href="/events")
+          %span {{72 | number }}
+          %span Events
     .collapsible.section
-      .header(ng-href="/talks-events") Talks & events
       .header(ng-href="/member") My profile
     %div
       %form(name='searchQuery' ng-submit="doSearch()")
