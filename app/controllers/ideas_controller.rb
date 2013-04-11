@@ -11,7 +11,7 @@ class IdeasController < ApplicationController
       @idea_view = IdeaView.new
       render 'ideas'
     else
-      index!
+      render :nothing => true
     end
   end
 

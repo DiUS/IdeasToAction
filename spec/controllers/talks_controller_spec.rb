@@ -5,14 +5,17 @@ describe TalksController do
   let(:talk) { event.talks.first }
 
   describe 'GET index' do
-    let(:other_event) { Event.find(2) }
-    let(:other_talk) { other_event.talks.first }
+    it 'gets nothing without params' do
+      get :index, {:event_id => 1, :format => 'json'}
+      response.body.should be_blank
+      response.should be_success
+    end
 
-    it "should nest in events" do
-      get :index, { :event_id => 1, :format => :json }
-
-      assigns(:talks).should include(talk)
-      assigns(:talks).should_not include(other_talk)
+    it 'gets events when mix is set to true' do
+      get :index, {:event_id => 1, :format => 'json', :mix => 'true'}
+      response.body.should_not be_blank
+      response.should be_success
+      assigns(:talk_view).should_not be_nil
     end
   end
 
