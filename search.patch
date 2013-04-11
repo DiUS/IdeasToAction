@@ -1,0 +1,102 @@
+diff --git a/app/assets/app/views/search/search.html.haml b/app/assets/app/views/search/search.html.haml
+index 5ff951d..f982cbf 100644
+--- a/app/assets/app/views/search/search.html.haml
++++ b/app/assets/app/views/search/search.html.haml
+@@ -1,5 +1,4 @@
+-%div
++.search-field
+   %form(name='searchQuery' ng-submit="doSearch()")
+-    .search-text-wrapper
+-      %input#search-text(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
+-    %input.btn(type="submit" value="Find") 
+\ No newline at end of file
++    %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
++    %input.btn.btn-borderless(type="submit" value="") 
+\ No newline at end of file
+diff --git a/app/assets/stylesheets/button.css.scss b/app/assets/stylesheets/button.css.scss
+index 12d2ec4..f398108 100644
+--- a/app/assets/stylesheets/button.css.scss
++++ b/app/assets/stylesheets/button.css.scss
+@@ -23,6 +23,15 @@
+   }
+ }
+ 
++.btn-borderless, 
++.btn-borderless:active,
++.btn-borderless:hover {
++  border: 0;
++  outline: 0;
++  box-shadow: none;
++  background: transparent;
++}
++
+ #btn-login {
+   width: 120px;
+   background: orangered;
+diff --git a/app/assets/stylesheets/search.css.scss b/app/assets/stylesheets/search.css.scss
+index 80eef47..1b2b55a 100644
+--- a/app/assets/stylesheets/search.css.scss
++++ b/app/assets/stylesheets/search.css.scss
+@@ -1,29 +1,33 @@
+-#home form, .landing form {
++.search-field form {
+   text-align: center;
+   padding: 3px 0 5px;
+   margin-bottom: 0;
++  position: relative;
+ 
+   ::-webkit-input-placeholder {
+      color: #333333;
+   }
+ 
+-  .search-text-wrapper {
+-    width: 77%;
+-    display: inline-block;    
+-
+-    input {
+-      width: 90%;
+-      height: 50px;
+-      font-size: 1.8em;
+-      line-height: 41px;
+-      margin-bottom: 0;
+-      padding-left: 16px;
+-    }
++  input[type='text'] {
++    position: block;
++    width: 90%;
++    height: 50px;
++    font-size: 1.8em;
++    line-height: 41px;
++    margin-bottom: 0;
++    padding-left: 16px;
++    font-weight: 100;
++    border: 0;
++    box-shadow: none;
++    background: transparent image-url('search.png') no-repeat 93% center; 
+   }
+ 
+   .btn {
++    position: absolute;
++    top: 8px;
++    right: 12px;
+     width: 20%;
+-    height: 60px;
++    height: 50px;
+   }
+ }
+ 
+@@ -37,12 +41,10 @@
+ }
+ 
+ .results {
+-
+   .result {
+     font-size: 1.1em;
+     background-color: #f2f2f2;
+     line-height: 26px;
+     margin-bottom: 5px;
+   }
+-
+-}
++}
+\ No newline at end of file
