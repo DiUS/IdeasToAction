@@ -20,12 +20,11 @@ class IdeaAction < ActiveRecord::Base
 
   belongs_to :idea, :counter_cache => true
 
-  has_many :interactions do
+  has_many :interactions, :dependent => :destroy do
     def from_member member
       find(:first, :conditions => ['member_id = ?', member.id])
     end
   end
-
   delegate :description, :to => :idea, :prefix => true
 
   after_create :increment_counter

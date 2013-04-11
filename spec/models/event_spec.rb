@@ -6,6 +6,8 @@ describe Event do
 
   before { event.save }
 
+  it { should have_many(:talks).dependent(:destroy) }
+
   it 'validate the presence of name' do
     event.errors.messages[:name].should include "can't be blank"
   end

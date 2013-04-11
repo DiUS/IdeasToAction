@@ -29,6 +29,8 @@ class Talk < ActiveRecord::Base
 
   delegate :name, :to => :event, :prefix => true
 
+  after_destroy :destroy_ideas_without_talks
+
   def self.random(number = 1)
     Talk.offset(rand(Talk.count - number)).first(number)
   end
@@ -47,5 +49,11 @@ class Talk < ActiveRecord::Base
 
   def self.excluding_talks(talks)
     Talk.where("id not in (?)", talks.collect(&:id))
+  end
+
+  def destroy_ideas_without_talks
+    self.ideas.each do |idea|
+      idea.destroy if idea.talks.size == 0
+    end
   end
 end

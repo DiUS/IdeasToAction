@@ -22,7 +22,7 @@ class Idea < ActiveRecord::Base
   has_many :talks, through: :talk_to_idea_associations
   validates_length_of :talks, minimum: 1
 
-  has_many :idea_actions
+  has_many :idea_actions, :dependent => :destroy
   has_many :interactions, :through => :idea_actions
 
   has_and_belongs_to_many :tags

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe IdeaAction do
   it { should delegate(:description).to(:idea).with_prefix }
+  it { should have_many(:interactions).dependent(:destroy) }
 
   describe 'as_json' do
     before do
