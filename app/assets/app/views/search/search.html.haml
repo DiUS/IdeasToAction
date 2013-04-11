@@ -1,5 +1,5 @@
-%div
+.search-field
   %form(name='searchQuery' ng-submit="doSearch()")
     .search-text-wrapper
       %input#search-text(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-    %input.btn(type="submit" value="Find") 
+    %input.btn.btn-borderless(type="submit" value="") 
