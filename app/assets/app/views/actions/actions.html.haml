@@ -27,8 +27,4 @@
         %tile:default(title="actions.recent[1].description")
         .totals
           %tile:count(count="actions.recent[1].reactions_count" title="reactions")
-    %div
-      %form(name='searchQuery' ng-submit="doSearch()")
-        .search-text-wrapper
-          %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-        %input.btn(type="submit" value="Find") 
+    %search(scroller="scroller")
