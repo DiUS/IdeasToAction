@@ -3,21 +3,20 @@
     %h1
       Ideas into action
   %scrollable
-    .jumbo.center
+    .content.center
       %p.hero Transforming ideas worth spreading into actions worth taking
-      %div
-        .big(ng-href="/ideas")
-          %span {{289 | number }}
-          %span Ideas
-        .big(ng-href="/actions")
-          %span {{633 | number }}
-          %span Actions
-        .big(ng-href="/talks")
-          %span {{1314 | number }}
-          %span Talks
-        .big(ng-href="/events")
-          %span {{72 | number }}
-          %span Events
+      .content-item.big(ng-href="/ideas")
+        %span {{289 | number }}
+        %span Ideas
+      .content-item.big(ng-href="/actions")
+        %span {{633 | number }}
+        %span Actions
+      .content-item.big(ng-href="/talks")
+        %span {{1314 | number }}
+        %span Talks
+      .content-item.big(ng-href="/events")
+        %span {{72 | number }}
+        %span Events
     .collapsible.section
       .header(ng-href="/member") My profile
     %div

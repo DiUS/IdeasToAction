@@ -1,31 +1,32 @@
 .landing
   .header.main-header(ng-click = '$parent.resetToTop()')
     %h1
-      actions
+      Actions
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .content(ng-href="/ideas/{{actions.featured[0].idea_id}}")
-      %tile:featured(heading="FEATURED ACTIONS" description="actions.featured[0].description")
-      .totals
-        %tile:count(count="actions.featured[0].reactions_count" title="reactions")
-    .content(ng-href="/ideas/{{actions.popular[0].idea_id}}")
-      %tile:default(title="actions.popular[0].description")
-      .totals
-        %tile:count(count="actions.popular[0].reactions_count" title="reactions")
-    .content(ng-href="/ideas/{{actions.popular[1].idea_id}}")
-      %tile:default(title="actions.popular[1].description")
-      .totals
-        %tile:count(count="actions.popular[1].reactions_count" title="reactions")
-    .content(ng-href="/ideas/{{actions.recent[0].idea_id}}")
-      %tile:default(title="actions.recent[0].description")
-      .totals
-        %tile:count(count="actions.recent[0].reactions_count" title="reactions")
-    .content(ng-href="/ideas/{{actions.recent[1].idea_id}}")
-      %tile:default(title="actions.recent[1].description")
-      .totals
-        %tile:count(count="actions.recent[1].reactions_count" title="reactions")
+    .content
+      .content-item(ng-href="/ideas/{{actions.featured[0].idea_id}}")
+        %tile:featured(heading="FEATURED ACTIONS" description="actions.featured[0].description")
+        .totals
+          %tile:count(count="actions.featured[0].reactions_count" title="reactions")
+      .content-item(ng-href="/ideas/{{actions.popular[0].idea_id}}")
+        %tile:default(title="actions.popular[0].description")
+        .totals
+          %tile:count(count="actions.popular[0].reactions_count" title="reactions")
+      .content-item(ng-href="/ideas/{{actions.popular[1].idea_id}}")
+        %tile:default(title="actions.popular[1].description")
+        .totals
+          %tile:count(count="actions.popular[1].reactions_count" title="reactions")
+      .content-item(ng-href="/ideas/{{actions.recent[0].idea_id}}")
+        %tile:default(title="actions.recent[0].description")
+        .totals
+          %tile:count(count="actions.recent[0].reactions_count" title="reactions")
+      .content-item(ng-href="/ideas/{{actions.recent[1].idea_id}}")
+        %tile:default(title="actions.recent[1].description")
+        .totals
+          %tile:count(count="actions.recent[1].reactions_count" title="reactions")
     %div
       %form(name='searchQuery' ng-submit="doSearch()")
         .search-text-wrapper
