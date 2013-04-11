@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
       
   attr_accessible :name, :talks, :description, :logo_image_url, :hero_image_url, :featured
 
-  has_many :talks
+  has_many :talks, :dependent => :destroy
   has_many :ideas, :through => :talks
   has_many :idea_actions, :through => :talks
 

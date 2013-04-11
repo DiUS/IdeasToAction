@@ -32,4 +32,21 @@ describe Talk do
     talks_to_exclude = Event.first
     Talk.excluding_talks([talks_to_exclude]).should_not include(talks_to_exclude)
   end
+
+  context 'dependent ideas' do
+    before :each do
+      @talk = Talk.create!(:event_id => Event.first.id)
+      @idea = Idea.create!(:talks => [@talk], :member_id => Member.first.id, :description => "test idea")
+    end
+
+    it 'should destroy dependent ideas if they are not associated with other talks' do
+      expect { @talk.destroy }.to change{ Idea.count }.by(-1)
+    end
+
+    it 'should not destroy dependent ideas if they are associated with other talks' do
+      @idea.talks << Talk.first
+      @idea.save
+      expect { @talk.destroy }.not_to change{ Idea.count }
+    end
+  end
 end

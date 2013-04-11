@@ -114,6 +114,8 @@ describe Idea do
     let (:event) { Event.first }
     let (:talk) { event.talks.first }
 
+    it { should have_many(:idea_actions).dependent(:destroy) }
+
     describe "on events" do
       it "should be incremented when idea is created" do
         expect {
