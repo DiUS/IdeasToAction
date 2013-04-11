@@ -27,9 +27,17 @@ describe EventsController do
   end
 
   describe 'GET index' do
-    it 'gets all events' do
-      Event.should_receive(:all)
+    it 'gets nothing without params' do
       get :index, {:format => 'json'}, valid_session
+      response.body.should be_blank
+      response.should be_success
+    end
+
+    it 'gets events when mix is set to true' do
+      get :index, {:format => 'json', :mix => 'true'}, valid_session
+      response.body.should_not be_blank
+      response.should be_success
+      assigns(:event_view).should_not be_nil
     end
   end
 

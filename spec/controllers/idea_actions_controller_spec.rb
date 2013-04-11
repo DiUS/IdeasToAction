@@ -20,25 +20,35 @@ describe IdeaActionsController do
   end
 
   describe 'GET index' do
-    let(:idea) { Idea.find(1) }
-    let(:idea_action) { idea.idea_actions.first }
+    describe "when nesting" do
+      it 'gets nothing without mix param' do
+        get :index, { :idea_id => 1, :format => 'json' }, valid_session
+        response.body.should be_blank
+        response.should be_success
+      end
 
-    let(:other_idea) { Idea.find(2) }
-    let(:other_action) { other_idea.idea_actions.first }
-
-    it "should nest in ideas" do
-      get :index, { :idea_id => 1, :format => 'json'}, valid_session
-
-      assigns(:idea_actions).should include(idea_action)
-      assigns(:idea_actions).should_not include(other_action)
+      it 'gets events when mix is set to true' do
+        get :index, { :idea_id => 1, :format => 'json', :mix => 'true' }, valid_session
+        response.body.should_not be_blank
+        response.should be_success
+        assigns(:idea_action_view).should_not be_nil
+      end
     end
 
 
-    it "should work when not nesting" do
-      get :index, { :format => 'json'}, valid_session
+    describe "without nesting" do
+      it 'gets nothing without mix param' do
+        get :index, { :format => 'json' }, valid_session
+        response.body.should be_blank
+        response.should be_success
+      end
 
-      assigns(:idea_actions).should include(idea_action)
-      assigns(:idea_actions).should include(other_action)
+      it 'gets events when mix is set to true' do
+        get :index, { :format => 'json', :mix => 'true' }, valid_session
+        response.body.should_not be_blank
+        response.should be_success
+        assigns(:idea_action_view).should_not be_nil
+      end
     end
   end
 end

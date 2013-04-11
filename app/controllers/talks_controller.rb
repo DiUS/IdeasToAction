@@ -10,7 +10,7 @@ class TalksController < ApplicationController
       @talk_view = TalkView.new
       render 'talks'
     else
-      index!
+      render :nothing => true
     end
   end
 

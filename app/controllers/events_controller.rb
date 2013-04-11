@@ -9,7 +9,7 @@ class EventsController < ApplicationController
       @event_view = EventView.new
       render 'events'
     else
-      render json: Event.all
+      render :nothing => true
     end
   end
 
