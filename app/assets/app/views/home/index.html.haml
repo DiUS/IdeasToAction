@@ -19,8 +19,4 @@
         %span Events
     .collapsible.section
       .header(ng-href="/member") My profile
-    %div
-      %form(name='searchQuery' ng-submit="doSearch()")
-        .search-text-wrapper
-          %input#search-text(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-        %input.btn(type="submit" value="Find") 
+    %search(scroller="scroller")

@@ -1,4 +1,4 @@
-window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) ->
+window.HomeCtrl = ($scope, $http, dataCache) ->
   $http.get("#{window.ENDPOINT}/counts.json", { cache: dataCache }).success (data) -> 
     $scope.counts = data
 
@@ -7,15 +7,3 @@ window.HomeCtrl = ($scope, $http, $routeParams, $navigate, $timeout, dataCache) 
 
   $http.get("#{window.ENDPOINT}/idea_actions/random.json", { cache: dataCache }).success (data) ->
     $scope.action = data
-
-  $scope.query = text: ''
-
-  $scope.doSearch = -> 
-    $timeout ->
-      $navigate.swipeScope.clearAllPagesForward()
-      $navigate.go("/found?query_text=#{$scope.query.text}", 'slide')
-      $timeout -> 
-        $scope.scroller.scrollToPage(0, 0, 300)
-      , 400
-    , 400
-    false
