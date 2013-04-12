@@ -31,6 +31,9 @@
 
 @interface MainViewController : CDVViewController
 
+- (id)initWithApplication:(UIApplication*)application;
+@property (nonatomic, strong) IBOutlet UIApplication* application;
+
 @end
 
 @interface MainCommandDelegate : CDVCommandDelegateImpl

@@ -64,7 +64,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
     self.window.autoresizesSubviews = YES;
 
-    self.viewController = [[[MainViewController alloc] init] autorelease];
+    self.viewController = [[[MainViewController alloc] initWithApplication:application] autorelease];
     self.viewController.useSplashScreen = YES;
 
     // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.

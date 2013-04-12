@@ -60,7 +60,7 @@ describe "Idea detail page", js: true, acceptance: true do
     end
 
     it 'should link to twitter' do
-      page.find('.btn-twitter')[:href].should match /https:\/\/twitter.com\/intent\/tweet\?original_referer=&text=.*&tw_p=tweetbutton&url=.*/
+      page.find('.btn-twitter:first')['phonegap-external'].should match /https:\/\/twitter.com\/intent\/tweet\?original_referer=&text=.*&tw_p=tweetbutton&url=.*/
     end
   end
 
