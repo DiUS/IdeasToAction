@@ -3,9 +3,12 @@
   width: 100%;
 }
 
-.btn-twitter {
+.btn-twitter, 
+.btn-twitter:active, 
+.btn-twitter:focus {
   position: relative;
   border: 0;
+  box-shadow: none;
   color: #333;
   -webkit-user-select: none;
   -moz-user-select: none;
