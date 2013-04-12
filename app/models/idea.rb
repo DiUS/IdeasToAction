@@ -44,15 +44,15 @@ class Idea < ActiveRecord::Base
   end
 
   def self.recent
-    Idea.order("created_at desc").limit(10)
+    order("created_at desc").limit(10)
   end
 
   def self.popular
-    Idea.order("idea_actions_count desc").limit(10)
+    order("idea_actions_count desc").limit(10)
   end
 
   def self.excluding_ideas(ideas)
-    Idea.where("id not in (?)", ideas.collect(&:id))
+    where("id not in (?)", ideas.collect(&:id))
   end
 
   def as_json options = nil

@@ -42,15 +42,15 @@ class Talk < ActiveRecord::Base
   end
 
   def self.recent
-    Talk.order("created_at desc").limit(10)
+    order("created_at desc").limit(10)
   end
 
   def self.popular
-    Talk.order("idea_actions_count desc").limit(10)
+    order("idea_actions_count desc").limit(10)
   end
 
   def self.excluding_talks(talks)
-    Talk.where("id not in (?)", talks.collect(&:id))
+    where("id not in (?)", talks.collect(&:id))
   end
 
   def destroy_ideas_without_talks

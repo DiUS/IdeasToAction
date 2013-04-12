@@ -42,15 +42,15 @@ class IdeaAction < ActiveRecord::Base
   end
 
   def self.recent
-    IdeaAction.order("created_at desc").limit(10)
+    order("created_at desc").limit(10)
   end
 
   def self.popular
-    IdeaAction.order("reactions_count desc").limit(10)
+    order("reactions_count desc").limit(10)
   end
 
   def self.excluding_idea_actions(idea_actions)
-    IdeaAction.where("id not in (?)", idea_actions.collect(&:id))
+    where("id not in (?)", idea_actions.collect(&:id))
   end
 
   def as_json options = nil
