@@ -44,8 +44,6 @@ describe 'IdeaCtrl', ->
       expect(scope.twitter.url).toEqual("https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{encodeURIComponent(scope.idea.talks[0].title)}&tw_p=tweetbutton&url=#{scope.idea_short_url}")
 
     it 'should expose an update method', ->
-      scope.update()
-      $httpBackend.flush()
       expect(scope.update).toBeDefined()
 
     it 'should execute a callback within update if one is given', ->
@@ -60,3 +58,37 @@ describe 'IdeaCtrl', ->
       expect(scope.idea.reactions.length).toEqual(2)
       expect(scope.idea.reactions[0]).toEqual({reaction_text: 'some text'})
       expect(scope.idea.reactions[1]).toEqual({reaction_text: 'some more text'})
+
+  describe '#tweet', ->
+    composeTweet = null
+    isTwitterAvailable = null
+
+    beforeEach ->
+      scope.twitter = {}
+      composeTweet = jasmine.createSpy('composeTweet')
+      isTwitterAvailable = jasmine.createSpy('isTwitterAvailable').andCallFake (response) -> response()
+
+      window.plugins = 
+        twitter: 
+          isTwitterAvailable: isTwitterAvailable
+          composeTweet: composeTweet
+
+    describe 'when not Apple', ->
+      beforeEach ->
+        scope.twitter.isApple = undefined
+        scope.tweet()
+
+      it 'should not do anything', ->
+        expect(isTwitterAvailable).not.toHaveBeenCalled()
+        expect(composeTweet).not.toHaveBeenCalled()
+
+    describe 'when is Apple', ->
+      beforeEach ->
+        scope.twitter.isApple = true
+        scope.tweet()
+
+      it 'should check if twitter is available', ->
+        expect(isTwitterAvailable).toHaveBeenCalled()
+
+      it 'should check compose the tweet', ->
+        expect(composeTweet).toHaveBeenCalled()

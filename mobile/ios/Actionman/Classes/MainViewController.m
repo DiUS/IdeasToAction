@@ -53,6 +53,12 @@
     return self;
 }
 
+- (id)initWithApplication:(UIApplication*)application
+{
+    self.application = application;
+    return [self init];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -67,7 +73,7 @@
 {
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
-
+    
     [super viewWillAppear:animated];
 }
 
@@ -103,6 +109,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
+    self.application.statusBarHidden = NO;
+    CGFloat heightOfStatusBar = self.application.statusBarFrame.size.height;
+    theWebView.frame = CGRectMake(0, heightOfStatusBar, theWebView.bounds.size.width, theWebView.bounds.size.height - heightOfStatusBar);
+
     // Black base color for background matches the native apps
     theWebView.backgroundColor = [UIColor blackColor];
 

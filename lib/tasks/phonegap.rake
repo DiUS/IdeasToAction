@@ -35,6 +35,7 @@ namespace :phonegap do
   namespace :ios do
     task :cordova_in_assets do
       FileUtils.cp 'mobile/ios/cordova-2.5.0.js', 'public/assets/cordova-2.5.0.js'
+      FileUtils.cp 'mobile/ios/TwitterPlugin.js', 'public/assets/TwitterPlugin.js'
     end
 
     task :set_www_directory do
