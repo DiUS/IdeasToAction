@@ -15,6 +15,7 @@ class Ability
       can :manage, Member do |the_member|
         the_member == member
       end
+      can :manage, Interaction
     else
       can :read, :all
       can :ideas, Event
