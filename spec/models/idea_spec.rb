@@ -13,6 +13,9 @@ describe Idea do
 
   it { should delegate(:username).to(:member).with_prefix }
 
+  it { should validate_presence_of(:description) }
+  it { should validate_presence_of(:member) }
+
   describe 'as_json' do
     let(:idea) { Idea.first }
 

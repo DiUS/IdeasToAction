@@ -4,6 +4,9 @@ describe IdeaAction do
   it { should delegate(:description).to(:idea).with_prefix }
   it { should have_many(:interactions).dependent(:destroy) }
 
+  it { should validate_presence_of(:idea) }
+  it { should validate_presence_of(:description) }
+
   describe 'as_json' do
     before do
       @action = IdeaAction.first

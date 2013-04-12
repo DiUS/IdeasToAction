@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe EventsController do
-  def valid_attributes
+  def valid_event_attributes
     { :name => 'event', :description => 'description', :hero_image_url => 'http://www.google.com' }
+  end
+
+  def valid_talk_attributes
+    { :title => 'talk', :description => 'description', :event_id => Event.first.id}
   end
 
   def valid_session
@@ -11,7 +15,7 @@ describe EventsController do
 
   describe "GET show" do
     it "assigns the requested idea as @idea" do
-      event = Event.create! valid_attributes
+      event = Event.create! valid_event_attributes
       get :show, {:id => event.to_param}, valid_session
       assigns(:event).should eq(event)
     end
@@ -48,12 +52,12 @@ describe EventsController do
     end
 
     describe 'PUT update' do
-      let(:event) {Event.create! valid_attributes}
-      let(:attrs) {valid_attributes}
+      let(:event) {Event.create! valid_event_attributes}
+      let(:attrs) {valid_event_attributes}
 
       before do
         attrs[:name] = 'my new event name'
-        attrs[:talks] = [Talk.create!.as_json, Talk.create!.as_json]
+        attrs[:talks] = [Talk.create!(valid_talk_attributes).as_json, Talk.create!(valid_talk_attributes).as_json]
       end
 
       it 'should update the event' do

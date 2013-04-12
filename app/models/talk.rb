@@ -27,6 +27,8 @@ class Talk < ActiveRecord::Base
 
   belongs_to :event
 
+  validates :event, :title, :description, :presence => true
+
   delegate :name, :to => :event, :prefix => true
 
   after_destroy :destroy_ideas_without_talks
