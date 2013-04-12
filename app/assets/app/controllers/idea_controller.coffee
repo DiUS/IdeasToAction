@@ -20,9 +20,18 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}/show_idea_url", { cache: dataCache }).success (data) ->
         $scope.idea_short_url = data.idea_url
         $scope.twitter = url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{encodeURIComponent($scope.talk_title)}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
-        # $scope.twitter = url: "twitter://post?message=#{encodeURIComponent($scope.talk_title + ' ')}#{$scope.idea_short_url}" #iphone stuff
+        $scope.twitter.isApple = true if (/iphone|ipad/gi).test(navigator.appVersion)
 
   $scope.showNewIdeaActionDialog = false
+
+  $scope.tweet = ->
+    if $scope.twitter.isApple?
+      window.plugins.twitter.isTwitterAvailable -> 
+        window.plugins.twitter.composeTweet(
+          ->, 
+          ->, 
+          "#{$scope.talk_title} #{$scope.idea_short_url}"
+        )
 
   $scope.createNewIdeaAction = (idea) ->
     $("#new-idea-action-dialog").scope().startNewIdeaAction(idea)
