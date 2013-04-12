@@ -35,14 +35,14 @@ class Event < ActiveRecord::Base
   end
 
   def self.recent
-    Event.order("created_at desc").limit(10)
+    order("created_at desc").limit(10)
   end
 
   def self.popular
-    Event.order("idea_actions_count desc").limit(10)
+    order("idea_actions_count desc").limit(10)
   end
 
   def self.excluding_events(events)
-    Event.where("id not in (?)", events.collect(&:id))
+    where("id not in (?)", events.collect(&:id))
   end
 end
