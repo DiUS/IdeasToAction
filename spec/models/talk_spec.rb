@@ -13,6 +13,10 @@ describe Talk do
   it { should delegate(:name).to(:event).with_prefix }
   it { should have_many(:ideas).through(:talk_to_idea_associations) }
 
+  it { should validate_presence_of(:event) }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:description) }
+
   it 'should return featured talks' do
     talks = Talk.featured
     talks.each{|talk| talk.featured?.should be_true}
@@ -35,7 +39,7 @@ describe Talk do
 
   context 'dependent ideas' do
     before :each do
-      @talk = Talk.create!(:event_id => Event.first.id)
+      @talk = Talk.create!(:event_id => Event.first.id, :title => "test", :description => "talk", :hero_image_url => "test")
       @idea = Idea.create!(:talks => [@talk], :member_id => Member.first.id, :description => "test idea")
     end
 

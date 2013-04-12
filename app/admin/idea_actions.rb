@@ -33,7 +33,7 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
 
   form :as => :idea_action do |f|
     f.inputs do
-      f.input :idea_id, :label => 'Idea', :as => :select,
+      f.input :idea, :label => 'Idea', :as => :select,
               :collection => Idea.all.map{ |i| ["(#{i.id}) #{i.description.truncate(35) }", i.id] }
       f.input :description
       f.input :featured

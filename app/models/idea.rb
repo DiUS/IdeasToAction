@@ -16,18 +16,19 @@ class Idea < ActiveRecord::Base
   end  
       
   belongs_to :member
-  validates_presence_of :member
 
   has_many :talk_to_idea_associations
   has_many :talks, through: :talk_to_idea_associations
-  validates_length_of :talks, minimum: 1
-
-  has_many :idea_actions, :dependent => :destroy
+  has_many :idea_actions, :inverse_of => :idea, :dependent => :destroy
   has_many :interactions, :through => :idea_actions
-
   has_and_belongs_to_many :tags
 
-  attr_accessible :tags, :talks, :description, :idea_actions, :interactions, :featured, :member_id, :talk_ids
+  validates_length_of :talks, minimum: 1
+  validates :member, :description, :presence => true
+
+  accepts_nested_attributes_for :idea_actions
+
+  attr_accessible :tags, :talks, :description, :idea_actions, :interactions, :featured, :member_id, :talk_ids, :idea_actions_attributes
 
   delegate :username, :to => :member, :prefix => true
 

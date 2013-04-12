@@ -16,15 +16,18 @@ class IdeaAction < ActiveRecord::Base
     indexes :description,     :boost => 100
   end  
       
-  attr_accessible :description, :featured, :idea_id
+  attr_accessible :description, :featured, :idea_id, :idea
 
-  belongs_to :idea, :counter_cache => true
+  belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
 
   has_many :interactions, :dependent => :destroy do
     def from_member member
       find(:first, :conditions => ['member_id = ?', member.id])
     end
   end
+
+  validates :idea, :description, :presence => true
+
   delegate :description, :to => :idea, :prefix => true
 
   after_create :increment_counter
