@@ -31,6 +31,36 @@ describe "Talks page", js: true, acceptance: true do
     end
   end
 
+  describe 'more talks' do
+    def wait_for_loading_symbol_to_disappear
+      page.should_not have_selector('.header.extra-results-loading', visible: true)
+    end
+
+    before do
+      new_talks = page.all('[ng-repeat="talk in extraTalks"]')
+      new_talks.should be_empty
+
+      find('.header', text: 'Load more talks').click()
+      wait_for_loading_symbol_to_disappear()
+    end
+
+    it 'should render more talks on the page' do
+      new_talks = page.all('[ng-repeat="talk in extraTalks"]')
+      new_talks.should_not be_empty
+
+      new_talks.to_enum.with_index(0).each do | talk, index |
+        text = new_talks[index].text
+        text.should match /\d{1,2} ideas/
+        text.should match /\d{1,2} actions/
+        text.should match /\d{1,2} reactions/
+      end
+    end
+
+    it 'should no longer allow user to load more talks'  do
+      find('.header', text: 'Load more talks').should_not be_visible
+    end
+  end
+
   it 'should search' do
     find("input[type='text']").set("stuff")
     find('input.btn').click()
