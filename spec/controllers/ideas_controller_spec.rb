@@ -40,6 +40,23 @@ describe IdeasController do
       response.should be_success
       assigns(:idea_view).should_not be_nil
     end
+
+    describe 'excluding certain ideas' do
+      let(:idea_ids) { '1,2,3,4,5' }
+      let(:ideas)   { ['idea1', 'idea2'] }
+      let(:excluded_ideas) { mock('excluded_ideas') }
+
+      before do
+        Idea.should_receive(:excluding_ideas).with(idea_ids.split(',')).and_return(excluded_ideas)
+        excluded_ideas.should_receive(:random).with(5).and_return(ideas)
+        get :index, {:format => 'json', :excluding => idea_ids}, valid_session
+      end
+
+      it 'gets ideas excluding the list provided in the params' do
+        response.body.should eql ideas.to_json
+        response.should be_success
+      end
+    end
   end
 
   describe "GET show" do

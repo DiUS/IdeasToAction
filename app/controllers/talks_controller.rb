@@ -9,6 +9,9 @@ class TalksController < ApplicationController
     if params[:mix] && params[:mix] == "true"
       @talk_view = TalkView.new
       render 'talks'
+    elsif !params[:excluding].blank?
+      talksIds = params[:excluding].split(',')
+      render json: Talk.excluding_talks(talksIds).random(5)
     else
       render :nothing => true
     end
