@@ -34,7 +34,7 @@ describe Talk do
 
   it 'should exclude specified talk' do
     talks_to_exclude = Event.first
-    Talk.excluding_talks([talks_to_exclude]).should_not include(talks_to_exclude)
+    Talk.excluding_talks([talks_to_exclude.id]).should_not include(talks_to_exclude)
   end
 
   context 'dependent ideas' do

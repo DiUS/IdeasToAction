@@ -109,7 +109,7 @@ describe Idea do
 
     it 'should return exclude specific idea' do
       idea_to_exclude = Idea.first
-      Idea.excluding_ideas([idea_to_exclude]).should_not include(idea_to_exclude)
+      Idea.excluding_ideas([idea_to_exclude.id]).should_not include(idea_to_exclude)
     end
   end
 
