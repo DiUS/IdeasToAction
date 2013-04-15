@@ -43,6 +43,23 @@ describe EventsController do
       response.should be_success
       assigns(:event_view).should_not be_nil
     end
+
+    describe 'excluding certain events' do
+      let(:eventIds) { '1,2,3,4,5' }
+      let(:events)   { ['event1', 'event2'] }
+      let(:excluded_events) { mock('excluded_events') }
+
+      before do
+        Event.should_receive(:excluding_events).with(eventIds.split(',')).and_return(excluded_events)
+        excluded_events.should_receive(:random).with(5).and_return(events)
+        get :index, {:format => 'json', :excluding => eventIds}, valid_session
+      end
+
+      it 'gets events excluding the list provided in the params' do
+        response.body.should eql events.to_json
+        response.should be_success
+      end
+    end
   end
 
   describe 'as a content admin' do

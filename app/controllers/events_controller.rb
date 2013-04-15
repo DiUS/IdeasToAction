@@ -8,6 +8,9 @@ class EventsController < ApplicationController
     if params[:mix] && params[:mix] == "true"
       @event_view = EventView.new
       render 'events'
+    elsif !params[:excluding].blank?
+      eventIds = params[:excluding].split(',')
+      render json: Event.excluding_events(eventIds).random(5)
     else
       render :nothing => true
     end
