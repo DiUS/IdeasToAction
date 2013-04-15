@@ -7,4 +7,7 @@ angular.module('Actionman').
           isArray: false
           params:
             mix: true
+        more:
+          method: 'GET'
+          isArray: true
       }
