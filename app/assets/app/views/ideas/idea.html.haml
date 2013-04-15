@@ -1,5 +1,5 @@
 #idea.loading(ng-show="!showNewIdeaActionDialog" ng-class="identityClass(idea)")
-  .header.main-header(ng-click = '$parent.resetToTop()')
+  .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
     %h1
       Idea
     .touch-panel

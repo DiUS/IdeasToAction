@@ -1,5 +1,5 @@
 #talk.loading(ng-show='!showNewIdeaDialog')
-  .header.main-header.follow-scroll(ng-click = '$parent.resetToTop()')
+  .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
     %h1
       Talk
     .touch-panel
