@@ -1,8 +1,9 @@
 window.IdeaActionsCtrl = ($scope, IdeaActionResource) ->
-  $scope.actions = IdeaActionResource.mix()
+  $scope.actions = IdeaActionResource.mix ->
+    $('.loading').removeClass('loading')
 
   $scope.more = ->
-    $scope.extraActions = IdeaActionResource.query excluding: current()    
+    $scope.extraActions = IdeaActionResource.query excluding: current()
 
   current = ->
     featured = $scope.actions.featured.map (action) -> action.id

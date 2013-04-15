@@ -1,8 +1,9 @@
 window.TalksCtrl = ($scope, TalkResource) ->
-  $scope.talks = TalkResource.mix()
+  $scope.talks = TalkResource.mix ->
+    $('.loading').removeClass('loading')
 
   $scope.more = ->
-    $scope.extraTalks = TalkResource.query excluding: current()    
+    $scope.extraTalks = TalkResource.query excluding: current()
 
   current = ->
     featured = $scope.talks.featured.map (talk) -> talk.id
