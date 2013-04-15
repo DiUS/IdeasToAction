@@ -25,7 +25,7 @@
         Submit your action
 
 #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
-  .modal-header.header.main-header(ng-click = '$parent.resetToTop()')
+  .modal-header.header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
     Cancel action submission?
   .moday-body
     .content
