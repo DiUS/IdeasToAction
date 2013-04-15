@@ -19,11 +19,11 @@ describe 'EventsCtrl', ->
 
     beforeEach ->
       $scope.events = featured: [ { id: 11 } ], recent: [ { id: 16 }, { id: 17 } ], popular: [ { id: 15 }, { id: 10 } ]
-      EventResource.more = jasmine.createSpy('more').andReturn(moreEvents)
+      EventResource.query = jasmine.createSpy('query').andReturn(moreEvents)
       $scope.more()
 
     it 'should find more of the resource', ->
-      expect(EventResource.more).toHaveBeenCalledWith excluding: [11, 15, 10, 16, 17]
+      expect(EventResource.query).toHaveBeenCalledWith excluding: [11, 15, 10, 16, 17]
 
     it 'should assign to scope', ->
       expect($scope.extraEvents).toEqual moreEvents

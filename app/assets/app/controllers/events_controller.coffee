@@ -2,7 +2,7 @@ window.EventsCtrl = ($scope, EventResource) ->
   $scope.events = EventResource.mix()
 
   $scope.more = ->
-    $scope.extraEvents = EventResource.more excluding: eventIdsFromScope()    
+    $scope.extraEvents = EventResource.query excluding: eventIdsFromScope()    
 
   eventIdsFromScope = ->
     featured = $scope.events.featured.map (event) -> event.id
