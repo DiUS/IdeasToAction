@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
     order("idea_actions_count desc").limit(10)
   end
 
-  def self.excluding_events(events)
-    where("id not in (?)", events.collect(&:id))
+  def self.excluding_events(eventIds)
+    where("id not in (?)", eventIds)
   end
 end
