@@ -51,8 +51,8 @@ class Idea < ActiveRecord::Base
     order("idea_actions_count desc").limit(10)
   end
 
-  def self.excluding_ideas(ideas)
-    where("id not in (?)", ideas.collect(&:id))
+  def self.excluding_ideas(idea_ids)
+    where("id not in (?)", idea_ids)
   end
 
   def as_json options = nil
