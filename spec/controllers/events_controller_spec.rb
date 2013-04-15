@@ -45,14 +45,14 @@ describe EventsController do
     end
 
     describe 'excluding certain events' do
-      let(:eventIds) { '1,2,3,4,5' }
+      let(:event_ids) { '1,2,3,4,5' }
       let(:events)   { ['event1', 'event2'] }
       let(:excluded_events) { mock('excluded_events') }
 
       before do
-        Event.should_receive(:excluding_events).with(eventIds.split(',')).and_return(excluded_events)
+        Event.should_receive(:excluding_events).with(event_ids.split(',')).and_return(excluded_events)
         excluded_events.should_receive(:random).with(5).and_return(events)
-        get :index, {:format => 'json', :excluding => eventIds}, valid_session
+        get :index, {:format => 'json', :excluding => event_ids}, valid_session
       end
 
       it 'gets events excluding the list provided in the params' do
