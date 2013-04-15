@@ -49,8 +49,8 @@ class IdeaAction < ActiveRecord::Base
     order("reactions_count desc").limit(10)
   end
 
-  def self.excluding_idea_actions(idea_actions)
-    where("id not in (?)", idea_actions.collect(&:id))
+  def self.excluding_idea_actions(idea_action_ids)
+    where("id not in (?)", idea_action_ids)
   end
 
   def as_json options = nil

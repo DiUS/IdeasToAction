@@ -8,10 +8,10 @@ class TalkView
     self.featured = random_featured
     already_selected.concat random_featured
 
-    random_recent = Talk.recent.excluding_talks(already_selected).random(2)
+    random_recent = Talk.recent.excluding_talks(already_selected.collect(&:id)).random(2)
     self.recent = random_recent
     already_selected.concat random_recent
 
-    self.popular =  Talk.popular.excluding_talks(already_selected).random(2)
+    self.popular =  Talk.popular.excluding_talks(already_selected.collect(&:id)).random(2)
   end
 end

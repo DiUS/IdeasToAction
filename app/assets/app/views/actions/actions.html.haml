@@ -27,4 +27,12 @@
         %tile:default(title="actions.recent[1].description")
         .totals
           %tile:count(count="actions.recent[1].reactions_count" title="reactions")
+      .content-item(ng-repeat='action in extraActions' ng-href="/ideas/{{action.idea_id}}")
+        %tile:default(title="action.description")
+        .totals
+          %tile:count(count="action.reactions_count" title="reactions")
+    .collapsible.section.center(ng-show="!extraActions")
+      .header(ng-click="more()") Load more actions
+    .collapsible.section.center(ng-show="extraActions && extraActions.length == 0")
+      .header.extra-results-loading
     %search(scroller="scroller")

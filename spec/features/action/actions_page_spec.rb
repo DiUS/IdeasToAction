@@ -27,6 +27,34 @@ describe "Actions page", js: true, acceptance: true do
     end
   end
 
+  describe 'more actions' do
+    def wait_for_loading_symbol_to_disappear
+      page.should_not have_selector('.header.extra-results-loading', visible: true)
+    end
+
+    before do
+      new_actions = page.all('[ng-repeat="action in extraActions"]')
+      new_actions.should be_empty
+
+      find('.header', text: 'Load more actions').click()
+      wait_for_loading_symbol_to_disappear()
+    end
+
+    it 'should render more actions on the page' do
+      new_actions = page.all('[ng-repeat="action in extraActions"]')
+      new_actions.should_not be_empty
+
+      new_actions.to_enum.with_index(0).each do | action, index |
+        text = new_actions[index].text
+        text.should match /\d{1,2} reactions/
+      end
+    end
+
+    it 'should no longer allow user to load more actions'  do
+      find('.header', text: 'Load more actions').should_not be_visible
+    end
+  end
+
   it 'should search' do
     find("input[type='text']").set("stuff")
     find('input.btn').click()
