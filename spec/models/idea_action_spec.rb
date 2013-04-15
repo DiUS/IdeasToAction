@@ -58,7 +58,7 @@ describe IdeaAction do
 
     it 'should return exclude specific idea actions' do
       idea_action_to_exclude = IdeaAction.first
-      IdeaAction.excluding_idea_actions([idea_action_to_exclude]).should_not include(idea_action_to_exclude)
+      IdeaAction.excluding_idea_actions([idea_action_to_exclude.id]).should_not include(idea_action_to_exclude)
     end
   end
 

@@ -10,6 +10,9 @@ class IdeasController < ApplicationController
     if params[:mix] && params[:mix] == "true"
       @idea_view = IdeaView.new
       render 'ideas'
+    elsif !params[:excluding].blank?
+      idea_ids = params[:excluding].split(',')
+      render json: Idea.excluding_ideas(idea_ids).random(5)
     else
       render :nothing => true
     end

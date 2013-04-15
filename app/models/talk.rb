@@ -49,8 +49,8 @@ class Talk < ActiveRecord::Base
     order("idea_actions_count desc").limit(10)
   end
 
-  def self.excluding_talks(talks)
-    where("id not in (?)", talks.collect(&:id))
+  def self.excluding_talks(talk_ids)
+    where("id not in (?)", talk_ids)
   end
 
   def destroy_ideas_without_talks

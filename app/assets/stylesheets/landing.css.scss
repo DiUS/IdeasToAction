@@ -27,4 +27,9 @@
       padding-bottom: 5px;
     }
   }
+
+  .section .extra-results-loading {
+    background: transparent image-url('ajax-loader.gif') no-repeat center center;
+    min-height: 40px;
+  }
 }
