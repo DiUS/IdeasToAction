@@ -1,8 +1,9 @@
 window.EventsCtrl = ($scope, EventResource) ->
-  $scope.events = EventResource.mix()
+  $scope.events = EventResource.mix ->
+    $('.loading').removeClass('loading')
 
   $scope.more = ->
-    $scope.extraEvents = EventResource.query excluding: current()    
+    $scope.extraEvents = EventResource.query excluding: current()
 
   current = ->
     featured = $scope.events.featured.map (event) -> event.id

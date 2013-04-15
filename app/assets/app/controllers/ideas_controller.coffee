@@ -1,8 +1,9 @@
 window.IdeasCtrl = ($scope, IdeaResource) ->
-  $scope.ideas = IdeaResource.mix()
+  $scope.ideas = IdeaResource.mix ->
+    $('.loading').removeClass('loading')
 
   $scope.more = ->
-    $scope.extraIdeas = IdeaResource.query excluding: current()    
+    $scope.extraIdeas = IdeaResource.query excluding: current()
 
   current = ->
     featured = $scope.ideas.featured.map (idea) -> idea.id
