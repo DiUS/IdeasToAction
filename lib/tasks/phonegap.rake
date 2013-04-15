@@ -88,5 +88,12 @@ namespace :phonegap do
       desc "Build Android Application (qa)"
       task :qa => [ :set_qa_assets, :default ]
     end
+
+    namespace :release do
+      desc "Building Release Android Application (production)"
+      task :default => [ :set_www_directory, :clean, :precompiled_assets, :cordova_in_assets, :android_manifest, :assets_in_www_directory ] do
+        raise "Couldn't build Phonegap package" unless Kernel.system('mobile/android/cordova/release')
+      end
+    end
   end
 end
