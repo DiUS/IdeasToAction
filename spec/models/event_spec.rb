@@ -37,6 +37,6 @@ describe Event do
 
   it 'should exclude specified event' do
     event_to_exclude = Event.first
-    Event.excluding_events([event_to_exclude]).should_not include(event_to_exclude)
+    Event.excluding_events([event_to_exclude.id]).should_not include(event_to_exclude)
   end
 end
