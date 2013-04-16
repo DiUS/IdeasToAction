@@ -6,16 +6,16 @@
     .content.center
       %p.hero Transforming ideas worth spreading into actions worth taking
       .content-item.big(ng-href="/ideas")
-        %span {{289 | number }}
+        %span {{counts.ideas | number }}
         %span Ideas
       .content-item.big(ng-href="/actions")
-        %span {{633 | number }}
+        %span {{counts.idea_actions | number }}
         %span Actions
       .content-item.big(ng-href="/talks")
-        %span {{1314 | number }}
+        %span {{counts.talks | number }}
         %span Talks
       .content-item.big(ng-href="/events")
-        %span {{72 | number }}
+        %span {{counts.events | number }}
         %span Events
     .collapsible.section
       .header(ng-href="/member") My profile
