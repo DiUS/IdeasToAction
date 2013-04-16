@@ -1,12 +1,16 @@
 .landing {
   .content {
-    img, strong {
+    font-size: 0.9em;
+    color: #555;
+
+    img {
       float: left;
     }
 
-    strong.featured-action-statement {
-      width: 60%;
-      margin-bottom: 5px;
+    .featured-action-statement {
+      font-size: 0.9em;
+      padding: 10px 20px;
+      margin-top: 25px;
     }
 
     img {
@@ -14,12 +18,6 @@
       min-height: 80px;
       min-width: 115px;
       margin-right: 12px;
-    }
-
-    &:first-child {
-      .totals {
-        padding-top: 18px;
-      }
     }
 
     .totals {

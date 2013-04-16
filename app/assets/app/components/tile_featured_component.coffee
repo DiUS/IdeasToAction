@@ -4,7 +4,6 @@ angular.module('Actionman').
     templateUrl: 'assets/views/tiles/featured.html'
     replace: true
     scope: 
-      heading: '@'
       img: '='
       title: '='
       description: '='
