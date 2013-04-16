@@ -36,7 +36,7 @@ class Idea < ActiveRecord::Base
   after_destroy :decrement_counters
 
   def self.random(number = 1)
-    Idea.offset(rand(Idea.count - number)).first(number)
+    Idea.offset(rand(Idea.count - number+1)).first(number)
   end
 
   def self.featured

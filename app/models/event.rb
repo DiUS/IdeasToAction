@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   validates :name, :description, :hero_image_url, :presence => true
 
   def self.random(number = 1)
-    Event.offset(rand(Event.count - number)).first(number)
+    Event.offset(rand(Event.count - number+1)).first(number)
   end
 
   def self.featured
