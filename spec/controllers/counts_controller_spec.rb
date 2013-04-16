@@ -4,14 +4,15 @@ describe CountsController do
 
   describe "GET index" do
     before do
-      Member.should_receive(:count).and_return(5)
+      Event.should_receive(:count).and_return(5)
       Idea.should_receive(:count).and_return(6)
       IdeaAction.should_receive(:count).and_return(7)
+      Talk.should_receive(:count).and_return(8)
     end
 
     it "returns counts for member, idea and actions taken" do
       get :index
-      response.body.should == { :members => 5, :ideas => 6, :idea_actions => 7 }.to_json
+      response.body.should == { :events => 5, :talks => 8, :ideas => 6, :idea_actions => 7 }.to_json
     end
   end
 end

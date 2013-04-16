@@ -2,7 +2,8 @@ class CountsController < ApplicationController
 
   def index
     render :json => {
-      :members => Member.count,
+      :events => Event.count,
+      :talks => Talk.count,
       :ideas => Idea.count,
       :idea_actions => IdeaAction.count
     }
