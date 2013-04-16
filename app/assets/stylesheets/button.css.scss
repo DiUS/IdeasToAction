@@ -26,6 +26,15 @@
   }
 }
 
+.btn-borderless,
+.btn-borderless:active,
+.btn-borderless:hover {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
 #btn-login {
   width: 120px;
   background: orangered;
