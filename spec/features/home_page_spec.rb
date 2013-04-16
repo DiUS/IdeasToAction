@@ -30,7 +30,7 @@ describe "Home page", js: true, acceptance: true do
   end
 
   it 'should search' do
-    fill_in "search-text", with: "stuff"
+    find("input[type='text']").set("stuff")
     find('input.btn').click()
     sleep 1
     page.current_url.should match /#\/found\?query_text=stuff/
