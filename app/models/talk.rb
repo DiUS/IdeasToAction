@@ -34,7 +34,7 @@ class Talk < ActiveRecord::Base
   after_destroy :destroy_ideas_without_talks
 
   def self.random(number = 1)
-    Talk.offset(rand(Talk.count - number)).first(number)
+    Talk.offset(rand(Talk.count - number+1)).first(number)
   end
 
   def self.featured
