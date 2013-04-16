@@ -8,23 +8,31 @@
   }
 
   .search-text-wrapper {
-    width: 77%;
+    width: 100%;
     display: inline-block;    
-
+    
     input {
       width: 90%;
-      height: 50px;
+      height: 60px;
       font-size: 1.8em;
       line-height: 41px;
       margin-bottom: 0;
-      padding-left: 16px;
+      padding-left: 0;
+      font-weight: 100;
+      border: none;
+      box-shadow: none;
+      -webkit-user-modify: read-write-plaintext-only;
+      background: transparent image-url('search.png') no-repeat 98% center;
     }
   }
 
   .btn {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
     width: 20%;
     height: 60px;
-  }
+   }
 }
 
 .search-navbar {
@@ -37,12 +45,10 @@
 }
 
 .results {
-
   .result {
     font-size: 1.1em;
     background-color: #f2f2f2;
     line-height: 26px;
     margin-bottom: 5px;
   }
-
 }
