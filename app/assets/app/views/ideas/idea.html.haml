@@ -11,18 +11,18 @@
       %span.tag{'ng:repeat' => 'tag in idea.tags'}
         {{tag.name}}
     .content
-      %p.description
-        {{idea.description}}
-      .action
-        %p.action-count.pull-left
-          {{idea.members_actioned_count}}
-        %p.action-statement.pull-left
-          People have taken action on this idea
-        .pull-left(ng-show="twitter")
-          %a.btn.btn-twitter(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
-            %i.icon-twitter
-          %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
-            %i.icon-twitter
+      .content-item
+        %tile:featured(description="idea.description")
+          .action
+            %p.action-count.pull-left
+              {{idea.members_actioned_count}}
+            %p.action-statement.pull-left
+              People have taken action on this idea
+            .pull-left(ng-show="twitter")
+              %a.btn.btn-twitter(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
+                %i.icon-twitter
+              %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
+                %i.icon-twitter
     .sections
       %collapsible(scroller="scroller" title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
         .center.row-fluid
