@@ -14,24 +14,24 @@
           %tile:count(count="actions.featured[0].reactions_count" title="reactions")
       %strong.featured-action-statement POPULAR ACTIONS
       .content-item(ng-href="/ideas/{{actions.popular[0].idea_id}}")
-        %tile:default(title="actions.popular[0].description")
+        %tile:default(description="actions.popular[0].description")
         .totals
           %tile:count(count="actions.popular[0].reactions_count" title="reactions")
       .content-item(ng-href="/ideas/{{actions.popular[1].idea_id}}")
-        %tile:default(title="actions.popular[1].description")
+        %tile:default(description="actions.popular[1].description")
         .totals
           %tile:count(count="actions.popular[1].reactions_count" title="reactions")
       %strong.featured-action-statement RECENT ACTIONS
       .content-item(ng-href="/ideas/{{actions.recent[0].idea_id}}")
-        %tile:default(title="actions.recent[0].description")
+        %tile:default(description="actions.recent[0].description")
         .totals
           %tile:count(count="actions.recent[0].reactions_count" title="reactions")
       .content-item(ng-href="/ideas/{{actions.recent[1].idea_id}}")
-        %tile:default(title="actions.recent[1].description")
+        %tile:default(description="actions.recent[1].description")
         .totals
           %tile:count(count="actions.recent[1].reactions_count" title="reactions")
       .content-item(ng-repeat='action in extraActions' ng-href="/ideas/{{action.idea_id}}")
-        %tile:default(title="action.description")
+        %tile:default(description="action.description")
         .totals
           %tile:count(count="action.reactions_count" title="reactions")
     .collapsible.section.center(ng-show="!extraActions")

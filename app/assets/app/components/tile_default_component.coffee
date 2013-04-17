@@ -5,3 +5,4 @@ angular.module('Actionman').
     replace: true
     scope: 
       title: '='
+      description: '='
