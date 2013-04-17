@@ -9,9 +9,9 @@
       %span You did on
       %b {{item.member_interaction.created_at}} 
   .container
-    .row-fluid.reaction{'id' => 'reaction-{{item.member_interaction.id}}', 'ng-controller' => 'ReactionCtrl'}
+    .row-fluid.reaction(id="reaction-{{item.member_interaction.id}}" ng-controller="ReactionCtrl")
       .span12
         %textarea(placeholder = 'Add my reaction' name='reaction-text' ng-model="reactionText" mobile-focus-click)
-      .span4.offset8
+      .span12
         %button.btn.btn-large.btn-danger.submit-reaction(ng-disabled="!reactionText || inProgress" ng-click="react()") 
           Add my reaction
