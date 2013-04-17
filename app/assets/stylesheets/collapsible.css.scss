@@ -2,19 +2,7 @@
   background-color: #e7e5e5;
   border-top: 1px solid #d8d8d8;
 
-  &[type="reaction"] {
-    .item {
-      margin-bottom: 12px;
-      background-color: #f4f4f4;
-
-      .description {
-        padding: 0 10px;      
-      }
-    }
-  }
-
   .header {
-    font-weight: 100;
     background: {
       repeat: no-repeat;
       position: 95% center;
