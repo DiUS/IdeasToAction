@@ -3,18 +3,15 @@
   top: 0;
   left: 0;
 
-  i {
-    font-size: 32px;
-    color: #ddd;
-  }
-
-  a.touch-icon {
+  .touch-icon {
     &:hover {
       text-decoration: none;
     }
 
     i {
       padding: 32px;
+      font-size: 32px;
+      color: #ddd;
 
       &.icon-remove {
         color: orangered;
