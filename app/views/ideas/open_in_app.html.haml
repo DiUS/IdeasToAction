@@ -30,18 +30,17 @@
       .content
         %p.description
           #{@idea.description}
-      .sections
-        .collapsible.section
-          .header
-            %span.title
-              Inspired by
-          .items(style="display: block")
-            - @idea.talks.each do |talk|
-              .item
-                %div
-                  %p.description
-                    #{talk.title}
-                    %a.continue
+      .collapsible.section
+        .header
+          %span.title
+            Inspired by
+        .items(style="display: block")
+          - @idea.talks.each do |talk|
+            .item
+              %div
+                %p.description
+                  #{talk.title}
+                  %a.continue
     .actioned.item.center.pull-left
       %span.action-statement 321
       %span People have taken action on this idea

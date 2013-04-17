@@ -17,6 +17,5 @@
             %tile:featured(description="event.description")
           %span(ng-switch-when='null')
             %tile:featured(title="event.name" description="event.description")
-    .sections
-      %collapsible(scroller="scroller" title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
-      %collapsible(scroller="scroller" title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
+    %collapsible(scroller="scroller" title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
+    %collapsible(scroller="scroller" title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
