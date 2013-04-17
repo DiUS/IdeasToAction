@@ -6,16 +6,13 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .content.talk
-      %p.title
-        {{talk.title}}
-      .hero{'ng-switch on' => 'talk.hero_image_url'}
+    .content.content-full
+      %div{'ng-switch on' => 'talk.hero_image_url'}
         %img(ng-src="{{talk.hero_image_url}}" alt="{{talk.title}}" ng-switch-default = '')
         %span(ng-switch-when = 'null')
-      %p.description
-        {{talk.description}}
-      %p
-        %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
+      .content-item
+        %tile:featured(title="talk.title" description="talk.description")
+          %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
     .sections
       %collapsible(scroller="scroller" title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
         .center.row-fluid

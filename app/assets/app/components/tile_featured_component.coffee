@@ -3,6 +3,7 @@ angular.module('Actionman').
     restrict: 'E'
     templateUrl: 'assets/views/tiles/featured.html'
     replace: true
+    transclude: true
     scope: 
       img: '='
       title: '='
