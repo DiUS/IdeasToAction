@@ -8,11 +8,12 @@ describe 'titleDefault', ->
     beforeEach inject ($httpBackend, $rootScope, $compile) ->
       scope = $rootScope
       scope.title = 'TEDx Coolness 2013'
+      scope.description = 'this rocks'
 
       $httpBackend.expectGET("assets/views/tiles/default.html").
-            respond("<div class='tile'><h6>{{title}}</h6></div>")
+            respond("<div class='tile'><h6>{{title}}</h6>{{description}}</div>")
 
-      elm = angular.element "<tile:default title='title'></tile:default>"
+      elm = angular.element "<tile:default title='title' description='description'></tile:default>"
 
       $compile(elm)(scope)
       scope.$digest()
@@ -23,3 +24,6 @@ describe 'titleDefault', ->
 
     it 'should have a title', ->
       expect(elm.text()).toContain scope.title
+
+    it 'should have a description', ->
+      expect(elm.text()).toContain scope.description

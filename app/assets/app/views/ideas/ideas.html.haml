@@ -15,28 +15,28 @@
           %tile:count(count="ideas.featured[0].reactions_count" title="reactions")
       %strong.featured-action-statement POPULAR IDEAS
       .content-item(ng-href="/ideas/{{ideas.popular[0].id}}")
-        %tile:default(title="ideas.popular[0].description")
+        %tile:default(description="ideas.popular[0].description")
         .totals
           %tile:count(count="ideas.popular[0].idea_actions_count" title="actions")
           %tile:count(count="ideas.popular[0].reactions_count" title="reactions")
       .content-item(ng-href="/ideas/{{ideas.popular[1].id}}")
-        %tile:default(title="ideas.popular[1].description")
+        %tile:default(description="ideas.popular[1].description")
         .totals
           %tile:count(count="ideas.popular[1].idea_actions_count" title="actions")
           %tile:count(count="ideas.popular[1].reactions_count" title="reactions")
       %strong.featured-action-statement RECENT IDEAS
       .content-item(ng-href="/ideas/{{ideas.recent[0].id}}")
-        %tile:default(title="ideas.recent[0].description")
+        %tile:default(description="ideas.recent[0].description")
         .totals
           %tile:count(count="ideas.recent[0].idea_actions_count" title="actions")
           %tile:count(count="ideas.recent[0].reactions_count" title="reactions")
       .content-item(ng-href="/ideas/{{ideas.recent[1].id}}")
-        %tile:default(title="ideas.recent[1].description")
+        %tile:default(description="ideas.recent[1].description")
         .totals
           %tile:count(count="ideas.recent[1].idea_actions_count" title="actions")
           %tile:count(count="ideas.recent[1].reactions_count" title="reactions")
       .content-item(ng-repeat='idea in extraIdeas' ng-href="/ideas/{{idea.id}}")
-        %tile:default(title="idea.description")
+        %tile:default(description="idea.description")
         .totals
           %tile:count(count="idea.idea_actions_count" title="actions")
           %tile:count(count="idea.reactions_count" title="reactions")
