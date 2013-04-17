@@ -1,7 +1,17 @@
 .tile {
-  padding: 10px;
+  color: #4a4747;
+  padding-bottom: 8px;
+  font-size: 1.3em;
+  line-height: 1.35em;
 
   &.tile-count {
-    opacity: 0.8;
+    display: inline-block;
+    padding-right: 10px;
+    color: #FF2A06;
+
+    .number {
+      font-weight: normal;
+      font-family: 'Helvetica Neue';
+    }
   }
 }
