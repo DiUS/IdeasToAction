@@ -44,6 +44,7 @@ body {
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
   line-height: 1.25em !important;
+  background-color: #f7f7f7;
 }
 
 h5 {
@@ -84,6 +85,7 @@ h6 {
 
 .page {
   .main-header {
+    background-color: white;
     text-align: center;
     padding-bottom: 0;
     padding-left: 0;
@@ -102,7 +104,7 @@ h6 {
     margin-bottom: 20px;
     color: #464747;
     font-weight: normal;
-    width: auto;
+    width: 90%;
   }
 
   padding: {
@@ -153,8 +155,9 @@ h6 {
   padding: 5px;
 
   .content-item {
-    border: 1px solid #eee;
-    margin: 1px 0;
+    background-color: white;
+    border: 1px solid #d8d8d8;
+    margin: 2px 0;
     padding: 5px 8px;
   }
 
@@ -170,8 +173,6 @@ h6 {
 }
 
 .section {
-  background-color: #f4f4f4;
-
   .header {
     padding: 20px;
   }
