@@ -11,7 +11,7 @@
         Thank you for taking the time to submit an idea!
     .section.talks
       .header
-        %span.title
+        %span
           Inspired by...
       .items
         .item{ 'ng-repeat' => "item in idea.talks" }
@@ -26,7 +26,7 @@
           %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
     .section.actions
       .header
-        %span.title
+        %span
           Into these actions...
       %p.muted
         %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
