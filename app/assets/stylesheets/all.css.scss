@@ -1,7 +1,10 @@
-@media screen and (max-device-width: 480px) and (orientation:portrait) {
-  body {
-    font-size: 1em !important;
-  }
+@media screen and (max-device-width: 480px) {
+  
+}
+
+@font-face {
+  font-family: "HelveticaNeue-Light";
+  src: url("font/18925_HelveticaNeueLt.ttf") format("opentype");   
 }
 
 * {
@@ -92,13 +95,13 @@ h6 {
 }
 
 .header {
-
   h1 {
-    font-weight: normal;
     display: inline-block;
-    font-size: 1em;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: #464747;
+    font-weight: normal;
+    width: 100%;
   }
 
   padding: {
@@ -227,10 +230,10 @@ h6 {
 }
 
 .hero {
-  font-size: 1.25em;
-  font-color: #4d4949;
-  line-height: 35px;
-  margin: 10px 0;
+  font-size: 1.35em;
+  color: #474949;
+  line-height: 37px;
+  margin: 10px 5px;
 }
 
 .flat-description {
