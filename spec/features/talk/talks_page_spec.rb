@@ -7,7 +7,7 @@ describe "Talks page", js: true, acceptance: true do
     let (:featured_element) { page.find('.content:first') }
 
     it 'should show' do
-      featured_element.should have_selector 'img'
+      featured_element.text.should_not be_empty
     end
 
     it 'should show total' do
