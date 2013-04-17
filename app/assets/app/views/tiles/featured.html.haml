@@ -1,6 +1,6 @@
 .tile
-  %h5
+  %h5(ng-show="!!title")
     {{title}}
   %p
     {{description}}
-  %p(ng-transclude)
+  .clearfix(ng-transclude)
