@@ -80,12 +80,16 @@ h6 {
   .main-header {
     background-color: white;
     text-align: center;
-    padding-bottom: 0;
-    padding-left: 0;
     width: auto;
+    border-bottom: 1px solid #FF2A06;
 
-    border: {
-      bottom: 1px solid #FF2A06;
+    h1 {
+      display: inline-block;
+      margin-top: 27px;
+      margin-bottom: 30px;
+      font-weight: normal;
+      width: 90%;
+      line-height: 38.5px;
     }
   }
 }
@@ -93,19 +97,6 @@ h6 {
 .header {
   font-size: 30px;
   line-height: 40px;
-
-  h1 {
-    display: inline-block;
-    margin-top: 27px;
-    margin-bottom: 30px;
-    font-weight: normal;
-    width: 90%;
-    line-height: 38.5px;
-  }
-
-  sup {
-    color: #FF2A06;
-  }
 }
 
 .tags {
