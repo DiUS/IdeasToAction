@@ -1,8 +1,8 @@
 .collapsible(ng-class="{collapsed : !expanded, expanded: !!expanded}")
   .header(ng-click="expandCollapse()" ng-class="{fixed: canCollapse == false}")
-    %span
+    %span<
       {{title}}
-      %sup
+      %sup><
         {{collection_length}}
   .items(ng-show="!!expanded")
     .item(ng-repeat="item in collection")
