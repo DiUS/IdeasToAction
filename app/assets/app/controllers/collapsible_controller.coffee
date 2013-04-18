@@ -1,6 +1,6 @@
 window.CollapsibleCtrl = ($scope, $element, $navigate) -> 
     $scope.expandCollapse = -> 
-      return if $scope.canCollapse == false
+      return if $scope.canCollapse == false || $scope.collection.length == 0
 
       $element.toggleClass('collapsed').toggleClass('expanded')
       $element.find('.items').slideToggle 300, ->
