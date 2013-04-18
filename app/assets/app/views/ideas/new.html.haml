@@ -13,26 +13,22 @@
         .header
           %span
             Inspired by...
-        .items
-          .item{ 'ng-repeat' => "item in idea.talks" }
-            %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
+        %div(ng-repeat="item in idea.talks")
+          %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
       .content-item
         .header
           I had this idea...
         %p.muted
           %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
-        .items
-          .item
-            %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
+        %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
       .content-item
         .header
           %span
             Into these actions...
         %p.muted
           %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
-        .items
-          .item{ 'ng-repeat' => "item in idea.idea_actions" }
-            %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
+        %div(ng-repeat="item in idea.idea_actions")
+          %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
         %form#new-action(name='newAction' ng-submit="addNewAction()")
           .control.content
             %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...' mobile-focus-click)
