@@ -34,8 +34,8 @@
         %tile:default(description="action.description")
         .totals
           %tile:count(count="action.reactions_count" title="reactions")
-    .collapsible.section.center(ng-show="!extraActions")
+    .collapsible.center(ng-show="!extraActions")
       .header(ng-click="more()") Load more actions
-    .collapsible.section.center(ng-show="extraActions && extraActions.length == 0")
+    .collapsible.center(ng-show="extraActions && extraActions.length == 0")
       .header.extra-results-loading
     %search(scroller="scroller")

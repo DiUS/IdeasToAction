@@ -46,8 +46,8 @@
           %tile:count(count="talk.ideas_count" title="ideas")
           %tile:count(count="talk.idea_actions_count" title="actions")
           %tile:count(count="talk.reactions_count" title="reactions")
-    .collapsible.section.center(ng-show="!extraTalks")
+    .collapsible.center(ng-show="!extraTalks")
       .header(ng-click="more()") Load more talks
-    .collapsible.section.center(ng-show="extraTalks && extraTalks.length == 0")
+    .collapsible.center(ng-show="extraTalks && extraTalks.length == 0")
       .header.extra-results-loading
     %search(scroller="scroller")

@@ -71,7 +71,7 @@ h6 {
   z-index: 999;
   min-height: 200px;
 
-  .tags, .content, .section, .search-field {
+  .tags, .content, .search-field {
     visibility: hidden;
   }
 }
@@ -123,52 +123,15 @@ h6 {
   }
 }
 
-.content textarea, .section textarea, .content input[type="text"], .content textarea {
+.content textarea, .collapsible .item textarea, .content input[type="text"] {
   width: 93%;
   font-size: 1.15em !important;
   padding: 10px !important;
 }
 
-.content textarea, .section textarea {
+.content textarea, .collapsible .item textarea {
   margin: 0 auto;
   height: 3em;
-}
-
-.section {
-  .header {
-    padding: 20px;
-  }
-
-  .items {
-    padding-bottom: 1px;
-
-    &:last-child {
-      padding-bottom: 10px;
-    }
-
-    .item {
-
-      margin: 0 10px 10px;
-
-      overflow: auto;
-      background-color: white;
-
-      > * > * {
-        margin: 0px;
-        padding: 10px;
-      }
-
-      .remove-button {
-        background: {
-          image: image-url('remove-button.png');
-          repeat: no-repeat;
-          position: center center;
-        }
-      }
-
-    }
-  }
-
 }
 
 #member {
