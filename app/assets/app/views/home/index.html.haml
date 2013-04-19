@@ -8,15 +8,19 @@
         From ideas worth spreading
         %br
         into actions worth taking
+    .content
       .content-item.big(ng-href="/ideas")
         %span {{counts.ideas | number }}
         %span Ideas
+    .content
       .content-item.big(ng-href="/actions")
         %span {{counts.idea_actions | number }}
         %span Actions
+    .content
       .content-item.big(ng-href="/talks")
         %span {{counts.talks | number }}
         %span Talks
+    .content
       .content-item.big(ng-href="/events")
         %span {{counts.events | number }}
         %span Events

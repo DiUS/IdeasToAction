@@ -15,11 +15,14 @@
           %i.icon-twitter
         %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
           %i.icon-twitter
+    .content
       %collapsible(scroller="scroller" title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
         .center.row-fluid
           .span12
             %button#new-idea-action.btn.btn-large.btn-danger(ng-click="createNewIdeaAction(idea)")
               Suggest an action
+    .content
       %collapsible(scroller="scroller" title='Reactions' type='reaction' collection='idea.reactions' item-template='assets/views/reactions/reaction_collapsible_item.html')
+    .content
       %collapsible(scroller="scroller" title='Inspired by' type='talk' collection='idea.talks' item-template='assets/views/talks/talk_collapsible_item.html')
 %ng:include#new-idea-action-dialog(src="'assets/views/actions/new.html'" ng-controller='IdeaActionEditCtrl' ng-show='showNewIdeaActionDialog')

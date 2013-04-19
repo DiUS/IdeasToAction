@@ -26,8 +26,8 @@
     background-color: white;
     border: 1px solid #e7e7e5;
 
-    &:not(:last-child) {
-      border-bottom-width: 0;
+    &:not(:first-child) {
+      border-top-width: 0;
     }
   }
 }
