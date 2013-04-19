@@ -5,12 +5,6 @@
   }
 
   &.collapsed {
-    &:last-child {
-      .content-header {
-        border-bottom-width: 1px !important;
-      }
-    }
-
     .content-header {
       background-image: image-url('collapsed-indicator.png');
 
@@ -29,12 +23,12 @@
   }
 
   .items {
-    &:last-child {
-      padding-bottom: 10px;
+
+    :first-child {
+      border-top-width: 0;
     }
 
     .item {
-
       overflow: auto;
 
       > * > * {

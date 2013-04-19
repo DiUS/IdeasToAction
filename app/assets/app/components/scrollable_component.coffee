@@ -11,7 +11,7 @@ angular.module('Actionman').
         ## NOTE: Nasty hack to prevent double clicking issue on the collapsible headers 
         ##
         target = $(event.target)
-        event.stopPropagation() if target.hasClass('header') || target.parents('.collapsible .header').length > 0
+        event.stopPropagation() if target.hasClass('content-header') || target.parents('.collapsible .content-header').length > 0
           
         event.preventDefault()
         $scope.scroller.refresh()
