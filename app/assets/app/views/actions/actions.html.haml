@@ -7,12 +7,13 @@
         %i.icon-home
   %scrollable
     .content
-      %strong.featured-action-statement FEATURED ACTION
+      .content-header Featured Action
       .content-item(ng-href="/ideas/{{actions.featured[0].idea_id}}")
         %tile:featured(description="actions.featured[0].description")
         .totals
           %tile:count(count="actions.featured[0].reactions_count" title="reactions")
-      %strong.featured-action-statement POPULAR ACTIONS
+    .content
+      .content-header Popular Actions
       .content-item(ng-href="/ideas/{{actions.popular[0].idea_id}}")
         %tile:default(description="actions.popular[0].description")
         .totals
@@ -21,7 +22,8 @@
         %tile:default(description="actions.popular[1].description")
         .totals
           %tile:count(count="actions.popular[1].reactions_count" title="reactions")
-      %strong.featured-action-statement RECENT ACTIONS
+    .content
+      .content-header Recent Actions
       .content-item(ng-href="/ideas/{{actions.recent[0].idea_id}}")
         %tile:default(description="actions.recent[0].description")
         .totals

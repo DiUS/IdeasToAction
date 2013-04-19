@@ -10,13 +10,13 @@
       %div{'ng-switch on' => 'talk.hero_image_url'}
         %img(ng-src="{{talk.hero_image_url}}" alt="{{talk.title}}" ng-switch-default = '')
         %span(ng-switch-when = 'null')
-      .content-item
-        %tile:featured(title="talk.title" description="talk.description")
-          %p
-            %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
-    %collapsible(scroller="scroller" title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
-      .center.row-fluid
-        .span12
-          %button#new-idea.btn.btn-large.btn-danger(ng-click='createNewIdea(talk)')
-            Submit a new idea
+      %tile:featured(title="talk.title" description="talk.description")
+        %p
+          %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
+    .content
+      %collapsible(scroller="scroller" title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
+        .center.row-fluid
+          .span12
+            %button#new-idea.btn.btn-large.btn-danger(ng-click='createNewIdea(talk)')
+              Submit a new idea
 %ng:include#new-idea-dialog(src="'assets/views/ideas/new.html'" ng-controller='IdeaEditCtrl' ng-show='showNewIdeaDialog')
