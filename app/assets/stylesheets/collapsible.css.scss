@@ -1,36 +1,31 @@
 .collapsible {
-  background-color: #e7e5e5;
-  border-top: 1px solid #d8d8d8;
+  .content-header {
+    background-repeat: no-repeat;
+    background-position: 95% center;
+  }
 
-  .header {
-    padding: 20px;
-    background: {
-      repeat: no-repeat;
-      position: 95% center;
+  &.collapsed {
+    &:last-child {
+      .content-header {
+        border-bottom-width: 1px !important;
+      }
     }
 
-    sup {
-      padding-left: 0.2em;
-      color: #FF2A06;
-      font-family: Helvetica;
-      font-size: 60%;
+    .content-header {
+      background-image: image-url('collapsed-indicator.png');
+
+      &.fixed {
+        background-image: none;
+      }
     }
   }
 
-  &.collapsed .header {
+  &.expanded .content-header {
+    background-image: image-url('expanded-indicator.png');
+
     &.fixed {
       background-image: none;
     }
-
-    background-image: image-url('collapsed-indicator.png');
-  }
-
-  &.expanded .header {
-    &.fixed {
-      background-image: none;
-    }
-
-    background-image: image-url('expanded-indicator.png');    
   }
 
   .items {
@@ -40,10 +35,7 @@
 
     .item {
 
-      margin: 0 10px 10px;
-
       overflow: auto;
-      background-color: white;
 
       > * > * {
         margin: 0px;

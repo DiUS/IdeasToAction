@@ -78,6 +78,8 @@ h6 {
 
 .page {
   .main-header {
+    font-size: 30px;
+    line-height: 40px;
     background-color: white;
     text-align: center;
     width: auto;
@@ -91,26 +93,6 @@ h6 {
       width: 90%;
       line-height: 38.5px;
     }
-  }
-}
-
-.header {
-  font-size: 30px;
-  line-height: 40px;
-}
-
-.tags {
-  padding: {
-    top: 5px;
-    bottom: 10px;
-    left: 20px;
-  }
-
-  .tag {
-    background: #f4f4f4;
-    margin: 2px;
-    padding: 2px;
-    font-size: 0.8em;
   }
 }
 
