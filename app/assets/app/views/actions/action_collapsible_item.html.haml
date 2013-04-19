@@ -1,17 +1,16 @@
 %div(ng-controller="IdeaActionCtrl")
   %p {{item.description}}
-  %p.action-statement.pull-left
-    %b {{item.members_actioned_count}} 
-    %span People did this
+  %tile:count(count="item.members_actioned_count" title="People did this")
   %div.pull-right{'ng-switch on' => 'item.member_interaction'}
-    %button.btn.btn-danger.done-it{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)'} Done it
-    %p.action-statement{'ng-switch-default' => ''}
-      %span You did on
-      %b {{item.member_interaction.created_at}} 
+    %button.btn.done-it{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)'} Done it
+    %span.tile.tile-count(ng-switch-default="")
+      You did on
+      %span.number 
+        {{item.member_interaction.created_at}} 
   .container
     .row-fluid.reaction(id="reaction-{{item.member_interaction.id}}" ng-controller="ReactionCtrl")
-      .span12
-        %textarea(placeholder = 'Add my reaction' name='reaction-text' ng-model="reactionText" mobile-focus-click)
-      .span12
-        %button.btn.btn-large.btn-danger.submit-reaction(ng-disabled="!reactionText || inProgress" ng-click="react()") 
-          Add my reaction
+      .span12.center
+        %textarea(placeholder="Add your reaction..." name="reaction-text" ng-model="reactionText" mobile-focus-click)
+      .span12.center
+        %button.btn.pull-right(ng-disabled="!reactionText || inProgress" ng-click="react()") 
+          Submit my reaction

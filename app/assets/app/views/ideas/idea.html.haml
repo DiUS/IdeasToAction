@@ -9,16 +9,12 @@
   %scrollable
     .content
       %tile:featured(description="idea.description")
-        .action
-          %p.action-count.pull-left
-            {{idea.members_actioned_count}}
-          %p.action-statement.pull-left
-            People have taken action on this idea
-          .pull-left(ng-show="twitter")
-            %a.btn.btn-twitter(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
-              %i.icon-twitter
-            %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
-              %i.icon-twitter
+      %tile:count(count="idea.members_actioned_count" title="People have taken action on this idea")
+      .pull-right(ng-show="twitter")
+        %a.btn.btn-twitter(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
+          %i.icon-twitter
+        %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
+          %i.icon-twitter
       %collapsible(scroller="scroller" title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
         .center.row-fluid
           .span12
