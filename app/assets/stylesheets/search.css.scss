@@ -2,6 +2,7 @@
   text-align: center;
   padding: 3px 0 5px;
   margin-bottom: 0;
+  position: relative;
 
   ::-webkit-input-placeholder {
      color: #333333;
@@ -35,22 +36,4 @@
     width: 20%;
     height: 65px;
    }
-}
-
-.search-navbar {
-  position: relative;
-  z-index: 999;
-
-  input {
-    margin-bottom: 0;
-  }
-}
-
-.results {
-  .result {
-    font-size: 1.1em;
-    background-color: #f2f2f2;
-    line-height: 26px;
-    margin-bottom: 5px;
-  }
 }

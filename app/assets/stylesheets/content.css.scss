@@ -5,6 +5,12 @@
     padding: 0;
   }
 
+  &.content-footer {
+    .content-item, .content-header {
+      background-color: #f4f4f4;
+    }
+  }
+
   .content-header {
     font-size: 30px;
     line-height: 40px;
