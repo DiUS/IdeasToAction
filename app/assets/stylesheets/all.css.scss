@@ -16,6 +16,15 @@
     .page {
       height: auto;
       border: 1px solid #d8d8d8;
+
+      .content-header, .content-item {
+        border-left-width: 0;
+        border-right-width: 0;
+      }
+
+      .content-item {
+        border-bottom-width: 0;
+      }
     }
 
     .app-links {
