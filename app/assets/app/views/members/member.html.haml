@@ -6,8 +6,5 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .center.statement
-      %span.featured-action-statement {{interactions.length}}
-      %ng:pluralize(count="interactions.length" when="{'one': 'Action', 'other': 'Actions'}")
-      Done
-    %collapsible(scroller="scroller" title='My actions' expanded="true" can-collapse="false" type='interaction' collection='interactions' item-template='assets/views/interactions/interactions_item.html')
+    .content
+      %collapsible(scroller="scroller" title='Actions taken' expanded="true" can-collapse="false" type='interaction' collection='interactions' item-template='assets/views/interactions/interactions_item.html')
