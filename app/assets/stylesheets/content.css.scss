@@ -32,12 +32,19 @@
     padding: 5px 8px;
   }
 
-  .content-header, .content-item {
+  .content-header, .content-item, .content-button {
     background-color: white;
     border: 1px solid #e7e7e5;
 
     &:not(:first-child) {
       border-top-width: 0;
     }
+  }
+
+  .content-button {
+    padding: 20px 0 23px;
+    font-size: 1.5em; 
+    text-align: center;
+    margin-bottom: 15px;
   }
 }
