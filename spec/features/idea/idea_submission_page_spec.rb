@@ -17,31 +17,27 @@ describe "Idea submission page", js: true, acceptance: true do
   end
 
   def add_new_action_button
-    actions_section.find("#add-new-action")
+    page.find("#add-new-action")
   end
 
   def new_action_description_field
-    actions_section.find('#new-action-description')
+    page.find('#new-action-description')
   end
 
   def idea_description_field
-    actions_section.find('#description')
-  end
-
-  def action_items_container
-    actions_section.find('.items')
+    page.find('#description')
   end
 
   def add_action(name)
     fill_in 'new-action-description', with: name
     add_new_action_button.click
-    action_items_container.should have_selector(".item", text: name)
+    actions_section.should have_selector(".description", text: name)
   end
 
   before :each do
     talk.should_not be_nil
     visit "#/events/1/talks/1"
-    page.find('#new-idea', text: 'Submit a new idea').click
+    find("[text()='Submit a new idea']").click
   end
 
   context "talks section" do
@@ -56,24 +52,24 @@ describe "Idea submission page", js: true, acceptance: true do
 
   context "actions section" do
     def new_action_description_field_should_be_invalid
-      actions_section.should have_selector("#new-action-description.ng-invalid")
+      page.should have_selector("#new-action-description.ng-invalid")
     end
 
     def new_action_description_field_should_be_valid
-      actions_section.should_not have_selector("#new-action-description.ng-invalid")
+      page.should_not have_selector("#new-action-description.ng-invalid")
     end
 
     def add_new_action_button_should_be_disabled
-      actions_section.should have_selector("#add-new-action[disabled='disabled']")
+      page.should have_selector("#add-new-action[disabled='disabled']")
     end
 
     def add_new_action_button_should_not_be_disabled
-      actions_section.should have_selector("#add-new-action")
-      actions_section.should_not have_selector("#add-new-action[disabled='disabled']")
+      page.should have_selector("#add-new-action")
+      page.should_not have_selector("#add-new-action[disabled='disabled']")
     end
 
     it "should have the right title" do
-      actions_section.should have_selector(".header", text: 'Into these actions...')
+      page.should have_selector(".header", text: 'Into these actions...')
     end
 
     it "should allow you to add new actions" do
@@ -87,7 +83,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
       add_new_action_button.click
 
-      action_items_container.should have_selector(".item", text: 'eat fruit')
+      actions_section.should have_selector(".description", text: 'eat fruit')
       new_action_description_field.value.should be_empty
     end
 
@@ -99,7 +95,7 @@ describe "Idea submission page", js: true, acceptance: true do
       add_new_action_button.click
       new_action_description_field_should_be_invalid
 
-      action_items_container.should_not have_selector(".item p", text: '')
+      actions_section.should_not have_selector(".description", text: '')
     end
 
     it "should not add an empty action on submit" do
@@ -111,7 +107,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
       new_action_description_field_should_be_invalid
 
-      action_items_container.should_not have_selector(".item p", text: '')
+      actions_section.should_not have_selector(".description", text: '')
     end
 
     context "when actions exist" do
@@ -120,14 +116,14 @@ describe "Idea submission page", js: true, acceptance: true do
       end
 
       def action_item
-        action_items_container.find(".item", text: 'eat fruit')
+        actions_section.find(".description", text: 'eat fruit')
       end
 
       it "should allow you to remove actions" do
         action_item.should have_selector(".remove-button")
         action_item.find(".remove-button").click
 
-        action_items_container.should_not have_selector(".item", text: 'eat fruit')
+        actions_section.should_not have_selector(".description", text: 'eat fruit')
       end
     end
 

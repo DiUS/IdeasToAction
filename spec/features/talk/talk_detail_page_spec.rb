@@ -14,12 +14,11 @@ describe "Talk detail page", js: true, acceptance: true do
     page.should have_content talk.title
     page.should have_content talk.description
 
-    page.should have_content "Ideas #{talk.ideas.size}"
+    page.should have_content "Ideas#{talk.ideas.size}"
   end
 
   it 'should have an external link to the TED talk' do
-    a = page.find('.content a')
-    a.text.should eql 'View this talk on TED.com'
+    a = page.find("[text()='View this talk on TED.com']")
     a['phonegap-external'].should eql talk.ted_talk_url
   end
 
@@ -30,11 +29,11 @@ describe "Talk detail page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
 
     it "should have a 'Submit a new idea' button" do
-      page.should have_selector('#new-idea', text: 'Submit a new idea')
+      page.should have_selector("[text()='Submit a new idea']")
     end
 
     context "when clicking the 'Submit a new idea' button..." do
-      let(:new_idea_button) { page.find('#new-idea', text: 'Submit a new idea') }
+      let(:new_idea_button) { page.find("[text()='Submit a new idea']") }
 
       before :each do
         new_idea_button.click

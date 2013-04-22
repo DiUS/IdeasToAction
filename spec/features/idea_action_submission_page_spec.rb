@@ -3,7 +3,7 @@ describe "Action submission page", js: true, acceptance: true do
 
   before :each do
     visit "#/ideas/1"
-    find("#new-idea-action").click
+    find("[text()='Suggest an action']").click
   end
 
   context "page text" do

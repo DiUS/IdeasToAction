@@ -24,6 +24,7 @@ describe "Talks page", js: true, acceptance: true do
     it 'should show total' do
       other_elements.to_enum.with_index(0).each do | talk, index |
         text = other_elements[index].text
+        break if text.include? 'More'
         text.should match /\d{1,2} ideas/
         text.should match /\d{1,2} actions/
         text.should match /\d{1,2} reactions/
@@ -33,14 +34,14 @@ describe "Talks page", js: true, acceptance: true do
 
   describe 'more talks' do
     def wait_for_loading_symbol_to_disappear
-      page.should_not have_selector('.header.extra-results-loading', visible: true)
+      page.should_not have_selector('.extra-results-loading', visible: true)
     end
 
     before do
       new_talks = page.all('[ng-repeat="talk in extraTalks"]')
       new_talks.should be_empty
 
-      find('.header', text: 'Load more talks').click()
+      find("[text()='Load more talks']").click()
       wait_for_loading_symbol_to_disappear()
     end
 
@@ -50,6 +51,7 @@ describe "Talks page", js: true, acceptance: true do
 
       new_talks.to_enum.with_index(0).each do | talk, index |
         text = new_talks[index].text
+        return if text.include? 'More'
         text.should match /\d{1,2} ideas/
         text.should match /\d{1,2} actions/
         text.should match /\d{1,2} reactions/
@@ -57,7 +59,7 @@ describe "Talks page", js: true, acceptance: true do
     end
 
     it 'should no longer allow user to load more talks'  do
-      find('.header', text: 'Load more talks').should_not be_visible
+      find("[text()='Load more talks']").should_not be_visible
     end
   end
 

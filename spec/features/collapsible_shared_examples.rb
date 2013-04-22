@@ -8,7 +8,7 @@ shared_examples_for "a collapsible" do
   end
 
   def header 
-    collapsible.find(".header")
+    collapsible.find(".content-header")
   end
 
   def items_should_be_visible(visible = true)

@@ -12,8 +12,8 @@ describe "Event detail page", js: true, acceptance: true do
   it "should have the event page visible" do
     page.should have_content event.name
 
-    page.should have_content "Talks #{event.talks.size}"
-    page.should have_content "Ideas #{event.ideas.size}"
+    page.should have_content "Talks#{event.talks.size}"
+    page.should have_content "Ideas#{event.ideas.size}"
   end
 
   context "Talks collapsible" do
