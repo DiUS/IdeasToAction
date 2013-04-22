@@ -2,7 +2,6 @@
   text-align: center;
   padding: 3px 0 5px;
   margin-bottom: 0;
-  position: relative;
 
   ::-webkit-input-placeholder {
      color: #333333;
@@ -36,4 +35,8 @@
     width: 20%;
     height: 65px;
    }
+}
+
+#found .search-field form {
+  position: relative;
 }
