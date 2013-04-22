@@ -3,6 +3,11 @@
   top: 0;
   left: 0;
 
+  &.touch-panel-right {
+    left: auto;
+    right: 0;  
+  }
+
   .touch-icon {
     &:hover {
       text-decoration: none;
