@@ -24,22 +24,18 @@
       .header.main-header
         %h1
           TEDx Ideas into action
-      .tags
-        - @idea.tags.each do |tag|
-          %span.tag #{tag.name}
       .content
-        %p.description
+        %p
           #{@idea.description}
-      .collapsible
-        .header
-          %span
-            Inspired by
-        .items(style="display: block")
-          - @idea.talks.each do |talk|
-            .item
-              %div
-                %p.description
-                  #{talk.title}
+      .content.content-full
+        .collapsible.expanded
+          .content-header.fixed Inspired by
+          .items(style="display: block")
+            - @idea.talks.each do |talk|
+              .content-item.item
+                %div
+                  %p
+                    #{talk.title}
     .center
       %span.tile.tile-count
         %span.number 
