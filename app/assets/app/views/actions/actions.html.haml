@@ -32,13 +32,14 @@
         %tile:default(description="actions.recent[1].description")
         .totals
           %tile:count(count="actions.recent[1].reactions_count" title="reactions")
-    .content(ng-repeat='action in extraActions' ng-href="/ideas/{{action.idea_id}}")
-      .content-item
+
+      .content-button(ng-show="!extraActions" ng-click="more()") Load more events
+      .content-button(ng-show="extraActions && extraActions.length == 0")
+        .extra-results-loading
+    .content(ng-show="extraActions && extraActions.length != 0")
+      .content-header More Actions
+      .content-item(ng-repeat='action in extraActions' ng-href="/ideas/{{action.idea_id}}")
         %tile:default(description="action.description")
         .totals
           %tile:count(count="action.reactions_count" title="reactions")
-    .collapsible.center(ng-show="!extraActions")
-      .header(ng-click="more()") Load more actions
-    .collapsible.center(ng-show="extraActions && extraActions.length == 0")
-      .header.extra-results-loading
     %search(scroller="scroller")
