@@ -1,5 +1,6 @@
-.collapsible.search-field
-  %form(name='searchQuery' ng-submit="doSearch()")
-    .search-text-wrapper
-      %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-    %input.btn.btn-borderless(type="submit" value="") 
+.content.content-full.content-footer.search-field
+  .content-item
+    %form(name='searchQuery' ng-submit="doSearch()")
+      .search-text-wrapper
+        %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
+      %input.btn.btn-borderless(type="submit" value="")

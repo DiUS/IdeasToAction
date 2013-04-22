@@ -6,17 +6,22 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %div(ng-controller="SearchCtrl")
-    .navbar.search-navbar
-      .navbar-inner
-        %form#search.navbar-search.pull-left(name='searchQuery' ng-submit="doSearch()")
-          %input(type='text' ng-model='query.text' size='30' placeholder='search')
-          %button.btn(type="submit") Find
     %scrollable
+      .content.content-full.content-footer.search-field
+        .content-item
+          %form(name='searchQuery' ng-submit="doSearch()")
+            .search-text-wrapper
+              %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
+            %input.btn.btn-borderless(type="submit" value="")
       .content(ng-show="results")
-        .results
-          .result(ng-repeat = 'result in results' ng-include="'assets/views/search/' + result._type + '_item.html'")
+        .content-header
+          %span<
+            Results
+            %sup><
+              {{results.length}}
+        .content-item(ng-repeat="result in results" ng-href="/ideas/{{ideas.popular[0].id}}" ng-include="'assets/views/search/' + result._type + '_item.html'")
       .content(ng-show="results && results.length == 0")
-        %p.description
-          No results found!
+        .content-item
+          No results found for "{{query.text}}"
       .content(ng-show="!results")
         %p.description.loading
