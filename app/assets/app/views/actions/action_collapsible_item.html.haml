@@ -12,5 +12,5 @@
       .span12.center
         %textarea(placeholder="Add your reaction..." name="reaction-text" ng-model="reactionText" mobile-focus-click)
       .span12.center
-        %button.btn.pull-right(ng-disabled="!reactionText || inProgress" ng-click="react()") 
+        %button.btn.submit-reaction.pull-right(ng-disabled="!reactionText || inProgress" ng-click="react()") 
           Submit my reaction

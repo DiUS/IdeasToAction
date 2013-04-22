@@ -22,6 +22,7 @@ describe "Actions page", js: true, acceptance: true do
     it 'should show total' do
       other_elements.to_enum.with_index(0).each do | action, index |
         text = other_elements[index].text
+        break if text.include? 'More'
         text.should match /\d{1,2} reactions/
       end
     end
@@ -29,14 +30,14 @@ describe "Actions page", js: true, acceptance: true do
 
   describe 'more actions' do
     def wait_for_loading_symbol_to_disappear
-      page.should_not have_selector('.header.extra-results-loading', visible: true)
+      page.should_not have_selector('.extra-results-loading', visible: true)
     end
 
     before do
       new_actions = page.all('[ng-repeat="action in extraActions"]')
       new_actions.should be_empty
 
-      find('.header', text: 'Load more actions').click()
+      find("[text()='Load more actions']").click()
       wait_for_loading_symbol_to_disappear()
     end
 
@@ -51,7 +52,7 @@ describe "Actions page", js: true, acceptance: true do
     end
 
     it 'should no longer allow user to load more actions'  do
-      find('.header', text: 'Load more actions').should_not be_visible
+      find("[text()='Load more actions']").should_not be_visible
     end
   end
 

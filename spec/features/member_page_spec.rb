@@ -24,12 +24,8 @@ describe "Member page", js: true, acceptance: true do
     @interaction.destroy
   end
 
-  it 'should display total number of actions done' do
-    page.should have_content '1 Action Done'
-  end
-
   context "My actions collapsible" do
-    let(:title) { "My actions" }
+    let(:title) { "Actions taken" }
     let(:starts_as_collapsed?) { false }
     let(:item_contents) { [member.interactions.map(&:idea_action).map(&:description), member.interactions.map(&:reaction_text)] }
 

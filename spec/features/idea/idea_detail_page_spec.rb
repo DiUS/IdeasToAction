@@ -20,7 +20,7 @@ describe "Idea detail page", js: true, acceptance: true do
   it "should have the idea details visible" do
     page.should have_content idea.description
 
-    page.should have_content "Actions #{idea.idea_actions.size}"
+    page.should have_content "Actions#{idea.idea_actions.size}"
   end
 
   context "Actions collapsible" do
@@ -42,16 +42,6 @@ describe "Idea detail page", js: true, acceptance: true do
     let(:item_contents) { idea.interactions.map(&:reaction_text) }
 
     it_should_behave_like "a collapsible"
-  end
-
-  context "tags" do
-    let(:tags) { idea.tags }
-
-    it "should have each of the tags displayed" do
-      tags.each do | tag |
-        page.should have_selector('.tag', text: tag.name)
-      end
-    end
   end
 
   context "share" do
@@ -84,18 +74,17 @@ describe "Idea detail page", js: true, acceptance: true do
       page.find(".collapsible[title='Reactions']")
     end
     
-    before :each do
-      page.should_not have_selector('p.action-statement', text: 'You did on')
-      reaction_collapsible.should have_selector('.header sup', text: '3')
+    before do
+      reaction_collapsible.should have_selector('.content-header sup', text: '3')
 
-      collapsible.find(".header").click
+      collapsible.find(".content-header").click
       page.should have_selector(".btn.done-it", visible: true)
-      collapsible.all(".btn.done-it").first.click
+      collapsible.find(".content-item:first-child .btn.done-it").click
+      sleep 1
     end
 
     it 'should display the date' do
-      page.html #force refetch from the DOM
-      page.should have_selector('p.action-statement', text: 'You did on')
+      collapsible.should have_selector('.content-item .tile', text: 'You did on')
     end
 
     describe 'when reacting to an idea' do
@@ -103,15 +92,15 @@ describe "Idea detail page", js: true, acceptance: true do
       describe 'checking the number of reactions' do
         before :each do
           begin
-            reaction_collapsible.should have_selector('.header sup', text: '3')
+            reaction_collapsible.should have_selector('.content-header sup', text: '3')
 
-            page.should have_selector(".reaction textarea")
-            page.should have_selector(".reaction textarea", visible: true)
+            collapsible.should have_selector(".content-item:first-child .reaction textarea")
+            collapsible.should have_selector(".content-item:first-child .reaction textarea", visible: true)
 
-            page.all(".reaction textarea").first.set('This is my reaction')
-            page.all(".reaction textarea").first.value.should eq 'This is my reaction'
+            collapsible.find(".content-item:first-child .reaction textarea").set('This is my reaction')
+            collapsible.find(".content-item:first-child .reaction textarea").value.should eq 'This is my reaction'
 
-            page.all('.submit-reaction').first.click
+            collapsible.find('.content-item:first-child .btn.submit-reaction').click
           rescue => e
             puts page.html
             raise e
@@ -119,9 +108,9 @@ describe "Idea detail page", js: true, acceptance: true do
         end
 
         it 'should update the reactions' do
-          reaction_collapsible.should have_selector('.header sup', text: '4')
+          reaction_collapsible.should have_selector('.content-header sup', text: '4')
 
-          reaction_collapsible.find(".header").click
+          reaction_collapsible.find(".content-header").click
           reaction_collapsible.should have_text('This is my reaction')
         end
       end

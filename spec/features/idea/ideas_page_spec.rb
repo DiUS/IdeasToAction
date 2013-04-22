@@ -23,6 +23,7 @@ describe "Ideas page", js: true, acceptance: true do
     it 'should show total' do
       other_elements.to_enum.with_index(0).each do | idea, index |
         text = other_elements[index].text
+        break if text.include? 'More'
         text.should match /\d{1,2} actions/
         text.should match /\d{1,2} reactions/
       end
@@ -31,14 +32,14 @@ describe "Ideas page", js: true, acceptance: true do
 
   describe 'more ideas' do
     def wait_for_loading_symbol_to_disappear
-      page.should_not have_selector('.header.extra-results-loading', visible: true)
+      page.should_not have_selector('.extra-results-loading', visible: true)
     end
 
     before do
       new_ideas = page.all('[ng-repeat="idea in extraIdeas"]')
       new_ideas.should be_empty
 
-      find('.header', text: 'Load more ideas').click()
+      find("[text()='Load more ideas']").click()
       wait_for_loading_symbol_to_disappear()
     end
 
@@ -54,7 +55,7 @@ describe "Ideas page", js: true, acceptance: true do
     end
 
     it 'should no longer allow user to load more ideas'  do
-      find('.header', text: 'Load more ideas').should_not be_visible
+      find("[text()='Load more ideas']").should_not be_visible
     end
   end
 
