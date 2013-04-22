@@ -11,6 +11,10 @@ $sansFontFamily: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue"
 $borderRadiusLarge: 3px;
 $paddingLarge: 18px 21px;
 
+/* Colours */
+$bodyBackground: #f8f7f7;
+$textColor: #464747;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "font-awesome";

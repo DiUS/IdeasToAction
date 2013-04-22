@@ -24,13 +24,8 @@
       padding: 10px;
     }
 
-    .actioned {
+    .tile {
       padding: 15px 0 2px;
-      width: 100%;
-
-      .action-statement {
-        font-weight: bold;
-      }
     }
   }
 }
@@ -40,8 +35,6 @@ body {
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
   line-height: 1.25em !important;
-  background-color: #f8f7f7;
-  color: #464747;
 }
 
 h5 {
