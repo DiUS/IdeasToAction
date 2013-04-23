@@ -41,6 +41,10 @@
   }
 }
 
+#idea .content:last-child sup {
+  display: none;
+}
+
 .description:after {
   content: image-url('arrow_element.png');
 }
