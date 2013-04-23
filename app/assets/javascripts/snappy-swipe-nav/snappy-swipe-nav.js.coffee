@@ -28,6 +28,8 @@ angular.module('snappy-swipe-navigate').
       $scope.onUserScrollEnd() unless $scope.swallowNextScroll
       $scope.swallowNextScroll = false
       $scope.lastPage = $scope.currentPage()
+      $scope.clearAllPagesForward()
+      $scope.updateLayout()
       false
 
     $scope.onUserScrollEnd = ()->
