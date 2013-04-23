@@ -7,33 +7,29 @@
         %i.icon-remove
   %scrollable
     .content
-      %p.center
-        Thank you for taking the time to submit an idea!
-      .content-item.talks
-        .header
-          %span
-            Inspired by...
-        %div(ng-repeat="item in idea.talks")
-          %ng:include(src="'assets/views/talks/talk_in_idea_submission_collapsible_item.html'")
+      .content-header
+        Inspired by...
+      .content-item(ng-repeat="talk in idea.talks")
+        %tile:default(description="talk.title")
+      .content-header
+        I had this idea...
       .content-item
-        .header
-          I had this idea...
         %p.muted
           %small An idea is a 1-3 sentence description of one of the central concepts within the talk.
         %textarea#description(placeholder='My idea is...' ng-model='idea.description' required='' mobile-focus-click)
-      .content-item.actions
-        .header
-          %span
-            Into these actions...
+      .content-header
+        Into these actions...
+      .content-item
         %p.muted
           %small An action is a simple task that is consistant with the idea and simple to do. Remember we want action not commitment to action.
-        %div(ng-repeat="item in idea.idea_actions")
-          %ng:include(src="'assets/views/actions/action_in_idea_submission_collapsible_item.html'")
+      .content-item.actions(ng-repeat="action in idea.idea_actions")
+        %tile:default(description="action.description")
+        %span.pull-right
+          %i.icon-remove(ng-click="removeAction(action)")
+      .content-item
         %form#new-action(name='newAction' ng-submit="addNewAction()")
-          .control.content
-            %input#new-action-description(type='text' ng-model='newActionDescription' size='30' required='' placeholder='New action...' mobile-focus-click)
-          .control.content
-            %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
+          %input#new-action-description(type='text' ng-model='newActionDescription' size='30' placeholder='New action...' required='' mobile-focus-click)
+          %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
     .content
       %p
         Please review your idea before submission. 

@@ -7,6 +7,15 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
 }
 
+i {
+  font-size: 20px;
+  color: #ddd;
+
+  &.icon-remove {
+    color: orangered;
+  }
+}
+
 .open-in-app {
   padding: 0;
   > div {

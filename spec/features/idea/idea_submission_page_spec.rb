@@ -8,12 +8,8 @@ describe "Idea submission page", js: true, acceptance: true do
     page.find("#new-idea-dialog")
   end
 
-  def talks_section
-    submission_dialog.find(".talks")
-  end
-
   def actions_section
-    submission_dialog.find(".actions")
+    submission_dialog.find('.actions')
   end
 
   def add_new_action_button
@@ -31,10 +27,10 @@ describe "Idea submission page", js: true, acceptance: true do
   def add_action(name)
     fill_in 'new-action-description', with: name
     add_new_action_button.click
-    actions_section.should have_selector(".description", text: name)
+    actions_section.should have_text(name)
   end
 
-  before :each do
+  before do
     talk.should_not be_nil
     visit "#/events/1/talks/1"
     find("[text()='Submit a new idea']").click
@@ -42,11 +38,11 @@ describe "Idea submission page", js: true, acceptance: true do
 
   context "talks section" do
     it "should have the right title" do
-      talks_section.should have_selector(".header", text: 'Inspired by')
+      page.should have_selector(".content-header", text: 'Inspired by')
     end
 
     it "should have the inspiring talk's title" do
-        talks_section.should have_content talk.title
+      page.should have_content talk.title
     end
   end
 
@@ -69,7 +65,7 @@ describe "Idea submission page", js: true, acceptance: true do
     end
 
     it "should have the right title" do
-      page.should have_selector(".header", text: 'Into these actions...')
+      page.should have_selector(".content-header", text: 'Into these actions...')
     end
 
     it "should allow you to add new actions" do
@@ -83,11 +79,12 @@ describe "Idea submission page", js: true, acceptance: true do
 
       add_new_action_button.click
 
-      actions_section.should have_selector(".description", text: 'eat fruit')
+      actions_section.should have_text('eat fruit')
       new_action_description_field.value.should be_empty
     end
 
     it "should not add an empty action on click" do
+      page.first('.actions').should be_nil
       new_action_description_field.value.should be_empty
       new_action_description_field_should_be_invalid
       add_new_action_button_should_be_disabled
@@ -95,10 +92,11 @@ describe "Idea submission page", js: true, acceptance: true do
       add_new_action_button.click
       new_action_description_field_should_be_invalid
 
-      actions_section.should_not have_selector(".description", text: '')
+      page.first('.actions').should be_nil
     end
 
     it "should not add an empty action on submit" do
+      page.first('.actions').should be_nil
       new_action_description_field.value.should be_empty
       new_action_description_field_should_be_invalid
       add_new_action_button_should_be_disabled
@@ -107,7 +105,7 @@ describe "Idea submission page", js: true, acceptance: true do
 
       new_action_description_field_should_be_invalid
 
-      actions_section.should_not have_selector(".description", text: '')
+      page.first('.actions').should be_nil
     end
 
     context "when actions exist" do
@@ -115,15 +113,11 @@ describe "Idea submission page", js: true, acceptance: true do
         add_action 'eat fruit'
       end
 
-      def action_item
-        actions_section.find(".description", text: 'eat fruit')
-      end
-
       it "should allow you to remove actions" do
-        action_item.should have_selector(".remove-button")
-        action_item.find(".remove-button").click
+        actions_section.should have_selector(".icon-remove")
+        actions_section.find(".icon-remove").click
 
-        actions_section.should_not have_selector(".description", text: 'eat fruit')
+        submission_dialog.should_not have_text('eat fruit')
       end
     end
 

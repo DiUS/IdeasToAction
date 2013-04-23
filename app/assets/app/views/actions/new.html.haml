@@ -6,14 +6,14 @@
       %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
         %i.icon-remove
   .content
-    %p.center
+    %p
       Thank you for taking the time to suggest an action!
+    .content-header
+      I suggest...
     .content-item
-      .header
-        I suggest this action...
       %p.muted
         %small An action is a 1-3 sentence description the action related to the idea.
-      %textarea#description(placeholder='My action is...' ng-model='idea_action.description' required='')
+      %textarea(placeholder='My action is...' ng-model='idea_action.description')
   .content
     %p
       Please review your action before submission.
