@@ -10,10 +10,10 @@
     .content
       %tile:featured(description="idea.description")
       %tile:count(count="idea.members_actioned_count" title="People have taken action on this idea")
-      .pull-right(ng-show="twitter")
-        %a.btn.btn-twitter(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
+      %span(ng-show="twitter")
+        %a.btn.btn-twitter.btn-borderless(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
           %i.icon-twitter
-        %a.btn.btn-twitter(ng-show="twitter.isApple" ng-click="tweet()")
+        %a.btn.btn-twitter.btn-borderless(ng-show="twitter.isApple" ng-click="tweet()")
           %i.icon-twitter
     .content
       %collapsible(scroller="scroller" title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
