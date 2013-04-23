@@ -54,8 +54,8 @@ describe "Ideas page", js: true, acceptance: true do
       end
     end
 
-    it 'should no longer allow user to load more ideas'  do
-      find("[text()='Load more ideas']").should_not be_visible
+    it 'should continue to allow user to load more ideas'  do
+      find("[text()='Load more ideas']").should be_visible
     end
   end
 
