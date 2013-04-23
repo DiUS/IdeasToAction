@@ -10,10 +10,6 @@ describe "Action submission page", js: true, acceptance: true do
     it "should display a header" do
       page.should have_content("Suggest")
     end
-
-    it "should display helper text" do
-      page.should have_content("Thank you for taking the time to suggest an action!")
-    end
   end
 
   context "submit action button" do
