@@ -1,12 +1,16 @@
 %div(ng-controller="IdeaActionCtrl")
   %p {{item.description}}
-  %tile:count(count="item.members_actioned_count" title="People did this")
-  %div.pull-right{'ng-switch on' => 'item.member_interaction'}
-    %button.btn.done-it{'ng-switch-when' => 'null', 'ng-click' => 'doneIt(item.id)'} Done it
-    %span.tile.tile-count(ng-switch-default="")
-      You did on
-      %span.number 
-        {{item.member_interaction.created_at}} 
+  %div{'ng-switch on' => 'item.member_interaction'}
+    %div(ng-switch-when="null")
+      %tile:count.pull-left(count="item.members_actioned_count" title="People did this")
+      %button.btn.pull-right.done-it(ng-click="doneIt(item.id)") Done it
+    %div(ng-switch-default="")
+      %div
+        %tile:count(count="item.members_actioned_count" title="People did this")
+      %div.tile.tile-count
+        You did on
+        %span.number 
+          {{item.member_interaction.created_at}} 
   .container
     .row-fluid.reaction(id="reaction-{{item.member_interaction.id}}" ng-controller="ReactionCtrl")
       .span12.center
