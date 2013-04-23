@@ -8,7 +8,7 @@ describe "Action submission page", js: true, acceptance: true do
 
   context "page text" do
     it "should display a header" do
-      page.should have_content("Suggest an action")
+      page.should have_content("Suggest")
     end
 
     it "should display helper text" do
@@ -19,7 +19,7 @@ describe "Action submission page", js: true, acceptance: true do
   context "submit action button" do
     describe "when description has text" do
       before :each do
-        fill_in "description", with: 'action content'
+        find('#idea-action-edit .content-item textarea').set('action content')
       end
 
       it "should be enabled" do
