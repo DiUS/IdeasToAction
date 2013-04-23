@@ -16,4 +16,5 @@
     .content
       %collapsible(scroller="scroller" title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
         .content-button(ng-click="createNewIdea(talk)") Submit a new idea
-%ng:include#new-idea-dialog(src="'assets/views/ideas/new.html'" ng-controller='IdeaEditCtrl' ng-show='showNewIdeaDialog')
+%ng:include#new-idea-dialog.modal(src="'assets/views/ideas/new.html'" ng-controller='IdeaEditCtrl' ng-show='showNewIdeaDialog')
+.modal-backdrop.fade.in(ng-show='showNewIdeaDialog')

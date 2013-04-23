@@ -1,4 +1,4 @@
-#idea.loading(ng-show="!showNewIdeaActionDialog" ng-class="identityClass(idea)")
+#idea.loading(ng-class="identityClass(idea)")
   .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
     %h1
       Idea
@@ -22,4 +22,5 @@
       %collapsible(scroller="scroller" title='Reactions' type='reaction' collection='idea.reactions' item-template='assets/views/reactions/reaction_collapsible_item.html')
     .content
       %collapsible(scroller="scroller" title='Inspired by' type='talk' collection='idea.talks' item-template='assets/views/talks/talk_collapsible_item.html')
-%ng:include#new-idea-action-dialog(src="'assets/views/actions/new.html'" ng-controller='IdeaActionEditCtrl' ng-show='showNewIdeaActionDialog')
+%ng:include#new-idea-action-dialog.modal(src="'assets/views/actions/new.html'" ng-controller='IdeaActionEditCtrl' ng-show='showNewIdeaActionDialog')
+.modal-backdrop.fade.in(ng-show='showNewIdeaActionDialog')

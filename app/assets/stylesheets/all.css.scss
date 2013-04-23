@@ -112,3 +112,13 @@ h6 {
     font-size: 26px;
   }
 }
+
+#new-idea-action-dialog, #new-idea-dialog {
+  -webkit-border-radius: 0;
+
+  height: 95%;
+
+  .modal-header {
+    padding: 0;
+  }
+}
