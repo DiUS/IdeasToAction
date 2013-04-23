@@ -20,8 +20,8 @@
         %button#submit-idea-action.center.btn.btn-large.btn-danger(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
           Submit your action
 
-  #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
-    .modal-header.header.center(ng-click="scroller.scrollToPage(0, 0, 300)")
+  #cancel-confirm-dialog.modal(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
+    .modal-header.header(ng-click="scroller.scrollToPage(0, 0, 300)")
       Cancel action submission?
     .moday-body
       .content
@@ -31,7 +31,7 @@
             You will lose all your data.
     .modal-footer
       %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
-        Confirm
+        Continue
       %a#close-button.btn(ng-click="confirmDialogShown=false")
-        Close
+        Cancel
   #modal-backdrop.modal-backdrop.fade.in(ng-show='confirmDialogShown')
