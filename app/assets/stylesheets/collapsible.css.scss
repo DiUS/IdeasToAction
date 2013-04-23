@@ -24,7 +24,9 @@
 
   .items {
 
-    :first-child {
+    .content-item:first-child, 
+    .content-header:first-child,
+    .content-button:first-child {
       border-top-width: 0;
     }
 
