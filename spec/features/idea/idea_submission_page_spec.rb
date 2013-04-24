@@ -65,7 +65,7 @@ describe "Idea submission page", js: true, acceptance: true do
     end
 
     it "should have the right title" do
-      page.should have_selector(".content-header", text: 'Into these actions...')
+      page.should have_selector(".content-header", text: 'With these actions')
     end
 
     it "should allow you to add new actions" do
