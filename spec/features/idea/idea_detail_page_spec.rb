@@ -84,8 +84,8 @@ describe "Idea detail page", js: true, acceptance: true do
       sleep 1
     end
 
-    it 'should display the date' do
-      collapsible.should have_selector('.content-item .tile', text: 'You did on')
+    it 'should inform the user they have done it' do
+      collapsible.should have_selector('.content-item .tile', text: "I've done it")
     end
 
     describe 'when reacting to an idea' do
