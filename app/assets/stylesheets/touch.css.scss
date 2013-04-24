@@ -16,6 +16,11 @@
     i {
       padding: 18px;
       font-size: 28px;
+
+      &.icon-remove {
+        padding: 20px !important;
+        font-size: 20px !important;
+      }
     }
   }
 }
