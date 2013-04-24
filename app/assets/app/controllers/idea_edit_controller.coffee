@@ -17,7 +17,7 @@ window.IdeaEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     @newActionDescription = ''
 
   $scope.removeAction = (action)->
-    @idea.idea_actions.splice(action, 1)
+    @idea.idea_actions.splice(@idea.idea_actions.indexOf(action), 1)
 
   $scope.validIdea = ->
     (@idea.idea_actions.length > 0) and (@idea.description) && !$scope.submitted
