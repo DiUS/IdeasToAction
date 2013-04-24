@@ -13,6 +13,7 @@
   }
 
   .content-header {
+    position: relative;
     font-size: 30px;
     line-height: 40px;
     padding: 10px;
@@ -42,5 +43,9 @@
     padding: 20px 0 23px;
     font-size: 1.5em; 
     text-align: center;
+  }
+
+  button.content-button {
+    width: 100%;
   }
 }

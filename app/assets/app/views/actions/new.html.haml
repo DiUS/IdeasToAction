@@ -1,21 +1,17 @@
 #idea-action-edit
-  .content.content-full
-    .content-header
-      Suggest an action
-      %i.icon-remove
   %scrollable
     .content
+      .content-header
+        Suggest an action
+        .touch-panel.touch-panel-right
+          %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
+            %i.icon-remove
       .content-item
         %textarea(placeholder='My action is...' ng-model='idea_action.description')
-      .content-button(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
+      %button#submit-idea-action.content-button(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
         Submit your action
-      / %p
-      /   Please review your action before submission.
-      / .center
-      /   %button#submit-idea-action.center.btn()
-      /     Submit your action
 
-  #cancel-confirm-dialog.modal(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
+  #cancel-confirm-dialog.modal.fade(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
     .modal-header.header(ng-click="scroller.scrollToPage(0, 0, 300)")
       Cancel action submission?
     .moday-body
