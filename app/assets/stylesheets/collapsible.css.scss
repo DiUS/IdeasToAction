@@ -31,11 +31,17 @@
     }
 
     .item {
+      position: relative;
       overflow: auto;
+
+      .btn.done-it {
+        position: absolute;
+        bottom: 10px;
+        right: 7px;
+      }
 
       > * > * {
         margin: 0px;
-        padding: 10px;
       }
     }
   }

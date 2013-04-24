@@ -28,6 +28,7 @@
 .btn {
   box-shadow: none;
   border: 1px solid #eee;
+  padding-bottom: 6px;
 }
 
 .btn-borderless,
@@ -37,6 +38,13 @@
   outline: 0;
   box-shadow: none;
   background: transparent;
+}
+
+.btn-flat,
+.btn-flat:active,
+.btn-flat:hover {
+  outline: 0;
+  box-shadow: none;
 }
 
 #btn-login {
