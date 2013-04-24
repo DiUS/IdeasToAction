@@ -6,7 +6,7 @@
         .touch-panel.touch-panel-right
           %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
             %i.icon-remove
-      .content-item
+      .content-item.content-item-full
         %textarea(placeholder='My action is...' ng-model='idea_action.description')
       %button#submit-idea-action.content-button(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
         Submit your action
