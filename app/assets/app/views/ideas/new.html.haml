@@ -1,11 +1,11 @@
 #idea-edit
-  .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
-    Submit
-    .touch-panel.touch-panel-right
-      %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
-        %i.icon-remove
   %scrollable
     .content
+      .content-header
+        Submit an idea
+        .touch-panel.touch-panel-right
+          %a.touch-icon#cancel-button(ng-click="confirmDialogShown=true")
+            %i.icon-remove
       .content-header
         Inspired by...
       .content-item(ng-repeat="talk in idea.talks")
@@ -29,24 +29,20 @@
         %form#new-action(name='newAction' ng-submit="addNewAction()")
           %input#new-action-description(type='text' ng-model='newActionDescription' size='30' placeholder='New action...' required='' mobile-focus-click)
           %input#add-new-action.btn.btn(type="submit" value='Add action' ng-disabled='newAction.$invalid')
-    .content
-      %p
-        Please review your idea before submission. 
-      .center
-        %button#submit-idea.center.btn.btn-large.btn-danger(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
-          Submit your idea
-  #cancel-confirm-dialog.modal(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
-    .modal-header.header(ng-click="scroller.scrollToPage(0, 0, 300)")
-      Cancel idea submission?
-    .moday-body
-      .content
-        %p 
-          Are you sure you want to cancel your submission?
-          %em 
-            You will lose all your data.
-    .modal-footer
-      %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
-        Continue
-      %a#close-button.btn(ng-click="confirmDialogShown=false")
-        Cancel
-#modal-backdrop.modal-backdrop.fade.in(ng-show='confirmDialogShown')
+      %button#submit-idea.center.content-button(ng-disabled='!validIdea()' ng-click='submitIdea(idea)')
+        Submit your idea
+    #cancel-confirm-dialog.modal(ui-modal='' ng-model="confirmDialogShown" data-backdrop='false')
+      .modal-header.header(ng-click="scroller.scrollToPage(0, 0, 300)")
+        Cancel idea submission?
+      .moday-body
+        .content
+          %p 
+            Are you sure you want to cancel your submission?
+            %em 
+              You will lose all your data.
+      .modal-footer
+        %a#confirm-button.btn.btn-danger(data-dismiss='modal' ng-click='cancel()')
+          Continue
+        %a#close-button.btn(ng-click="confirmDialogShown=false")
+          Cancel
+    #modal-backdrop.modal-backdrop.fade.in(ng-show='confirmDialogShown')
