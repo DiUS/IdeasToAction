@@ -8,12 +8,7 @@
 }
 
 i {
-  font-size: 20px;
-  color: #ddd;
-
-  &.icon-remove {
-    color: orangered;
-  }
+  color: #c4bdbd;
 }
 
 .open-in-app {
@@ -90,15 +85,7 @@ h6 {
     text-align: center;
     width: auto;
     border-bottom: 1px solid #FF2A06;
-
-    h1 {
-      display: inline-block;
-      margin-top: 27px;
-      margin-bottom: 30px;
-      font-weight: normal;
-      width: 90%;
-      line-height: 38.5px;
-    }
+    padding: 12px;
   }
 }
 
