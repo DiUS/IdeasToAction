@@ -9,8 +9,8 @@
     .content
       .content-flat
         %tile:featured(description="idea.description")
-        %tile:count(count="idea.members_actioned_count" title="People have taken action on this")
-        %span(ng-show="twitter")
+        %tile:count(count="idea.members_actioned_count" title="People have taken action")
+        %span.pull-right(ng-show="twitter" style="position: relative; bottom: 15px;")
           %a.btn.btn-twitter.btn-borderless(ng-show="!twitter.isApple" phonegap-external="{{twitter.url}}")
             %i.icon-twitter
           %a.btn.btn-twitter.btn-borderless(ng-show="twitter.isApple" ng-click="tweet()")
