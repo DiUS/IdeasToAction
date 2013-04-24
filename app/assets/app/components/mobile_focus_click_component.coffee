@@ -25,7 +25,7 @@ angular.module('Actionman').
 
       element.bind 'click', ->
         setTimeout ->
-          element.scope().scroller.scrollElementToTop(element[0], 10, 300)
+          element.scope().scroller.scrollElementToTop(element[0], 20, 300)
         , 1000
 
         # add click event to whole page to de-focus
