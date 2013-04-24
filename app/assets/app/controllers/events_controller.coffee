@@ -19,6 +19,6 @@ window.EventsCtrl = ($scope, EventResource) ->
     popular  = $scope.events.popular.map  (event) -> event.id
     recent   = $scope.events.recent.map   (event) -> event.id
 
-    extraEvents = $scope.extraEvents.map (idea) -> idea.id
+    extraEvents = $scope.extraEvents.map (event) -> event.id
 
     featured.concat popular.concat recent.concat extraEvents
