@@ -1,7 +1,6 @@
 #talk.loading(ng-show='!showNewIdeaDialog')
   .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
-    %h1
-      Talk
+    Talk
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
@@ -11,8 +10,9 @@
         %img(ng-src="{{talk.hero_image_url}}" alt="{{talk.title}}" ng-switch-default = '')
         %span(ng-switch-when = 'null')
     .content
-      %tile:featured(title="talk.title" description="talk.description")
-        %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
+      .content-flat
+        %tile:featured(title="talk.title" description="talk.description")
+          %a(phonegap-external="{{talk.ted_talk_url}}" href="{{talk.ted_talk_url}}" target="_blank") View this talk on TED.com
     .content
       %collapsible(scroller="scroller" title='Ideas' type='idea' collection='talk.ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
         .content-button(ng-click="createNewIdea(talk)") Submit a new idea

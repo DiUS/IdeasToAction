@@ -1,7 +1,6 @@
 #event.loading
   .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
-    %h1
-      Event
+    Event
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
@@ -10,12 +9,14 @@
       %div{'ng-switch on' => 'event.hero_image_url'}
         %img(ng-src="{{event.hero_image_url}}" alt="{{event.name}}" ng-switch-default = '')
         %span(ng-switch-when = 'null')
-      .content-item
+      .content-flat
         %div{'ng-switch on' => 'event.logo_image_url'}
           %span(ng-switch-default='')
             %img(ng-src="{{event.logo_image_url}}" alt="{{event.name}}")
             %tile:featured(description="event.description")
           %span(ng-switch-when='null')
             %tile:featured(title="event.name" description="event.description")
-    %collapsible(scroller="scroller" title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
-    %collapsible(scroller="scroller" title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
+    .content
+      %collapsible(scroller="scroller" title='Ideas' type='idea' collection='ideas' item-template='assets/views/ideas/idea_collapsible_item.html')
+    .content
+      %collapsible(scroller="scroller" title='Talks' type='talk' collection='event.talks' item-template='assets/views/talks/talk_collapsible_item.html')
