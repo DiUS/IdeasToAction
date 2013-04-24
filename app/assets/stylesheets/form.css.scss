@@ -2,6 +2,13 @@ textarea {
   width: 90%;
   height: 4em;
   padding: 10px;
-  background-color: #f7f7f7;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #f8f7f7;
   -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  border: 1px solid #e7e7e5;
 }
