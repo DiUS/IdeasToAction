@@ -3,8 +3,6 @@ angular.module('Actionman').
     (scope, element, attr) ->
       return unless (/android/gi).test(navigator.appVersion)
 
-      scroller = element.scope().scroller
-
       #
       # REFERENCE: http://stackoverflow.com/questions/8335834/how-can-i-hide-the-android-keyboard-using-javascript
       #  - create a field, focus on it then hide it
@@ -20,18 +18,18 @@ angular.module('Actionman').
             setTimeout ->
                 field.setAttribute('style', 'display:none;');
                 setTimeout ->
-                  scroller.scrollToPage(0, 200, 300)
+                  element.scope().scroller.scrollToPage(0, 200, 300)
                 , 500
             , 50
         , 50
 
       element.bind 'click', ->
         setTimeout ->
-          scroller.scrollElementToTop(element[0], 10, 300)
+          element.scope().scroller.scrollElementToTop(element[0], 10, 300)
         , 1000
 
         # add click event to whole page to de-focus
-        pageElement = angular.element(scroller.scroller).closest('.page')
+        pageElement = angular.element(element.scope().scroller.scroller).closest('.page')
         pageElement.bind 'click', ->
           scope.hideKeyboard()
           pageElement.unbind 'click'
