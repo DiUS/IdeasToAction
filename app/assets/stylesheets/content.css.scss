@@ -1,5 +1,5 @@
 .content {
-  padding: 5px;
+  padding: 2.5px 5px;
 
   &.content-full {
     padding: 0;
@@ -7,11 +7,8 @@
 
   &.content-footer {
     .content-item, .content-header {
+      padding: 22px;
       background-color: #f4f4f4;
-    }
-
-    .content-header {
-      padding: 20px 0 23px 27px;
     }
   }
 
