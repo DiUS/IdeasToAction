@@ -58,8 +58,8 @@ describe "Talks page", js: true, acceptance: true do
       end
     end
 
-    it 'should no longer allow user to load more talks'  do
-      find("[text()='Load more talks']").should_not be_visible
+    it 'should continue to allow user to load more talks'  do
+      find("[text()='Load more talks']").should be_visible
     end
   end
 
