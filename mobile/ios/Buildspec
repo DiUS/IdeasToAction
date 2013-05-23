@@ -26,8 +26,14 @@ group :adhoc do
   # poluting global keychain
   # keychain 'Provisioning/build.keychain', 'build'
 
+#  deploy :testflight, 
+#    :api_token => '2f58b2553f1d243b9cc0e49e445e47ce_OTU0NzEzMjAxMy0wMy0yNiAxOToxNzoyNi41MTEwNTA', 
+#    :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
+#    :lists => ['Developers'], 
+#    :notes => `git log -n 1`
+
   deploy :testflight, 
-    :api_token => '2f58b2553f1d243b9cc0e49e445e47ce_OTU0NzEzMjAxMy0wMy0yNiAxOToxNzoyNi41MTEwNTA', 
+    :api_token => '73c1af80-d0b1-4bc2-96e8-0b4ec33b89d7', 
     :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
     :lists => ['Developers'], 
     :notes => `git log -n 1`
