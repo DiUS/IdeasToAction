@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.ted.ideasintoaction;
+package com.ted.ideastoaction;
 
 import android.app.Activity;
 import android.content.Intent;
