@@ -33,7 +33,7 @@ group :adhoc do
 #    :notes => `git log -n 1`
 
   deploy :testflight, 
-    :api_token => '73c1af80-d0b1-4bc2-96e8-0b4ec33b89d7', 
+    :api_token => '14b28a26a439be9bb66ed9d6ba47032b_OTUwMjk5MjAxMy0wMy0yNCAxODo0MzowNS4wOTMyODY', 
     :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
     :lists => ['Developers'], 
     :notes => `git log -n 1`
