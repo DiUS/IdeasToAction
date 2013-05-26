@@ -40,7 +40,7 @@ group :appstore do
   use :Actionman, :target => :Actionman, :config => :Release
 
   # The mobile provision that should be used
-  profile 'Provisioning/Ideas_to_action_AppStore_New.mobileprovision'
+  profile 'Provisioning/Ideas_to_action_AppStore.mobileprovision'
 
   # Keychain is option, allows isolation of identities per-project without 
   # poluting global keychain
