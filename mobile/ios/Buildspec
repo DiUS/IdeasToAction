@@ -20,21 +20,30 @@ group :adhoc do
   use :Actionman, :target => :Actionman, :config => :Debug
 
   # The mobile provision that should be used
-  profile 'Provisioning/Ideas_to_action_AdHoc.mobileprovision'
+  profile 'Provisioning/Ideas_to_action_AdHoc_New.mobileprovision'
 
   # Keychain is option, allows isolation of identities per-project without 
   # poluting global keychain
   # keychain 'Provisioning/build.keychain', 'build'
-
-#  deploy :testflight, 
-#    :api_token => '2f58b2553f1d243b9cc0e49e445e47ce_OTU0NzEzMjAxMy0wMy0yNiAxOToxNzoyNi41MTEwNTA', 
-#    :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
-#    :lists => ['Developers'], 
-#    :notes => `git log -n 1`
 
   deploy :testflight, 
     :api_token => '14b28a26a439be9bb66ed9d6ba47032b_OTUwMjk5MjAxMy0wMy0yNCAxODo0MzowNS4wOTMyODY', 
     :team_token => 'e4b9c02154c081e0869eb7395989a41a_MjA0MzAxMjAxMy0wMy0yNiAxOToxODoyMy4wNDExMDE',
     :lists => ['Developers'], 
     :notes => `git log -n 1`
+end
+
+# Assumes identity is first in keychain
+group :appstore do
+
+  # Which project/target/config, or workspace/scheme to use
+  use :Actionman, :target => :Actionman, :config => :Release
+
+  # The mobile provision that should be used
+  profile 'Provisioning/Ideas_to_action_AppStore_New.mobileprovision'
+
+  # Keychain is option, allows isolation of identities per-project without 
+  # poluting global keychain
+  # keychain 'Provisioning/build.keychain', 'build'
+  
 end
