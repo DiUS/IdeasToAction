@@ -31,3 +31,6 @@ mobile/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/
 mobile/ios/www/
 .rvmrc
 .idea
+Provisioning/*
+.ssh/*
+Certs/
