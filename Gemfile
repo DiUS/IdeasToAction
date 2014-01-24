@@ -4,25 +4,25 @@ gem 'rails', '3.2.11'
 gem 'inherited_resources'
 
 gem 'mysql2'
-gem "bigdecimal"
+gem 'bigdecimal'
 
-gem "unicorn"
+gem 'unicorn'
 gem 'foreman'
 gem 'foreman-export-initscript', :git => 'git://github.com/Draiken/foreman-export-initscript.git'
 
 gem 'jquery-rails'
 
 # authentication and authorization
-gem 'authlogic', "~> 3.2.0"
+gem 'authlogic', '~> 3.2.0'
 gem 'cancan'
 
 # Search
-gem "tire", :git => "git://github.com/karmi/tire.git"
-gem "will_paginate", "~> 3.0"
+gem 'tire', :git => 'git://github.com/karmi/tire.git'
+gem 'will_paginate', '~> 3.0'
 
-gem "bitly"
-gem "rabl"
-gem "activeadmin"
+gem 'bitly'
+gem 'rabl'
+gem 'activeadmin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +30,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
-  gem "font-awesome-rails"
+  gem 'font-awesome-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
