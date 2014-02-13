@@ -1,6 +1,6 @@
 Actionman::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self) if (!$ARGV.nil? && $ARGV.find_all { |x| x =~ /migrate|rollback|precompile/i}.empty?)
 
   match "search" => "search#index"
 

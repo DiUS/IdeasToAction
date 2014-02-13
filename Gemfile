@@ -23,6 +23,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'bitly'
 gem 'rabl'
 gem 'activeadmin'
+gem 'vagrant', :git => 'git@github.com:mitchellh/vagrant.git', :tag => 'v1.4.3', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -45,7 +46,6 @@ group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'shoulda'
-  gem 'politburo', :git => 'git://github.com/politburo/politburo.git'
   gem 'pry'
   gem 'aws-sdk'
   gem 'launchy'
@@ -65,7 +65,7 @@ end
 
 # Deploy with Capistrano
 gem 'capistrano'
-gem 'capistrano-s3-copy', :git => 'git://github.com/srbartlett/capistrano-s3-copy.git', :require => false
+gem 'rvm-capistrano'
 gem 'dotenv'
 gem 'elbow', :require => false
 

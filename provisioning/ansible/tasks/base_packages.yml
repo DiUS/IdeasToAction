@@ -1,0 +1,31 @@
+---
+# install base packages
+- name: installing base packages
+  action: apt pkg={{ item }} state=installed update_cache=yes force=yes
+  with_items:
+    - curl
+    - git
+    - mysql-server
+    - libxml2-dev
+    - libxslt1-dev
+    - libmysql-ruby
+    - libmysqlclient-dev
+    - python-mysqldb
+    - gawk
+    - g++
+    - make
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - autoconf
+    - libgdbm-dev
+    - libncurses5-dev
+    - automake
+    - libtool
+    - bison
+    - pkg-config
+    - libffi-dev
+    - wget
+    - openjdk-7-jre-headless
+    - chkconfig
+    - nginx

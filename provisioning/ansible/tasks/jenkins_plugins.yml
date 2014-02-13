@@ -1,0 +1,66 @@
+---
+
+- name: revert to original configuration in order to install plugins
+  action: file path=/var/lib/jenkins/config.xml state=absent
+  notify: restart jenkins
+  register: jenkins_config
+
+- name: 15s delay while starting Jenkins
+  wait_for: port=8080 delay=15
+  when: jenkins_config.changed
+
+- name: List plugins
+  action: shell java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 list-plugins | cut -f 1 -d ' '
+  register: plugins_installed
+
+- name: Install/update plugins
+  action: command java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 install-plugin {{ item }}
+  when: plugins_installed.changed and plugins_installed.stdout.find('{{ item }}') == -1
+  with_items:
+    - mailer
+    - external-monitor-job
+    - ldap
+    - pam-auth
+    - javadoc
+    - ant
+    - token-macro
+    - maven-plugin
+    - subversion
+    - cvs
+    - openid
+    - github-api
+    - parameterized-trigger
+    - git
+    - github
+    - greenballs
+    - xcode-plugin
+    - ruby
+    - ruby-runtime
+    - rvm
+    - ec2
+    - rake
+    - ssh-slaves
+    - ansicolor
+    - claim
+    - postbuild-task
+    - radiatorviewplugin
+    - build-pipeline-plugin
+    - zubhium
+    - groovy
+    - ezwall
+    - translation
+    - jenkinswalldisplay-pom
+    - xvfb
+    - timestamper
+    - nodelabelparameter
+  notify: restart jenkins
+
+- name: List plugins to be updated
+  sudo: yes
+  action: shell java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 list-plugins | grep ')$' | cut -f 1 -d ' ' | sed ':a;N;$!ba;s/\n/ /g'
+  register: plugins_updates
+
+- name: Update plugins
+  action: command java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 install-plugin {{ plugins_updates.stdout }}
+  when: plugins_updates.stdout != ''
+  notify: restart jenkins

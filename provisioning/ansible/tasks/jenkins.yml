@@ -1,0 +1,19 @@
+---
+# install Jenkins dependencies
+- name: installing Jenkins dependencies
+  action: apt pkg={{ item }} state=installed update_cache=yes force=yes
+  with_items:
+    - git
+    - curl
+    - openjdk-7-jre-headless
+    - openjdk-7-jdk
+    - qt4-dev-tools
+    - libqt4-dev
+    - libqt4-core
+    - libqt4-gui
+
+# install Jenkins
+- apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key state=present
+- command: sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list' creates=/etc/apt/sources.list.d/jenkins.list
+- apt: pkg=jenkins update_cache=yes state=installed
+  register: jenkins_install

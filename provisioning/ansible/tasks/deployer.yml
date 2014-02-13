@@ -1,0 +1,4 @@
+---
+# create a deployer user
+- group: name=www state=present
+- user: name=deployer groups=www state=present append=yes state=present

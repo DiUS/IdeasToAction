@@ -1,0 +1,7 @@
+# configure web server
+- group: name=nobody state=present
+- user: name=nginx groups=www append=yes state=present
+- template: src=templates/nginx.conf.j2 dest=/etc/nginx/nginx.conf
+  notify: restart nginx
+- template: src=templates/rails.conf.j2 dest=/etc/nginx/conf.d/rails.conf
+  notify: restart nginx

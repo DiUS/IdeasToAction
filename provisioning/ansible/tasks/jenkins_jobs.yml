@@ -1,0 +1,4 @@
+---
+- unarchive: src=files/jenkins_Build_Project.tar.gz dest=/var/lib/jenkins/jobs
+- file: path=/var/lib/jenkins/jobs/Build_Project owner=jenkins group=nogroup recurse=yes
+  notify: restart jenkins

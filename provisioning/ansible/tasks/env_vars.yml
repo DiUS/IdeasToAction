@@ -1,0 +1,5 @@
+---
+# export environment variables for application runtime
+- lineinfile: dest=/home/{{ user }}/.bashrc regexp="^export DB_NAME" line="export DB_NAME={{ db_name }}"
+- lineinfile: dest=/home/{{ user }}/.bashrc regexp="^export DB_USERNAME" line="export DB_USERNAME={{ db_username }}"
+- lineinfile: dest=/home/{{ user }}/.bashrc regexp="^export DB_PASSWORD" line="export DB_PASSWORD={{ db_password }}"

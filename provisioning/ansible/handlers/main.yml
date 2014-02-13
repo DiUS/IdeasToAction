@@ -1,0 +1,11 @@
+- name: restart sshd
+  service: name=ssh state=restarted
+
+- name: restart elasticsearch
+  service: name=elasticsearch state=restarted
+
+- name: restart nginx
+  service: name=nginx state=restarted
+
+- name: restart jenkins
+  service: name=jenkins state=restarted

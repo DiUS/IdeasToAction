@@ -1,0 +1,12 @@
+---
+# install ElasticSearch
+- name: check if ElasticSearch has already been installed
+  command: dpkg -s elasticsearch
+  register: elasticsearch_check
+  ignore_errors: true
+- command: wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.10.deb creates=elasticsearch-0.90.10.deb
+  when: elasticsearch_check|failed
+- command: dpkg -i elasticsearch-0.90.10.deb
+  when: elasticsearch_check|failed
+- template: src=templates/elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
+  notify: restart elasticsearch

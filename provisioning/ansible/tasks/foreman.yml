@@ -1,0 +1,4 @@
+---
+# dependencies for Foreman
+- template: src=templates/app.j2 dest=/etc/default/app owner={{ user }} group={{ user }}
+- file: src=/usr/lib/insserv/insserv dest=/sbin/insserv state=link

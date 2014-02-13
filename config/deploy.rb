@@ -1,5 +1,5 @@
+require 'rvm/capistrano'
 require 'bundler/capistrano'
-require 'capistrano-s3-copy'
 require 'elbow/capistrano'
 
 begin
@@ -19,21 +19,21 @@ set :use_sudo, false
 set :applicationdir, "/opt/app/#{application}"
 set :deploy_to, applicationdir
 set :keep_releases, 5
-set :deploy_via, :s3_copy
-set :aws_access_key_id,     ENV['AWS_ACCESS_KEY_ID']
-set :aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY']
-set :aws_releases_bucket, 'actionman-releases'
-set :aws_calling_format, 'SUBDOMAIN'  
+set :deploy_via, :remote_cache
 
 ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
 
-set :stages, %w(production qa canary development)
+set :stages, %w(production qa canary development vagrant)
 require 'capistrano/ext/multistage'
 
-after "deploy:update_code", "deploy:migrate"
-before "deploy:migrate", "deploy:search:ensure_aliases_and_indexes_exist"
+set :rvm_ruby_string, :local
+before 'deploy:update_code', 'rvm:install_rvm'
+before 'deploy:update_code', 'rvm:install_ruby'
 
-after "deploy:update_code", "deploy:search:import"
+after 'deploy:update_code', 'deploy:migrate'
+before 'deploy:migrate', 'deploy:search:ensure_aliases_and_indexes_exist'
+
+after 'deploy:update_code', 'deploy:search:import'
 
 after 'deploy:update', 'foreman:export'
 after 'deploy:update', 'foreman:restart'

@@ -31,6 +31,8 @@ mobile/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/
 mobile/ios/www/
 .rvmrc
 .idea
-Provisioning/*
 .ssh/*
 Certs/
+vagrant_ansible_inventory_default
+.vagrant/
+.env
