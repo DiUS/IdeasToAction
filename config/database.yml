@@ -21,9 +21,8 @@ base: &base
   <% end %>
 
 development:
-  adapter: mysql2
+  <<: *base
   database: actionman_dev
-  username: root
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -33,9 +32,8 @@ test: &test
   database: actionman_test
 
 android:
-  adapter: mysql2
+  <<: *base
   database: actionman_dev
-  username: root
 
 production:
   <<: *base
