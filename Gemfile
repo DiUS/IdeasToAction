@@ -22,7 +22,7 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'bitly'
 gem 'rabl'
-gem 'activeadmin'
+gem 'activeadmin', '~> 0.6'
 
 # Gems used only for assets and not required
 # in production environments by default.
