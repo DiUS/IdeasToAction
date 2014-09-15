@@ -117,7 +117,7 @@ GEM
       json
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
-    coderay (1.0.8)
+    coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -212,7 +212,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     metaclass (0.0.1)
-    method_source (0.8.1)
+    method_source (0.8.2)
     mime-types (1.19)
     mocha (0.10.5)
       metaclass (~> 0.0.1)
@@ -240,9 +240,9 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
-    pry (0.9.11.4)
-      coderay (~> 1.0.5)
-      method_source (~> 0.8)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
     rabl (0.8.0)
       activesupport (>= 2.3.14)
@@ -316,7 +316,7 @@ GEM
     shoulda-matchers (1.4.2)
       activesupport (>= 3.0.0)
       bourne (~> 1.1.2)
-    slop (3.4.3)
+    slop (3.6.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -378,7 +378,7 @@ DEPENDENCIES
   json_spec
   launchy
   mysql2 (= 0.3.16)
-  pry
+  pry (~> 0.10.0)
   rabl
   rack_session_access
   rails (= 3.2.11)
