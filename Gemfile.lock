@@ -219,7 +219,7 @@ GEM
     multi_json (1.5.0)
     multi_xml (0.5.2)
     multipart-post (1.2.0)
-    mysql2 (0.3.11)
+    mysql2 (0.3.16)
     net-dns (0.7.1)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -377,7 +377,7 @@ DEPENDENCIES
   jquery-rails
   json_spec
   launchy
-  mysql2
+  mysql2 (= 0.3.16)
   pry
   rabl
   rack_session_access

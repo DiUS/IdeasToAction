@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'inherited_resources'
 
-gem 'mysql2'
+gem 'mysql2', '= 0.3.16'
 gem 'bigdecimal'
 
 gem 'unicorn'
