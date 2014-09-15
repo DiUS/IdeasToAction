@@ -23,7 +23,6 @@ gem 'will_paginate', '~> 3.0'
 gem 'bitly'
 gem 'rabl'
 gem 'activeadmin'
-gem 'vagrant', :git => 'git@github.com:mitchellh/vagrant.git', :tag => 'v1.4.3', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
