@@ -43,7 +43,7 @@ group :test, :development do
   gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 1.3'
   gem 'shoulda'
   gem 'pry'
   gem 'aws-sdk'
