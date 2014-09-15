@@ -1,4 +1,49 @@
-== Actionman!
+== TEDxStartSomething
+
+== Setting up Continuous Integration (CI)
+
+=== Hardware (AWS EC2)
+
+1. Create a security group with http, https, ssh, and custom TCP on port 8080.
+2. Create an Ubuntu AMI with hardware capacity of t2.medium.
+3. Attach the created security group to the Ubuntu AMI.
+
+=== Setup CI
+
+==== Install Jenkins
+
+1. sudo apt-get install openjdk-7-jdk
+2. sudo apt-get install git
+3. wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+4. sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+5. sudo apt-get update
+6. sudo apt-get install jenkins
+
+==== Configure Jenkins
+
+1. Install Jenkins plugins
+	* github (also installs git, which is what is really wanted)
+	* green balls
+	* build pipeline
+2. Change time zone.
+
+==== Configure Build
+
+1. Set environment variables.
+2. Poll SCM: */3 * * * *.
+
+=== Install Dependencies
+
+1. Install db/mysql.
+2. Install ruby/rvm.
+
+
+== Setting Up Local Development Environment
+
+1. git clone git@github.com:DiUS/TEDxStartSomething.
+2. bundle install.
+3. rake db:setup.
+
 
 == Deploy from local machine
 
