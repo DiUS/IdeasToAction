@@ -40,7 +40,7 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'jasmine-rails'
+  gem 'jasmine-rails', '~> 0.10.2'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit', '~> 1.3'
