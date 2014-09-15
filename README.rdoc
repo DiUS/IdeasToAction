@@ -29,14 +29,25 @@
 
 ==== Configure Build
 
-1. Set environment variables.
-2. Poll SCM: */3 * * * *.
+1. Poll SCM: */3 * * * *, rather than use Github hooks, which is also good.
+2. Build, Execute Shell:
+	#!/bin/bash -xl, at the top of the build script.
+	export ENVIRONMENT_NAME=test
+	export PROJECT_NAME=actionman
+	export DB_NAME=actionman_test
+	export DB_USERNAME=actionman
+	export DB_PASSWORD=<insert password here>
+	export DB_HOST=localhost
+	export DB_PORT=3306
+	\curl -sSL https://get.rvm.io | bash -s stable --ruby=1.9.3
+	source /var/lib/jenkins/.rvm/scripts/rvm
+	bundle install
 
 === Install Dependencies
 
-1. Install db/mysql.
-2. Install ruby/rvm.
-
+1. Install db/mysql: sudo apt-get install mysql-server mysql-client.
+2. Install libxml2: sudo apt-get install libxslt-dev libxml2-dev.
+3. Install qt WebKit: sudo apt-get install libqtwebkit-dev.
 
 == Setting Up Local Development Environment
 
