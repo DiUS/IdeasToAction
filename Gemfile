@@ -45,7 +45,6 @@ group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit', '~> 1.3'
   gem 'shoulda'
-  gem 'pry'
   gem 'aws-sdk'
   gem 'launchy'
   gem 'awesome_print'
@@ -60,6 +59,10 @@ group :test, :development do
     gem 'xcoder', :git => 'git://github.com/azzamallow/xcoder.git'
     # gem 'cocoapods', :require => false
   # end
+end
+
+group :development do
+  gem 'pry'
 end
 
 # Deploy with Capistrano
