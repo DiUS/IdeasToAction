@@ -62,7 +62,7 @@ group :test, :development do
 end
 
 group :development do
-  gem 'pry'
+  gem 'pry', '~> 0.10.0'
 end
 
 # Deploy with Capistrano
