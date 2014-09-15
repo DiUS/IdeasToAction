@@ -45,7 +45,7 @@
 
 === Install Dependencies
 
-1. Install db/mysql: sudo apt-get install mysql-server mysql-client.
+1. Install db/mysql: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
 2. Install libxml2: sudo apt-get install libxslt-dev libxml2-dev.
 3. Install qt WebKit: sudo apt-get install libqtwebkit-dev.
 
