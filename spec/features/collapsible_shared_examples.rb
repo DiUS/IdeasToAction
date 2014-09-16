@@ -1,4 +1,5 @@
 shared_examples_for "a collapsible" do
+
   def collapsible
     page.find(".collapsible[title='#{title}']")
   end
@@ -43,9 +44,9 @@ shared_examples_for "a collapsible" do
           items.should have_content content
         end
       else
-        header.click
         items.should have_text item_content
       end
     end
   end
+
 end
