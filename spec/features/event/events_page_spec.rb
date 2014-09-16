@@ -6,8 +6,8 @@ describe "Events page", js: true, acceptance: true do
   describe 'featured event' do
     let (:featured_element) { page.find('.content:first') }
 
-    it 'should show' do
-      featured_element.text.should_not be_empty
+    it 'should have title' do
+      featured_element.text.should have_content('Featured Event')
     end
 
     it 'should show total' do
@@ -18,17 +18,33 @@ describe "Events page", js: true, acceptance: true do
     end
   end
 
-  describe 'other events' do
-    let (:other_elements) { page.all('.content:not(:first)') }
+  describe 'popular events' do
+    let (:featured_element) { page.find('.content:nth-child(2)') }
+
+    it 'should have title' do
+      featured_element.text.should have_content('Popular Events')
+    end
 
     it 'should show total' do
-      other_elements.to_enum.with_index(0).each do | event, index |
-        text = other_elements[index].text
-        break if text.include? 'More'
-        text.should match /\d{1,2} ideas/
-        text.should match /\d{1,2} actions/
-        text.should match /\d{1,2} reactions/
-      end
+      text = featured_element.text
+      text.should match /\d{1,2} ideas/
+      text.should match /\d{1,2} actions/
+      text.should match /\d{1,2} reactions/
+    end
+  end
+
+  describe 'recent events' do
+    let (:featured_element) { page.find('.content:nth-child(3)') }
+
+    it 'should have title' do
+      featured_element.text.should have_content('Recent Events')
+    end
+
+    it 'should show total' do
+      text = featured_element.text
+      text.should match /\d{1,2} ideas/
+      text.should match /\d{1,2} actions/
+      text.should match /\d{1,2} reactions/
     end
   end
 
