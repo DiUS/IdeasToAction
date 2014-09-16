@@ -55,6 +55,10 @@ class Idea < ActiveRecord::Base
     where("id not in (?)", idea_ids)
   end
 
+  def self.descriptions
+    all.map{|idea| ["(#{idea.id}) #{idea.description.truncate(35)}", idea.id]}
+  end
+
   def as_json options = nil
     super.merge(members_actioned_count: members_actioned.size, tags: tags)
   end

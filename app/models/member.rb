@@ -15,6 +15,11 @@ class Member < ActiveRecord::Base
 
   has_many :idea_actions, :through => :interactions #needed?
 
+  def self.usernames
+    p all.count
+    all.map{|member| ["(#{member.id}) #{member.username ? member.username : 'Anonymous'}", member.id]}
+  end
+
   def content_admin?
     self.role == ROLE_CONTENT_ADMIN
   end

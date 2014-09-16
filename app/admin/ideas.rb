@@ -39,8 +39,7 @@ ActiveAdmin.register Idea do
     f.actions
   end
 
-  filter :member_id, :label => 'Member', :as => :select,
-          :collection => Member.all.map{|m| ["(#{m.id}) #{m.username ? m.username : 'Anonymous'}", m.id]}
+  filter :member_id, label: 'Member', as: :select, collection: proc{Member.usernames}
   filter :description
   filter :created_at
   filter :updated_at

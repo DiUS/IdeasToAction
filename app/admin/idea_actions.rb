@@ -41,8 +41,7 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
     f.actions
   end
 
-  filter :idea_id, :label => 'Idea', :as => :select,
-          :collection => Idea.all.map{ |i| ["(#{i.id}) #{i.description.truncate(35) }", i.id] }
+  filter :idea_id, label: 'Idea', as: :select, collection: proc{Idea.descriptions}
   filter :description
   filter :created_at
   filter :updated_at

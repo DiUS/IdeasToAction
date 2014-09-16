@@ -44,10 +44,8 @@ ActiveAdmin.register Interaction do
     f.actions
   end
 
-  filter :idea_action_id, :label => 'Action', :as => :select,
-         :collection => IdeaAction.all.map{ |a| ["(#{a.id}) #{a.description.truncate(35) }", a.id] }
-  filter :member_id, :label => 'Member', :as => :select,
-         :collection => Member.all.map{ |m| ["(#{m.id}) #{m.username ? m.username : 'Anonymous'}", m.id] }
+  filter :idea_action_id, label: 'Action', as: :select, collection: proc{IdeaAction.descriptions}
+  filter :member_id, label: 'Member', as: :select, collection: proc{Member.usernames}
   filter :reaction_text
   filter :created_at
   filter :updated_at
