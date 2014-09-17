@@ -23,8 +23,9 @@ describe "Talk detail page", js: true, acceptance: true do
   end
 
   context "Ideas collapsible" do
-    let(:title) { "Ideas" }
-    let(:item_contents) { talk.ideas.map(&:description) }
+    let(:title){"Ideas"}
+    let(:item_contents){talk.ideas.map(&:description)}
+    let(:ideas_header){page.find(".collapsible[title='#{title}']").find(".content-header")}
 
     it_should_behave_like "a collapsible"
 
@@ -36,6 +37,7 @@ describe "Talk detail page", js: true, acceptance: true do
       let(:new_idea_button) { page.find("[text()='Submit a new idea']") }
 
       before :each do
+        ideas_header.click
         new_idea_button.click
       end
 

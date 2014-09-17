@@ -17,7 +17,7 @@
             %i.icon-twitter
     .content
       %collapsible(scroller="scroller" title='Actions' type='action' collection='idea.idea_actions' item-template='assets/views/actions/action_collapsible_item.html')
-        #suggest-an-action.content-button(ng-click="createNewIdeaAction(idea)") Suggest an action
+        .content-button(ng-click="createNewIdeaAction(idea)") Suggest an action
     .content
       %collapsible(scroller="scroller" title='Reactions' type='reaction' collection='idea.reactions' item-template='assets/views/reactions/reaction_collapsible_item.html')
     .content

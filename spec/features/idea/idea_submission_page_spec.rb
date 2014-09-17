@@ -2,7 +2,10 @@ require_relative '../collapsible_shared_examples'
 
 describe "Idea submission page", js: true, acceptance: true do
   
-  let(:talk) { Talk.find(1) }
+  let(:talk){Talk.find(1)}
+  let(:title){"Ideas"}
+  let(:ideas_header){page.find(".collapsible[title='#{title}']").find(".content-header")}
+  let(:new_idea_button){page.find("[text()='Submit a new idea']")}
 
   def submission_dialog
     page.find("#new-idea-dialog")
@@ -33,7 +36,8 @@ describe "Idea submission page", js: true, acceptance: true do
   before do
     talk.should_not be_nil
     visit "#/events/1/talks/1"
-    find("[text()='Submit a new idea']").click
+    ideas_header.click
+    new_idea_button.click
   end
 
   context "talks section" do
