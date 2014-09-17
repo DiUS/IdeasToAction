@@ -52,6 +52,7 @@ group :test, :development do
   gem 'webmock'
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
+	gem 'poltergeist'
 
   # # OSX only
   # if RUBY_PLATFORM.downcase.include?("darwin")

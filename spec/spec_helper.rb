@@ -10,6 +10,7 @@ require "authlogic/test_case"
 require "rack_session_access/capybara"
 require 'webmock/rspec'
 require 'database_cleaner'
+require 'capybara/poltergeist'
 
 include Authlogic::TestCase
 
@@ -18,7 +19,7 @@ include Authlogic::TestCase
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 # Capybara configuration
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   # ## Mock Framework
