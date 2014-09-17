@@ -33,21 +33,21 @@
 1. Poll SCM: */3 * * * *, rather than use Github hooks, which is also good.
 2. Build, Execute Shell:
 	<tt>
-		#!/bin/bash -xl<br />
-		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm<br />
-		source /var/lib/jenkins/.rvm/scripts/rvm<br />
-		rvm use gemset actionman<br />
-		bundle install<br />
-		export DB_USERNAME=<db_username><br />
-		export DB_PASSWORD=<db_password><br />
+		#!/bin/bash -xl
+		\curl -sSL get.rvm.io | bash -s stable -ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
+		source /var/lib/jenkins/.rvm/scripts/rvm
+		rvm use gemset actionman
+		bundle install
+		export DB_USERNAME=actionman
+		export DB_PASSWORD=<db_password>
 		RAILS_ENV=test bundle exec rake
 	</tt>
 
 === Install Dependencies
 
-1. Install db/mysql: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
+1. Install MySQL: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
 2. Install libxml2: sudo apt-get install libxslt-dev libxml2-dev.
-3. Install qt WebKit: sudo apt-get install libqtwebkit-dev.
+3. Install Qt WebKit: sudo apt-get install libqtwebkit-dev.
 
 == Setting Up Local Development Environment
 
