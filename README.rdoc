@@ -33,13 +33,13 @@
 1. Poll SCM: */3 * * * *, rather than use Github hooks, which is also good.
 2. Build, Execute Shell:
 	<tt>
-		#!/bin/bash -xl
-		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
-		source /var/lib/jenkins/.rvm/scripts/rvm
-		rvm use gemset actionman
-		bundle install
-		export DB_USERNAME=<db_username>
-		export DB_PASSWORD=<db_password>
+		#!/bin/bash -xl<br />
+		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm<br />
+		source /var/lib/jenkins/.rvm/scripts/rvm<br />
+		rvm use gemset actionman<br />
+		bundle install<br />
+		export DB_USERNAME=<db_username><br />
+		export DB_PASSWORD=<db_password><br />
 		RAILS_ENV=test bundle exec rake
 	</tt>
 
