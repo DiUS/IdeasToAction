@@ -4,47 +4,47 @@ describe "Events page", js: true, acceptance: true do
   end
 
   describe 'featured event' do
-    let (:featured_element) { page.find('.content:first') }
+    let(:featured_element){page.find('.content:first')}
+    let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
-      featured_element.text.should have_content('Featured Event')
+      featured_element_text.should have_content('Featured Event')
     end
 
     it 'should show total' do
-      text = featured_element.text
-      text.should match /\d{1,2} ideas/
-      text.should match /\d{1,2} actions/
-      text.should match /\d{1,2} reactions/
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
   describe 'popular events' do
-    let (:featured_element) { page.find('.content:nth-child(2)') }
+    let(:featured_element){page.find('.content:nth-child(2)')}
+    let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
-      featured_element.text.should have_content('Popular Events')
+      featured_element_text.should have_content('Popular Events')
     end
 
     it 'should show total' do
-      text = featured_element.text
-      text.should match /\d{1,2} ideas/
-      text.should match /\d{1,2} actions/
-      text.should match /\d{1,2} reactions/
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
   describe 'recent events' do
-    let (:featured_element) { page.find('.content:nth-child(3)') }
+    let(:featured_element){page.find('.content:nth-child(3)')}
+    let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
-      featured_element.text.should have_content('Recent Events')
+      featured_element_text.should have_content('Recent Events')
     end
 
     it 'should show total' do
-      text = featured_element.text
-      text.should match /\d{1,2} ideas/
-      text.should match /\d{1,2} actions/
-      text.should match /\d{1,2} reactions/
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
