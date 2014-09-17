@@ -1,4 +1,4 @@
-== TEDxStartSomething
+= TEDxStartSomething Care and Feeding Instructions
 
 == Setting up Continuous Integration (CI)
 
@@ -7,10 +7,11 @@
 1. Create a security group with http, https, ssh, and custom TCP on port 8080.
 2. Create an Ubuntu AMI with hardware capacity of t2.medium.
 3. Attach the created security group to the Ubuntu AMI.
+4. Attach an elastic IP's to the EC2 instance.
 
 === Setup CI
 
-==== Install Jenkins
+==== Install Dependencies
 
 1. sudo apt-get install openjdk-7-jdk
 2. sudo apt-get install git
@@ -19,6 +20,12 @@
 5. sudo apt-get update
 6. sudo apt-get install jenkins
 7. sudo apt-get install phantomjs
+
+==== Install Jenkins
+
+1. Install MySQL: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
+2. Install libxml2: sudo apt-get install libxslt-dev libxml2-dev.
+3. Install Qt WebKit: sudo apt-get install libqtwebkit-dev.
 
 ==== Configure Jenkins
 
@@ -43,26 +50,40 @@
 		RAILS_ENV=test bundle exec rake
 	</tt>
 
-=== Install Dependencies
-
-1. Install MySQL: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
-2. Install libxml2: sudo apt-get install libxslt-dev libxml2-dev.
-3. Install Qt WebKit: sudo apt-get install libqtwebkit-dev.
-
 == Setting Up Local Development Environment
 
 1. git clone git@github.com:DiUS/TEDxStartSomething.
 2. bundle install.
 3. rake db:setup.
 
-
 == Deploy from local machine
 
 $ DEPLOY_KEY=<path_to_deployer_pem> AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> bin/cap canary deploy
 
+== Setting Up Production/Staging Servers
+
+=== Database Server (AWS RDS)
+
+1. Create a security group with http, https, ssh, and custom TCP on port 8080, or re-use security group already created for CI and allocate that to the RDS instance.
+2. Create a small RDS instance with 20GB.
+
+=== Production/Staging Application Servers (AWS EC2)
+
+==== Hardware (AWS EC2)
+
+1. Create a security group or groups with http, https, ssh, and custom TCP on port 8080, or re-use security group already created for CI and allocate that to the RDS instance.
+2. Create two Ubuntu AMI's with hardware capacity of t2.small.
+3. Attach the created security group or groups to the Ubuntu AMI.
+4. Attach elastic IP's to each of the EC2 instances.
+
+==== Install Dependencies
+
+1. Install ansible.
+2. ansible-playbook -i inventory/hosts.ini rails_app_server.yml --extra-vars "rds_defalt_password=<RDS_root_password> db_password=<RDS_user_password>"
+
 == Local Development
 
-=== Install & run elasticsearch
+=== Elasticsearch
 
 ==== Install
 
