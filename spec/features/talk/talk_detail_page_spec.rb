@@ -36,6 +36,7 @@ describe "Talk detail page", js: true, acceptance: true do
       let(:new_idea_button) { page.find("[text()='Submit a new idea']") }
 
       before :each do
+        page.find(".collapsible[title='#{title}']").find(".content-header").click
         new_idea_button.click
       end
 
