@@ -4,31 +4,47 @@ describe "Talks page", js: true, acceptance: true do
   end
 
   describe 'featured talk' do
-    let (:featured_element) { page.find('.content:first') }
+    let (:featured_element){page.find('.content:first')}
+    let(:featured_element_text){featured_element.text}
 
-    it 'should show' do
-      featured_element.text.should_not be_empty
+    it 'should have title' do
+      featured_element_text.should have_content('Featured Talk')
     end
 
     it 'should show total' do
-      text = featured_element.text
-      text.should match /\d{1,2} ideas/
-      text.should match /\d{1,2} actions/
-      text.should match /\d{1,2} reactions/
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
-  describe 'other talks' do
-    let (:other_elements) { page.all('.content:not(:first)') }
+  describe 'popular talks' do
+    let(:featured_element){page.find('.content:nth-child(2)')}
+    let(:featured_element_text){featured_element.text}
+
+    it 'should have title' do
+      featured_element_text.should have_content('Popular Talks')
+    end
 
     it 'should show total' do
-      other_elements.to_enum.with_index(0).each do | talk, index |
-        text = other_elements[index].text
-        break if text.include? 'More'
-        text.should match /\d{1,2} ideas/
-        text.should match /\d{1,2} actions/
-        text.should match /\d{1,2} reactions/
-      end
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
+    end
+  end
+
+  describe 'recent talks' do
+    let(:featured_element){page.find('.content:nth-child(3)')}
+    let(:featured_element_text){featured_element.text}
+
+    it 'should have title' do
+      featured_element_text.should have_content('Recent Talks')
+    end
+
+    it 'should show total' do
+      featured_element_text.should match /\d{1,2} ideas/
+      featured_element_text.should match /\d{1,2} actions/
+      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
