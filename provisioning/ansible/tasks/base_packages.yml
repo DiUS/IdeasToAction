@@ -5,10 +5,9 @@
   with_items:
     - curl
     - git
-    - mysql-server
+    - mysql-client
     - libxml2-dev
     - libxslt1-dev
-    - libmysql-ruby
     - libmysqlclient-dev
     - python-mysqldb
     - gawk
@@ -27,5 +26,4 @@
     - libffi-dev
     - wget
     - openjdk-7-jre-headless
-    - chkconfig
     - nginx
