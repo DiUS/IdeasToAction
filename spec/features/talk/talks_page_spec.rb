@@ -4,7 +4,7 @@ describe "Talks page", js: true, acceptance: true do
   end
 
   describe 'featured talk' do
-    let (:featured_element){page.find('.content:first')}
+    let(:featured_element){page.find('.content:first')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
