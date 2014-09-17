@@ -33,24 +33,16 @@
 1. Poll SCM: */3 * * * *, rather than use Github hooks, which is also good.
 2. Build, Execute Shell:
 	<tt>
-		#!/bin/bash -xl
-		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
-		source /var/lib/jenkins/.rvm/scripts/rvm
-		rvm use gemset actionman
-		bundle install
-		export DB_USERNAME=actionman
-		export DB_PASSWORD=actionman_test
+		#!/bin/bash -xl  
+		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm  
+		source /var/lib/jenkins/.rvm/scripts/rvm  
+		rvm use gemset actionman  
+		bundle install  
+		export DB_USERNAME=actionman  
+		export DB_PASSWORD=actionman_test  
 		RAILS_ENV=test bundle exec rake
 	</tt>
 
-#!/bin/bash -xl
-\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
-source /var/lib/jenkins/.rvm/scripts/rvm
-rvm use gemset actionman
-bundle install
-export DB_USERNAME=actionman
-export DB_PASSWORD=actionman_test
-RAILS_ENV=test bundle exec rake
 === Install Dependencies
 
 1. Install db/mysql: sudo apt-get install mysql-server mysql-client libmysqlclient-dev.
