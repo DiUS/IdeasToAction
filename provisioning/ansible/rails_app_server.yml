@@ -4,9 +4,9 @@
   handlers:
     - include: handlers/main.yml
   tasks:
+    - include: tasks/deployer.yml
     - include: tasks/env_vars.yml
     - include: tasks/non_interactive_shell_vars.yml
-    - include: tasks/deployer.yml
     - include: tasks/base_packages.yml
     - include: tasks/app_dir.yml
     - include: tasks/database.yml
