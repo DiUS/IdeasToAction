@@ -91,16 +91,6 @@
 
 Jenkins is currently accessible via http://54.206.91.221:8080/.
 
-== Setting Up Local Development Environment
-
-1. git clone git@github.com:DiUS/TEDxStartSomething.
-2. bundle install.
-3. rake db:setup.
-
-== Deploy from local machine
-
-$ DEPLOY_KEY=<path_to_deployer_pem> AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> bin/cap canary deploy
-
 == Setting Up Production/Staging Servers
 
 === Database Server (AWS RDS)
@@ -148,7 +138,16 @@ $ DEPLOY_KEY=<path_to_deployer_pem> AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KE
 3. As each job goes green click the small "Run" icon at the bottom right of each job box.
 4. Deployment to production occurs when the second box is green and the "Run" icon is clicked, (hopefully) causing the third and last box to go green.  At this point deployment should be complete.
 
-== Local Development
+== Setting Up Local Development Environment
+
+1. git clone git@github.com:DiUS/TEDxStartSomething.
+2. bundle install.
+3. rake db:create.
+4. rake db:setup.
+
+== Deploy from local machine
+
+$ DEPLOY_KEY=<path_to_deployer_pem> AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> bin/cap canary deploy
 
 === Elasticsearch
 
