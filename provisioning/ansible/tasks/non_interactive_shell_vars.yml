@@ -2,6 +2,7 @@
 # enable and export environment variables for non-interactive shell (Capistrano)
 - lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitUserEnvironment" line="PermitUserEnvironment yes"
   notify: restart sshd
+- file: path=/home/deployer/.ssh state=directory owner=deployer group=deployer
 - file: dest=/home/deployer/.ssh/environment state=touch owner=deployer group=deployer
 - lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_NAME" line="DB_NAME={{ db_name }}"
 - lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_HOST" line="DB_HOST={{ rds_host }}"
