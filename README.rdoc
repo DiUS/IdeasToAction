@@ -142,7 +142,7 @@ httpferf -h
 
 Prepare the path_sequence.txt.  The file basically describes the sequence for requests
 
-httperf --wsesslog=40,2,path_sequence.txt --rate=1 --timeout=5 --session-cookie --server=production.actionman.zerobot.io --port=80
+httperf --wsesslog=40,2,path_sequence.txt --rate=1 --timeout=5 --session-cookie --server=54.79.75.3 --port=80
 
 ==== Explanation
 

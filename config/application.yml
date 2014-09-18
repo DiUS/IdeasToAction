@@ -7,7 +7,7 @@ android:
 development:
   host: "http://54.79.124.80"
 production:
-  host: "http://production.actionman.zerobot.io"
+  host: "http://54.79.75.3"
   analytics_tracking_key: "UA-39769967-1"
 qa:
   host: "http://54.79.124.80"
