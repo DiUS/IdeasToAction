@@ -2,17 +2,17 @@ bitly:
   username: "diactionman"
   api_key: "R_dedfe79fe375266f668a1cb1ee050ae1"
 android:
-  host: "http://qa.actionman.zerobot.io"
+  host: "http://54.79.124.80"
   analytics_tracking_key: "UA-39769967-1"
 development:
-  host: "http://qa.actionman.zerobot.io"
+  host: "http://54.79.124.80"
 production:
   host: "http://production.actionman.zerobot.io"
   analytics_tracking_key: "UA-39769967-1"
 qa:
-  host: "http://qa.actionman.zerobot.io"
+  host: "http://54.79.124.80"
 qa_mobile_assets:
-  host: "http://qa.actionman.zerobot.io"
+  host: "http://54.79.124.80"
 test:
   host: "http://poo.actionman.zerobot.io"
 
