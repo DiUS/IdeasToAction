@@ -21,8 +21,6 @@ set :deploy_to, applicationdir
 set :keep_releases, 5
 set :deploy_via, :remote_cache
 
-ssh_options[:keys] = ENV['DEPLOY_KEY'] || '/home/ubuntu/.ssh/deployer.pem'
-
 set :stages, %w(production qa canary development vagrant)
 require 'capistrano/ext/multistage'
 
