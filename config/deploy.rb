@@ -11,7 +11,7 @@ end
 default_run_options[:pty] = true
 
 set :application, 'actionman'
-set :repository, "git@github.com:DiUS/actionman.git"
+set :repository, 'git@github.com:DiUS/TEDxStartSomething.git'
 set :user, "deployer"  # The server's user for deploys
 set :scm, :git
 set :git_shallow_clone, 1
