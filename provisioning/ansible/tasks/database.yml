@@ -1,3 +1,3 @@
 # configure database
 - mysql_db: login_host={{ rds_host }} login_user={{ rds_default_user }} login_password={{ rds_defalt_password}} name={{ db_name }} state=present
-- mysql_user: login_host={{ rds_host }} login_user={{ rds_default_user }} login_password={{ rds_defalt_password }} name={{ db_username }} password={{ db_password }} priv={{ db_name }}.*:ALL state=present
+- mysql_user: login_host={{ rds_host }} login_user={{ rds_default_user }} login_password={{ rds_defalt_password }} name={{ db_username }} password={{ db_password }} host='%' priv={{ db_name }}.*:ALL state=present
