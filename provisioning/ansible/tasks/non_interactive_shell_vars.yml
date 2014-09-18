@@ -2,9 +2,9 @@
 # enable and export environment variables for non-interactive shell (Capistrano)
 - lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitUserEnvironment" line="PermitUserEnvironment yes"
   notify: restart sshd
-- file: dest=/home/{{ user }}/.ssh/environment state=touch owner={{ user }} group={{ user }}
-- lineinfile: dest=/home/{{ user }}/.ssh/environment regexp="^DB_NAME" line="DB_NAME={{ db_name }}"
-- lineinfile: dest=/home/{{ user }}/.ssh/environment regexp="^DB_HOST" line="DB_HOST={{ rds_host }}"
-- lineinfile: dest=/home/{{ user }}/.ssh/environment regexp="^DB_PORT" line="DB_PORT=3306"
-- lineinfile: dest=/home/{{ user }}/.ssh/environment regexp="^DB_USERNAME" line="DB_USERNAME={{ db_username }}"
-- lineinfile: dest=/home/{{ user }}/.ssh/environment regexp="^DB_PASSWORD" line="DB_PASSWORD={{ db_password }}"
+- file: dest=/home/deployer/.ssh/environment state=touch owner=deployer group=deployer
+- lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_NAME" line="DB_NAME={{ db_name }}"
+- lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_HOST" line="DB_HOST={{ rds_host }}"
+- lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_PORT" line="DB_PORT=3306"
+- lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_USERNAME" line="DB_USERNAME={{ db_username }}"
+- lineinfile: dest=/home/deployer/.ssh/environment regexp="^DB_PASSWORD" line="DB_PASSWORD={{ db_password }}"
