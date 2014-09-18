@@ -93,7 +93,7 @@ namespace :foreman do
       "rm -rf tmp/foreman",
 
       # Start on boot",
-      "sudo chkconfig #{application} on"
+      "sudo sysv-rc-conf #{application} on"
     ].join(' && ')
   end
 

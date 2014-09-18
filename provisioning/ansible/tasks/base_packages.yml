@@ -29,3 +29,4 @@
     - nginx
     - libreadline6-dev
     - libssl-dev
+    - sysv-rc-conf
