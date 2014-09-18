@@ -1,6 +1,6 @@
 ---
 # set up application directory structure
-- file: path=/opt/app/actionman/releases state=directory owner={{ user }} group={{ user }}
-- file: path=/opt/app/actionman/shared/log state=directory owner={{ user }} group={{ user }}
-- file: path=/opt/app owner={{ user }} group={{ user }} recurse=yes
-- file: path=/var/run/actionman state=directory owner={{ user }} group={{ user }}
+- file: path=/opt/app/actionman/releases state=directory owner=deployer group=deployer
+- file: path=/opt/app/actionman/shared/log state=directory owner=deployer group=deployer
+- file: path=/opt/app owner=deployer group=deployer recurse=yes
+- file: path=/var/run/actionman state=directory owner=deployer group=deployer
