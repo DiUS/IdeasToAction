@@ -10,7 +10,7 @@ describe "Home page", js: true, acceptance: true do
     page.text.should =~ /(\d+) Actions/
     page.text.should =~ /(\d+) Talks/
     page.text.should =~ /(\d+) Events/
-    page.text.should =~ /Start Something Start something small and grow it into something big!/
+    page.text.should =~ /Start something TEDxUltimo; the ultimate place to start something/
   end
 
   it 'should link to ideas' do
