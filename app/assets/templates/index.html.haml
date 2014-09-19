@@ -6,8 +6,8 @@
     %meta(name="apple-mobile-web-app-capable" content="yes")
     %meta(content='True' name='HandheldFriendly')
     %meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport')
-    
-    %title= "Actionman"
+
+    %title= "TEDxUltimo Start Something"
     - if env_has_analytics?
       = javascript_include_tag "GALocalStorage"
       :javascript
@@ -22,7 +22,7 @@
     %link(href="favicon.ico" rel="shortcut icon")
   %body(ng-controller="MainCtrl")
     <swipe-view></swipe-view>
-    / 
+    /
       Git Commit:
       = ENV['GIT_COMMIT'] || 'Dev'
       Build Number:
@@ -35,21 +35,21 @@
       }
     /
       Javascripts
-      \================================================== 
+      \==================================================
     / Placed at the end of the document so the pages load faster
     - if Rails.env.test? or Rails.env.development?
-      :javascript  
-        window.ENDPOINT = ''; 
+      :javascript
+        window.ENDPOINT = '';
     - elsif Rails.env.qa_mobile_assets?
-      :javascript  
+      :javascript
         window.ENDPOINT = 'http://54.79.124.80';
       = javascript_include_tag "cordova-2.5.0"
       = javascript_include_tag "TwitterPlugin"
     - elsif Rails.env.qa?
-      :javascript  
+      :javascript
         window.ENDPOINT = 'http://54.79.124.80';
     - else
-      :javascript  
+      :javascript
         window.ENDPOINT = 'http://54.79.75.3';
       = javascript_include_tag "cordova-2.5.0"
       = javascript_include_tag "TwitterPlugin"

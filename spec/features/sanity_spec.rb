@@ -5,6 +5,6 @@ describe "End to End Sanity Check", js: true, acceptance: true do
   end
 
   it "should have a title" do
-    page.html.should have_xpath '//title', text: 'Actionman'
+    page.html.should have_xpath '//title', text: 'TEDxUltimo Start Something'
   end
 end

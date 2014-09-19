@@ -475,7 +475,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Actionman/Actionman-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "Ideas to action";
+				PRODUCT_NAME = "Start Something";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -496,7 +496,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Actionman/Actionman-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "Ideas to action";
+				PRODUCT_NAME = "Start Something";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
