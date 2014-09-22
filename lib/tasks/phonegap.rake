@@ -4,7 +4,7 @@ require 'erb'
 namespace :phonegap do
 
   task :precompile_assets do
-    raise "Couldn't precompile assets" unless Kernel.system("rake RAILS_ENV=#{@assets_env || 'android'} assets:precompile")
+    raise "Couldn't precompile assets" unless Kernel.system("rake RAILS_ENV=#{@assets_env} assets:precompile")
   end
 
   task :clean_www_directory do
@@ -30,7 +30,11 @@ namespace :phonegap do
   end
 
   task :set_qa_assets do
-    @assets_env = "qa_mobile_assets"
+    @assets_env = 'qa_mobile_assets'
+  end
+
+  task :set_production_assets do
+    @assets_env = 'production'
   end
 
   namespace :ios do
@@ -48,26 +52,32 @@ namespace :phonegap do
       FileUtils.rm_rf('mobile/ios/build') if File.exist?('mobile/ios/build')
     end
 
-    task :cp_build_config do
-      FileUtils.cp('mobile/ios/Actionman/config.xml', @www_directory, verbose: true)
-    end
-
-    namespace :assemble_assets do
-      desc "Assembles all the assets necessary for a build."
-      task :production => [:set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
-
-      desc "Assembles all the assets necessary for a qa build."
-      task :qa => [:set_qa_assets, :production]
-    end
-
-    namespace :build do
-      desc "Build iPhone Application (production)"
-      task :production => ['assemble_assets:production', :cp_build_config] do
-        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/ios/cordova/build')
+    namespace :qa do
+      desc "Copy the PhoneGap config.xml to the www_directory."
+      task :cp_build_config do
+        FileUtils.cp('mobile/ios/Actionman/config.xml', @www_directory, verbose: true)
       end
 
+      desc "Assembles all the assets necessary for a qa build."
+      task :assemble_assets => [:set_qa_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
+
       desc "Build iPhone Application (qa)"
-      task :qa => ['assemble_assets:qa', :cp_build_config] do
+      task :build => [:assemble_assets, :cp_build_config] do
+        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/ios/cordova/build')
+      end
+    end
+
+    namespace :production do
+      desc "Copy the PhoneGap production.config.xml to the www_directory."
+      task :cp_build_config do
+        FileUtils.cp('mobile/ios/Actionman/production.config.xml', @www_directory, verbose: true)
+      end
+
+      desc "Assembles all the assets necessary for a build."
+      task :assemble_assets => [:set_production_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
+
+      desc "Build iPhone Application (production)"
+      task :build => [:assemble_assets, :cp_build_config] do
         raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/ios/cordova/build')
       end
     end
