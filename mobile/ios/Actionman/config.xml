@@ -19,7 +19,21 @@
 # under the License.
 #
 -->
-<widget>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "au.com.dius.tedxstartsomething"
+    version     = "1.0.0" >
+
+    <name>TEDxUltimo Start Something QA</name>
+
+    <description>
+        TEDxUltimo Start Something
+    </description>
+
+    <author href="https://dius.com.au" email="code@thoran.com">
+        thoran
+    </author>
+
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="UIWebViewBounce" value="true" />
