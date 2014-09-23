@@ -5,12 +5,14 @@ if RUBY_PLATFORM.downcase.include?("darwin")
 
   namespace :ios do
     namespace :deploy do
-      desc "Deploy application to testflight"
+
+      desc "Deploy application to testflight."
       task :testflight do
         Xcode::Buildspec.parse 'mobile/ios'
         Rake::Task['adhoc:deploy:testflight'].invoke
       end
-      
+
+      desc "Deploy application to appstore."
       task :appstore do
         Xcode::Buildspec.parse 'mobile/ios'
         Rake::Task['appstore:package'].invoke
