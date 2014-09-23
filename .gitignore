@@ -23,6 +23,7 @@ public/assets
 mobile/android/AndroidManifest.xml
 mobile/android/local.properties
 mobile/ios/build/
+mobile/ios/Build/
 mobile/ios/CordovaLib/build/
 mobile/ios/cordova/console.log
 mobile/ios/Actionman.xcodeproj/project.xcworkspace/
