@@ -25,27 +25,8 @@ describe "Talk detail page", js: true, acceptance: true do
   context "Ideas collapsible" do
     let(:title){"Ideas"}
     let(:item_contents){talk.ideas.map(&:description)}
-    let(:ideas_header){page.find(".collapsible[title='#{title}']").find(".content-header")}
 
-    it_should_behave_like "a collapsible"
-
-    it "should have a 'Submit a new idea' button" do
-      page.should have_selector("[text()='Submit a new idea']")
-    end
-
-    context "when clicking the 'Submit a new idea' button..." do
-      let(:new_idea_button) { page.find("[text()='Submit a new idea']") }
-
-      before :each do
-        ideas_header.click
-        new_idea_button.click
-      end
-
-      it "should show the submission form" do
-        page.should have_selector("#new-idea-dialog", visible: true)
-      end
-
-    end
+    it_should_behave_like 'a collapsible'
   end
 
   describe 'when wanting to navigate back to the home page' do
