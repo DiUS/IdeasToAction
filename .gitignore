@@ -29,6 +29,7 @@ mobile/ios/cordova/console.log
 mobile/ios/Actionman.xcodeproj/project.xcworkspace/
 mobile/ios/Actionman.xcodeproj/xcuserdata/
 mobile/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/
+mobile/ios/www/
 .rvmrc
 .idea
 .ssh/*
