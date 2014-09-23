@@ -15,7 +15,7 @@ namespace :phonegap do
     FileUtils.mkdir_p(@www_directory)
   end
 
-  task :cp_assets_to_www_directory => [:create_www_directory] do
+  task :cp_assets_to_www_directory => :create_www_directory do
     FileUtils.mv('public/assets', "#{@www_directory}/.", verbose: true)
     FileUtils.mv("#{@www_directory}/assets/index.html", @www_directory, verbose: true)
     FileUtils.rm_rf("#{@www_directory}/assets/active_admin", verbose: true)
@@ -50,6 +50,7 @@ namespace :phonegap do
 
     task :clean => :clean_www_directory do
       FileUtils.rm_rf('mobile/ios/build') if File.exist?('mobile/ios/build')
+      FileUtils.rm_rf('mobile/ios/Build') if File.exist?('mobile/ios/Build')
     end
 
     namespace :qa do
