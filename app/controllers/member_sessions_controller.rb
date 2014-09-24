@@ -1,4 +1,3 @@
-
 class MemberSessionsController < ApplicationController
   layout "web_login"
 
