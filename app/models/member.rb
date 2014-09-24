@@ -11,9 +11,7 @@ class Member < ActiveRecord::Base
     c.validate_login_field = false
   end
 
-  has_many :interactions
-
-  has_many :idea_actions, :through => :interactions #needed?
+  has_many :idea_actions
 
   def self.usernames
     all.map{|member| ["(#{member.id}) #{member.username ? member.username : 'Anonymous'}", member.id]}
