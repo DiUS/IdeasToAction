@@ -19,7 +19,7 @@ class Talk < ActiveRecord::Base
     indexes :hero_image_url,  :index    => :not_analyzed
   end  
       
-  attr_accessible :description, :title, :ideas, :hero_image_url, :ted_talk_url, :featured, :event_id
+  attr_accessible :description, :title, :ideas, :hero_image_url, :ted_talk_url, :featured, :event_id, :viewable
 
   has_many :ideas, through: :talk_to_idea_associations
   has_many :idea_actions, through: :ideas
@@ -38,7 +38,7 @@ class Talk < ActiveRecord::Base
   end
 
   def self.featured
-    where(:featured => true)
+    where(featured: true)
   end
 
   def self.recent
@@ -51,6 +51,10 @@ class Talk < ActiveRecord::Base
 
   def self.excluding_talks(talk_ids)
     where("id not in (?)", talk_ids)
+  end
+
+  def self.viewable
+    where(viewable: true)
   end
 
   def destroy_ideas_without_talks

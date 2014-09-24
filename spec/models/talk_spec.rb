@@ -8,6 +8,7 @@ describe Talk do
   it { should be_accessible(:hero_image_url) }
   it { should be_accessible(:ted_talk_url) }
   it { should be_accessible(:featured) }
+  it { should be_accessible(:viewable) }
   it { should be_accessible(:event_id ) }
 
   it { should delegate(:name).to(:event).with_prefix }
@@ -35,6 +36,11 @@ describe Talk do
   it 'should exclude specified talk' do
     talks_to_exclude = Event.first
     Talk.excluding_talks([talks_to_exclude.id]).should_not include(talks_to_exclude)
+  end
+
+  it "should return viewable talks" do
+    talks = Talk.viewable
+    talks.each{|talk| talk.viewable?.should be_true}
   end
 
   context 'dependent ideas' do

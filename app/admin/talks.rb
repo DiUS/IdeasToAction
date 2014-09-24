@@ -10,6 +10,7 @@ ActiveAdmin.register Talk do
       link_to talk.event_name, admin_event_path(talk.event)
     end
     column :featured
+    column :viewable
     column :created_at
     column :updated_at
     default_actions
