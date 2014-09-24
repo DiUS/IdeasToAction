@@ -7,7 +7,7 @@ describe IdeaActionsController do
   end
 
   def valid_attributes
-    { }
+    {}
   end
 
   describe 'GET random' do
@@ -36,7 +36,7 @@ describe IdeaActionsController do
 
       describe 'excluding certain idea_actions' do
         let(:idea_action_ids) { '1,2,3,4,5' }
-        let(:idea_actions)   { ['idea_action1', 'idea_action2'] }
+        let(:idea_actions) { ['idea_action1', 'idea_action2'] }
         let(:excluded_idea_actions) { mock('excluded_idea_actions') }
 
         before do

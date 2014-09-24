@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe EventsController do
   def valid_event_attributes
-    { :name => 'event', :description => 'description', :hero_image_url => 'http://www.google.com' }
+    {name: 'event', description: 'description', hero_image_url: 'http://www.google.com'}
   end
 
   def valid_talk_attributes
-    { :title => 'talk', :description => 'description', :event_id => Event.first.id}
+    {title: 'talk', description: 'description', event_id: Event.first.id}
   end
 
   def valid_session
