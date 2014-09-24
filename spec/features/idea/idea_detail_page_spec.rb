@@ -38,13 +38,6 @@ describe "Idea detail page", js: true, acceptance: true do
     it_should_behave_like "a collapsible"
   end
 
-  context "Reactions collapsible" do
-    let(:title) { "Reactions" }
-    let(:item_contents) { idea.interactions.map(&:reaction_text) }
-
-    it_should_behave_like "a collapsible"
-  end
-
   context "share" do
     it 'should have a twitter share button' do
       page.should have_selector('.btn-twitter')
@@ -70,51 +63,12 @@ describe "Idea detail page", js: true, acceptance: true do
     def collapsible
       page.find(".collapsible[title='Actions']")
     end
-
-    def reaction_collapsible
-      page.find(".collapsible[title='Reactions']")
-    end
     
     before do
-      reaction_collapsible.should have_selector('.content-header sup', text: '3')
-
       collapsible.find(".content-header").click
       page.should have_selector(".btn.done-it", visible: true)
       collapsible.find(".content-item:first-child .btn.done-it").click
       sleep 1
-    end
-
-    it 'should inform the user they have done it' do
-      collapsible.should have_selector('.content-item .tile', text: "I've done it")
-    end
-
-    describe 'when reacting to an idea' do
-
-      describe 'checking the number of reactions' do
-        before :each do
-          begin
-            reaction_collapsible.should have_selector('.content-header sup', text: '3')
-
-            collapsible.should have_selector(".content-item:first-child .reaction textarea")
-            collapsible.should have_selector(".content-item:first-child .reaction textarea", visible: true)
-
-            collapsible.find(".content-item:first-child .reaction textarea").set('This is my reaction')
-            collapsible.find(".content-item:first-child .reaction textarea").value.should eq 'This is my reaction'
-
-            collapsible.find('.content-item:first-child .btn.submit-reaction').click
-          rescue => e
-            puts page.html
-            raise e
-          end
-        end
-
-        it 'should update the reactions' do
-          reaction_collapsible.should have_selector('.content-header sup', text: '4')
-
-          reaction_collapsible.find(".content-header").click
-          reaction_collapsible.should have_text('This is my reaction')
-        end
-      end
     end
   end
 end

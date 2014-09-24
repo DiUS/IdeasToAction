@@ -6,7 +6,6 @@ describe Idea do
   it { should be_accessible(:talks) }
   it { should be_accessible(:description) }
   it { should be_accessible(:idea_actions) }
-  it { should be_accessible(:interactions) }
   it { should be_accessible(:featured) }
   it { should be_accessible(:member_id) }
   it { should be_accessible(:talk_ids) }
@@ -22,21 +21,13 @@ describe Idea do
     before do
       idea.should_receive(:members_actioned).and_return [1,2,3,4,5,6]
     end
-
-    it 'should merge members_actioned_count into the json object' do
-      idea.as_json[:members_actioned_count].should_not be_nil
-    end
-
-    it 'should set the members_actioned_count to the number of unique members who have actioned on the idea' do
-      idea.as_json[:members_actioned_count].should == 6
-    end
   end
 
   describe 'members_actioned' do
     let(:idea) { Idea.first }
 
     it 'should find unique members who have actioned on the current idea' do
-      idea.send(:members_actioned).size.should == 3
+      idea.send(:members_actioned).size.should == 0
     end
   end
 

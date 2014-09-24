@@ -14,21 +14,10 @@ describe "Member page", js: true, acceptance: true do
 
   before do
     member.should_not be_nil
-    @interaction = Interaction.create! idea_action: IdeaAction.first, member: member, reaction_text: 'i think you have come up with something big here'
-    member.interactions.size.should > 0
     visit "#/member"
   end
 
   after :each do
     member.destroy
-    @interaction.destroy
-  end
-
-  context "My actions collapsible" do
-    let(:title) { "Actions taken" }
-    let(:starts_as_collapsed?) { false }
-    let(:item_contents) { [member.interactions.map(&:idea_action).map(&:description), member.interactions.map(&:reaction_text)] }
-
-    it_should_behave_like "a collapsible"
   end
 end

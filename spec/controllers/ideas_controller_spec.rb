@@ -98,7 +98,6 @@ describe IdeasController do
       attrs[:idea_actions] = [IdeaAction.last.as_json, IdeaAction.first.as_json]
       attrs[:tags] = [Tag.last.as_json, Tag.first.as_json]
       attrs[:talks] = [Talk.last.as_json, Talk.first.as_json]
-      attrs[:interactions] = [Interaction.last.as_json, Interaction.first.as_json]
     end
 
     it 'should update the idea' do

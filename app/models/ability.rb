@@ -15,7 +15,6 @@ class Ability
       can :manage, Member do |the_member|
         the_member == member
       end
-      can :manage, Interaction
     else
       can :read, :all
       can :ideas, Event
@@ -29,10 +28,6 @@ class Ability
       can :random, Idea
       can :create, Idea
       can :show_idea_url, Idea
-      can :create, Interaction
-      can :update, Interaction do |interaction|
-        member == interaction.member
-      end
 
       can :manage, Member do |the_member|
         the_member == member

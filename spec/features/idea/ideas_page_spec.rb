@@ -13,7 +13,6 @@ describe "Ideas page", js: true, acceptance: true do
 
     it 'should show total' do
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -27,7 +26,6 @@ describe "Ideas page", js: true, acceptance: true do
 
     it 'should show total' do
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -41,7 +39,6 @@ describe "Ideas page", js: true, acceptance: true do
 
     it 'should show total' do
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -65,7 +62,6 @@ describe "Ideas page", js: true, acceptance: true do
       new_ideas.to_enum.with_index(0).each do | idea, index |
         text = new_ideas[index].text
         text.should match /\d{1,2} actions/
-        text.should match /\d{1,2} reactions/
       end
     end
 

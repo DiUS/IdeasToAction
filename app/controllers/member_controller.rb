@@ -3,7 +3,5 @@ class MemberController < ApplicationController
 
   respond_to :json
 
-  def interactions
-    render json: Interaction.find_by_member(member), methods: :idea_action
-  end
+	#TODO: implement when the actions will get associated to users
 end

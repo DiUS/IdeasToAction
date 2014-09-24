@@ -14,7 +14,6 @@ describe "abilities" do
     it { should be_able_to(:manage, Talk.new) }
     it { should be_able_to(:manage, member) }
     it { should_not be_able_to(:manage, Member.new) }
-    it { should be_able_to(:manage, Interaction) }
   end
 
   context "when member is a global admin" do
@@ -25,7 +24,6 @@ describe "abilities" do
     it { should be_able_to(:manage, Idea.new) }
     it { should be_able_to(:manage, Talk.new) }
     it { should be_able_to(:manage, Member.new) }
-    it { should be_able_to(:manage, Interaction) }
   end
 
   context "when member is a regular member" do
@@ -49,8 +47,5 @@ describe "abilities" do
 
     it { should be_able_to(:manage, member) }
     it { should_not be_able_to(:manage, Member.new) }
-
-    it { should be_able_to(:create, Interaction.new) }
-    it { should be_able_to(:update, Interaction) }
   end
 end

@@ -14,7 +14,6 @@ describe "Events page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -29,7 +28,6 @@ describe "Events page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -44,7 +42,6 @@ describe "Events page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -69,7 +66,6 @@ describe "Events page", js: true, acceptance: true do
         text = new_events[index].text
         text.should match /\d{1,2} ideas/
         text.should match /\d{1,2} actions/
-        text.should match /\d{1,2} reactions/
       end
     end
 

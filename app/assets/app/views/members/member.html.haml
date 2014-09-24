@@ -1,9 +1,6 @@
-#member.loading
+#member
   .header.main-header(ng-click="scroller.scrollToPage(0, 0, 300)")
     My profile
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
-  %scrollable
-    .content
-      %collapsible(scroller="scroller" title='Actions taken' expanded="true" can-collapse="false" type='interaction' collection='interactions' item-template='assets/views/interactions/interactions_item.html')

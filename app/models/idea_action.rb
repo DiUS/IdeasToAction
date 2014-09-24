@@ -20,12 +20,6 @@ class IdeaAction < ActiveRecord::Base
 
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
 
-  has_many :interactions, :dependent => :destroy do
-    def from_member member
-      find(:first, :conditions => ['member_id = ?', member.id])
-    end
-  end
-
   validates :idea, :description, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
@@ -46,7 +40,7 @@ class IdeaAction < ActiveRecord::Base
   end
 
   def self.popular
-    order("reactions_count desc").limit(10)
+    limit(10) #TODO: re-implement when state 'done' will get introduced to actions
   end
 
   def self.excluding_idea_actions(idea_action_ids)
@@ -55,17 +49,7 @@ class IdeaAction < ActiveRecord::Base
 
   def self.descriptions
     all.map{|idea_action| ["(#{idea_action.id}) #{idea_action.description.truncate(35)}", idea_action.id]}
-  end
-
-  def as_json options = nil
-    super.merge(members_actioned_count: members_actioned.size)
-  end
-
-  def members_actioned #TODO: do we need this ? just go through interaction model
-    Idea.find_by_sql("select distinct ins.member_id from " + 
-                      "idea_actions a, interactions ins where " +
-                      "ins.idea_action_id = a.id and a.id = #{self.id}")
-  end
+	end
 
   private
 

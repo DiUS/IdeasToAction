@@ -31,9 +31,4 @@ describe 'harbors/index.json.rabl' do
     @rendered.should have_json_path("talks")
     @rendered.should have_json_type(Array).at_path("talks")
   end
-
-  it "includes the collection of interactions" do
-    @rendered.should have_json_path("interactions")
-    @rendered.should have_json_type(Array).at_path("interactions")
-  end
 end

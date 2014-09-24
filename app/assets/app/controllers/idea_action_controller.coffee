@@ -1,15 +1,7 @@
-window.IdeaActionCtrl = ($scope, $http, $element, $routeParams, Interaction, dataCache) ->
+window.IdeaActionCtrl = ($scope, $http, $element) ->
   $scope.doneIt = (ideaActionId) ->
+    alert "I've just done action #{ideaActionId}!  Stand by for proper implementation."
     $button = $element.find('.done-it')
     return if $button.hasClass('disabled')
 
     $button.addClass('disabled')
-
-    interaction = Interaction.new()
-    interaction.idea_action_id = ideaActionId
-    interaction.$save ->
-      dataCache.removeAll()
-      $(".idea-#{$scope.item.idea_id}").scope().update ->
-        setTimeout ->
-          $("#reaction-#{interaction.id}").slideToggle 300
-        , 300

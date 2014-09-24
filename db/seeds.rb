@@ -14,7 +14,6 @@ if %w(test development qa).include? Rails.env
   Talk.delete_all
   Idea.delete_all
   Member.delete_all
-  Interaction.delete_all
   IdeaAction.delete_all
 
   # Setup
@@ -402,12 +401,5 @@ if %w(test development qa).include? Rails.env
   amy_cuddy_and_steve_jobs_idea.save!
 
   amy_cuddy_and_steve_jobs_idea.idea_actions.create!(:description => 'Power-pose for two minutes before an important meeting.')
-
-
-  if %w(test development).include? Rails.env
-    Interaction.create! idea_action: IdeaAction.first, member: member1, reaction_text: 'i think you have come up with something big here'
-    Interaction.create! idea_action: IdeaAction.first, member: member2, reaction_text: 'what else can I say?'
-    Interaction.create! idea_action: IdeaAction.first, member: member3, reaction_text: 'There is some useful information here'
-  end
 
 end

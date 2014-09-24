@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140912072322) do
+ActiveRecord::Schema.define(:version => 20140923015952) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -44,10 +44,9 @@ ActiveRecord::Schema.define(:version => 20140912072322) do
   create_table "idea_actions", :force => true do |t|
     t.text     "description"
     t.integer  "idea_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.boolean  "featured",        :default => false
-    t.integer  "reactions_count", :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "featured",    :default => false
   end
 
   create_table "ideas", :force => true do |t|
@@ -57,20 +56,11 @@ ActiveRecord::Schema.define(:version => 20140912072322) do
     t.integer  "member_id"
     t.boolean  "featured",           :default => false
     t.integer  "idea_actions_count", :default => 0
-    t.integer  "reactions_count",    :default => 0
   end
 
   create_table "ideas_tags", :force => true do |t|
     t.integer "idea_id"
     t.integer "tag_id"
-  end
-
-  create_table "interactions", :force => true do |t|
-    t.integer  "idea_action_id"
-    t.integer  "member_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.text     "reaction_text"
   end
 
   create_table "members", :force => true do |t|
@@ -107,7 +97,6 @@ ActiveRecord::Schema.define(:version => 20140912072322) do
     t.boolean  "featured",           :default => false
     t.integer  "ideas_count",        :default => 0
     t.integer  "idea_actions_count", :default => 0
-    t.integer  "reactions_count",    :default => 0
   end
 
 end

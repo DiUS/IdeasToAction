@@ -20,7 +20,6 @@ class Idea < ActiveRecord::Base
   has_many :talk_to_idea_associations
   has_many :talks, through: :talk_to_idea_associations
   has_many :idea_actions, :inverse_of => :idea, :dependent => :destroy
-  has_many :interactions, :through => :idea_actions
   has_and_belongs_to_many :tags
 
   validates_length_of :talks, minimum: 1
@@ -28,7 +27,7 @@ class Idea < ActiveRecord::Base
 
   accepts_nested_attributes_for :idea_actions
 
-  attr_accessible :tags, :talks, :description, :idea_actions, :interactions, :featured, :member_id, :talk_ids, :idea_actions_attributes
+  attr_accessible :tags, :talks, :description, :idea_actions, :featured, :member_id, :talk_ids, :idea_actions_attributes
 
   delegate :username, :to => :member, :prefix => true
 
@@ -70,9 +69,7 @@ class Idea < ActiveRecord::Base
   end
 
   def members_actioned
-    Idea.find_by_sql("select distinct ins.member_id from " + 
-                      "ideas i, interactions ins, idea_actions a where " +
-                      "a.idea_id = i.id and ins.idea_action_id = a.id and i.id = #{self.id}")
+		[] #TODO: re-implement when the relationship between the idea and a member is defined
   end
 
   private

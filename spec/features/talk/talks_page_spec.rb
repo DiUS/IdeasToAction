@@ -14,7 +14,6 @@ describe "Talks page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -29,7 +28,6 @@ describe "Talks page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -44,7 +42,6 @@ describe "Talks page", js: true, acceptance: true do
     it 'should show total' do
       featured_element_text.should match /\d{1,2} ideas/
       featured_element_text.should match /\d{1,2} actions/
-      featured_element_text.should match /\d{1,2} reactions/
     end
   end
 
@@ -70,7 +67,6 @@ describe "Talks page", js: true, acceptance: true do
         return if text.include? 'More'
         text.should match /\d{1,2} ideas/
         text.should match /\d{1,2} actions/
-        text.should match /\d{1,2} reactions/
       end
     end
 

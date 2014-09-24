@@ -10,9 +10,6 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $scope.idea = data
       $scope.talk_title = $scope.idea.talks[0].title
 
-      $scope.$watch 'idea.interactions', ->
-        $scope.idea.reactions = $scope.idea.interactions.filter (interaction) -> interaction.reaction_text?
-
       $('.loading').removeClass('loading')
       callback() if callback?
 
