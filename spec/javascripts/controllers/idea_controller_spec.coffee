@@ -51,13 +51,6 @@ describe 'IdeaCtrl', ->
       $httpBackend.flush()
       expect(callback).toHaveBeenCalled()
 
-    it 'should set reactions on scope, based on interactions which habe reaction text', ->
-      scope.update()
-      $httpBackend.flush()
-      expect(scope.idea.reactions.length).toEqual(2)
-      expect(scope.idea.reactions[0]).toEqual({reaction_text: 'some text'})
-      expect(scope.idea.reactions[1]).toEqual({reaction_text: 'some more text'})
-
   describe '#tweet', ->
     composeTweet = null
     isTwitterAvailable = null
