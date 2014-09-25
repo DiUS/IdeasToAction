@@ -25,7 +25,6 @@ class IdeasController < ApplicationController
   def update
     params['idea'].delete 'talks'
     params['idea'].delete 'idea_actions'
-    params['idea'].delete 'interactions'
     params['idea'].delete 'tags'
     update!
   end

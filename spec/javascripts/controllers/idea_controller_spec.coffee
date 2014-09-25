@@ -3,7 +3,6 @@ describe 'IdeaCtrl', ->
     description: 'Body language affects how others see us, but it may also change how we see ourselves.'
     action: ['action1', 'action2']
     talks: [{title: "The talk"}, {title: "The other talk"}]
-    interactions: [{reaction_text: null}, {reaction_text: 'some text'}, {reaction_text: 'some more text'}]
   }
 
   scope = null
