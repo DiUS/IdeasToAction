@@ -51,6 +51,8 @@
 		bundle install
 		export DB_USERNAME=actionman
 		export DB_PASSWORD=<db_password>
+		RAILS_ENV=test bundle exec rake db:migrate
+		RAILS_ENV=test bundle exec rake jasmine:headless
 		RAILS_ENV=test bundle exec rake
 	</tt>
 5. In Post-build Actions, Downstream Project Names enter: QA_Deploy.
