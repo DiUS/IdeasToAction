@@ -36,6 +36,8 @@ describe "abilities" do
     it { should be_able_to(:recent, IdeaAction) }
     it { should be_able_to(:create, IdeaAction) }
     it { should_not be_able_to(:manage, IdeaAction) }
+		it { should_not be_able_to(:complete, IdeaAction.new) }
+		it { should be_able_to(:complete, IdeaAction.new(member: member)) }
 
     it { should be_able_to(:random, Idea.new) }
     it { should be_able_to(:create, Idea.new) }

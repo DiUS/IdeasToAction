@@ -23,6 +23,9 @@ class Ability
       can :recent, IdeaAction
       can :doneIt, IdeaAction
       can :create, IdeaAction
+			can :complete, IdeaAction do |idea_action|
+				idea_action.member == member
+			end
 
       can :random, Idea
       can :create, Idea

@@ -1,8 +1,6 @@
-window.IdeaActionCtrl = ($scope, $http, $element, IdeaActionResource) ->
-  $scope.doneIt = (ideaAction) ->
+window.IdeaActionCtrl = ($scope, $http, $element) ->
+  $scope.doneIt = (ideaActionId) ->
     $button = $element.find('.done-it')
     return if $button.hasClass('disabled')
-
     $button.addClass('disabled')
-
-#    ideaAction.complete()
+    $http.put("#{window.ENDPOINT}/idea_actions/#{ideaActionId}/complete")

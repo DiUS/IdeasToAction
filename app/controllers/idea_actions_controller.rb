@@ -43,8 +43,7 @@ class IdeaActionsController < ApplicationController
 
 	def complete
 		@idea_action = IdeaAction.find params[:id]
-
-		@idea_action.completion_date = Time.now if @idea_action.member == current_member
+		@idea_action.completion_date = Time.now
 		if @idea_action.save
 			render json: @idea_action
 		else

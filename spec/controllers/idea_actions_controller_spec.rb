@@ -116,4 +116,29 @@ describe IdeaActionsController do
 			end
 		end
 	end
+
+	describe 'PUT complete' do
+		let(:idea_action) { IdeaAction.first }
+
+		describe 'for users that submitted the action' do
+			before do
+				controller.stub(:current_member).and_return(idea_action.member)
+				put :complete, { id: idea_action.id, format: :json }
+			end
+
+			it 'should be successful' do
+				expect(response).to be_success
+			end
+
+			it 'should update new idea action' do
+				expect(assigns(:idea_action)).to be_a(IdeaAction)
+				expect(assigns(:idea_action)).to be_persisted
+			end
+
+			it 'returns JSON of updated idea action' do
+				idea_action_json = JSON.parse(response.body)
+				expect(idea_action_json['description']).to eq(idea_action.description)
+			end
+		end
+	end
 end
