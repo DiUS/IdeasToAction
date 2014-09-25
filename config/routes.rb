@@ -7,13 +7,16 @@ Actionman::Application.routes.draw do
   get "heartbeat/beat"
 
   match "counts" => "counts#index"
-  match "member/interactions" => "member#interactions"
+  match 'member/idea_actions' => 'member#idea_actions'
 
   resources :idea_actions do
-    resources :interactions
     collection do
       get 'random'
-    end
+		end
+
+		member do
+			put 'complete'
+		end
   end
 
   resources :ideas do

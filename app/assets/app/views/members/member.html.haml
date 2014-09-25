@@ -4,3 +4,6 @@
     .touch-panel
       %a.touch-icon(ng-href="/home")
         %i.icon-home
+  %scrollable
+    .content
+      %collapsible(scroller="scroller" title='My Actions' expanded="true" can-collapse="false" type='idea_action' collection='idea_actions' item-template='assets/views/actions/actions_item.html')

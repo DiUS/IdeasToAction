@@ -66,5 +66,54 @@ describe IdeaActionsController do
         assigns(:idea_action_view).should_not be_nil
       end
     end
-  end
+	end
+
+	describe 'POST create' do
+		before do
+			controller.stub(:current_member).and_return(Member.first)
+		end
+
+		describe 'with valid attributes' do
+			let(:valid_attributes) { { description: 'This is the action I want to do', idea_id: Idea.first.id } }
+
+			before do
+				post :create, { :format => 'json', :idea_action => valid_attributes}
+			end
+
+			it 'should be successful' do
+				expect(response).to be_success
+			end
+
+			it 'should create a new idea action' do
+				expect(assigns(:idea_action)).to be_a(IdeaAction)
+				expect(assigns(:idea_action)).to be_persisted
+			end
+
+			it 'returns JSON of new created idea action' do
+				idea_action_json = JSON.parse(response.body)
+				expect(idea_action_json['description']).to eq(valid_attributes[:description])
+			end
+		end
+
+		describe 'with invalid attributes' do
+			let(:invalid_attributes) { { description: '', idea_id: Idea.first.id } }
+
+			before do
+				post :create, { :format => 'json', :idea_action => invalid_attributes}
+			end
+
+			it 'should not be successful' do
+				expect(response).not_to be_success
+			end
+
+			it 'should be an unprocessable entity' do
+				expect(response.status).to eq(422)
+			end
+
+			it 'should contain errors' do
+				idea_action_json = JSON.parse(response.body)
+				expect(idea_action_json['errors']).to eq(assigns(:idea_action).errors.messages.stringify_keys)
+			end
+		end
+	end
 end

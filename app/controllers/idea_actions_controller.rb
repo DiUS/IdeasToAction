@@ -28,5 +28,27 @@ class IdeaActionsController < ApplicationController
     respond_to do |format|
       format.json { render json: @idea_actions }
     end
-  end
+	end
+
+	def create
+		@idea_action = IdeaAction.new params[:idea_action]
+		@idea_action.member = current_member
+
+		if @idea_action.save
+			render json: @idea_action
+		else
+			render :json => { :errors => @idea_action.errors }, status: :unprocessable_entity
+		end
+	end
+
+	def complete
+		@idea_action = IdeaAction.find params[:id]
+
+		@idea_action.completion_date = Time.now if @idea_action.member == current_member
+		if @idea_action.save
+			render json: @idea_action
+		else
+			render :json => { :errors => @idea_action.errors }, status: :unprocessable_entity
+		end
+	end
 end

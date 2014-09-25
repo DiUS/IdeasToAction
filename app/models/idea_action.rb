@@ -16,9 +16,10 @@ class IdeaAction < ActiveRecord::Base
     indexes :description,     :boost => 100
   end  
       
-  attr_accessible :description, :featured, :idea_id, :idea
+  attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date
 
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
+	belongs_to :member
 
   validates :idea, :description, :presence => true
 
@@ -26,6 +27,14 @@ class IdeaAction < ActiveRecord::Base
 
   after_create :increment_counter
   after_destroy :decrement_counter
+
+	def completed?
+		!completion_date.nil?
+	end
+
+	def completable?(current_member)
+		member == current_member && !completed?
+	end
 
   def self.random(number = 1)
     IdeaAction.offset(rand(IdeaAction.count - number+1)).first(number)

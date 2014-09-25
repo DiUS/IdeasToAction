@@ -51,7 +51,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     idea_hash = params[:idea]
-    idea_hash[:idea_actions] = idea_hash[:idea_actions].blank? ? [] : idea_hash[:idea_actions].map { | action_attrs | IdeaAction.new(action_attrs) }
+    idea_hash[:idea_actions] = idea_hash[:idea_actions].blank? ? [] : idea_hash[:idea_actions].map { | action_attrs | IdeaAction.new(action_attrs.merge(member: current_member)) }
     idea_hash[:talks] = idea_hash[:talks].blank? ? [] : idea_hash[:talks].map { | talk_attrs | Talk.find(talk_attrs[:id]) }
 
     @idea = Idea.new(idea_hash)

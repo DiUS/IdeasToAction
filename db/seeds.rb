@@ -20,6 +20,10 @@ if %w(test development qa).include? Rails.env
   member1 = Member.create! persistence_token: '1234'
   member2 = Member.create! persistence_token: '5678'
   member3 = Member.create! persistence_token: '9012'
+  member4 = Member.create! persistence_token: '6732'
+  member5 = Member.create! persistence_token: '7654'
+  member6 = Member.create! persistence_token: '4353'
+  member7 = Member.create! persistence_token: '3456'
 
   Member.create! username: "content_admin", password: "TEDc0nt3nt", :role => Member::ROLE_CONTENT_ADMIN
   Member.create! username: "global_admin", password: "TED4dm1n", :role => Member::ROLE_GLOBAL_ADMIN
@@ -54,8 +58,8 @@ if %w(test development qa).include? Rails.env
   paolo_cardini_talk_idea_1.member = member1
   paolo_cardini_talk_idea_1.save!
 
-  paolo_cardini_talk_idea_1.idea_actions.create!(:description => 'Call someone instead of texting, and give your full attention.')
-  paolo_cardini_talk_idea_1.idea_actions.create!(:description => "Visit Cardini's website and buy a phone cover to encourage mono tasking in your daily life and as a conversation-starter to enable sharing the idea with others.")
+  paolo_cardini_talk_idea_1.idea_actions.create!(description: 'Call someone instead of texting, and give your full attention.', member: member1)
+  paolo_cardini_talk_idea_1.idea_actions.create!(description: 'Visit Cardini\'s website and buy a phone cover to encourage mono tasking in your daily life and as a conversation-starter to enable sharing the idea with others.', member: member1)
 
   paolo_cardini_talk_idea_2 = Idea.new(
     talks: [ paolo_cardini_talk ],
@@ -66,7 +70,7 @@ if %w(test development qa).include? Rails.env
   paolo_cardini_talk_idea_2.member = member1
   paolo_cardini_talk_idea_2.save!
 
-  paolo_cardini_talk_idea_2.idea_actions.create!(:description => 'Turn off your phone next time you are in a place that you wish to explore and experience it unmediated and uninterrupted by technology.  Allow yourself to get lost, if not literally in the place, then in the experience.')
+  paolo_cardini_talk_idea_2.idea_actions.create!(description: 'Turn off your phone next time you are in a place that you wish to explore and experience it unmediated and uninterrupted by technology.  Allow yourself to get lost, if not literally in the place, then in the experience.', member: member2)
 
   #
   # TEDx Houston
@@ -97,8 +101,8 @@ if %w(test development qa).include? Rails.env
   brene_brown_talk_idea_1.member = member1
   brene_brown_talk_idea_1.save!
 
-  brene_brown_talk_idea_1.idea_actions.create!(:description => 'Make a list of emotions you find difficult and normally try to protect yourself from.  Try to welcome them.')
-  brene_brown_talk_idea_1.idea_actions.create!(:description => "Talk to someone with whom you want to connect more deeply about these ideas - make room for vulnerability in the  relationship by becoming mutualy aware of it.")
+  brene_brown_talk_idea_1.idea_actions.create!(description: 'Make a list of emotions you find difficult and normally try to protect yourself from.  Try to welcome them.', member: member6)
+  brene_brown_talk_idea_1.idea_actions.create!(description: 'Talk to someone with whom you want to connect more deeply about these ideas - make room for vulnerability in the  relationship by becoming mutualy aware of it.', member: member7)
 
   brene_brown_talk_idea_2 = Idea.new(
     talks: [ brene_brown_talk ],
@@ -109,8 +113,8 @@ if %w(test development qa).include? Rails.env
   brene_brown_talk_idea_2.member = member1
   brene_brown_talk_idea_2.save!
 
-  brene_brown_talk_idea_2.idea_actions.create!(:description => 'Think of something you would do to show someone you love him or her.  Do it for yourself.')
-  brene_brown_talk_idea_2.idea_actions.create!(:description => 'Think "I am not _______ enough."  Thin?  Strong?  Smart?  Accomplished?  Now think of someone else you know who shares this trait.  Would you say that person does not deserve love or does not belong?  No.  Now give yourself the same compassion.')
+  brene_brown_talk_idea_2.idea_actions.create!(description: 'Think of something you would do to show someone you love him or her.  Do it for yourself.', member: member6)
+  brene_brown_talk_idea_2.idea_actions.create!(description: 'Think "I am not _______ enough."  Thin?  Strong?  Smart?  Accomplished?  Now think of someone else you know who shares this trait.  Would you say that person does not deserve love or does not belong?  No.  Now give yourself the same compassion.', member: member7)
 
   #
   # TEDx Beacon Street
@@ -139,8 +143,8 @@ if %w(test development qa).include? Rails.env
   mitch_resnick_talk_idea_1.member = member1
   mitch_resnick_talk_idea_1.save!
 
-  mitch_resnick_talk_idea_1.idea_actions.create!(:description => 'Go to scratch.mit.edu and make an interactive card for a friend.')
-  mitch_resnick_talk_idea_1.idea_actions.create!(:description => "Choose a child in your life with whom to collaborate on making a game at scratch.mit.edu  Play it together.")
+  mitch_resnick_talk_idea_1.idea_actions.create!(description: 'Go to scratch.mit.edu and make an interactive card for a friend.', member: member2)
+  mitch_resnick_talk_idea_1.idea_actions.create!(description: 'Choose a child in your life with whom to collaborate on making a game at scratch.mit.edu  Play it together.', member: member2)
 
   mitch_resnick_talk_idea_2 = Idea.new(
     talks: [ mitch_resnick_talk ],
@@ -151,8 +155,8 @@ if %w(test development qa).include? Rails.env
   mitch_resnick_talk_idea_2.member = member1
   mitch_resnick_talk_idea_2.save!
 
-  mitch_resnick_talk_idea_2.idea_actions.create!(:description => 'Invite your local school board members or a principal or teacher in your community to listen to this TED talk and introduce kids to Scratch.')
-  mitch_resnick_talk_idea_2.idea_actions.create!(:description => "Make a Scratch creation that demonstrates its value in some way, and share it through all your social media outlets.")
+  mitch_resnick_talk_idea_2.idea_actions.create!(description: 'Invite your local school board members or a principal or teacher in your community to listen to this TED talk and introduce kids to Scratch.', member: member2)
+  mitch_resnick_talk_idea_2.idea_actions.create!(description: 'Make a Scratch creation that demonstrates its value in some way, and share it through all your social media outlets.', member: member2)
 
   #
   # TEDx Seoul
@@ -180,9 +184,9 @@ if %w(test development qa).include? Rails.env
   young_ha_kim_talk_idea_1.member = member1
   young_ha_kim_talk_idea_1.save!
 
-  young_ha_kim_talk_idea_1.idea_actions.create!(:description => 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.',
-                                                :featured => true)
-  young_ha_kim_talk_idea_1.idea_actions.create!(:description => "Participate with a child in the creative process, without judgement and for the sheer joy of it.  Let him guide the process, and enjoy the ride.")
+  young_ha_kim_talk_idea_1.idea_actions.create!(description: 'Make art.  Find a medium that interests you, and try it.  Use crayons, write a play or a poem.  It can be anything.  Search online for inspiration if it\'s difficult.  Enjoy the process, and don\'t worry about the product.  It is for you alone to share - or not.',
+                                                featured: true, member: member3)
+  young_ha_kim_talk_idea_1.idea_actions.create!(description: 'Participate with a child in the creative process, without judgement and for the sheer joy of it.  Let him guide the process, and enjoy the ride.', member: member3)
 
   young_ha_kim_talk_idea_2 = Idea.new(
     talks: [ young_ha_kim_talk ],
@@ -193,7 +197,7 @@ if %w(test development qa).include? Rails.env
   young_ha_kim_talk_idea_2.member = member1
   young_ha_kim_talk_idea_2.save!
 
-  young_ha_kim_talk_idea_2.idea_actions.create!(:description => 'Do Kim\'s writing exercise.  Choose a theme such as either a joyful or difficult childhood experience, and "write like crazy" for an hour.  Don\'t stop to think, edit or review.  Just keep writing.  ')
+  young_ha_kim_talk_idea_2.idea_actions.create!(description: 'Do Kim\'s writing exercise.  Choose a theme such as either a joyful or difficult childhood experience, and "write like crazy" for an hour.  Don\'t stop to think, edit or review.  Just keep writing.  ', member: member3)
 
   #
   # TEDx Bloomington
@@ -222,8 +226,8 @@ if %w(test development qa).include? Rails.env
   shawn_achor_talk_idea_1.member = member1
   shawn_achor_talk_idea_1.save!
 
-  shawn_achor_talk_idea_1.idea_actions.create!(:description => 'Write 3 new things for which you are grateful every day for three weeks, and notice the way your mind starts to focus on the positive.')
-  shawn_achor_talk_idea_1.idea_actions.create!(:description => "Write down your favorite experience each day in a journal - this enables your brain to experience it again, doubling the dopamine dose.")
+  shawn_achor_talk_idea_1.idea_actions.create!(description: 'Write 3 new things for which you are grateful every day for three weeks, and notice the way your mind starts to focus on the positive.', member: member1)
+  shawn_achor_talk_idea_1.idea_actions.create!(description: 'Write down your favorite experience each day in a journal - this enables your brain to experience it again, doubling the dopamine dose.', member: member1)
 
   shawn_achor_talk_idea_2 = Idea.new(
     talks: [ shawn_achor_talk ],
@@ -234,7 +238,7 @@ if %w(test development qa).include? Rails.env
   shawn_achor_talk_idea_2.member = member1
   shawn_achor_talk_idea_2.save!
 
-  shawn_achor_talk_idea_2.idea_actions.create!(:description => 'To enhance your positive state, commit an intentional act of kindness within your social circle, such as writing an email expressing gratitude or praising someone.  Try to make this a regular practice.')
+  shawn_achor_talk_idea_2.idea_actions.create!(description: 'To enhance your positive state, commit an intentional act of kindness within your social circle, such as writing an email expressing gratitude or praising someone.  Try to make this a regular practice.', member: member2)
 
   #
   # TED Salon NY2013
@@ -262,8 +266,8 @@ if %w(test development qa).include? Rails.env
   esther_perel_idea_1.member = member1
   esther_perel_idea_1.save!
 
-  esther_perel_idea_1.idea_actions.create!(:description => 'Take that weekend away with the guys/girlfriends, going guilt-free and with the awareness between you and your partner that absence enhances desire.')
-  esther_perel_idea_1.idea_actions.create!(:description => "Choose a new activity to share with your partner - go skydiving or to the zoo, play frisbee or a new board game.  Just have fun doing something new or that you have missed doing together for a long time.  Enjoy, and consider making it a regular practice to enjoy new things.")
+  esther_perel_idea_1.idea_actions.create!(description: 'Take that weekend away with the guys/girlfriends, going guilt-free and with the awareness between you and your partner that absence enhances desire.', member: member3)
+  esther_perel_idea_1.idea_actions.create!(description: 'Choose a new activity to share with your partner - go skydiving or to the zoo, play frisbee or a new board game.  Just have fun doing something new or that you have missed doing together for a long time.  Enjoy, and consider making it a regular practice to enjoy new things.', member: member3)
 
   esther_perel_idea_2 = Idea.new(
     talks: [ esther_perel ],
@@ -274,8 +278,8 @@ if %w(test development qa).include? Rails.env
   esther_perel_idea_2.member = member1
   esther_perel_idea_2.save!
 
-  esther_perel_idea_2.idea_actions.create!(:description => 'Plan your next sexual encounter with your partner.  Talk about hat you might want.  Ask the same.  Combine it with a date doing something new together.')
-  esther_perel_idea_2.idea_actions.create!(:description => "Choose one time a week for sex.  Enjoy the anticipation.")
+  esther_perel_idea_2.idea_actions.create!(description: 'Plan your next sexual encounter with your partner.  Talk about hat you might want.  Ask the same.  Combine it with a date doing something new together.', member: member1)
+  esther_perel_idea_2.idea_actions.create!(description: 'Choose one time a week for sex.  Enjoy the anticipation.', member: member1)
 
   #
   # TEDx Toronto 2010
@@ -304,8 +308,8 @@ if %w(test development qa).include? Rails.env
   drew_dudley_idea_1.member = member1
   drew_dudley_idea_1.save!
 
-  drew_dudley_idea_1.idea_actions.create!(:description => 'Ask yourself, "am I a leader?"  Note the feelings that arise.  Note who comes to your mind when you think "leader," and whether you accept yourself into that circle of people.')
-  drew_dudley_idea_1.idea_actions.create!(:description => "Identify someone who has made your life better.  Thank this person.")
+  drew_dudley_idea_1.idea_actions.create!(description: 'Ask yourself, "am I a leader?"  Note the feelings that arise.  Note who comes to your mind when you think "leader," and whether you accept yourself into that circle of people.', member: member2)
+  drew_dudley_idea_1.idea_actions.create!(description: 'Identify someone who has made your life better.  Thank this person.', member: member3)
 
   drew_dudley_idea_2 = Idea.new(
     talks: [ drew_dudley ],
@@ -316,8 +320,8 @@ if %w(test development qa).include? Rails.env
   drew_dudley_idea_2.member = member1
   drew_dudley_idea_2.save!
 
-  drew_dudley_idea_2.idea_actions.create!(:description => 'Write Marianne Williamson\'s quote down, and put it somewhere you will see it every day:  "Our greatest fear is not that we are inadequate.  Our greatest fear is that we are powerful beyond measure.  It is our light, and not our darkness, that frightens us."')
-  drew_dudley_idea_2.idea_actions.create!(:description => "Bring your awareness to leadership as happening in small everyday moments that need to be created and acknowledged.  Create them yourself, and acknowledge them in both yourself and others.")
+  drew_dudley_idea_2.idea_actions.create!(description: 'Write Marianne Williamson\'s quote down, and put it somewhere you will see it every day:  "Our greatest fear is not that we are inadequate.  Our greatest fear is that we are powerful beyond measure.  It is our light, and not our darkness, that frightens us."', member: member4)
+  drew_dudley_idea_2.idea_actions.create!(description: 'Bring your awareness to leadership as happening in small everyday moments that need to be created and acknowledged.  Create them yourself, and acknowledge them in both yourself and others.', member: member4)
 
   #
   # TEDxThessaloniki
@@ -346,8 +350,8 @@ if %w(test development qa).include? Rails.env
   edi_rama_idea_1.member = member1
   edi_rama_idea_1.save!
 
-  edi_rama_idea_1.idea_actions.create!(:description => 'Take more ownership of your public surroundings by picking up litter when you go out.')
-  edi_rama_idea_1.idea_actions.create!(:description => "Notice your public surroundings and how thay make you feel.  Consider how important they might be to your community's attitudes toward itself.  Keep this in mind next time you have the opportunity to vote for or participate in a community improvement activity.")
+  edi_rama_idea_1.idea_actions.create!(description: 'Take more ownership of your public surroundings by picking up litter when you go out.', member: member5)
+  edi_rama_idea_1.idea_actions.create!(description: 'Notice your public surroundings and how thay make you feel.  Consider how important they might be to your community\'s attitudes toward itself.  Keep this in mind next time you have the opportunity to vote for or participate in a community improvement activity.', member: member5)
 
   edi_rama_idea_2 = Idea.new(
     talks: [ edi_rama ],
@@ -358,7 +362,7 @@ if %w(test development qa).include? Rails.env
   edi_rama_idea_2.member = member1
   edi_rama_idea_2.save!
 
-  edi_rama_idea_2.idea_actions.create!(:description => 'Examine your assumptions about different people in the world.  Challenge the notion that culture or genes detemine things like degrees of corruption.')
+  edi_rama_idea_2.idea_actions.create!(description: 'Examine your assumptions about different people in the world.  Challenge the notion that culture or genes detemine things like degrees of corruption.', member: member5)
 
   #
   # TEDActive
@@ -387,7 +391,7 @@ if %w(test development qa).include? Rails.env
   amy_cuddy_idea.member = member1
   amy_cuddy_idea.save!
 
-  amy_cuddy_idea.idea_actions.create!(:description => 'Examine your own body language in different social situations.')
+  amy_cuddy_idea.idea_actions.create!(:description => 'Examine your own body language in different social situations.', member: member6)
 
   steve_jobs_talk = Talk.create!(
     title: 'Steve Jobs: How to live before you die', 
@@ -405,6 +409,6 @@ if %w(test development qa).include? Rails.env
   amy_cuddy_and_steve_jobs_idea.member = member1
   amy_cuddy_and_steve_jobs_idea.save!
 
-  amy_cuddy_and_steve_jobs_idea.idea_actions.create!(:description => 'Power-pose for two minutes before an important meeting.')
+  amy_cuddy_and_steve_jobs_idea.idea_actions.create!(:description => 'Power-pose for two minutes before an important meeting.', member: member7)
 
 end

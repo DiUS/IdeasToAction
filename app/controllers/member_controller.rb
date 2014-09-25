@@ -3,5 +3,7 @@ class MemberController < ApplicationController
 
   respond_to :json
 
-	#TODO: implement when the actions will get associated to users
+	def idea_actions
+		render json: current_member.idea_actions
+	end
 end

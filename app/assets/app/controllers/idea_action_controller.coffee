@@ -1,7 +1,8 @@
-window.IdeaActionCtrl = ($scope, $http, $element) ->
-  $scope.doneIt = (ideaActionId) ->
-    alert "I've just done action #{ideaActionId}!  Stand by for proper implementation."
+window.IdeaActionCtrl = ($scope, $http, $element, IdeaActionResource) ->
+  $scope.doneIt = (ideaAction) ->
     $button = $element.find('.done-it')
     return if $button.hasClass('disabled')
 
     $button.addClass('disabled')
+
+#    ideaAction.complete()
