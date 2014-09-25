@@ -20,7 +20,6 @@
 //= require ../app/app.coffee
 //= require_tree ../app/components
 //= require_tree ../app/resources
-//= require_tree ../app/services
 //= require_tree ../app/filters
 //= require_tree ../app/controllers
 //= require_tree ../app/views
