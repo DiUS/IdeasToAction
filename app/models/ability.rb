@@ -22,7 +22,6 @@ class Ability
       can :random, IdeaAction
       can :recent, IdeaAction
       can :doneIt, IdeaAction
-      can :react, IdeaAction
       can :create, IdeaAction
 
       can :random, Idea
