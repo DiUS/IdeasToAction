@@ -41,6 +41,7 @@ end
 
 group :test, :development do
   gem 'jasmine-rails', '~> 0.3.2'
+	gem 'jasmine-headless-webkit', git: 'https://github.com/johnbintz/jasmine-headless-webkit.git', tag: 'v0.8.4'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit', '~> 1.3'
