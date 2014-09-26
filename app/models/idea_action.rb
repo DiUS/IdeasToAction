@@ -21,6 +21,8 @@ class IdeaAction < ActiveRecord::Base
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
 	belongs_to :member
 
+	scope :uncompleted_first, -> { order('completion_date') }
+
   validates :idea, :description, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
