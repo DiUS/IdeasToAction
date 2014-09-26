@@ -18,5 +18,5 @@ if Rails.env.test? or Rails.env.development?
 
   task :test => ['jasmine:headless', :spec]
 
-  task :default => ['db:test:prepare', :test, :acceptance]
+  task :default => ['db:test:prepare', :spec, :acceptance]
 end
