@@ -40,6 +40,9 @@ describe 'Actionman', () ->
       it 'should set an empty new action description', () ->
         expect(scope.idea_action.description).toEqual('')
 
+      it 'should set an empty new action target date', () ->
+        expect(scope.idea_action.description).toEqual('')
+
       it 'should reset submitted', ->
         expect(scope.submitted).toEqual(false)
 

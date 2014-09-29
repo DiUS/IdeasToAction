@@ -74,7 +74,7 @@ describe IdeaActionsController do
 		end
 
 		describe 'with valid attributes' do
-			let(:valid_attributes) { { description: 'This is the action I want to do', idea_id: Idea.first.id } }
+			let(:valid_attributes) { { description: 'This is the action I want to do', target_date: Time.now + 1.day, idea_id: Idea.first.id } }
 
 			before do
 				post :create, { :format => 'json', :idea_action => valid_attributes}

@@ -16,14 +16,14 @@ class IdeaAction < ActiveRecord::Base
     indexes :description,     :boost => 100
   end  
       
-  attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date
+  attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date, :target_date
 
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
 	belongs_to :member
 
 	scope :uncompleted_first, -> { order('completion_date') }
 
-  validates :idea, :description, :presence => true
+  validates :idea, :description, :target_date, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
 

@@ -116,7 +116,7 @@ describe IdeasController do
           talk.as_json
         ],
         idea_actions: [
-          { description: 'Examine your own body language in different social situations.' },
+          { description: 'Examine your own body language in different social situations.', target_date: Time.now + 1.day },
         ]        
       }
     }

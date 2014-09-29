@@ -32,13 +32,18 @@
 
   .content-item.content-item-full {
     padding: 2px;
-  } 
+  }
+
+  .content-item.content-item-full.text-item {
+    border: 0;
+    margin-top: 10px;
+  }
 
   .content-flat, .content-item {
     padding: 15px 10px;
   }
 
-  .content-header, .content-item, .content-button {
+  .content-header, .content-item {
     background-color: white;
     border: 1px solid #e7e7e5;
 
@@ -48,6 +53,8 @@
   }
 
   .content-button {
+    background-color: white;
+    border: 1px solid #e7e7e5;
     padding: 20px 0 23px;
     font-size: 1.5em; 
     text-align: center;

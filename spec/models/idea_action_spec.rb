@@ -8,10 +8,12 @@ describe IdeaAction do
 	it { should be_accessible(:idea_id) }
 	it { should be_accessible(:member) }
 	it { should be_accessible(:completion_date) }
+	it { should be_accessible(:target_date) }
 
   it { should delegate(:description).to(:idea).with_prefix }
   it { should validate_presence_of(:idea) }
   it { should validate_presence_of(:description) }
+  it { should validate_presence_of(:target_date) }
 	it { should belong_to(:member) }
 
   describe "scoping" do
@@ -40,12 +42,12 @@ describe IdeaAction do
     describe "on events" do
       it "should increment the counter when created" do
         expect {
-          IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+          IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
         }.to increment_counter_on(event).for(IdeaAction)
       end
 
       it "should decrement the counter when destroyed" do
-        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
         expect { idea_action.destroy }.to decrement_counter_on(event).for(IdeaAction)
       end
     end
@@ -53,13 +55,13 @@ describe IdeaAction do
     describe "on talks" do
       it "should increment the counter when created" do
         expect {
-          IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+          IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
           talk.reload
         }.to increment_counter_on(talk).for(IdeaAction)
       end
 
       it "should decrement the counter when destroyed" do
-        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
         expect { idea_action.destroy }.to decrement_counter_on(talk).for(IdeaAction)
       end
     end
@@ -67,12 +69,12 @@ describe IdeaAction do
     describe "on ideas" do
       it "should increment the counter when created" do
         expect {
-          IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+          IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
         }.to increment_counter_on(idea).for(IdeaAction)
       end
 
       it "should decrement the counter when destroyed" do
-        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', member: member)
+        idea_action = IdeaAction.create!(idea_id: idea.id, description: 'test action', target_date: Time.now + 1.day, member: member)
         expect { idea_action.destroy }.to decrement_counter_on(idea).for(IdeaAction)
       end
 		end

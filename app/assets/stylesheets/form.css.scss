@@ -18,6 +18,9 @@ textarea {
 }
 
 #idea-action-edit, #idea-edit {
+  .content {
+    background-color: white;
+  }
 
   .actions {
     padding: 5px 0;
@@ -38,10 +41,6 @@ textarea {
     background-color: #f8f7f7;
     -webkit-appearance: none;
     border-radius: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-border-radius: 0;
-    border: 1px solid #e7e7e5;
     -webkit-box-sizing: border-box;
   }
 
