@@ -37,6 +37,7 @@
 		30A0434814DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434314DC770100060A13 /* Localizable.strings */; };
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		595D92B219D8FF340072C927 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 595D92B119D8FF340072C927 /* Images.xcassets */; };
 		59F52C8A19D13D4F000E8AD2 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F52C7E19D13D4F000E8AD2 /* Icon-40.png */; };
 		59F52C8B19D13D4F000E8AD2 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F52C7F19D13D4F000E8AD2 /* Icon-40@2x.png */; };
 		59F52C8C19D13D4F000E8AD2 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F52C8019D13D4F000E8AD2 /* Icon-60.png */; };
@@ -111,6 +112,7 @@
 		30A0434714DC770100060A13 /* se */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = se; path = Localizable.strings; sourceTree = "<group>"; };
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Actionman-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Actionman-Prefix.pch"; sourceTree = "<group>"; };
+		595D92B119D8FF340072C927 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Actionman/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		59F52C7E19D13D4F000E8AD2 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		59F52C7F19D13D4F000E8AD2 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		59F52C8019D13D4F000E8AD2 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				595D92B119D8FF340072C927 /* Images.xcassets */,
 				30A0434214DC770100060A13 /* de.lproj */,
 				30A0434514DC770100060A13 /* se.lproj */,
 				1F766FDB13BBADB100FB74C0 /* en.lproj */,
@@ -361,6 +364,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = HR4LVL7TKY;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Actionman" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -432,6 +440,7 @@
 				59F52C9319D13D4F000E8AD2 /* Icon-Small@2x.png in Resources */,
 				59F52C9419D13D4F000E8AD2 /* iTunesArtwork.png in Resources */,
 				59F52C9519D13D4F000E8AD2 /* iTunesArtwork@2x.png in Resources */,
+				595D92B219D8FF340072C927 /* Images.xcassets in Resources */,
 				59F52C9C19D141CF000E8AD2 /* Default-Portrait@2x~ipad.png in Resources */,
 				59F52C9D19D141CF000E8AD2 /* Default-Portrait~ipad.png in Resources */,
 			);
@@ -517,8 +526,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -542,7 +554,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -555,6 +571,7 @@
 				INFOPLIST_FILE = "Actionman/Actionman-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "Start Something";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
