@@ -24,6 +24,7 @@ gem 'bitly'
 gem 'rabl'
 gem 'activeadmin', '~> 0.6'
 gem 'delayed_job_active_record'
+gem 'clockwork'
 
 # Gems used only for assets and not required
 # in production environments by default.

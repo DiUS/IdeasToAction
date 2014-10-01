@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20141001061705) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "role",              :default => "REGULAR"
-    t.text     "email"
+    t.string   "email"
   end
 
   create_table "tags", :force => true do |t|

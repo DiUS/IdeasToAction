@@ -3,12 +3,13 @@ class Member < ActiveRecord::Base
   ROLE_CONTENT_ADMIN = "CONTENT_ADMIN"
   ROLE_GLOBAL_ADMIN = "GLOBAL_ADMIN"
 
-  attr_accessible :persistence_token, :username, :password, :role
+  attr_accessible :persistence_token, :username, :password, :role, :email
 
   acts_as_authentic do |c|
     c.session_class = MemberSession
     c.validate_password_field = false
     c.validate_login_field = false
+    c.validate_email_field = false
   end
 
   has_many :idea_actions
