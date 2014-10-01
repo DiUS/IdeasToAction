@@ -96,7 +96,7 @@ describe IdeaAction do
 			let(:other_member) { Member.new }
 			let(:idea_action) { IdeaAction.new(member: member) }
 
-			it 'should be completable when by the submitting member' do
+			it 'should be completable by the submitting member' do
 				expect(idea_action.completable?(member)).to be_true
 			end
 
@@ -107,6 +107,25 @@ describe IdeaAction do
 			it 'should not be completable when already completed' do
 				idea_action.completion_date = Time.now
 				expect(idea_action.completable?(member)).not_to be_true
+			end
+		end
+
+		describe 'mine?' do
+			let(:member) { Member.new }
+			let(:other_member) { Member.new }
+			let(:idea_action) { IdeaAction.new(member: member) }
+
+			it 'should be "mine" for the submitting member' do
+				expect(idea_action.mine?(member)).to be_true
+			end
+
+			it 'should not be "mine" to other members' do
+				expect(idea_action.mine?(other_member)).not_to be_true
+			end
+
+			it 'should be "mine" when already completed' do
+				idea_action.completion_date = Time.now
+				expect(idea_action.mine?(member)).to be_true
 			end
 		end
 	end

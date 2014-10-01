@@ -59,29 +59,35 @@ describe IdeasController do
     end
   end
 
-  describe "GET show" do
+  describe 'GET show' do
     let(:idea) { mock_model Idea }
     let(:member) { mock_model Member }
+		let(:idea_actions) { [mock_model(IdeaAction)] }
     let(:params) { {:id => 1} }
 
     before do
       controller.stub(:member).and_return member
       Idea.should_receive(:find).and_return idea
-    end
+			idea.stub_chain(:idea_actions, :member_first, :uncompleted_first).and_return idea_actions
 
-    it 'uses a view model to construct the json response' do
-      get :show, params.merge(:format => :json), valid_session
-    end
+			get :show, params.merge(:format => :html), valid_session
+		end
+
+		it 'should be successful' do
+			expect(response).to be_success
+		end
 
     it 'renders a open in app layout when showing via html' do
-      get :show, params.merge(:format => :html), valid_session
-      controller.should render_template(:open_in_app)
+      expect(controller).to render_template(:open_in_app)
     end
 
-    it "assigns the requested idea as @idea" do
-      get :show, params.merge(:format => :json), valid_session
-      assigns(:idea).should eq(idea)
-    end
+    it 'assigns the requested idea as @idea' do
+      expect(assigns(:idea)).to eq(idea)
+		end
+
+		it 'assigns the sorted actions list as @sorted_idea_actions' do
+			expect(assigns(:sorted_idea_actions)).to eq(idea_actions)
+		end
   end
 
   describe 'PUT update' do

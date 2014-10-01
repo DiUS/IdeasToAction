@@ -1,4 +1,4 @@
-describe "Found page", js: true, acceptance: true do
+describe "Found page", js: true do
 
   describe "Searching" do
     before do

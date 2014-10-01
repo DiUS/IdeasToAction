@@ -23,6 +23,8 @@ class IdeaAction < ActiveRecord::Base
 
 	scope :uncompleted_first, -> { order('completion_date') }
 
+	scope :member_first, ->(member) { order("member_id <> #{member.id}") }
+
   validates :idea, :description, :target_date, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
@@ -36,6 +38,10 @@ class IdeaAction < ActiveRecord::Base
 
 	def completable?(current_member)
 		member == current_member && !completed?
+	end
+
+	def mine?(current_member)
+		member == current_member
 	end
 
   def self.random(number = 1)
