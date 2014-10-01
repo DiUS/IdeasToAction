@@ -139,5 +139,17 @@ describe IdeaAction do
 				end
 			end
 		end
+
+		describe 'completed and uncompleted' do
+			it 'should return only completed actions when requested' do
+				idea_actions = IdeaAction.completed.limit(10)
+				expect(idea_actions.size).to eq(idea_actions.select{ |idea_action| idea_action.completed? }.size)
+			end
+
+			it 'should return only uncompleted action when requested' do
+				idea_actions = IdeaAction.incomplete.limit(10)
+				expect(idea_actions.size).to eq(idea_actions.select{ |idea_action| !idea_action.completed? }.size)
+			end
+		end
 	end
 end

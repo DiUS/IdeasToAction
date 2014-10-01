@@ -22,8 +22,9 @@ class IdeaAction < ActiveRecord::Base
 	belongs_to :member
 
 	scope :incomplete_first, -> { order('completion_date') }
-
 	scope :member_first, ->(member) { order("member_id <> #{member.id}") }
+	scope :incomplete, -> { where(completion_date: nil) }
+	scope :completed, -> { where('completion_date IS NOT NULL') }
 
   validates :idea, :description, :target_date, :presence => true
 

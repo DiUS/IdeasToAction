@@ -15,6 +15,11 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
     column :featured
     column :created_at
     column :updated_at
+    column :target_date
+		column :completion_date
+		column :completed, :sortable => :completion_date do |idea_action|
+			idea_action.completed?
+		end
     default_actions
   end
 
@@ -27,6 +32,8 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
       row :featured
       row :created_at
       row :updated_at
+			row :target_date
+			row :completion_date
     end
     active_admin_comments
   end
@@ -37,6 +44,8 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
               :collection => Idea.all.map{ |i| ["(#{i.id}) #{i.description.truncate(35) }", i.id] }
       f.input :description
       f.input :featured
+			f.input :target_date, as: :datepicker
+			f.input :completion_date, as: :datepicker
     end
     f.actions
   end
@@ -45,7 +54,12 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
   filter :description
   filter :created_at
   filter :updated_at
+  filter :target_date
+  filter :completion_date
   filter :featured
+	scope :incomplete
+	scope :completed
+	scope :all
 
   controller do
     def new
