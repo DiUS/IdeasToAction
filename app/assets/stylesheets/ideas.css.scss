@@ -7,7 +7,7 @@
     padding-right: 4px;
 
     &:nth-child(odd) {
-      color: rgb(0, 131, 228);
+      color:  #FF2A06;
       width: 40%;
       text-align: right;
       font-family: 'Helvetica Neue';
@@ -23,12 +23,12 @@
 }
 
 strong.featured-action-statement {
-  color: #0071C5;
+  color: #FF2A06;
   display: block;
 }
 
 em.completed {
-  color: #0071C5;
+  color: #FF2A06;
 }
 
 .action-controls {
