@@ -33,17 +33,30 @@ class IdeaAction < ActiveRecord::Base
   after_create :increment_counter
   after_destroy :decrement_counter
 
-	def completed?
-		!completion_date.nil?
+	def complete?
+		completion_date.present?
 	end
+  alias_method :completed?, :complete?
+
+  def incomplete?
+    !complete?
+  end
 
 	def completable?(current_member)
-		member == current_member && !completed?
+		member == current_member && incomplete?
 	end
 
 	def mine?(current_member)
 		member == current_member
 	end
+
+  def due_soon?
+    target_date < 1.week.from_now
+  end
+
+  def remindable?
+    incomplete? && due_soon? && !reminded?
+  end
 
   def self.random(number = 1)
     IdeaAction.offset(rand(IdeaAction.count - number+1)).first(number)
@@ -64,6 +77,16 @@ class IdeaAction < ActiveRecord::Base
   def self.descriptions
     all.map{|idea_action| ["(#{idea_action.id}) #{idea_action.description.truncate(35)}", idea_action.id]}
 	end
+
+  def self.remindable(member = nil)
+    query = [
+      "completion_date = ''",
+      "target_date < #{1.week.from_now.to_date}",
+      "reminded = false"
+    ]
+    query += ["member_id = #{member.id}"] if member
+    where(query.join(' and '))
+  end
 
   private
 

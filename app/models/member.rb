@@ -17,11 +17,26 @@ class Member < ActiveRecord::Base
     all.map{|member| ["(#{member.id}) #{member.username ? member.username : 'Anonymous'}", member.id]}
   end
 
+  def self.remindable_actions
+    IdeaAction.remindable
+  end
+
+  def remindable_actions
+    IdeaAction.remindable(self)
+  end
+
+  # boolean methods
+
   def content_admin?
     self.role == ROLE_CONTENT_ADMIN
   end
 
   def global_admin?
-    self.role ==  ROLE_GLOBAL_ADMIN
+    self.role == ROLE_GLOBAL_ADMIN
   end
+
+  def remindable?
+    idea_actions.any?{|idea_action| idea_action.remindable?}
+  end
+
 end

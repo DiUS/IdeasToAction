@@ -1,0 +1,20 @@
+Hello TEDxer,
+
+<p>
+OMG, the target date for the following action<%= @actions.size > 1 ? 's' : '' %>
+</p>
+
+<ol>
+<% @actions.each do |action| %>
+	<li><%= action.description %></li>
+<% end %>
+</ol>
+
+<p>
+<%= @actions.size > 1 ? 'are' : 'is' %> less than a week away!
+</p>
+
+Sincerely,
+
+
+TEDx

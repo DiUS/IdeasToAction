@@ -23,6 +23,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'bitly'
 gem 'rabl'
 gem 'activeadmin', '~> 0.6'
+gem 'delayed_job_active_record'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -72,4 +73,3 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'dotenv'
 gem 'elbow', :require => false
-
