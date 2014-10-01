@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'harbors/index.json.rabl' do
   before :each do
     @idea = Idea.first
-		@sorted_idea_actions = @idea.idea_actions.member_first(Member.first).uncompleted_first
+		@sorted_idea_actions = @idea.idea_actions.member_first(Member.first).incomplete_first
     @idea.idea_actions = [] # having idea actions causes association errors in spec, might need further investigation
     @rendered = Rabl.render(nil, 'ideas/show', :view_path => 'app/views', :scope => self)
   end

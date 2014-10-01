@@ -33,7 +33,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @idea = Idea.find(params[:id])
-		@sorted_idea_actions = @idea.idea_actions.member_first(current_member).uncompleted_first
+		@sorted_idea_actions = @idea.idea_actions.member_first(current_member).incomplete_first
     @member = member
 
     respond_to do |format|

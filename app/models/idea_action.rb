@@ -21,7 +21,7 @@ class IdeaAction < ActiveRecord::Base
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
 	belongs_to :member
 
-	scope :uncompleted_first, -> { order('completion_date') }
+	scope :incomplete_first, -> { order('completion_date') }
 
 	scope :member_first, ->(member) { order("member_id <> #{member.id}") }
 

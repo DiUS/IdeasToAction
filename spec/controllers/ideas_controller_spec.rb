@@ -68,7 +68,7 @@ describe IdeasController do
     before do
       controller.stub(:member).and_return member
       Idea.should_receive(:find).and_return idea
-			idea.stub_chain(:idea_actions, :member_first, :uncompleted_first).and_return idea_actions
+			idea.stub_chain(:idea_actions, :member_first, :incomplete_first).and_return idea_actions
 
 			get :show, params.merge(:format => :html), valid_session
 		end
