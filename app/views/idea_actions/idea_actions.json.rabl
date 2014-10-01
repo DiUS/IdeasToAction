@@ -7,7 +7,3 @@ end
 child :recent => :recent do
   extends 'idea_actions/idea_action'
 end
-
-child :popular => :popular do
-  extends 'idea_actions/idea_action'
-end

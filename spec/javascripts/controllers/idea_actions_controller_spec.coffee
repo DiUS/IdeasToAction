@@ -22,7 +22,7 @@ describe 'IdeaActionsCtrl', ->
 
   describe '#more', ->
     beforeEach ->
-      $scope.actions = featured: [ { id: 11 } ], recent: [ { id: 16 }, { id: 17 } ], popular: [ { id: 15 }, { id: 10 } ]
+      $scope.actions = featured: [ { id: 11 } ], recent: [ { id: 15 }, { id: 10 }, { id: 16 }, { id: 17 } ]
       IdeaActionResource.query = jasmine.createSpy('query')
       $scope.more()
 

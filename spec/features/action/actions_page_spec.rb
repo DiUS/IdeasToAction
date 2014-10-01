@@ -12,17 +12,8 @@ describe "Actions page", js: true, acceptance: true do
     end
   end
 
-  describe 'popular actions' do
-    let(:featured_element){page.find('.content:nth-child(2)')}
-    let(:featured_element_text){featured_element.text}
-
-    it 'should have title' do
-      featured_element_text.should have_content('Popular Actions')
-    end
-  end
-
   describe 'recent actions' do
-    let(:featured_element){page.find('.content:nth-child(3)')}
+    let(:featured_element){page.find('.content:nth-child(2)')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do

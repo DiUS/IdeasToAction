@@ -23,19 +23,7 @@ describe IdeaActionView do
     end
 
     it "should have two" do
-      idea_action_view.recent.size.should eql(2)
-    end
-  end
-
-  context "popular idea actions" do
-    it "should contain idea actions" do
-      idea_action_view.popular.each do |idea|
-        idea.should be_an_instance_of(IdeaAction)
-      end
-    end
-
-    it "should have two" do
-      idea_action_view.popular.size.should eql(2)
+      idea_action_view.recent.size.should eql(4)
     end
   end
 end

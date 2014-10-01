@@ -57,10 +57,6 @@ class IdeaAction < ActiveRecord::Base
     order("created_at desc").limit(10)
   end
 
-  def self.popular
-    limit(10) #TODO: re-implement when state 'done' will get introduced to actions
-  end
-
   def self.excluding_idea_actions(idea_action_ids)
     where("id not in (?)", idea_action_ids)
   end

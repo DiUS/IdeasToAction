@@ -23,19 +23,8 @@ describe 'idea_actions/idea_actions.json.rabl' do
       @rendered.should have_json_type(Array).at_path("recent")
     end
 
-    it "should have 2 recent ideas" do
-      @rendered.should have_json_size(2).at_path("recent")
-    end
-  end
-
-  context "popular ideas" do
-    it "should include a collection of popular ideas" do
-      @rendered.should have_json_path("popular")
-      @rendered.should have_json_type(Array).at_path("popular")
-    end
-
-    it "should have 2 popular ideas" do
-      @rendered.should have_json_size(2).at_path("popular")
+    it "should have 4 recent ideas" do
+      @rendered.should have_json_size(4).at_path("recent")
     end
   end
 end

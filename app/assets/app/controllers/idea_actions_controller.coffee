@@ -16,9 +16,8 @@ window.IdeaActionsCtrl = ($scope, IdeaActionResource) ->
 
   current = ->
     featured = $scope.actions.featured.map (action) -> action.id
-    popular  = $scope.actions.popular.map  (action) -> action.id
     recent   = $scope.actions.recent.map   (action) -> action.id
 
     extraActions = $scope.extraActions.map (action) -> action.id
 
-    featured.concat popular.concat recent.concat extraActions
+    featured.concat recent.concat extraActions

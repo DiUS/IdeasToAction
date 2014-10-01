@@ -10,17 +10,15 @@
       .content-item(ng-href="/ideas/{{actions.featured[0].idea_id}}")
         %tile:featured(description="actions.featured[0].description")
     .content
-      .content-header Popular Actions
-      .content-item(ng-href="/ideas/{{actions.popular[0].idea_id}}")
-        %tile:default(description="actions.popular[0].description")
-      .content-item(ng-href="/ideas/{{actions.popular[1].idea_id}}")
-        %tile:default(description="actions.popular[1].description"))
-    .content
       .content-header Recent Actions
       .content-item(ng-href="/ideas/{{actions.recent[0].idea_id}}")
         %tile:default(description="actions.recent[0].description")
       .content-item(ng-href="/ideas/{{actions.recent[1].idea_id}}")
         %tile:default(description="actions.recent[1].description")
+      .content-item(ng-href="/ideas/{{actions.recent[2].idea_id}}")
+        %tile:default(description="actions.recent[2].description")
+      .content-item(ng-href="/ideas/{{actions.recent[3].idea_id}}")
+        %tile:default(description="actions.recent[3].description")
     .content(ng-show="extraActions && extraActions.length != 0")
       .content-header More Actions
       .content-item(ng-repeat="action in extraActions" ng-href="/ideas/{{action.idea_id}}")
