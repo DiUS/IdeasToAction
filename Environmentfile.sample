@@ -1,0 +1,5 @@
+ENV['AMAZON_SMTP_USERNAME'] = 'username'
+ENV['AMAZON_SMTP_PASSWORD'] = 'password'
+
+ENV['CONTENT_ADMIN_PASSWORD'] = 'content_admin_pasword'
+ENV['GLOBAL_ADMIN_PASSWORD'] = 'global_admin_password'

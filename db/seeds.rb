@@ -25,8 +25,8 @@ if %w(test development qa).include? Rails.env
   member6 = Member.create! persistence_token: '4353'
   member7 = Member.create! persistence_token: '3456'
 
-  Member.create! username: "content_admin", password: "TEDc0nt3nt", :role => Member::ROLE_CONTENT_ADMIN
-  Member.create! username: "global_admin", password: "TED4dm1n", :role => Member::ROLE_GLOBAL_ADMIN
+  Member.create! username: "content_admin", password: ENV['CONTENT_ADMIN_PASSWORD'], :role => Member::ROLE_CONTENT_ADMIN
+  Member.create! username: "global_admin", password: ENV['GLOBAL_ADMIN_PASSWORD'], :role => Member::ROLE_GLOBAL_ADMIN
 
   tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
 
