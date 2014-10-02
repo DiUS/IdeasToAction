@@ -7,7 +7,7 @@ class Mailer < ActionMailer::Base
         begin
           @actions = member.remindable_actions
           to = member.email
-          subject = "TEDx Reminder")
+          subject = "TEDx Reminder"
           mail(to: to, subject: subject)
           IdeaAction.reminded(@actions)
         rescue *SMTP_ERRORS => e
