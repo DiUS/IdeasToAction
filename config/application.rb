@@ -72,3 +72,9 @@ end
 CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
 recursive_symbolize_keys! CONFIG
+
+%w{Thoran}.each do |constant|
+  Dir[Rails.root.join('lib', constant, '**', '*')].each do |filename|
+    require filename if !File.directory?(filename)
+  end
+end
