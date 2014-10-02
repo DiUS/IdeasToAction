@@ -35,7 +35,6 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
 			row :target_date
 			row :completion_date
     end
-    active_admin_comments
   end
 
   form :as => :idea_action do |f|

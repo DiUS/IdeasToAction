@@ -24,7 +24,6 @@ ActiveAdmin.register Idea do
         idea.talks.collect{ |t| t.title }.join(", ")
       end
     end
-    active_admin_comments
   end
 
   form do |f|
