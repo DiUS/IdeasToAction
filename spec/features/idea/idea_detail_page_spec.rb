@@ -1,7 +1,7 @@
 require_relative '../collapsible_shared_examples'
 require 'open-uri'
 
-describe "Idea detail page", js: true do
+describe "Idea detail page", js: true, acceptance: true do
   self.use_transactional_fixtures = false
   
   let(:idea) { Idea.find(1) }

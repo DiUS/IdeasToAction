@@ -13,11 +13,6 @@ describe 'harbors/index.json.rabl' do
     @rendered.should be_json_eql(attributes).excluding(:members_actioned_count, :tags, :idea_actions, :talks)
   end
 
-  it "includes member actioned count" do
-    @rendered.should have_json_path("members_actioned_count")
-    @rendered.should have_json_type(Integer).at_path("members_actioned_count")
-  end
-
   it "includes the collection of tags" do
     @rendered.should have_json_path("tags")
     @rendered.should have_json_type(Array).at_path("tags")

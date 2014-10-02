@@ -15,22 +15,6 @@ describe Idea do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:member) }
 
-  describe 'as_json' do
-    let(:idea) { Idea.first }
-
-    before do
-      idea.should_receive(:members_actioned).and_return [1,2,3,4,5,6]
-    end
-  end
-
-  describe 'members_actioned' do
-    let(:idea) { Idea.first }
-
-    it 'should find unique members who have actioned on the current idea' do
-      idea.send(:members_actioned).size.should == 0
-    end
-  end
-
   describe "#member" do
     let(:idea) { Idea.first }
     let(:member) { Member.first }

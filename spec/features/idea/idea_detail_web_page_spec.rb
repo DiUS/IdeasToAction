@@ -12,6 +12,6 @@ describe "Idea detail web page", js: true, acceptance: true do
   end
 
   it 'should display number of people who have actioned' do
-    page.should have_text '321 People have taken action on this idea'
+    page.should have_text "#{idea.idea_actions_count} People have taken action on this idea"
   end
 end

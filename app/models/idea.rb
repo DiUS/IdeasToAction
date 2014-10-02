@@ -59,17 +59,13 @@ class Idea < ActiveRecord::Base
   end
 
   def as_json options = nil
-    super.merge(members_actioned_count: members_actioned.size, tags: tags)
+    super.merge tags: tags
   end
 
   def bitly_url
     bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
     bitly_short_url = bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url
     URI::escape(bitly_short_url)
-  end
-
-  def members_actioned
-		[] #TODO: re-implement when the relationship between the idea and a member is defined
   end
 
   private
