@@ -7,11 +7,6 @@ describe "Idea detail web page", js: true, acceptance: true do
     visit "/ideas/17"
   end
 
-  xit "should have a link to download the app" do
-    link = page.find('.download')
-    link['href'].should eql 'https://play.google.com/store/apps/details?id=com.ted.ideastoaction'
-  end
-
   it 'should display the idea' do
     page.should have_content idea.description
   end

@@ -1,13 +1,14 @@
 require_relative '../collapsible_shared_examples'
 require 'open-uri'
 
-describe "Idea detail page", js: true, acceptance: true do
+describe "Idea detail page", js: true do
   self.use_transactional_fixtures = false
   
   let(:idea) { Idea.find(1) }
   let(:action) { idea.idea_actions.first }
 
   before :each do
+		ApplicationController.any_instance.stub(:current_member).and_return(action.member)
     DatabaseCleaner.start
     idea.should_not be_nil
     visit "#/ideas/1"
@@ -65,10 +66,13 @@ describe "Idea detail page", js: true, acceptance: true do
     end
     
     before do
-      collapsible.find(".content-header").click
-      page.should have_selector(".btn.done-it", visible: true)
-      collapsible.find(".content-item:first-child .btn.done-it").click
-      sleep 1
-    end
+      collapsible.find('.content-header').click
+      expect(page).to have_selector('.btn.done-it', visible: true)
+      collapsible.find('.content-item:first-child .btn.done-it').click
+		end
+
+		it 'should display the completion date' do
+			expect(page).to have_content("Completed on #{Time.now.strftime('%d/%m/%Y')}")
+		end
   end
 end
