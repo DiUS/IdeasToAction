@@ -88,6 +88,10 @@ class IdeaAction < ActiveRecord::Base
     where(query.join(' and '))
   end
 
+  def self.reminded(idea_actions)
+    idea_actions.each{|idea_action| idea_action.update_attribute(reminded: true)}
+  end
+
   private
 
   def increment_counter
