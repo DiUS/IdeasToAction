@@ -37,6 +37,9 @@ Actionman::Application.configure do
 
   # Use for testing only
   config.middleware.use RackSessionAccess::Middleware
+
+  config.host = 'poo.actionman.zerobot.io'
+  config.analytics_tracking_key = 'bogus'
 end
 
 WebMock.disable_net_connect!(:allow_localhost => true)

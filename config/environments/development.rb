@@ -34,6 +34,9 @@ Actionman::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.host = '54.79.124.80'
+  config.analytics_tracking_key = 'bogus'
 end
 
 WebMock.allow_net_connect!

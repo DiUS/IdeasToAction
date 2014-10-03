@@ -1,5 +1,8 @@
-ENV['AMAZON_SMTP_USERNAME'] = 'username'
-ENV['AMAZON_SMTP_PASSWORD'] = 'password'
+ENV['AMAZON_SMTP_USERNAME'] = 'amazon_smtp_username'
+ENV['AMAZON_SMTP_PASSWORD'] = 'amazon_smtp_password'
 
 ENV['CONTENT_ADMIN_PASSWORD'] = 'content_admin_pasword'
 ENV['GLOBAL_ADMIN_PASSWORD'] = 'global_admin_password'
+
+ENV['BITLY_USERNAME'] = 'bitly_username'
+ENV['BITLY_API_KEY'] = 'bitly_api_key'

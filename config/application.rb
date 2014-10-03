@@ -63,16 +63,6 @@ end
 
 Bitly.use_api_version_3
 
-def recursive_symbolize_keys! hash
-  hash.symbolize_keys!
-  hash.values.select{|v| v.is_a? Hash}.each{|h| recursive_symbolize_keys!(h)}
-end
-
-# YAML config
-CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
-CONFIG.merge! CONFIG.fetch(Rails.env, {})
-recursive_symbolize_keys! CONFIG
-
 %w{Thoran}.each do |constant|
   Dir[Rails.root.join('lib', constant, '**', '*')].each do |filename|
     require filename if !File.directory?(filename)

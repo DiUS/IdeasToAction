@@ -69,4 +69,6 @@ Actionman::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_controller.relative_url_root = '.'
+
+  config.host = '54.79.124.80'
 end

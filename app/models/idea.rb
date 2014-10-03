@@ -63,8 +63,8 @@ class Idea < ActiveRecord::Base
   end
 
   def bitly_url
-    bitly = Bitly.new(CONFIG[:bitly][:username], CONFIG[:bitly][:api_key])
-    bitly_short_url = bitly.shorten("#{CONFIG[Rails.env.to_sym][:host]}/ideas/#{self.id}").short_url
+    bitly = Bitly.new(ENV['BITLY_USERNAME'], ENV['BITLY_API_KEY'])
+    bitly_short_url = bitly.shorten("http://#{Rails.application.config.host}/ideas/#{self.id}").short_url
     URI::escape(bitly_short_url)
   end
 

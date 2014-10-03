@@ -11,7 +11,7 @@
     - if env_has_analytics?
       = javascript_include_tag "GALocalStorage"
       :javascript
-        ga_storage._setAccount('#{CONFIG[Rails.env.to_sym][:analytics_tracking_key]}');
+        ga_storage._setAccount('#{Rails.application.config.analytics_tracking_key}');
         ga_storage._trackPageview('/index.html');
 
     = stylesheet_link_tag "application", :media => "all"
