@@ -59,9 +59,9 @@ if %w(test development qa).include? Rails.env
   paolo_cardini_talk_idea_1.save!
 
   paolo_cardini_talk_idea_1.idea_actions.create!(description: 'Call someone instead of texting, and give your full attention.',
-																								 member: member1, target_date: 1.week.from_now)
+																								 member: member1, target_date: 3.days.from_now)
   paolo_cardini_talk_idea_1.idea_actions.create!(description: 'Visit Cardini\'s website and buy a phone cover to encourage mono tasking in your daily life and as a conversation-starter to enable sharing the idea with others.',
-																								 member: member1, target_date: 1.week.from_now)
+																								 member: member1, target_date: 6.days.from_now)
 
   paolo_cardini_talk_idea_2 = Idea.new(
     talks: [ paolo_cardini_talk ],
@@ -73,7 +73,9 @@ if %w(test development qa).include? Rails.env
   paolo_cardini_talk_idea_2.save!
 
   paolo_cardini_talk_idea_2.idea_actions.create!(description: 'Turn off your phone next time you are in a place that you wish to explore and experience it unmediated and uninterrupted by technology.  Allow yourself to get lost, if not literally in the place, then in the experience.',
-																								 member: member2, target_date: 2.weeks.from_now)
+                                                 member: member2, target_date: 1.week.from_now)
+  paolo_cardini_talk_idea_2.idea_actions.create!(description: 'Visit Cardini\'s website and buy a phone cover to encourage mono tasking in your daily life and as a conversation-starter to enable sharing the idea with others.',
+                                                 member: member2, target_date: 8.days.from_now)
 
   #
   # TEDx Houston
