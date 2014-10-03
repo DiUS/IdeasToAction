@@ -1,6 +1,6 @@
 class Mailer < ActionMailer::Base
 
-  default from: "no-reply+#{Rails.env}@tedx.com.au"
+  default from: "no-reply+#{Rails.env}@tedxultimo.com"
 
   def remind(member)
     if member.remindable?
@@ -19,7 +19,7 @@ class Mailer < ActionMailer::Base
   end
 
   def reminders(*members)
-    members = Member.remindable_actions if members.flatten!.blank?
+    members = Member.with_remindable_actions if members.flatten!.blank?
     members.each{|member| remind(member)}
   end
 

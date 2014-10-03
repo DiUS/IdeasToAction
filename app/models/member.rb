@@ -18,8 +18,8 @@ class Member < ActiveRecord::Base
     all.map{|member| ["(#{member.id}) #{member.username ? member.username : 'Anonymous'}", member.id]}
   end
 
-  def self.remindable_actions
-    IdeaAction.remindable
+  def self.with_remindable_actions
+    all.select{|member| !member.remindable_actions.empty?}
   end
 
   def remindable_actions
