@@ -71,4 +71,5 @@ Actionman::Application.configure do
   #config.action_controller.relative_url_root = '.'
 
   config.host = '54.79.124.80'
+	config.analytics_tracking_key = 'bogus'
 end
