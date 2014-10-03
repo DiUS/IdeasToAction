@@ -51,7 +51,7 @@ class IdeaAction < ActiveRecord::Base
 	end
 
   def due_soon?
-    target_date < 1.week.from_now
+    target_date <= 1.week.from_now
   end
 
   def remindable?
@@ -80,8 +80,8 @@ class IdeaAction < ActiveRecord::Base
 
   def self.remindable(member = nil)
     query = [
-      "completion_date = ''",
-      "target_date < #{1.week.from_now.to_date}",
+      "completion_date is null",
+      "target_date <= '#{1.week.from_now.to_date}'",
       "reminded = false"
     ]
     query += ["member_id = #{member.id}"] if member
