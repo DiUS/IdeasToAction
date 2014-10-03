@@ -30,7 +30,7 @@ before 'deploy:update_code', 'rvm:install_ruby'
 
 after 'deploy:update_code', 'deploy:migrate'
 before 'deploy:migrate', 'deploy:search:ensure_aliases_and_indexes_exist'
-before 'deploy:update_code', 'deploy:link:environment'
+after 'deploy:copy_files', 'deploy:link:environment'
 
 after 'deploy:update_code', 'deploy:search:import'
 after 'deploy:update', 'foreman:export'
