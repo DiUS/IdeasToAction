@@ -20,6 +20,9 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
 		column :completed, :sortable => :completion_date do |idea_action|
 			idea_action.completed?
 		end
+		column :member do |idea_action|
+			link_to idea_action.member_email, admin_member_path(idea_action.member)
+		end
     default_actions
   end
 
@@ -34,6 +37,9 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
       row :updated_at
 			row :target_date
 			row :completion_date
+			row :member do
+				link_to idea_action.member_email, admin_member_path(idea_action.member.id)
+			end
     end
   end
 
@@ -56,6 +62,7 @@ ActiveAdmin.register IdeaAction, :as => "Action" do
   filter :target_date
   filter :completion_date
   filter :featured
+	filter :member_id, label: 'Member', as: :select, collection: proc{Member.emails}
 	scope :incomplete
 	scope :completed
 	scope :all

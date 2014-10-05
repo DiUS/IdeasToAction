@@ -10,7 +10,7 @@ describe Member do
 		end
 
 		it 'should allow blank user names and passwords' do
-			@member.username = ''
+			@member.email = ''
 			@member.password = ''
 			@member.valid?.should be_true
 		end

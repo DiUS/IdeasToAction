@@ -29,6 +29,7 @@ class IdeaAction < ActiveRecord::Base
   validates :idea, :description, :target_date, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
+	delegate :email, :to => :member, :prefix => true
 
   after_create :increment_counter
   after_destroy :decrement_counter

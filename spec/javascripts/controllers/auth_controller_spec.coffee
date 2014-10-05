@@ -1,13 +1,13 @@
 describe 'Actionman', () ->
 
   describe 'AuthCtrl', () ->
-    loginCredentials = { username: "ted", password: "ted" }
-    successloginResponse = { success: true, id: 1, username: "ted" }
-    successCheckResponse = { admin_authenticated: true, id: 1, username: "ted" }
+    loginCredentials = { email: "ted@x.com", password: "ted" }
+    successloginResponse = { success: true, id: 1, email: "ted@x.com" }
+    successCheckResponse = { admin_authenticated: true, id: 1, email: "ted@x.com" }
     notAuthenticatedCheckResponse = { admin_authenticated: false }
-    loggedInSessionData = { errorMsg: null, id: successloginResponse.id, username: successloginResponse.username, loggedIn: true }
-    blankSessionData = { errorMsg: null, id: null, username: null, loggedIn: undefined }
-    loggedOutSessionData = { errorMsg: null, id: null, username: null, loggedIn: false }
+    loggedInSessionData = { errorMsg: null, id: successloginResponse.id, email: successloginResponse.email, loggedIn: true }
+    blankSessionData = { errorMsg: null, id: null, email: null, loggedIn: undefined }
+    loggedOutSessionData = { errorMsg: null, id: null, email: null, loggedIn: false }
 
     scope = null
     ctrl = null

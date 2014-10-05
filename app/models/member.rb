@@ -3,7 +3,7 @@ class Member < ActiveRecord::Base
   ROLE_CONTENT_ADMIN = "CONTENT_ADMIN"
   ROLE_GLOBAL_ADMIN = "GLOBAL_ADMIN"
 
-  attr_accessible :persistence_token, :username, :password, :role, :email
+  attr_accessible :persistence_token, :password, :role, :email
 
   acts_as_authentic do |c|
     c.session_class = MemberSession
@@ -12,10 +12,10 @@ class Member < ActiveRecord::Base
     c.validate_email_field = false
   end
 
-  has_many :idea_actions
+  has_many :idea_actions, dependent: :destroy
 
-  def self.usernames
-    all.map{|member| ["(#{member.id}) #{member.username ? member.username : 'Anonymous'}", member.id]}
+  def self.emails
+    all.map{|member| ["(#{member.id}) #{member.email}", member.id]}
   end
 
   def self.with_remindable_actions
@@ -38,6 +38,9 @@ class Member < ActiveRecord::Base
 
   def remindable?
     idea_actions.any?{|idea_action| idea_action.remindable?}
-  end
+	end
 
+	def self.emails
+		all.map{|member| ["(#{member.id}) #{member.email}", member.id]}
+	end
 end

@@ -94,7 +94,7 @@ describe IdeasController do
     let(:idea) { Idea.first }
     let(:attrs) { { :description => 'a description' } }
 
-    let(:admin_member) { Member.create!(:username => "ted", :password => "admin", :role => Member::ROLE_CONTENT_ADMIN) }
+    let(:admin_member) { Member.create!(:email => 'ted@x.com', :password => 'admin', :role => Member::ROLE_CONTENT_ADMIN) }
 
     before do
       controller.stub(:current_member).and_return(admin_member)

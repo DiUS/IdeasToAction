@@ -15,7 +15,7 @@ ActiveAdmin.register Idea do
     attributes_table do
       row :description
       row :member do
-        "(#{idea.member_id}) #{idea.member_username ? idea.member_username : 'Anonymous'}"
+        "(#{idea.member_id}) #{idea.member_email}"
       end
       row :featured
       row :created_at
@@ -29,7 +29,7 @@ ActiveAdmin.register Idea do
   form do |f|
     f.inputs do
       f.input :member_id, :label => 'Member', :as => :select,
-              :collection => Member.all.map{|m| ["(#{m.id}) #{m.username ? m.username : 'Anonymous'}", m.id]}
+              :collection => Member.all.map{|m| ["(#{m.id}) #{m.email}", m.id]}
       f.input :description
       f.input :featured
       f.input :talks, :as => :check_boxes
@@ -38,7 +38,7 @@ ActiveAdmin.register Idea do
     f.actions
   end
 
-  filter :member_id, label: 'Member', as: :select, collection: proc{Member.usernames}
+  filter :member_id, label: 'Member', as: :select, collection: proc{Member.emails}
   filter :description
   filter :created_at
   filter :updated_at
