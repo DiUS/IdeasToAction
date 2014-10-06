@@ -35,7 +35,7 @@ class Idea < ActiveRecord::Base
   after_destroy :decrement_counters
 
   def self.random(number = 1)
-    Idea.offset(rand(Idea.count - number+1)).first(number)
+    Idea.offset(rand(Idea.count - number + 1)).first(number)
   end
 
   def self.featured
@@ -51,17 +51,20 @@ class Idea < ActiveRecord::Base
   end
 
   def self.excluding_ideas(idea_ids)
-    where("id not in (?)", idea_ids)
+    where("ideas.id not in (?)", idea_ids)
   end
 
   def self.descriptions
     all.map{|idea| ["(#{idea.id}) #{idea.description.truncate(35)}", idea.id]}
   end
 
-  def self.total
+  def self.viewable
     joins([:talk_to_idea_associations, :talks])
       .where(talks: {viewable: true})
-        .count
+  end
+
+  def self.total
+    viewable.count
   end
 
   def as_json options = nil

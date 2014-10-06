@@ -1,15 +1,15 @@
 class IdeaActionView
+
   attr_accessor :featured, :recent, :popular
 
   def initialize
-    already_selected = []
+    already_shown = []
 
-    random_featured = IdeaAction.featured.random(1)
-    self.featured = random_featured
-    already_selected.concat random_featured
+    self.featured = IdeaAction.featured.viewable.random(1)
+    already_shown += self.featured
 
-    random_recent = IdeaAction.recent.excluding_idea_actions(already_selected.collect(&:id)).random(4)
-    self.recent = random_recent
-    already_selected.concat random_recent
+    self.recent = IdeaAction.recent.viewable.excluding_idea_actions(already_shown.collect(&:id)).random(4)
+    already_shown += self.recent
   end
+
 end

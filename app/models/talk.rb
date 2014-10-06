@@ -34,7 +34,7 @@ class Talk < ActiveRecord::Base
   after_destroy :destroy_ideas_without_talks
 
   def self.random(number = 1)
-    Talk.offset(rand(Talk.count - number+1)).first(number)
+    Talk.offset(rand(Talk.count - number + 1)).first(number)
   end
 
   def self.featured
@@ -50,7 +50,7 @@ class Talk < ActiveRecord::Base
   end
 
   def self.excluding_talks(talk_ids)
-    where("id not in (?)", talk_ids)
+    where("talks.id not in (?)", talk_ids)
   end
 
   def self.viewable
@@ -63,7 +63,7 @@ class Talk < ActiveRecord::Base
 
   def destroy_ideas_without_talks
     self.ideas.each do |idea|
-      idea.destroy if idea.talks.size == 0
+      idea.destroy if idea.talks.size.zero?
     end
   end
 end

@@ -24,10 +24,10 @@ if %w(test development qa).include? Rails.env
   member6 = Member.create! persistence_token: '4353', email: 'member6@tedxultimo.com'
   member7 = Member.create! persistence_token: '3456', email: 'member7@tedxultimo.com'
 
-	Member.create! email: 'content_admin@tedxultimo.com', password: ENV['CONTENT_ADMIN_PASSWORD'], :role => Member::ROLE_CONTENT_ADMIN
-	Member.create! email: 'global_admin@tedxultimo.com', password: ENV['GLOBAL_ADMIN_PASSWORD'], :role => Member::ROLE_GLOBAL_ADMIN
+	Member.create! email: 'content_admin@tedxultimo.com', password: ENV['CONTENT_ADMIN_PASSWORD'], role: Member::ROLE_CONTENT_ADMIN
+	Member.create! email: 'global_admin@tedxultimo.com', password: ENV['GLOBAL_ADMIN_PASSWORD'], role: Member::ROLE_GLOBAL_ADMIN
 
-  tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
+  tags = Pathname("db/tag_data.csv").readlines.map{|tag_name| Tag.create!(name: tag_name.strip)}
 
   #
   # TED Global 2012
@@ -92,7 +92,8 @@ if %w(test development qa).include? Rails.env
     hero_image_url: 'http://images.ted.com/images/ted/4e1c25357f3ddd259c2eb15871337c2f0172f5a0_389x292.jpg',
     ted_talk_url: 'http://www.ted.com/talks/brene_brown_on_vulnerability.html',
     event_id: tedx_houston.id,
-    featured: true
+    featured: true,
+    viewable: true
   )
 
   brene_brown_talk_idea_1 = Idea.new(
@@ -184,7 +185,8 @@ if %w(test development qa).include? Rails.env
     description: "With charm and humor, celebrated Korean author Young-ha Kim invokes the world's greatest artists to urge you to unleash your inner child -- the artist who wanted to play forever.",
     hero_image_url: 'http://images.ted.com/images/ted/98c37912ea62c89c21f43ef98ee122ebacd8634d_389x292.jpg',
     ted_talk_url: 'http://www.ted.com/talks/young_ha_kim_be_an_artist_right_now.html',
-    event_id: tedx_seoul.id
+    event_id: tedx_seoul.id,
+    viewable: true
   )
 
   young_ha_kim_talk_idea_1 = Idea.new(

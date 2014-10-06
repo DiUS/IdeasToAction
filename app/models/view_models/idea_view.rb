@@ -1,17 +1,17 @@
 class IdeaView
+
   attr_accessor :featured, :recent, :popular
 
   def initialize
-    already_selected = []
+    already_shown = []
 
-    random_featured = Idea.featured.random(1)
-    self.featured = random_featured
-    already_selected.concat random_featured
+    self.featured = Idea.featured.viewable.random(1)
+    already_shown += self.featured
 
-    random_recent = Idea.recent.excluding_ideas(already_selected.collect(&:id)).random(2)
-    self.recent = random_recent
-    already_selected.concat random_recent
+    self.recent = Idea.recent.viewable.excluding_ideas(already_shown.collect(&:id)).random(2)
+    already_shown += self.recent
 
-    self.popular =  Idea.popular.excluding_ideas(already_selected.collect(&:id)).random(2)
+    self.popular = Idea.popular.viewable.excluding_ideas(already_shown.collect(&:id)).random(2)
   end
+
 end

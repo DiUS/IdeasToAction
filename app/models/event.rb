@@ -43,11 +43,15 @@ class Event < ActiveRecord::Base
   end
 
   def self.excluding_events(event_ids)
-    where("id not in (?)", event_ids)
+    where("events.id not in (?)", event_ids)
+  end
+
+  def self.viewable
+    joins(:talks).where(talks: {viewable: true})    
   end
 
   def self.total
-    joins(:talks).where(talks: {viewable: true}).count
+    viewable.count
   end
 
 end

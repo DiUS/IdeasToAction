@@ -60,11 +60,11 @@ class IdeaAction < ActiveRecord::Base
   end
 
   def self.random(number = 1)
-    IdeaAction.offset(rand(IdeaAction.count - number+1)).first(number)
+    IdeaAction.offset(rand(IdeaAction.count - number + 1)).first(number)
   end
 
   def self.featured
-    where(:featured => true)
+    where(featured: true)
   end
 
   def self.recent
@@ -72,7 +72,7 @@ class IdeaAction < ActiveRecord::Base
   end
 
   def self.excluding_idea_actions(idea_action_ids)
-    where("id not in (?)", idea_action_ids)
+    where("idea_actions.id not in (?)", idea_action_ids)
   end
 
   def self.descriptions
@@ -93,10 +93,13 @@ class IdeaAction < ActiveRecord::Base
     idea_actions.each{|idea_action| idea_action.update_attribute(reminded: true)}
   end
 
-  def self.total
+  def self.viewable
     joins(idea: [:talk_to_idea_associations, :talks])
       .where(talks: {viewable: true})
-        .count
+  end
+
+  def self.total
+    viewable.count
   end
 
   private
