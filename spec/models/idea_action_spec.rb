@@ -11,6 +11,8 @@ describe IdeaAction do
 	it { should be_accessible(:target_date) }
 
   it { should delegate(:description).to(:idea).with_prefix }
+  it { should delegate(:email).to(:member).with_prefix }
+
   it { should validate_presence_of(:idea) }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:target_date) }

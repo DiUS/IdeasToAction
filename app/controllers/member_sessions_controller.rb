@@ -11,10 +11,10 @@ class MemberSessionsController < ApplicationController
     respond_to do |format|
       if @member_session.save
         format.html { redirect_to admin_root_path }
-        format.json { render json: { success: true, id: current_member.id, username: current_member.username} }
+        format.json { render json: { success: true, id: current_member.id, email: current_member.email} }
       else
         format.html { render 'new' }
-        format.json { render json: { error: "Invalid username or password" }, :status => :unprocessable_entity }
+        format.json { render json: { error: 'Invalid email or password' }, :status => :unprocessable_entity }
       end
     end
   end
@@ -36,9 +36,9 @@ class MemberSessionsController < ApplicationController
   end
 
   def check
-    member_check =  { admin_authenticated: current_member && current_member.username.present? }
+    member_check =  { admin_authenticated: current_member && current_member.email.present? }
     member_check[:id] = current_member.id
-    member_check[:username] = current_member.username if current_member
+    member_check[:email] = current_member.email if current_member
     render json: member_check
   end
 end

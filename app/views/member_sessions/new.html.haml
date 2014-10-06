@@ -1,11 +1,11 @@
-- content_for :title, "Actionman | Admin Login"
+- content_for :title, 'TEDxUltimo StartSomething | Admin Login'
 
-%h2 Actionman Admin Login
+%h2 TEDxUltimo StartSomething Admin Login
 
-= semantic_form_for @member_session, :html => {:class => "formtastic admin_user", :id => "session_new"} do |f|
+= semantic_form_for @member_session, :html => {:class => 'formtastic admin_user', :id => 'session_new'} do |f|
   = f.inputs do
-    = f.input :username
+    = f.input :email
     = f.input :password
 
   = f.actions do
-    = f.submit("Login")
+    = f.submit('Login')

@@ -29,7 +29,7 @@ class Idea < ActiveRecord::Base
 
   attr_accessible :tags, :talks, :description, :idea_actions, :featured, :member_id, :talk_ids, :idea_actions_attributes
 
-  delegate :username, :to => :member, :prefix => true
+  delegate :email, :to => :member, :prefix => true
 
   after_create :increment_counters
   after_destroy :decrement_counters

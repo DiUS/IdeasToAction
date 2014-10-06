@@ -10,7 +10,7 @@ describe Idea do
   it { should be_accessible(:member_id) }
   it { should be_accessible(:talk_ids) }
 
-  it { should delegate(:username).to(:member).with_prefix }
+  it { should delegate(:email).to(:member).with_prefix }
 
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:member) }

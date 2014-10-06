@@ -16,17 +16,16 @@ if %w(test development qa).include? Rails.env
   Member.delete_all
   IdeaAction.delete_all
 
-  # Setup
-  member1 = Member.create! persistence_token: '1234'
-  member2 = Member.create! persistence_token: '5678'
-  member3 = Member.create! persistence_token: '9012'
-  member4 = Member.create! persistence_token: '6732'
-  member5 = Member.create! persistence_token: '7654'
-  member6 = Member.create! persistence_token: '4353'
-  member7 = Member.create! persistence_token: '3456'
+  member1 = Member.create! persistence_token: '1234', email: 'member1@tedxultimo.com'
+  member2 = Member.create! persistence_token: '5678', email: 'member2@tedxultimo.com'
+  member3 = Member.create! persistence_token: '9012', email: 'member3@tedxultimo.com'
+  member4 = Member.create! persistence_token: '6732', email: 'member4@tedxultimo.com'
+  member5 = Member.create! persistence_token: '7654', email: 'member5@tedxultimo.com'
+  member6 = Member.create! persistence_token: '4353', email: 'member6@tedxultimo.com'
+  member7 = Member.create! persistence_token: '3456', email: 'member7@tedxultimo.com'
 
-  Member.create! username: "content_admin", password: ENV['CONTENT_ADMIN_PASSWORD'], :role => Member::ROLE_CONTENT_ADMIN
-  Member.create! username: "global_admin", password: ENV['GLOBAL_ADMIN_PASSWORD'], :role => Member::ROLE_GLOBAL_ADMIN
+	Member.create! email: 'content_admin@tedxultimo.com', password: ENV['CONTENT_ADMIN_PASSWORD'], :role => Member::ROLE_CONTENT_ADMIN
+	Member.create! email: 'global_admin@tedxultimo.com', password: ENV['GLOBAL_ADMIN_PASSWORD'], :role => Member::ROLE_GLOBAL_ADMIN
 
   tags = Pathname("db/tag_data.csv").readlines.map { | tag_name | Tag.create!(name: tag_name.strip)}
 
