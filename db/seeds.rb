@@ -16,13 +16,13 @@ if %w(test development qa).include? Rails.env
   Member.delete_all
   IdeaAction.delete_all
 
-  member1 = Member.create! persistence_token: '1234', email: 'member1@tedxultimo.com', password: 'constant_hardcoded_password'
-  member2 = Member.create! persistence_token: '5678', email: 'member2@tedxultimo.com', password: 'constant_hardcoded_password'
-  member3 = Member.create! persistence_token: '9012', email: 'member3@tedxultimo.com', password: 'constant_hardcoded_password'
-  member4 = Member.create! persistence_token: '6732', email: 'member4@tedxultimo.com', password: 'constant_hardcoded_password'
-  member5 = Member.create! persistence_token: '7654', email: 'member5@tedxultimo.com', password: 'constant_hardcoded_password'
-  member6 = Member.create! persistence_token: '4353', email: 'member6@tedxultimo.com', password: 'constant_hardcoded_password'
-  member7 = Member.create! persistence_token: '3456', email: 'member7@tedxultimo.com', password: 'constant_hardcoded_password'
+  member1 = Member.create! email: 'member1@tedxultimo.com', password: 'constant_hardcoded_password'
+  member2 = Member.create! email: 'member2@tedxultimo.com', password: 'constant_hardcoded_password'
+  member3 = Member.create! email: 'member3@tedxultimo.com', password: 'constant_hardcoded_password'
+  member4 = Member.create! email: 'member4@tedxultimo.com', password: 'constant_hardcoded_password'
+  member5 = Member.create! email: 'member5@tedxultimo.com', password: 'constant_hardcoded_password'
+  member6 = Member.create! email: 'member6@tedxultimo.com', password: 'constant_hardcoded_password'
+  member7 = Member.create! email: 'member7@tedxultimo.com', password: 'constant_hardcoded_password'
 
 	Member.create! email: 'content_admin@tedxultimo.com', password: ENV['CONTENT_ADMIN_PASSWORD'], role: Member::ROLE_CONTENT_ADMIN
 	Member.create! email: 'global_admin@tedxultimo.com', password: ENV['GLOBAL_ADMIN_PASSWORD'], role: Member::ROLE_GLOBAL_ADMIN

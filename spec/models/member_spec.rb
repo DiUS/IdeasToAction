@@ -58,7 +58,7 @@ describe Member do
   end
 
   describe "#remindable_actions" do
-    let(:member){Member.find_by_persistence_token("1234")}
+    let(:member){Member.find_by_email('member1@tedxultimo.com')}
     subject{member.remindable_actions}
 
     describe "not found when today's date is longer than week prior to the target date" do
