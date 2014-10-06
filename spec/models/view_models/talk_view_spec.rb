@@ -1,53 +1,53 @@
 require 'spec_helper'
 
 describe TalkView do
-  let(:talk_view) { TalkView.new }
+  subject{TalkView.new}
 
   context "featured talks" do
     it "should contain talks" do
-      talk_view.featured.each do |event|
+      subject.featured.each do |event|
         event.should be_an_instance_of(Talk)
       end
     end
 
     it "should have one" do
-      talk_view.featured.size.should eql(1)
+      subject.featured.size.should eql(1)
     end
 
     it "should be viewable" do
-      expect(talk_view.featured.first.viewable?).to be true
+      expect(subject.featured.first.viewable?).to be true
     end
   end
 
   context "recent talks" do
     it "should contain talks" do
-      talk_view.recent.each do |event|
+      subject.recent.each do |event|
         event.should be_an_instance_of(Talk)
       end
     end
 
     it "should have two" do
-      talk_view.recent.size.should eql(2)
+      subject.recent.size.should eql(2)
     end
 
     it "should be viewable" do
-      expect(talk_view.recent.all?{|recent_talk| recent_talk.viewable?}).to be true
+      expect(subject.recent.all?{|recent_talk| recent_talk.viewable?}).to be true
     end
   end
 
   context "popular talks" do
     it "should contain talks" do
-      talk_view.popular.each do |event|
+      subject.popular.each do |event|
         event.should be_an_instance_of(Talk)
       end
     end
 
     it "should have two" do
-      talk_view.popular.size.should eql(2)
+      subject.popular.size.should eql(2)
     end
 
     it "should be viewable" do
-      expect(talk_view.popular.all?{|popular_talk| popular_talk.viewable?}).to be true
+      expect(subject.popular.all?{|popular_talk| popular_talk.viewable?}).to be true
     end
   end
 
