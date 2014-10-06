@@ -19,37 +19,37 @@ class IdeaAction < ActiveRecord::Base
   attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date, :target_date
 
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
-	belongs_to :member
+  belongs_to :member
 
-	scope :incomplete_first, -> { order('completion_date IS NOT NULL, completion_date DESC') }
-	scope :member_first, ->(member) { order("member_id <> #{member.id}") }
-	scope :incomplete, -> { where(completion_date: nil) }
-	scope :completed, -> { where('completion_date IS NOT NULL') }
+  scope :incomplete_first, -> { order('completion_date IS NOT NULL, completion_date DESC') }
+  scope :member_first, ->(member) { order("member_id <> #{member.id}") }
+  scope :incomplete, -> { where(completion_date: nil) }
+  scope :completed, -> { where('completion_date IS NOT NULL') }
 
   validates :idea, :description, :target_date, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
-	delegate :email, :to => :member, :prefix => true
+  delegate :email, :to => :member, :prefix => true
 
   after_create :increment_counter
   after_destroy :decrement_counter
 
-	def complete?
-		completion_date.present?
-	end
+  def complete?
+    completion_date.present?
+  end
   alias_method :completed?, :complete?
 
   def incomplete?
     !complete?
   end
 
-	def completable?(current_member)
-		member == current_member && incomplete?
-	end
+  def completable?(current_member)
+    member == current_member && incomplete?
+  end
 
-	def mine?(current_member)
-		member == current_member
-	end
+  def mine?(current_member)
+    member == current_member
+  end
 
   def due_soon?
     target_date <= 1.week.from_now
@@ -77,7 +77,7 @@ class IdeaAction < ActiveRecord::Base
 
   def self.descriptions
     all.map{|idea_action| ["(#{idea_action.id}) #{idea_action.description.truncate(35)}", idea_action.id]}
-	end
+  end
 
   def self.remindable(member = nil)
     query = [
@@ -91,6 +91,12 @@ class IdeaAction < ActiveRecord::Base
 
   def self.reminded(idea_actions)
     idea_actions.each{|idea_action| idea_action.update_attribute(reminded: true)}
+  end
+
+  def self.total
+    joins(idea: [:talk_to_idea_associations, :talks])
+      .where(talks: {viewable: true})
+        .count
   end
 
   private

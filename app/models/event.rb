@@ -27,11 +27,11 @@ class Event < ActiveRecord::Base
   validates :name, :description, :hero_image_url, :presence => true
 
   def self.random(number = 1)
-    Event.offset(rand(Event.count - number+1)).first(number)
+    Event.offset(rand(Event.count - number + 1)).first(number)
   end
 
   def self.featured
-    where(:featured => true)
+    where(featured: true)
   end
 
   def self.recent
@@ -42,7 +42,12 @@ class Event < ActiveRecord::Base
     order("idea_actions_count desc").limit(10)
   end
 
-  def self.excluding_events(eventIds)
-    where("id not in (?)", eventIds)
+  def self.excluding_events(event_ids)
+    where("id not in (?)", event_ids)
   end
+
+  def self.total
+    joins(:talks).where(talks: {viewable: true}).count
+  end
+
 end

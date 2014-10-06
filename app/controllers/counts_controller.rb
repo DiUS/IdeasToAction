@@ -1,11 +1,11 @@
 class CountsController < ApplicationController
 
   def index
-    render :json => {
-      :events => Event.count,
-      :talks => Talk.count,
-      :ideas => Idea.count,
-      :idea_actions => IdeaAction.count
+    render json: {
+      ideas: Idea.total,
+      idea_actions: IdeaAction.total
+      talks: Talk.total,
+      events: Event.total,
     }
   end
 end

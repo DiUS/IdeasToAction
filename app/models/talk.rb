@@ -57,6 +57,10 @@ class Talk < ActiveRecord::Base
     where(viewable: true)
   end
 
+  def self.total
+    viewable.count
+  end
+
   def destroy_ideas_without_talks
     self.ideas.each do |idea|
       idea.destroy if idea.talks.size == 0

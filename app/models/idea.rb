@@ -14,7 +14,7 @@ class Idea < ActiveRecord::Base
     indexes :updated_at,   :type => 'date', :include_in_all => false
     indexes :description,  :boost => 100
   end  
-      
+
   belongs_to :member
 
   has_many :talk_to_idea_associations
@@ -39,7 +39,7 @@ class Idea < ActiveRecord::Base
   end
 
   def self.featured
-    where(:featured => true)
+    where(featured: true)
   end
 
   def self.recent
@@ -56,6 +56,12 @@ class Idea < ActiveRecord::Base
 
   def self.descriptions
     all.map{|idea| ["(#{idea.id}) #{idea.description.truncate(35)}", idea.id]}
+  end
+
+  def self.total
+    joins([:talk_to_idea_associations, :talks])
+      .where(talks: {viewable: true})
+        .count
   end
 
   def as_json options = nil
