@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Member do
-<<<<<<< HEAD
   it { should have_many(:idea_actions) }
 
   describe "credentials" do
@@ -104,20 +103,3 @@ describe Member do
   end
 
 end
-=======
-	it { should have_many(:idea_actions) }
-
-	describe 'credentials' do
-		before(:each) do
-			activate_authlogic
-			@member = Member.first
-		end
-
-		it 'should allow blank user names and passwords' do
-			@member.email = ''
-			@member.password = ''
-			@member.valid?.should be_true
-		end
-	end
-end
->>>>>>> 013e4a013476aa652fbfe146dc0ecd2050e6a8a0
