@@ -10,45 +10,45 @@ describe Member do
       activate_authlogic
     end
 
-    it "should allow blank usernames and passwords" do
-      subject.username = ""
+    it "should allow blank emails and passwords" do
+      subject.email = ""
       subject.password = ""
       subject.valid?.should be_true
     end
   end
 
-  describe ".usernames" do
-    subject{Member.usernames}
+  describe ".emails" do
+    subject{Member.emails}
 
     specify "that it returns an Array" do
       expect(subject.class).to eq Array
     end
     
-    specify "that each username has two elements" do
-      subject.each do |username|
-        expect(username.size).to eq 2
+    specify "that each email has two elements" do
+      subject.each do |email|
+        expect(email.size).to eq 2
       end
     end
 
-    specify "that each username has a String as the first element" do
-      subject.each do |username|
-        expect(username.first.class).to eq String
+    specify "that each email has a String as the first element" do
+      subject.each do |email|
+        expect(email.first.class).to eq String
       end
     end
 
-    specify "that each username has a Fixum as the second element" do
-      subject.each do |username|
-        expect(username.last.class).to eq Fixnum
+    specify "that each email has a Fixum as the second element" do
+      subject.each do |email|
+        expect(email.last.class).to eq Fixnum
       end
     end
 
-    specify "that one of the usernames is content_admin" do
-      matching_username = subject.select{|username| username.first =~ /content_admin/}
+    specify "that one of the email is content_admin" do
+      matching_username = subject.select{|email| email.first =~ /content_admin/}
       expect(matching_username).not_to be_empty
     end
 
-    specify "that one of the usernames is global_admin" do
-      matching_username = subject.select{|username| username.first =~ /global_admin/}
+    specify "that one of the email is global_admin" do
+      matching_username = subject.select{|email| email.first =~ /global_admin/}
       expect(matching_username).not_to be_empty
     end
   end
@@ -75,7 +75,7 @@ describe Member do
       end
     end
 
-    describe "found when the date is within a week from the target date" do
+    describe "found when the date is within a week prior to the target date" do
       before do
         Timecop.freeze(member.idea_actions.first.target_date - 3.days)
       end
