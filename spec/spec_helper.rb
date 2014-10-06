@@ -64,7 +64,14 @@ RSpec.configure do |config|
     bitly_response["status_txt"] = "OK"
     bitly_response["data"] = {"long_url" => "http:\/\/54.79.124.80\/ideas\/17", "url" => "http:\/\/bit.ly\/14zIYbx", "hash" => "14zIYbx", "global_hash" => "14zIYby", "new_hash" => 0}
     stub_request(:any, /.*api\.bit\.ly*/).to_return(:status => 200, :body => bitly_response.to_json, :headers => {"content-type" => "application/json"})
-  end
+	end
+
+	config.before :each, type: :feature do
+		visit "/#/login"
+		page.find('#email').set('test@user.com')
+		page.find('#login-submit').click
+		sleep 1
+	end
 
   config.include JsonSpec::Helpers
 

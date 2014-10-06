@@ -1,0 +1,25 @@
+.login-box {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 40px 20px;
+
+  input[type="text"] {
+    height: 2em;
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f7f7;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+  }
+
+  .error {
+    color: red;
+  }
+
+  p {
+    text-align: left;
+    font-size: 0.8em;
+    line-height: 1.3em;
+  }
+}

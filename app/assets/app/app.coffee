@@ -20,7 +20,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
           $location.path("/internal_server_error")
         $q.reject response
   ).
-  config ($routeProvider, $httpProvider) ->
+  config(($routeProvider, $httpProvider) ->
       $httpProvider.responseInterceptors.push('errorsInterceptor')
 
       $routeProvider.
@@ -44,7 +44,16 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         
         when('/member',                           { templateUrl: 'assets/views/members/member.html',     controller: MemberCtrl }).
         when('/found',                            { templateUrl: 'assets/views/found/index.html',        controller: FoundCtrl }).
-        when('/login',                            { templateUrl: 'assets/views/auth/login.html',         controller: AuthCtrl }).
+        when('/login',                            { templateUrl: 'assets/views/login/login.html',        controller: LoginCtrl }).
         when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
         when('/internal_server_error',            { templateUrl: 'assets/views/errors/internal_server_error.html',controller: ErrorsCtrl }).
         otherwise( {redirectTo: '/home'} )
+  ).
+  run ($location, $rootScope, $http) ->
+    $rootScope.$on "$routeChangeStart", () ->
+      if not $rootScope.member or not $rootScope.member.email
+        $http.get("#{window.ENDPOINT}/member_sessions/check.json").success (data) ->
+          if data.admin_authenticated
+            $rootScope.member = data
+          else
+            $location.path "/login"

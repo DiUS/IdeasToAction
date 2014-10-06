@@ -131,16 +131,16 @@ describe IdeaAction do
 			end
 		end
 
-		describe 'member_first' do
-			let(:member) { Member.where(persistence_token: '9012').first }
-
-			it 'should have members actions first' do
-				idea_actions = IdeaAction.member_first member
-				idea_actions[0...member.idea_actions.size].each do |idea_action|
-					expect(member.idea_actions).to include(idea_action)
-				end
-			end
-		end
+		# describe 'member_first' do
+		# 	let(:member) { Member.where(persistence_token: '9012').first }
+		#
+		# 	it 'should have members actions first' do
+		# 		idea_actions = IdeaAction.member_first member
+		# 		idea_actions[0...member.idea_actions.size].each do |idea_action|
+		# 			expect(member.idea_actions).to include(idea_action)
+		# 		end
+		# 	end
+		# end
 
 		describe 'completed and uncompleted' do
 			it 'should return only completed actions when requested' do

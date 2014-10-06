@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   private
 
   def member_session
-    @member_session ||= MemberSession.find || MemberSession.create(Member.create!, true)
+		return @member_session if defined?(@member_session)
+		@current_user_session = MemberSession.find
   end
   alias_method :current_member_session, :member_session
   alias_method :set_member_session, :member_session

@@ -1,6 +1,8 @@
 class MemberSessionsController < ApplicationController
   layout "web_login"
 
+	before_filter :create_member_if_new, :only => :create
+
   def new
     @member_session = MemberSession.new
   end
@@ -14,7 +16,7 @@ class MemberSessionsController < ApplicationController
         format.json { render json: { success: true, id: current_member.id, email: current_member.email} }
       else
         format.html { render 'new' }
-        format.json { render json: { error: 'Invalid email or password' }, :status => :unprocessable_entity }
+        format.json { render json: { error: 'Email address is invalid' }, :status => :unprocessable_entity }
       end
     end
   end
@@ -37,8 +39,16 @@ class MemberSessionsController < ApplicationController
 
   def check
     member_check =  { admin_authenticated: current_member && current_member.email.present? }
-    member_check[:id] = current_member.id
+    member_check[:id] = current_member.id if current_member
     member_check[:email] = current_member.email if current_member
     render json: member_check
-  end
+	end
+
+	private
+
+	def create_member_if_new
+		if Member.where(email: params[:member_session][:email]).empty?
+			Member.create email: params[:member_session][:email], password: params[:member_session][:password]
+		end
+	end
 end

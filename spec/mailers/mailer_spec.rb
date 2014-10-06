@@ -11,7 +11,7 @@ describe Mailer do
 
     its(:subject){should match('TEDx Reminder')}
     its(:to){should eq(['to@example.org'])}
-    its(:from){should eq(['no-reply+test@tedxultimo.com'])}
+    its(:from){should eq(["no-reply+test@tedxultimo.com"])}
 
     describe "#body" do
       subject{mail.body.encoded}

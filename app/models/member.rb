@@ -14,6 +14,8 @@ class Member < ActiveRecord::Base
 
   has_many :idea_actions, dependent: :destroy
 
+	validate :email, format: /\A(\S+)@(.+)\.(\S+)\z/
+
   def self.emails
     all.map{|member| ["(#{member.id}) #{member.email}", member.id]}
   end

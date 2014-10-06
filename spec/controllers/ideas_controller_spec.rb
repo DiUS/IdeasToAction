@@ -123,11 +123,16 @@ describe IdeasController do
         ],
         idea_actions: [
           { description: 'Examine your own body language in different social situations.', target_date: Time.now + 1.day },
-        ]        
+        ]
       }
     }
 
     describe "with valid params" do
+			before do
+				controller.stub(:member).and_return(Member.first)
+				controller.stub(:current_member).and_return(Member.first)
+			end
+
       it "creates a new idea" do
         expect {
           post :create, { :format => 'json', :idea => valid_attributes}, valid_session

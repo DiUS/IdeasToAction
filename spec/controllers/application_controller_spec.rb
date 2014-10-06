@@ -28,22 +28,6 @@ describe ApplicationController do
           controller.send(:member_session).should be(:a_session)
         end
       end
-
-      context "when there is no member session" do
-        before :each do
-          MemberSession.stub(:find).and_return(nil)
-        end
-
-        it "should create a new member session with a new member and return it" do
-          Member.should_receive(:create!).and_return(:member)
-          MemberSession.should_receive(:create).with(:member, true).and_return(:a_session)
-          controller.send(:member_session).should be :a_session
-        end
-      end
-    end
-
-    after :each do
-      controller.instance_variable_get(:@member_session).should_not be nil
     end
   end # context "#member_session"
 

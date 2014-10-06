@@ -1,0 +1,24 @@
+%scrollable
+  .content.center
+    .login-box
+      %p
+        Hi, welcome to TEDxUltimo and congratulations on becoming part of the TEDx Community. We hope to make this
+        TEDx the Ultimate Place to start something.
+      %p
+        For those who wish to contribute to the world, we're asking you to pick an idea that you hear today - and register
+        an action that you want to take to further it. For example, under an idea relating to education, you might like
+        to say 'I'm going to teach 10 friends how to say 'hello' in another language'.
+      %p
+        We'll be asking you to pick a date you'd like to have this done by, from now until December.
+      %p
+        We're looking forward to seeing you change the world!
+
+      %form(name="loginForm" ng-controller="LoginCtrl" ng-submit="submit()" novalidate)
+        .content-item.content-item-full.text-item
+          .error(ng-show="memberSession.errorMsg")
+            {{ memberSession.errorMsg }}
+          %input(type="text" id="email" ng-model="loginForm.email" placeholder="Pleas enter your email address..." )
+
+        %div
+          %button#login-submit.content-button.btn(type="submit")
+            Login
