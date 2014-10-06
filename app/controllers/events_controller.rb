@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   respond_to :json
 
   def index
-    if params[:mix] && params[:mix] == "true"
+    if params[:mix] && params[:mix] == 'true'
       @event_view = EventView.new
       render 'events'
     elsif !params[:excluding].blank?

@@ -15,7 +15,6 @@ ActiveAdmin.register Member do
 		f.actions
 	end
 
-
   csv do
     column :email
     column :created_at

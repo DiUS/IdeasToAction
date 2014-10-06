@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   respond_to :json
 
   def index
-    if params[:mix] && params[:mix] == "true"
+    if params[:mix] && params[:mix] == 'true'
       @idea_view = IdeaView.new
       render 'ideas'
     elsif !params[:excluding].blank?
