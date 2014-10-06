@@ -1,29 +1,29 @@
 require 'spec_helper'
 
 describe IdeaActionView do
-  let(:idea_action_view) { IdeaActionView.new }
+  subject{IdeaActionView.new}
 
   context "featured idea actions" do
     it "should contain idea actions" do
-      idea_action_view.featured.each do |idea|
+      subject.featured.each do |idea|
         idea.should be_an_instance_of(IdeaAction)
       end
     end
 
     it "should have one" do
-      idea_action_view.featured.size.should eql(1)
+      subject.featured.size.should eql 1
     end
   end
 
   context "recent idea actions" do
     it "should contain idea actions" do
-      idea_action_view.recent.each do |idea|
+      subject.recent.each do |idea|
         idea.should be_an_instance_of(IdeaAction)
       end
     end
 
-    it "should have two" do
-      idea_action_view.recent.size.should eql(4)
+    it "should have four" do
+      subject.recent.size.should eql 4
     end
   end
 end
