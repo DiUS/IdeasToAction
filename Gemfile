@@ -65,8 +65,14 @@ group :test, :development do
   # end
 end
 
+group :test do
+  gem 'timecop'
+  gem 'simplecov'
+end
+
 group :development do
   gem 'pry', '~> 0.10.0'
+  gem 'interactive_rspec'
 end
 
 # Deploy with Capistrano
