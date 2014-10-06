@@ -8,10 +8,18 @@ class EventView
     self.featured = Event.featured.viewable.random(1)
     already_shown += self.featured
 
-    self.recent = Event.recent.viewable.excluding_events(already_shown.collect(&:id)).random(2)
+    if !already_shown.empty?
+      self.recent = Event.recent.viewable.excluding_events(already_shown.collect(&:id)).random(2)
+    else
+      self.recent = Event.recent.viewable.random(2)
+    end
     already_shown += self.recent
 
-    self.popular = Event.popular.viewable.excluding_events(already_shown.collect(&:id)).random(2)
+    if !already_shown.empty?
+      self.popular = Event.popular.viewable.excluding_events(already_shown.collect(&:id)).random(2)
+    else      
+      self.popular = Event.popular.viewable.random(2)
+    end
   end
 
 end
