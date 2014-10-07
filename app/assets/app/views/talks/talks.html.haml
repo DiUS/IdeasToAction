@@ -5,7 +5,7 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .content
+    .content(ng-show="talks.featured[0]")
       .content-header Featured Talk
       .content-item(ng-href="/events/{{talks.featured[0].event_id}}/talks/{{talks.featured[0].id}}")
         %tile:featured(title="talks.featured[0].title" description="talks.featured[0].description" img="talks.featured[0].hero_image_url")

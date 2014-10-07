@@ -5,7 +5,7 @@
       %a.touch-icon(ng-href="/home")
         %i.icon-home
   %scrollable
-    .content
+    .content(ng-show="actions.featured[0]")
       .content-header Featured Action
       .content-item(ng-href="/ideas/{{actions.featured[0].idea_id}}")
         %tile:featured(description="actions.featured[0].description")
