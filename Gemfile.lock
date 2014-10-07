@@ -136,10 +136,11 @@ GEM
     delayed_job_active_record (4.0.2)
       activerecord (>= 3.0, < 4.2)
       delayed_job (>= 3.0, < 4.1)
-    devise (3.3.0)
+    devise (3.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.1.3)
