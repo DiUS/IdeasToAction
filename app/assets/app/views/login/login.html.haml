@@ -17,7 +17,7 @@
         .content-item.content-item-full.text-item
           .error(ng-show="memberSession.errorMsg")
             {{ memberSession.errorMsg }}
-          %input(type="text" id="email" ng-model="loginForm.email" placeholder="Pleas enter your email address..." )
+          %input(type="text" id="email" ng-model="loginForm.email" placeholder="Pleas enter your email address..." autocorrect="off" autocapitalize="off" )
 
         %div
           %button#login-submit.content-button.btn(type="submit")
