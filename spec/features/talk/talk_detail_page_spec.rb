@@ -7,7 +7,8 @@ describe "Talk detail page", js: true, acceptance: true do
 
   before :each do
     talk.should_not be_nil
-    visit "#/events/1/talks/1"
+    visit "/#/events/1/talks/1"
+		sleep 1
   end
 
   it "should have the talk details visible" do
@@ -28,16 +29,4 @@ describe "Talk detail page", js: true, acceptance: true do
 
     it_should_behave_like 'a collapsible'
   end
-
-  describe 'when wanting to navigate back to the home page' do
-    before do
-      page.should_not have_selector('#home')
-      page.first('.header .touch-icon').click
-    end
-
-    it 'should navigate back to home' do
-      page.should have_selector('#home')
-    end
-  end
-
 end

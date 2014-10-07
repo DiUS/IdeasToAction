@@ -1,10 +1,11 @@
 describe "Talks page", js: true, acceptance: true do
   before do
-    visit "#/talks"
+    visit "/#/talks"
+		sleep 1
   end
 
   describe 'featured talk' do
-    let(:featured_element){page.find('.content:first')}
+    let(:featured_element){page.find('#talks .content:first')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -18,7 +19,7 @@ describe "Talks page", js: true, acceptance: true do
   end
 
   describe 'popular talks' do
-    let(:featured_element){page.find('.content:nth-child(2)')}
+    let(:featured_element){page.find('#talks .content:nth-child(2)')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -32,7 +33,7 @@ describe "Talks page", js: true, acceptance: true do
   end
 
   describe 'recent talks' do
-    let(:featured_element){page.find('.content:nth-child(3)')}
+    let(:featured_element){page.find('#talks .content:nth-child(3)')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -47,7 +48,7 @@ describe "Talks page", js: true, acceptance: true do
 
   describe 'more talks' do
     def wait_for_loading_symbol_to_disappear
-      page.should_not have_selector('.extra-results-loading', visible: true)
+      page.should_not have_selector('#talks .extra-results-loading', visible: true)
     end
 
     before do
@@ -76,20 +77,9 @@ describe "Talks page", js: true, acceptance: true do
   end
 
   it 'should search' do
-    find("input[type='text']").set("stuff")
-    find('input.btn').click()
+    find("#talks input[type='text']").set("stuff")
+    find('#talks input.btn').click()
     sleep 1
     page.current_url.should match /#\/found\?query_text=stuff/
-  end
-
-  describe 'when wanting to navigate back to the home page' do
-    before do
-      page.should_not have_selector('#home')
-      page.first('.header .touch-icon').click
-    end
-
-    it 'should navigate back to home' do
-      page.should have_selector('#home')
-    end
   end
 end

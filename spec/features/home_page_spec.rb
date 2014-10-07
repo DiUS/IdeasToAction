@@ -2,7 +2,8 @@ describe "Home page", js: true, acceptance: true do
   self.use_transactional_fixtures = false
 
   before do
-    visit "#/home"
+    visit "/#/home"
+		sleep 1
   end 
 
   it "should display welcome text that rattles the bones" do

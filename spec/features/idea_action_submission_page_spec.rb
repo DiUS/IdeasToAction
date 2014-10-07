@@ -2,9 +2,12 @@ describe "Action submission page", js: true, acceptance: true do
   let(:idea) { Idea.find(1) }
 
   before :each do
-    visit "#/ideas/1"
-    page.first(".content-header").click
-    find("[text()='Suggest an action']").click
+    visit "/#/ideas/1"
+		sleep 1
+		within '#idea' do
+			page.first(".content-header").click
+			find("[text()='Suggest an action']").click
+		end
   end
 
   context "page text" do

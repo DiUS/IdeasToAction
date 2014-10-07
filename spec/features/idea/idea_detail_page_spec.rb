@@ -11,7 +11,8 @@ describe "Idea detail page", js: true, acceptance: true do
 		ApplicationController.any_instance.stub(:current_member).and_return(action.member)
     DatabaseCleaner.start
     idea.should_not be_nil
-    visit "#/ideas/1"
+    visit "/#/ideas/1"
+		sleep 1
   end
 
   after :each do
@@ -46,17 +47,6 @@ describe "Idea detail page", js: true, acceptance: true do
 
     it 'should link to twitter' do
       page.find('.btn-twitter:first')['phonegap-external'].should match /https:\/\/twitter.com\/intent\/tweet\?original_referer=&text=.*&tw_p=tweetbutton&url=.*/
-    end
-  end
-
-  describe 'when wanting to navigate back to the home page' do
-    before do
-      page.should_not have_selector('#home')
-      page.first('.header .touch-icon').click
-    end
-
-    it 'should navigate back to home' do
-      page.should have_selector('#home')
     end
   end
 

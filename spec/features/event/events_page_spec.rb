@@ -1,10 +1,11 @@
 describe "Events page", js: true, acceptance: true do
   before do
-    visit "#/events"
+    visit "/#/events"
+		sleep 1
   end
 
   describe 'featured event' do
-    let(:featured_element){page.find('.content:first')}
+    let(:featured_element){page.find('#events .content:first')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -18,7 +19,7 @@ describe "Events page", js: true, acceptance: true do
   end
 
   describe 'popular events' do
-    let(:featured_element){page.find('.content:nth-child(2)')}
+    let(:featured_element){page.find('#events .content:nth-child(2)')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -32,7 +33,7 @@ describe "Events page", js: true, acceptance: true do
   end
 
   describe 'recent events' do
-    let(:featured_element){page.find('.content:nth-child(3)')}
+    let(:featured_element){page.find('#events .content:nth-child(3)')}
     let(:featured_element_text){featured_element.text}
 
     it 'should have title' do
@@ -75,20 +76,9 @@ describe "Events page", js: true, acceptance: true do
   end
 
   it 'should search' do
-    find("input[type='text']").set("stuff")
-    find('input.btn').click()
+    find("#events input[type='text']").set("stuff")
+    find('#events input.btn').click()
     sleep 1
     page.current_url.should match /#\/found\?query_text=stuff/
-  end
-
-  describe 'when wanting to navigate back to the home page' do
-    before do
-      page.should_not have_selector('#home')
-      page.first('.header .touch-icon').click
-    end
-
-    it 'should navigate back to home' do
-      page.should have_selector('#home')
-    end
   end
 end
