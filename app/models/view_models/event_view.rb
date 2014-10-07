@@ -1,25 +1,34 @@
 class EventView
 
-  attr_accessor :featured, :recent, :popular
+  attr_accessor :featured, :recent, :popular, :already_shown
 
   def initialize
-    already_shown = []
+    self.already_shown = []
+    set_featured
+    set_recent
+    set_popular
+  end
 
+  def set_featured
     self.featured = Event.featured.viewable.random(1)
-    already_shown += self.featured
+    self.already_shown += self.featured
+  end
 
-    if !already_shown.empty?
-      self.recent = Event.recent.viewable.excluding_events(already_shown.collect(&:id)).random(2)
-    else
-      self.recent = Event.recent.viewable.random(2)
+  def set_recent
+    recent = Event.recent.viewable
+    if !self.already_shown.empty?
+      recent = recent.excluding_events(already_shown.collect(&:id))
     end
-    already_shown += self.recent
+    self.recent = recent.random(2)
+    self.already_shown += self.recent
+  end
 
-    if !already_shown.empty?
-      self.popular = Event.popular.viewable.excluding_events(already_shown.collect(&:id)).random(2)
-    else      
-      self.popular = Event.popular.viewable.random(2)
+  def set_popular
+    popular = Event.popular.viewable
+    if !self.already_shown.empty?
+      popular = popular.excluding_events(already_shown.collect(&:id))
     end
+    self.popular = popular.random(2)
   end
 
 end

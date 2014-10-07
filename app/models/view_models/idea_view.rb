@@ -1,25 +1,34 @@
 class IdeaView
 
-  attr_accessor :featured, :recent, :popular
+  attr_accessor :featured, :recent, :popular, :already_shown
 
   def initialize
-    already_shown = []
+    self.already_shown = []
+    set_featured
+    set_recent
+    set_popular
+  end
 
+  def set_featured
     self.featured = Idea.featured.viewable.random(1)
-    already_shown += self.featured
+    self.already_shown += self.featured
+  end
 
-    if !already_shown.empty?
-      self.recent = Idea.recent.viewable.excluding_ideas(already_shown.collect(&:id)).random(2)
-    else      
-      self.recent = Idea.recent.viewable.random(2)
+  def set_recent
+    recent = Idea.recent.viewable
+    if !self.already_shown.empty?
+      recent = recent.excluding_ideas(already_shown.collect(&:id))
     end
-    already_shown += self.recent
+    self.recent = recent.random(2)
+    self.already_shown += self.recent
+  end
 
-    if !already_shown.empty?
-      self.popular = Idea.popular.viewable.excluding_ideas(already_shown.collect(&:id)).random(2)
-    else
-      self.popular = Idea.popular.viewable.random(2)
+  def set_popular
+    popular = Idea.popular.viewable
+    if !self.already_shown.empty?
+      popular = popular.excluding_ideas(already_shown.collect(&:id))
     end
+    self.popular = popular.random(2)
   end
 
 end
