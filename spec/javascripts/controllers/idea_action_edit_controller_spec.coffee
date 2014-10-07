@@ -29,7 +29,7 @@ describe 'Actionman', () ->
     describe "#startNewIdeaAction", () ->
 
       beforeEach ()->
-        scope.startNewIdeaAction(ideaData)
+        scope.startNewIdeaAction(ideaData.id)
 
       it 'should initialise an empty idea action correctly', () ->
         expect(scope.idea_action).toBeDefined()

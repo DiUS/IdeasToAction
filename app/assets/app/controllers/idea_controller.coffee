@@ -13,7 +13,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
       $('.loading').removeClass('loading')
       callback() if callback?
 
-      # assyncronously loading twitter button beacuase calling external service
+      # asynchronously loading twitter button because calling external service
       $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}/show_idea_url", { cache: dataCache }).success (data) ->
         $scope.idea_short_url = data.idea_url
         $scope.twitter = url: "https://twitter.com/intent/tweet?original_referer=#{window.ENDPOINT}&text=#{encodeURIComponent($scope.talk_title)}&tw_p=tweetbutton&url=#{$scope.idea_short_url}"
@@ -31,7 +31,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
         )
 
   $scope.createNewIdeaAction = (idea) ->
-    $("#new-idea-action-dialog").scope().startNewIdeaAction(idea)
+    $("#new-idea-action-dialog").scope().startNewIdeaAction(idea.id)
     $scope.showNewIdeaActionDialog = true
     $navigate.swipeScope.resetToTop()
 
