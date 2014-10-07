@@ -26,5 +26,3 @@ class Environmentfile
   end # class << self
 
 end
-
-Environmentfile.load

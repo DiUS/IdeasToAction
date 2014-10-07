@@ -68,3 +68,6 @@ Bitly.use_api_version_3
     require filename if !File.directory?(filename)
   end
 end
+
+require Rails.root.join('lib', 'Environmentfile')
+Environmentfile.load
