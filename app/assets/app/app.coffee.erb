@@ -50,6 +50,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         otherwise( {redirectTo: '/home'} )
   ).
   run ($location, $rootScope, $http) ->
+		<% unless Rails.env.test? %>
     $rootScope.$on "$routeChangeStart", () ->
       if not $rootScope.member or not $rootScope.member.email
         $http.get("#{window.ENDPOINT}/member_sessions/check.json").success (data) ->
@@ -57,3 +58,4 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
             $rootScope.member = data
           else
             $location.path "/login"
+		<% end %>
