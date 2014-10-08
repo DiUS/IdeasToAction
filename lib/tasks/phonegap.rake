@@ -45,7 +45,7 @@ namespace :phonegap do
     end
 
     task :set_www_directory do
-      @www_directory = "mobile/ios/www"
+      @www_directory = 'mobile/ios/www'
     end
 
     task :clean => :clean_www_directory do
@@ -53,12 +53,14 @@ namespace :phonegap do
       FileUtils.rm_rf('mobile/ios/Build') if File.exist?('mobile/ios/Build')
     end
 
-    namespace :qa do
-      desc "Copy the PhoneGap config.xml to the www_directory."
-      task :cp_build_config do
-        FileUtils.cp('mobile/ios/Actionman/config.xml', @www_directory, verbose: true)
-      end
+    desc "Copy the PhoneGap config.xml to the www_directory."
+    task :cp_build_config do
+      source = "mobile/ios/Actionman/#{@assets_env}.config.xml"
+      destination = "mobile/ios/Actionman/config.xml"
+      FileUtils.cp(source, destination, verbose: true)
+    end
 
+    namespace :qa do
       desc "Assembles all the assets necessary for a qa build."
       task :assemble_assets => [:set_qa_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
 
@@ -69,11 +71,6 @@ namespace :phonegap do
     end
 
     namespace :production do
-      desc "Copy the PhoneGap production.config.xml to the www_directory."
-      task :cp_build_config do
-        FileUtils.cp('mobile/ios/Actionman/production.config.xml', @www_directory, verbose: true)
-      end
-
       desc "Assembles all the assets necessary for a build."
       task :assemble_assets => [:set_production_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
 
