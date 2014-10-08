@@ -37,6 +37,9 @@ production:
 qa:
   <<: *base
 
+production_mobile_assets:
+  <<: *test
+
 qa_mobile_assets:
   <<: *test
 

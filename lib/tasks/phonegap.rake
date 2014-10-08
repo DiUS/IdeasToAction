@@ -34,7 +34,7 @@ namespace :phonegap do
   end
 
   task :set_production_assets do
-    @assets_env = 'production'
+    @assets_env = 'production_mobile_assets'
   end
 
   namespace :ios do
