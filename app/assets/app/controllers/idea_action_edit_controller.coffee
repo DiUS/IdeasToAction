@@ -1,4 +1,4 @@
-window.IdeaActionEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
+window.IdeaActionEditCtrl = ($scope, $http, $routeParams, $navigate, $route, dataCache) ->
   $scope.startNewIdeaAction = (ideaId) ->
     $scope.idea_action = { description: '', target_date: '', idea_id: null }
     $scope.idea_action.idea_id = ideaId if ideaId
@@ -16,7 +16,7 @@ window.IdeaActionEditCtrl = ($scope, $http, $routeParams, $navigate, dataCache) 
     $scope.submitted = true
     $http.post("#{window.ENDPOINT}/idea_actions", idea_action).success (ideaActionWithId) ->
       dataCache.removeAll()
-      $("#idea").scope().update().success () ->
+      $(".idea").last().scope().update().success () ->
         $('body').scope().navigate.go("/ideas/#{ideaActionWithId.idea_id}")
         $navigate.swipeScope.resetToTop()
         $scope.$parent.showNewIdeaActionDialog = false

@@ -9,7 +9,7 @@
       .content-item.content-item-full.text-item
         %textarea(placeholder='My action is...' ng-model='idea_action.description')
       .content-item.content-item-full.text-item
-        %input#target-date(type='text' placeholder="My target date is..." ng-model="idea_action.target_date" ng-click="scroller.scrollToPage(0, 0, 300)" datepicker)
+        %input(type='text' placeholder="My target date is..." ng-model="idea_action.target_date" ng-click="scroller.scrollToPage(0, 0, 300)" datepicker)
       %button#submit-idea-action.content-button(ng-disabled='!validIdeaAction()' ng-click='submitIdeaAction(idea_action)')
         Submit your action
 
