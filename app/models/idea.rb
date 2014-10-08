@@ -60,7 +60,7 @@ class Idea < ActiveRecord::Base
 
   def self.viewable
     joins([:talk_to_idea_associations, :talks])
-      .where(talks: {viewable: true})
+      .where(talks: {viewable: true}).uniq
   end
 
   def self.total

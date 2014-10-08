@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.viewable
-    joins(:talks).where(talks: {viewable: true})    
+    joins(:talks).where(talks: {viewable: true}).uniq
   end
 
   def self.total
