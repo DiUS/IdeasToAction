@@ -6,3 +6,12 @@ ENV['GLOBAL_ADMIN_PASSWORD'] = 'global_admin_password'
 
 ENV['BITLY_USERNAME'] = 'bitly_username'
 ENV['BITLY_API_KEY'] = 'bitly_api_key'
+
+case Rails.env
+when 'production'
+  ENV['DB_NAME'] = 'actionman_production' unless ENV['DB_NAME']
+  ENV['DB_USERNAME'] = 'root' unless ENV['DB_USERNAME']
+when 'qa'
+  ENV['DB_NAME'] = 'actionman_qa' unless ENV['DB_NAME']
+  ENV['DB_USERNAME'] = 'root' unless ENV['DB_USERNAME']
+end

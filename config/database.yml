@@ -31,10 +31,6 @@ test: &test
   <<: *base
   database: actionman_test
 
-android:
-  <<: *base
-  database: actionman_dev
-
 production:
   <<: *base
 
