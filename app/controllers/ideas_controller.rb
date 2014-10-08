@@ -33,12 +33,17 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @idea = Idea.find(params[:id])
-		@sorted_idea_actions = @idea.idea_actions.member_first(current_member).incomplete_first
     @member = member
 
     respond_to do |format|
-      format.html { render :open_in_app }
-      format.json { render 'show' }
+      format.html do
+				@sorted_idea_actions = @idea.idea_actions
+				render :open_in_app
+			end
+      format.json do
+				@sorted_idea_actions = @idea.idea_actions.member_first(current_member).incomplete_first
+				render 'show'
+			end
     end
   end
 
