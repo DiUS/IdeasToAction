@@ -3,7 +3,6 @@ describe "Home page", js: true, acceptance: true do
 
   before do
     visit "/#/home"
-		sleep 1
   end 
 
   it "should display welcome text that rattles the bones" do

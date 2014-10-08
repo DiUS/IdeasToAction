@@ -1,7 +1,6 @@
 describe "Actions page", js: true, acceptance: true do
   before do
     visit "/#/actions"
-		sleep 1
   end
 
   describe 'featured action' do

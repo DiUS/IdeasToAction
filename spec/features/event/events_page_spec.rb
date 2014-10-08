@@ -1,7 +1,6 @@
 describe "Events page", js: true, acceptance: true do
   before do
     visit "/#/events"
-		sleep 1
   end
 
   describe 'featured event' do

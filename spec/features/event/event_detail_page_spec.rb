@@ -7,7 +7,6 @@ describe "Event detail page", js: true, acceptance: true do
   before :each do
     event.should_not be_nil
     visit "/#/events/#{event.id}"
-		sleep 1
   end
 
   it "should have the event page visible" do
