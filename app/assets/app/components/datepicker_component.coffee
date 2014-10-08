@@ -7,5 +7,5 @@ angular.module('Actionman').
         element.datepicker
           minDate: 0
           dateFormat: "dd/mm/yy"
-          onSelect: (date) ->
-            scope.$apply -> ngModelCtrl.$setViewValue moment(date, 'dd/mm/yyyy').startOf('day').format()
+          onSelect: (target_date) ->
+            scope.$apply -> ngModelCtrl.$setViewValue target_date
