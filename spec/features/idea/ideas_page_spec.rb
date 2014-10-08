@@ -1,7 +1,6 @@
 describe "Ideas page", js: true, acceptance: true do
   before do
     visit "/#/ideas"
-		sleep 1
   end
 
   describe 'featured idea' do

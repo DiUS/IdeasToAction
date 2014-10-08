@@ -1,7 +1,6 @@
 describe "Talks page", js: true, acceptance: true do
   before do
     visit "/#/talks"
-		sleep 1
   end
 
   describe 'featured talk' do

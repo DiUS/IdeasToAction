@@ -12,7 +12,6 @@ describe "Idea detail page", js: true, acceptance: true do
     DatabaseCleaner.start
     idea.should_not be_nil
     visit "/#/ideas/1"
-		sleep 1
   end
 
   after :each do

@@ -8,7 +8,6 @@ describe "Talk detail page", js: true, acceptance: true do
   before :each do
     talk.should_not be_nil
     visit "/#/events/1/talks/1"
-		sleep 1
   end
 
   it "should have the talk details visible" do
