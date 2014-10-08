@@ -66,13 +66,6 @@ RSpec.configure do |config|
     stub_request(:any, /.*api\.bit\.ly*/).to_return(:status => 200, :body => bitly_response.to_json, :headers => {"content-type" => "application/json"})
 	end
 
-	config.before :each, type: :feature do
-		visit "/#/login"
-		page.find('#email').set('test@user.com')
-		page.find('#login-submit').click
-		sleep 1
-	end
-
   config.include JsonSpec::Helpers
 
   config.include(LoginMacros)
