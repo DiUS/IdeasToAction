@@ -52,6 +52,14 @@ class Event < ActiveRecord::Base
 
   def self.total
     viewable.count
-  end
+	end
+
+	def idea_actions_count
+		idea_actions.viewable.size
+	end
+
+	def ideas_count
+		ideas.viewable.size
+	end
 
 end
