@@ -12,7 +12,7 @@
         .totals
           %tile:count(count="talks.featured[0].ideas_count" title="ideas")
           %tile:count(count="talks.featured[0].idea_actions_count" title="actions")
-    .content
+    .content(ng-show="talks.popular[0]")
       .content-header Popular Talks
       .content-item(ng-href="/events/{{talks.popular[0].event_id}}/talks/{{talks.popular[0].id}}")
         %tile:default(title="talks.popular[0].title")
@@ -24,7 +24,7 @@
         .totals
           %tile:count(count="talks.popular[1].ideas_count" title="ideas")
           %tile:count(count="talks.popular[1].idea_actions_count" title="actions")
-    .content
+    .content(ng-show="talks.recent[0]")
       .content-header Recent Talks
       .content-item(ng-href="/events/{{talks.recent[0].event_id}}/talks/{{talks.recent[0].id}}")
         %tile:default(title="talks.recent[0].title")
