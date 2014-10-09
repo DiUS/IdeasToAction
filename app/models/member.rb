@@ -14,7 +14,7 @@ class Member < ActiveRecord::Base
 
   has_many :idea_actions, dependent: :destroy
 
-	validate :email, format: /\A(\S+)@(.+)\.(\S+)\z/
+  validate :email, format: /\A(\S+)@(.+)\.(\S+)\z/
 
   def self.emails
     all.map{|member| ["(#{member.id}) #{member.email}", member.id]}
@@ -40,9 +40,6 @@ class Member < ActiveRecord::Base
 
   def remindable?
     idea_actions.any?{|idea_action| idea_action.remindable?}
-	end
+  end
 
-	def self.emails
-		all.map{|member| ["(#{member.id}) #{member.email}", member.id]}
-	end
 end
