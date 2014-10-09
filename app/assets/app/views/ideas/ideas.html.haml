@@ -33,7 +33,7 @@
           %tile:count(count="ideas.recent[1].idea_actions_count" title="actions")
     .content(ng-show="extraIdeas && extraIdeas.length != 0")
       .content-header More Ideas
-      .content-item(ng-repeat="idea in extraIdeas" ng-href="/ideas/{{idea.id}}")
+      .content-item(ng-repeat='idea in extraIdeas|unique: "id"' ng-href="/ideas/{{idea.id}}")
         %tile:default(description="idea.description")
         .totals
           %tile:count(count="idea.idea_actions_count" title="actions")
