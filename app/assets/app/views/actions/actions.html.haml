@@ -21,7 +21,7 @@
         %tile:default(description="actions.recent[3].description")
     .content(ng-show="extraActions && extraActions.length != 0")
       .content-header More Actions
-      .content-item(ng-repeat="action in extraActions" ng-href="/ideas/{{action.idea_id}}")
+      .content-item(ng-repeat='action in extraActions|unique: "id"' ng-href="/ideas/{{action.idea_id}}")
         %tile:default(description="action.description")
     .content
       .content-button(ng-show="stillMoreComing" ng-click="more()")
