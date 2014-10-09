@@ -17,8 +17,8 @@ describe "Talk detail page", js: true, acceptance: true do
     page.should have_content "Ideas#{talk.ideas.size}"
   end
 
-  it 'should have an external link to the TED talk' do
-    a = page.find("[text()='View this talk on TED.com']")
+  it 'should have an external link to the TEDxUltimo talk' do
+    a = page.find("[text()='View this talk on TEDxUltimo.com']")
     a['phonegap-external'].should eql talk.ted_talk_url
   end
 
