@@ -7,7 +7,6 @@ describe "Home page", js: true, acceptance: true do
 
   it "should display welcome text that rattles the bones" do
     page.text.should =~ /(\d+) Ideas/
-    page.text.should =~ /(\d+) Actions/
     page.text.should =~ /(\d+) Talks/
     page.text.should =~ /(\d+) Events/
     page.text.should =~ /Start something TEDxUltimo; the ultimate place to start something/
@@ -15,10 +14,6 @@ describe "Home page", js: true, acceptance: true do
 
   it 'should link to ideas' do
     page.should have_selector('[ng-href="/ideas"]')
-  end
-
-  it 'should link to actions' do
-    page.should have_selector('[ng-href="/actions"]')
   end
 
   it 'should link to talks' do
