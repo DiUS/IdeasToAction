@@ -12,7 +12,7 @@ class IdeaActionsController < ApplicationController
       render 'idea_actions'
     elsif !params[:excluding].blank?
       idea_action_ids = params[:excluding].split(',')
-      render json: IdeaAction.excluding_idea_actions(idea_action_ids).random(5)
+      render json: IdeaAction.viewable.excluding_idea_actions(idea_action_ids).random(5)
     else
       render :nothing => true
     end

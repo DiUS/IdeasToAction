@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       render 'events'
     elsif !params[:excluding].blank?
       event_ids = params[:excluding].split(',')
-      render json: Event.excluding_events(event_ids).random(5)
+      render json: Event.viewable.excluding_events(event_ids).random(5)
     else
       render :nothing => true
     end

@@ -11,7 +11,7 @@ class TalksController < ApplicationController
       render 'talks'
     elsif !params[:excluding].blank?
       talks_ids = params[:excluding].split(',')
-      render json: Talk.excluding_talks(talks_ids).random(5)
+      render json: Talk.viewable.excluding_talks(talks_ids).random(5)
     else
       render :nothing => true
     end
