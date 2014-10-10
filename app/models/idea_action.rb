@@ -3,7 +3,7 @@ class IdeaAction < ActiveRecord::Base
   include Tire::Model::Callbacks
 
   index_name { "#{Rails.env}-#{table_name}" }
-  
+
   tire.instance_eval do
     # This is a work-around to allow setting the mapping without the indexes actually being created by Tire
 
@@ -14,9 +14,9 @@ class IdeaAction < ActiveRecord::Base
     indexes :created_at,      :type => 'date', :include_in_all => false
     indexes :updated_at,      :type => 'date', :include_in_all => false
     indexes :description,     :boost => 100
-  end  
-      
-  attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date, :target_date
+  end
+
+  attr_accessible :description, :featured, :idea_id, :idea, :member, :completion_date, :target_date, :reminded
 
   belongs_to :idea, :inverse_of => :idea_actions, :counter_cache => true
   belongs_to :member
@@ -26,7 +26,7 @@ class IdeaAction < ActiveRecord::Base
   scope :incomplete, -> { where(completion_date: nil) }
   scope :completed, -> { where('completion_date IS NOT NULL') }
 
-  validates :idea, :description, :target_date, :presence => true
+  validates :idea, :description, :target_date, :member, :presence => true
 
   delegate :description, :to => :idea, :prefix => true
   delegate :email, :to => :member, :prefix => true
@@ -55,8 +55,12 @@ class IdeaAction < ActiveRecord::Base
     target_date <= 1.week.from_now
   end
 
+  def unreminded?
+    !reminded?
+  end
+
   def remindable?
-    incomplete? && due_soon? && !reminded?
+    incomplete? && due_soon? && unreminded?
   end
 
   def self.random(number = 1)
@@ -79,18 +83,35 @@ class IdeaAction < ActiveRecord::Base
     all.map{|idea_action| ["(#{idea_action.id}) #{idea_action.description.truncate(35)}", idea_action.id]}
   end
 
-  def self.remindable(member = nil)
-    query = [
-      "completion_date is null",
-      "target_date <= '#{1.week.from_now.to_date}'",
-      "reminded = false"
-    ]
-    query += ["member_id = #{member.id}"] if member
-    where(query.join(' and '))
+  def self.incomplete
+    where(completion_date: nil)
   end
 
-  def self.reminded(idea_actions)
-    idea_actions.each{|idea_action| idea_action.update_attribute(reminded: true)}
+  def self.due_soon
+    target_date_field = IdeaAction.arel_table[:target_date]
+    where(target_date_field.lteq 1.week.from_now)
+  end
+
+  def self.unreminded
+    where(reminded: false)
+  end
+
+  def self.remindable(member = nil)
+    query = incomplete.due_soon.unreminded
+    query = query.where(member_id: member.id) if member
+    query
+  end
+
+  def self.bulk_set_reminded(idea_actions)
+    idea_actions.each{|idea_action| idea_action.update_attribute(:reminded, true)}
+  end
+
+  def self.reminded(idea_actions = nil)
+    if idea_actions
+      bulk_set_reminded(idea_actions)
+    else
+      where(reminded: true)
+    end
   end
 
   def self.viewable

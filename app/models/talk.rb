@@ -19,7 +19,7 @@ class Talk < ActiveRecord::Base
     indexes :hero_image_url,  :index    => :not_analyzed
   end  
       
-  attr_accessible :description, :title, :ideas, :hero_image_url, :ted_talk_url, :featured, :event_id, :viewable
+  attr_accessible :description, :title, :ideas, :hero_image_url, :ted_talk_url, :featured, :event_id, :viewable, :event
 
   has_many :ideas, through: :talk_to_idea_associations
   has_many :idea_actions, through: :ideas

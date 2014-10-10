@@ -9,7 +9,7 @@ class Mailer < ActionMailer::Base
         to = member.email
         subject = "TEDx Reminder"
         mailer = mail(to: to, subject: subject)
-        IdeaAction.reminded(@actions)
+        IdeaAction.bulk_set_reminded(@actions)
         mailer
       rescue *SMTP_ERRORS => e
         Rails.logger.error("Attempting to send an email to #{to} with subject #{subject} produced an error.")

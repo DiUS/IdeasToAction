@@ -27,7 +27,7 @@ class Idea < ActiveRecord::Base
 
   accepts_nested_attributes_for :idea_actions
 
-  attr_accessible :tags, :talks, :description, :idea_actions, :featured, :member_id, :talk_ids, :idea_actions_attributes
+  attr_accessible :tags, :talks, :description, :idea_actions, :featured, :member_id, :talk_ids, :idea_actions_attributes, :member
 
   delegate :email, :to => :member, :prefix => true
 

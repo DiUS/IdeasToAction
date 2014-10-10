@@ -45,8 +45,8 @@ describe Talk do
 
   context 'dependent ideas' do
     before :each do
-      @talk = Talk.create!(:event_id => Event.first.id, :title => "test", :description => "talk", :hero_image_url => "test")
-      @idea = Idea.create!(:talks => [@talk], :member_id => Member.first.id, :description => "test idea")
+      @talk = Talk.create!(event_id: Event.first.id, title: "test", description: "talk", hero_image_url: "test")
+      @idea = Idea.create!(talks: [@talk], member_id: Member.first.id, description: "test idea")
     end
 
     it 'should destroy dependent ideas if they are not associated with other talks' do
