@@ -1,4 +1,5 @@
 require_relative '../collapsible_shared_examples'
+require_relative '../escape_patch_shared_examples'
 require 'open-uri'
 
 describe "Idea detail page", js: true, acceptance: true do
@@ -63,5 +64,7 @@ describe "Idea detail page", js: true, acceptance: true do
 		it 'should display the completion date' do
 			expect(page).to have_content("Completed on #{Time.now.strftime('%d/%m/%Y')}")
 		end
-  end
+	end
+
+	it_should_behave_like 'a page with escape patch back home'
 end

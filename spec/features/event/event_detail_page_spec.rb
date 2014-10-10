@@ -1,4 +1,5 @@
 require_relative '../collapsible_shared_examples'
+require_relative '../escape_patch_shared_examples'
 
 describe "Event detail page", js: true, acceptance: true do
   
@@ -28,5 +29,7 @@ describe "Event detail page", js: true, acceptance: true do
     let(:item_contents) { event.ideas.map(&:description) }
 
     it_should_behave_like "a collapsible"
-  end
+	end
+
+	it_should_behave_like 'a page with escape patch back home'
 end

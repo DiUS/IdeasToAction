@@ -1,3 +1,5 @@
+require_relative '../escape_patch_shared_examples'
+
 describe "Ideas page", js: true, acceptance: true do
   before do
     visit "/#/ideas"
@@ -75,5 +77,7 @@ describe "Ideas page", js: true, acceptance: true do
     find('#ideas input.btn').click()
     sleep 1
     page.current_url.should match /#\/found\?query_text=stuff/
-  end
+	end
+
+	it_should_behave_like 'a page with escape patch back home'
 end
