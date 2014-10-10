@@ -14,7 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require /bootstrap_and_overrides.js.coffee
-
+//= require angular
+//= require angular-cookies
+//= require angular-loader
+//= require angular-resource
+//= require angular-sanitize
+//= require angular-bootstrap
 //= require_tree ./angularjs/
 //= require_tree ./snappy-swipe-nav/
 //= require ../app/app.coffee

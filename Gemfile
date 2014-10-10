@@ -56,6 +56,7 @@ group :test, :development do
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
 	gem 'poltergeist'
+	gem 'angularjs-rails', '~> 1.0.4'
 
   # # OSX only
   # if RUBY_PLATFORM.downcase.include?("darwin")
