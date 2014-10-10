@@ -306,7 +306,6 @@ describe IdeaAction do
       let(:idea_action){IdeaAction.create!(idea: idea, description: 'idea_action description', target_date: 6.days.from_now, member: member)}
 
       it 'should work' do
-        # p ia = idea_action.save!
         expect(IdeaAction.viewable).to include(idea_action)
       end
     end
