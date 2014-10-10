@@ -28,5 +28,4 @@
 //= require_tree ../app/filters
 //= require_tree ../app/controllers
 //= require_tree ../app/views
-//= require moment
 //= require_tree .
