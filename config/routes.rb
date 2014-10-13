@@ -12,11 +12,11 @@ Actionman::Application.routes.draw do
   resources :idea_actions do
     collection do
       get 'random'
-		end
+    end
 
-		member do
-			put 'complete'
-		end
+    member do
+      put 'complete'
+    end
   end
 
   resources :ideas do
@@ -25,7 +25,7 @@ Actionman::Application.routes.draw do
       get 'random'
     end
 
-    member do 
+    member do
       get 'show_idea_url'
     end
   end
@@ -34,7 +34,7 @@ Actionman::Application.routes.draw do
     member do
       get 'ideas'
     end
-    
+
     resources :talks do
       resources :ideas
     end
