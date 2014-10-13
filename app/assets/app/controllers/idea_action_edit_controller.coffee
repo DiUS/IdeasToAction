@@ -1,4 +1,4 @@
-window.IdeaActionEditCtrl = ($scope, $http, $routeParams, $navigate, $route, dataCache) ->
+window.IdeaActionEditCtrl = ($scope, $rootScope, $http, $routeParams, $navigate, $route, dataCache) ->
   $scope.startNewIdeaAction = (ideaId) ->
     $scope.idea_action = { description: '', target_date: '', idea_id: null }
     $scope.idea_action.idea_id = ideaId if ideaId
@@ -20,5 +20,6 @@ window.IdeaActionEditCtrl = ($scope, $http, $routeParams, $navigate, $route, dat
         $('body').scope().navigate.go("/ideas/#{ideaActionWithId.idea_id}")
         $navigate.swipeScope.resetToTop()
         $scope.$parent.showNewIdeaActionDialog = false
+        $rootScope.$broadcast 'actionCreated'
 
   $scope.startNewIdeaAction($scope.$parent.ideaId)

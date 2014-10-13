@@ -1,4 +1,6 @@
-window.CollapsibleCtrl = ($scope, $element, $navigate) -> 
+window.CollapsibleCtrl = ($scope, $element) ->
+    $scope.$on 'actionCreated', -> $scope.expanded = true
+
     $scope.expandCollapse = -> 
       return if $scope.canCollapse == false || $scope.collection.length == 0
 
