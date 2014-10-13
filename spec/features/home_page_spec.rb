@@ -1,4 +1,4 @@
-describe "Home page", js: true do
+describe "Home page", js: true, acceptace: true do
   self.use_transactional_fixtures = false
 
   before do
