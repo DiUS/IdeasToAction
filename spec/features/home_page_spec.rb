@@ -34,7 +34,7 @@ describe "Home page", js: true, acceptance: true do
 	describe 'pluralization' do
 		context 'of events' do
 			it 'should be singular when 1 event' do
-				Event.stub(:size).and_return(1)
+				Event.stub(:total).and_return(1)
 
 				visit '/#/home'
 				expect(page).to have_content('Event')
@@ -42,7 +42,7 @@ describe "Home page", js: true, acceptance: true do
 			end
 
 			it 'should be plural when more that 1 event' do
-				Event.stub(:size).and_return(2)
+				Event.stub(:total).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Events')
@@ -51,7 +51,7 @@ describe "Home page", js: true, acceptance: true do
 
 		context 'of talks' do
 			it 'should be singular when 1 talk' do
-				Talk.stub(:size).and_return(1)
+				Talk.stub(:total).and_return(1)
 
 				visit '/#/home'
 				expect(page).to have_content('Talk')
@@ -59,7 +59,7 @@ describe "Home page", js: true, acceptance: true do
 			end
 
 			it 'should be plural when more than 1 talk' do
-				Talk.stub(:size).and_return(2)
+				Talk.stub(:total).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Talk')
@@ -68,7 +68,7 @@ describe "Home page", js: true, acceptance: true do
 
 		context 'of ideas' do
 			it 'should should be singular when 1 idea' do
-				Idea.stub(:size).and_return(1)
+				Idea.stub(:total).and_return(1)
 
 				visit '/#/home'
 				expect(page).to have_content('Idea')
@@ -76,7 +76,7 @@ describe "Home page", js: true, acceptance: true do
 			end
 
 			it 'should be plural when more than 1 idea' do
-				Idea.stub(:size).and_return(2)
+				Idea.stub(:total).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Ideas')
