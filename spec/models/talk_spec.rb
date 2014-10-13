@@ -18,29 +18,74 @@ describe Talk do
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:description) }
 
-  it 'should return featured talks' do
-    talks = Talk.featured
-    talks.each{|talk| talk.featured?.should be_true}
+  describe "collection methods" do
+    describe "self.random" do
+      it "should return random talks" do
+        randomised_talks = []
+        100.times{randomised_talks << Talk.random}
+        expect(randomised_talks.frequencies.values.max).to be <= 20
+      end
+
+      it "should return a given number of random talks" do
+        expect(Talk.random(2).count).to eq 2
+      end
+    end
+
+    describe "self.featured" do
+      it 'should return featured talks' do
+        talks = Talk.featured
+        talks.each{|talk| talk.featured?.should be_true}
+      end
+    end
+
+    describe "self.recent" do
+      it 'should return recent talks' do
+        talks = Talk.recent
+        talks.should include(Talk.order("created_at desc").first)
+      end
+    end
+
+    describe "self.popular" do
+      it 'should return popular talks' do
+        talks = Talk.popular
+        talks.should include(Talk.order("idea_actions_count desc").first)
+      end
+    end
+
+    describe "self.excluding_talks" do
+      it 'should exclude specified talk' do
+        talks_to_exclude = Event.first
+        Talk.excluding_talks([talks_to_exclude.id]).should_not include(talks_to_exclude)
+      end
+    end
+
+    describe "self.viewable" do
+      it "should return viewable talks" do
+        talks = Talk.viewable
+        talks.each{|talk| talk.viewable?.should be_true}
+      end
+    end
+
+    describe "self.total" do
+      it "should be a number" do
+        expect(Talk.total.class).to eq Fixnum
+      end
+    end
   end
 
-  it 'should return recent talks' do
-    talks = Talk.recent
-    talks.should include(Talk.order("created_at desc").first)
-  end
+  describe "member methods" do
+    describe "destroy_ideas_without_talks" do
+      before do
+        @talk = Talk.create!(event_id: Event.first.id, title: "talk title 0", description: "talk description 0", hero_image_url: "test")
+        @idea = Idea.create!(talks: [@talk], member_id: Member.first.id, description: "test idea 0")
+      end
 
-  it 'should return popular talks' do
-    talks = Talk.popular
-    talks.should include(Talk.order("idea_actions_count desc").first)
-  end
-
-  it 'should exclude specified talk' do
-    talks_to_exclude = Event.first
-    Talk.excluding_talks([talks_to_exclude.id]).should_not include(talks_to_exclude)
-  end
-
-  it "should return viewable talks" do
-    talks = Talk.viewable
-    talks.each{|talk| talk.viewable?.should be_true}
+      it "should destroy ideas without talks" do
+        expect(@talk.ideas.count).to eq 1
+        @talk.destroy
+        expect(@talk.ideas.count).to eq 0
+      end
+    end
   end
 
   context 'dependent ideas' do
@@ -59,4 +104,5 @@ describe Talk do
       expect { @talk.destroy }.not_to change{ Idea.count }
     end
   end
+
 end
