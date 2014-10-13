@@ -23,7 +23,7 @@ describe Talk do
       it "should return random talks" do
         randomised_talks = []
         100.times{randomised_talks << Talk.random}
-        expect(randomised_talks.frequencies.values.max).to be <= 20
+        expect(randomised_talks.frequencies.values.max).to be <= 30
       end
 
       it "should return a given number of random talks" do

@@ -11,6 +11,7 @@ class IdeaActionView
   def set_featured
     self.featured = IdeaAction.featured.viewable.random(1)
     self.already_shown += self.featured
+    self.featured
   end
 
   def set_recent

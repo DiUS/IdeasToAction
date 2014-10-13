@@ -3,27 +3,27 @@ require 'spec_helper'
 describe IdeaActionView do
   subject{IdeaActionView.new}
 
-  context "featured idea actions" do
+  describe "#set_featured" do
     it "should contain idea actions" do
-      subject.featured.each do |idea|
+      subject.set_featured.each do |idea|
         idea.should be_an_instance_of(IdeaAction)
       end
     end
 
     it "should have one" do
-      subject.featured.size.should eql 1
+      subject.set_featured.size.should eql 1
     end
   end
 
-  context "recent idea actions" do
+  describe "#set_recent" do
     it "should contain idea actions" do
-      subject.recent.each do |idea|
+      subject.set_recent.each do |idea|
         idea.should be_an_instance_of(IdeaAction)
       end
     end
 
     it "should have four" do
-      subject.recent.size.should eql 4
+      subject.set_recent.size.should eql 4
     end
   end
 end

@@ -3,39 +3,39 @@ require 'spec_helper'
 describe EventView do
   subject{EventView.new}
 
-  context "featured events" do
+  describe "#set_featured" do
     it "should contain events" do
-      subject.featured.each do |event|
+      subject.set_featured.each do |event|
         event.should be_an_instance_of(Event)
       end
     end
 
     it "should have one" do
-      subject.featured.size.should eql(1)
+      subject.set_featured.size.should eql(1)
     end
   end
 
-  context "recent events" do
+  context "#set_recent" do
     it "should contain events" do
-      subject.recent.each do |event|
+      subject.set_recent.each do |event|
         event.should be_an_instance_of(Event)
       end
     end
 
     it "should have two" do
-      subject.recent.size.should eql(2)
+      subject.set_recent.size.should eql(2)
     end
   end
 
-  context "popular events" do
+  context "#set_popular" do
     it "should contain events" do
-      subject.popular.each do |event|
+      subject.set_popular.each do |event|
         event.should be_an_instance_of(Event)
       end
     end
 
     it "should have two" do
-      subject.popular.size.should eql(2)
+      subject.set_popular.size.should eql(2)
     end
   end
 end

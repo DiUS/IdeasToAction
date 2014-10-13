@@ -29,7 +29,7 @@ describe Event do
       it "should return random events" do
         randomised_events = []
         100.times{randomised_events << Event.random}
-        expect(randomised_events.frequencies.values.max).to be <= 20
+        expect(randomised_events.frequencies.values.max).to be <= 30
       end
 
       it "should return a given number of random events" do
