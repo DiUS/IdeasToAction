@@ -39,7 +39,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'haml-rails'
-	gem 'angularjs-rails', '~> 1.0.4'
+  gem 'angularjs-rails', '~> 1.0.4'
 end
 
 group :test, :development do
@@ -55,7 +55,7 @@ group :test, :development do
   gem 'webmock'
   gem 'json_spec'
   gem 'database_cleaner', '~> 0.9.1'
-	gem 'poltergeist'
+  gem 'poltergeist'
 
   # # OSX only
   # if RUBY_PLATFORM.downcase.include?("darwin")
