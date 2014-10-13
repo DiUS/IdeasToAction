@@ -9,7 +9,7 @@ describe IdeaAction do
 	it { should be_accessible(:member) }
 	it { should be_accessible(:completion_date) }
 	it { should be_accessible(:target_date) }
-  it{should be_accessible(:reminded)}
+  it {should be_accessible(:reminded)}
 
   it { should delegate(:description).to(:idea).with_prefix }
   it { should delegate(:email).to(:member).with_prefix }
@@ -19,7 +19,7 @@ describe IdeaAction do
   it { should validate_presence_of(:target_date) }
 	it { should belong_to(:member) }
 
-  describe "scoping" do
+  describe "scopes" do
     it "should return featured idea actions" do
       idea_actions = IdeaAction.featured
       idea_actions.each{ |idea_action| idea_action.featured?.should be_true }
