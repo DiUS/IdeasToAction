@@ -47,6 +47,10 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
         when('/login',                            { templateUrl: 'assets/views/login/login.html',        controller: LoginCtrl }).
         when('/unauthorised',                     { templateUrl: 'assets/views/errors/unauthorized.html',controller: ErrorsCtrl }).
         when('/internal_server_error',            { templateUrl: 'assets/views/errors/internal_server_error.html',controller: ErrorsCtrl }).
+
+        # Instructions
+        when('/instructions',                     { templateUrl: 'assets/views/instructions/index.html',controller: ErrorsCtrl }).
+
         otherwise( {redirectTo: '/home'} )
   ).
   run ($location, $rootScope, $http) ->
