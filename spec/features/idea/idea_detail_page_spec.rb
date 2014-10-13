@@ -21,7 +21,6 @@ describe "Idea detail page", js: true, acceptance: true do
 
   it "should have the idea details visible" do
     page.should have_content idea.description
-
     page.should have_content "Actions#{idea.idea_actions.size}"
   end
 

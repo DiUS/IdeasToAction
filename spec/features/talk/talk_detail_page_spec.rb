@@ -14,7 +14,6 @@ describe "Talk detail page", js: true, acceptance: true do
   it "should have the talk details visible" do
     page.should have_content talk.title
     page.should have_content talk.description
-
     page.should have_content "Ideas#{talk.ideas.size}"
   end
 

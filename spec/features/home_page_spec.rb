@@ -3,7 +3,7 @@ describe "Home page", js: true, acceptance: true do
 
   before do
     visit "/#/home"
-  end 
+  end
 
   it "should display welcome text that rattles the bones" do
     page.text.should =~ /(\d+) Ideas/
@@ -29,58 +29,58 @@ describe "Home page", js: true, acceptance: true do
     find('input.btn').click()
     sleep 1
     page.current_url.should match /#\/found\?query_text=stuff/
-	end
+  end
 
-	describe 'pluralization' do
-		context 'of events' do
-			it 'should be singular when 1 event' do
-				Event.stub(:size).and_return(1)
+  describe 'pluralization' do
+    context 'of events' do
+      it 'should be singular when 1 event' do
+        Event.stub(:total).and_return(1)
 
-				visit '/#/home'
-				expect(page).to have_content('Event')
-				expect(page).not_to have_content('Events')
-			end
+        visit '/#/home'
+        expect(page).to have_content('Event')
+        expect(page).not_to have_content('Events')
+      end
 
-			it 'should be plural when more that 1 event' do
-				Event.stub(:size).and_return(2)
+      it 'should be plural when more that 1 event' do
+        Event.stub(:total).and_return(2)
 
-				visit '/#/home'
-				expect(page).to have_content('Events')
-			end
-		end
+        visit '/#/home'
+        expect(page).to have_content('Events')
+      end
+    end
 
-		context 'of talks' do
-			it 'should be singular when 1 talk' do
-				Talk.stub(:size).and_return(1)
+    context 'of talks' do
+      it 'should be singular when 1 talk' do
+        Talk.stub(:total).and_return(1)
 
-				visit '/#/home'
-				expect(page).to have_content('Talk')
-				expect(page).not_to have_content('Talks')
-			end
+        visit '/#/home'
+        expect(page).to have_content('Talk')
+        expect(page).not_to have_content('Talks')
+      end
 
-			it 'should be plural when more than 1 talk' do
-				Talk.stub(:size).and_return(2)
+      it 'should be plural when more than 1 talk' do
+        Talk.stub(:total).and_return(2)
 
-				visit '/#/home'
-				expect(page).to have_content('Talk')
-			end
-		end
+        visit '/#/home'
+        expect(page).to have_content('Talk')
+      end
+    end
 
-		context 'of ideas' do
-			it 'should should be singular when 1 idea' do
-				Idea.stub(:size).and_return(1)
+    context 'of ideas' do
+      it 'should should be singular when 1 idea' do
+        Idea.stub(:total).and_return(1)
 
-				visit '/#/home'
-				expect(page).to have_content('Idea')
-				expect(page).not_to have_content('Ideas')
-			end
+        visit '/#/home'
+        expect(page).to have_content('Idea')
+        expect(page).not_to have_content('Ideas')
+      end
 
-			it 'should be plural when more than 1 idea' do
-				Idea.stub(:size).and_return(2)
+      it 'should be plural when more than 1 idea' do
+        Idea.stub(:total).and_return(2)
 
-				visit '/#/home'
-				expect(page).to have_content('Ideas')
-			end
-		end
-	end
+        visit '/#/home'
+        expect(page).to have_content('Ideas')
+      end
+    end
+  end
 end

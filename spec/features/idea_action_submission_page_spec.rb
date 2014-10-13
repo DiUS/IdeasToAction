@@ -2,10 +2,10 @@ describe "Action submission page", js: true, acceptance: true do
   let(:idea) { Idea.find(1) }
 
   before :each do
-		ApplicationController.any_instance.stub(:current_member).and_return(Member.first)
+    ApplicationController.any_instance.stub(:current_member).and_return(Member.first)
     visit "/#/ideas/1"
-		page.first(".content-header").click
-		find("[text()='Suggest an action']").click
+    page.first(".content-header").click
+    find("[text()='Suggest an action']").click
   end
 
   context "page text" do
@@ -19,10 +19,10 @@ describe "Action submission page", js: true, acceptance: true do
       before :each do
         find('#idea-action-edit .content-item textarea').set('action content')
 
-				# set the date to the 15th of next month
-				page.execute_script %Q{ $('[datepicker="datepicker"]').trigger("focus") }
-				page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") }
-				page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") }
+        # set the date to the 15th of next month
+        page.execute_script %Q{ $('[datepicker="datepicker"]').trigger("focus") }
+        page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") }
+        page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") }
       end
 
       it "should be enabled" do
@@ -46,25 +46,25 @@ describe "Action submission page", js: true, acceptance: true do
       it "should be disabled" do
         page.should have_selector("#submit-idea-action[disabled='disabled']")
       end
-		end
+    end
 
-		describe 'when description is set but target date is not' do
-			it 'should be disabled' do
-				find('#idea-action-edit .content-item textarea').set('action content')
-				page.should have_selector("#submit-idea-action[disabled='disabled']")
-			end
-		end
+    describe 'when description is set but target date is not' do
+      it 'should be disabled' do
+        find('#idea-action-edit .content-item textarea').set('action content')
+        page.should have_selector("#submit-idea-action[disabled='disabled']")
+      end
+    end
 
-		describe 'when target date is set but description is not' do
-			it 'should be disabled' do
-				# set the date to the 15th of next month
-				page.execute_script %Q{ $('[datepicker="datepicker"]').trigger("focus") }
-				page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") }
-				page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") }
+    describe 'when target date is set but description is not' do
+      it 'should be disabled' do
+        # set the date to the 15th of next month
+        page.execute_script %Q{ $('[datepicker="datepicker"]').trigger("focus") }
+        page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") }
+        page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") }
 
-				page.should have_selector("#submit-idea-action[disabled='disabled']")
-			end
-		end
+        page.should have_selector("#submit-idea-action[disabled='disabled']")
+      end
+    end
   end
 
   context "when user clicks the cancel button" do
@@ -90,4 +90,5 @@ describe "Action submission page", js: true, acceptance: true do
       end
     end
   end
+
 end
