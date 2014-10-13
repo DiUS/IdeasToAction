@@ -15,7 +15,7 @@ describe EventView do
     end
   end
 
-  context "#set_recent" do
+  describe "#set_recent" do
     it "should contain events" do
       subject.set_recent.each do |event|
         event.should be_an_instance_of(Event)
@@ -27,7 +27,7 @@ describe EventView do
     end
   end
 
-  context "#set_popular" do
+  describe "#set_popular" do
     it "should contain events" do
       subject.set_popular.each do |event|
         event.should be_an_instance_of(Event)
