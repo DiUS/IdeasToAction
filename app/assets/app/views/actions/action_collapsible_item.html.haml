@@ -1,7 +1,7 @@
 %div(ng-controller="IdeaActionCtrl")
   %p {{item.description}}
   .action-controls(ng-show='item.mine')
-    %em(ng-hide='item.completion_date') Target date on {{item.target_date | date:'dd/MM/yyyy'}}
-    %em.completed(ng-show='item.completion_date') Completed on {{item.completion_date | date:'dd/MM/yyyy'}}
+    %em.date-label(ng-hide='item.completion_date') Target date on {{item.target_date | date:'dd/MM/yyyy'}}
+    %em.date-label.completed(ng-show='item.completion_date') Completed on {{item.completion_date | date:'dd/MM/yyyy'}}
     %span(ng-controller="IdeaActionCtrl")
       %button.btn.btn-flat.pull-right.done-it(ng-show="item.completable" ng-click="doneIt(item)") I've done it
