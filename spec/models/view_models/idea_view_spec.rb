@@ -3,39 +3,39 @@ require 'spec_helper'
 describe IdeaView do
   subject{IdeaView.new}
 
-  context "featured ideas" do
+  describe "#set_featured" do
     it "should contain ideas" do
-      subject.featured.each do |idea|
+      subject.set_featured.each do |idea|
         idea.should be_an_instance_of(Idea)
       end
     end
 
     it "should have one" do
-      subject.featured.size.should eql(1)
+      subject.set_featured.size.should eql(1)
     end
   end
 
-  context "recent ideas" do
+  describe "#set_recent" do
     it "should contain ideas" do
-      subject.recent.each do |idea|
+      subject.set_recent.each do |idea|
         idea.should be_an_instance_of(Idea)
       end
     end
 
     it "should have two" do
-      subject.recent.size.should eql(2)
+      subject.set_recent.size.should eql(2)
     end
   end
 
-  context "popular ideas" do
+  describe "#set_popular" do
     it "should contain ideas" do
-      subject.popular.each do |idea|
+      subject.set_popular.each do |idea|
         idea.should be_an_instance_of(Idea)
       end
     end
 
     it "should have two" do
-      subject.popular.size.should eql(2)
+      subject.set_popular.size.should eql(2)
     end
   end
 end

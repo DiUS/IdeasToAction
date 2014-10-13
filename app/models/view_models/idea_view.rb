@@ -12,6 +12,7 @@ class IdeaView
   def set_featured
     self.featured = Idea.featured.viewable.random(1)
     self.already_shown += self.featured
+    self.featured
   end
 
   def set_recent
@@ -21,6 +22,7 @@ class IdeaView
     end
     self.recent = recent.random(2)
     self.already_shown += self.recent
+    self.recent
   end
 
   def set_popular
