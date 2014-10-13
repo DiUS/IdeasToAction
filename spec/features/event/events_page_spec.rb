@@ -56,23 +56,19 @@ describe "Events page", js: true, acceptance: true do
       new_events = page.all('[ng-repeat="event in extraEvents"]')
       new_events.should be_empty
 
-      find("[text()='Load more events']").click()
-      wait_for_loading_symbol_to_disappear()
+      find("[text()='Load more events']").click
+      wait_for_loading_symbol_to_disappear
     end
 
     it 'should render more events on the page' do
       new_events = page.all("[ng-repeat='event in extraEvents|unique: \"id\"']")
       new_events.should_not be_empty
 
-      new_events.to_enum.with_index(0).each do | event, index |
+      new_events.to_enum.with_index(0).each do |event, index|
         text = new_events[index].text
         text.should match /\d{1,2} ideas/
         text.should match /\d{1,2} actions/
       end
-    end
-
-    it 'should continue to allow user to load more events'  do
-      find("[text()='Load more events']").should be_visible
     end
   end
 

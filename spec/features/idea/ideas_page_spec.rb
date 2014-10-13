@@ -66,10 +66,6 @@ describe "Ideas page", js: true, acceptance: true do
         text.should match /\d{1,2} actions/
       end
     end
-
-    it 'should continue to allow user to load more ideas'  do
-      find("[text()='Load more ideas']").should be_visible
-    end
   end
 
   it 'should search' do
