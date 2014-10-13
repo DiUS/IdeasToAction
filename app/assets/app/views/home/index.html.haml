@@ -10,15 +10,18 @@
     .content
       .content-item.big(ng-href="/talks")
         %span {{counts.talks | number }}
-        %span Talks
+        %span
+          %ng-pluralize(count="counts.talks | number" when="{'0': 'Talks',  '1': 'Talk', 'other': 'Talks'}")
     .content
       .content-item.big(ng-href="/ideas")
         %span {{counts.ideas | number }}
-        %span Ideas
+        %span
+          %ng-pluralize(count="counts.ideas | number" when="{'0': 'Ideas',  '1': 'Idea', 'other': 'Ideas'}")
     .content
       .content-item.big(ng-href="/events")
         %span {{counts.events | number }}
-        %span Events
+        %span
+          %ng-pluralize(count="counts.events | number" when="{'0': 'Events',  '1': 'Event', 'other': 'Events'}")
     .content.content-full.content-footer
       .content-header(ng-href="/member") My profile
     %search(scroller="scroller")
