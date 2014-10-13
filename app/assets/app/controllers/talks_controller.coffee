@@ -13,6 +13,7 @@ window.TalksCtrl = ($scope, TalkResource) ->
         $scope.stillMoreComing = false 
       else
         $scope.extraTalks = $scope.extraTalks.concat(response)
+        TalkResource.query { excluding: current() }, (response) -> $scope.stillMoreComing = false if response.length == 0
 
   current = ->
     featured = $scope.talks.featured.map (talk) -> talk.id

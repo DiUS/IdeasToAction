@@ -60,3 +60,6 @@ describe 'EventsCtrl', ->
 
         it 'should find more of the resource', ->
           expect(EventResource.query).toHaveBeenCalledWith { excluding: [11, 15, 10, 16, 17, 21, 22, 23, 24, 25] }, jasmine.any(Function)
+
+        it 'should do a a second call resource call to determine if there is still more coming', ->
+          expect(EventResource.query.callCount).toBe 3

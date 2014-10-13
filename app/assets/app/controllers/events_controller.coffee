@@ -13,6 +13,7 @@ window.EventsCtrl = ($scope, EventResource) ->
         $scope.stillMoreComing = false 
       else
         $scope.extraEvents = $scope.extraEvents.concat(response)
+        EventResource.query { excluding: current() }, (response) -> $scope.stillMoreComing = false if response.length == 0
 
   current = ->
     featured = $scope.events.featured.map (event) -> event.id

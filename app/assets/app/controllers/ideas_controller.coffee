@@ -13,6 +13,7 @@ window.IdeasCtrl = ($scope, IdeaResource) ->
         $scope.stillMoreComing = false 
       else
         $scope.extraIdeas = $scope.extraIdeas.concat(response)
+        IdeaResource.query { excluding: current() }, (response) -> $scope.stillMoreComing = false if response.length == 0
 
   current = ->
     featured = $scope.ideas.featured.map (idea) -> idea.id
