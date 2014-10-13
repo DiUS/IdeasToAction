@@ -41,8 +41,8 @@ describe "Home page", js: true, acceptance: true do
 				expect(page).not_to have_content('Events')
 			end
 
-			it 'should be plural when 10 events' do
-				Event.stub(:size).and_return(10)
+			it 'should be plural when more that 1 event' do
+				Event.stub(:size).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Events')
@@ -58,8 +58,8 @@ describe "Home page", js: true, acceptance: true do
 				expect(page).not_to have_content('Talks')
 			end
 
-			it 'should be plural when 10 talks' do
-				Talk.stub(:size).and_return(10)
+			it 'should be plural when more than 1 talk' do
+				Talk.stub(:size).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Talk')
@@ -75,8 +75,8 @@ describe "Home page", js: true, acceptance: true do
 				expect(page).not_to have_content('Ideas')
 			end
 
-			it 'should be plural when 10 ideas' do
-				Idea.stub(:size).and_return(1)
+			it 'should be plural when more than 1 idea' do
+				Idea.stub(:size).and_return(2)
 
 				visit '/#/home'
 				expect(page).to have_content('Ideas')
