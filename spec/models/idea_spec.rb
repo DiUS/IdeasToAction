@@ -15,33 +15,99 @@ describe Idea do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:member) }
 
-  describe "#member" do
-    let(:idea) { Idea.first }
-    let(:member) { Member.first }
+  describe "collection methods" do
+    describe "self.random" do
+      it "should return random ideas" do
+        randomised_ideas = []
+        100.times{randomised_ideas << Idea.random}
+        expect(randomised_ideas.frequencies.values.max).to be <= 20
+      end
 
-    it "should belong to a member" do
-      idea.member = member
-      idea.save!
-      idea.reload
-      idea.member.should eq member
+      it "should return a given number of random ideas" do
+        expect(Idea.random(2).count).to eq 2
+      end
     end
 
-    it "should be required" do
-      idea.should be_valid
-      idea.member = nil
-      idea.should_not be_valid
+    describe "self.featured" do
+      it "should return featured ideas" do
+        ideas = Idea.featured
+        ideas.each{|idea| idea.featured?.should be_true}
+      end
+    end
+
+    describe "self.recent" do
+      it 'should return recent ideas' do
+        ideas = Idea.recent
+        ideas.should include(Idea.order("created_at desc").first)
+      end
+    end
+
+    describe "self.popular" do
+      it 'should return popular ideas' do
+        ideas = Idea.popular
+        ideas.should include(Idea.order("idea_actions_count desc").first)
+      end
+    end
+
+    describe "self.excluding_ideas" do
+      it 'should return exclude specific idea' do
+        idea_to_exclude = Idea.first
+        Idea.excluding_ideas([idea_to_exclude.id]).should_not include(idea_to_exclude)
+      end
+    end
+
+    describe "self.descriptions" do
+      let(:idea1){double(Idea, id: 1, description: 'description1')}
+      let(:idea2){double(Idea, id: 2, description: 'description2')}
+      let(:ideas){[idea1, idea2]}
+
+      before do
+        Idea.should_receive(:all).and_return(ideas)
+      end
+
+      it "should work" do
+        expect(Idea.descriptions).to eq [["(1) description1", 1], ["(2) description2", 2]]
+      end
+    end
+
+    describe "self.viewable" do
+      
+    end
+
+    describe "self.total" do
+
     end
   end
 
-  describe "#talks" do
-    let(:idea) { Idea.first }
+  describe 'member methods' do
+    describe "#member" do
+      let(:idea) { Idea.first }
+      let(:member) { Member.first }
 
-    it { should have_many(:talks).through(:talk_to_idea_associations) }
+      it "should belong to a member" do
+        idea.member = member
+        idea.save!
+        idea.reload
+        idea.member.should eq member
+      end
 
-    it "should require at least one" do
-      idea.should be_valid
-      idea.talks = []
-      idea.should_not be_valid
+      it "should be required" do
+        idea.should be_valid
+        idea.member = nil
+        idea.should_not be_valid
+      end
+    end
+
+    describe "#talks" do
+      let(:idea) { Idea.first }
+
+      it { should have_many(:talks).through(:talk_to_idea_associations) }
+
+      it "should require at least one" do
+        idea.should be_valid
+        idea.talks = []
+        idea.should_not be_valid
+      end
     end
   end
 
@@ -63,28 +129,6 @@ describe Idea do
 
       idea.tags.should include tag
       idea.tags.should include another_tag
-    end
-  end
-
-  describe "scoping" do
-    it "should return featured ideas" do
-      ideas = Idea.featured
-      ideas.each{ |idea| idea.featured?.should be_true }
-    end
-
-    it 'should return recent ideas' do
-      ideas = Idea.recent
-      ideas.should include(Idea.order("created_at desc").first)
-    end
-
-    it 'should return popular ideas' do
-      ideas = Idea.popular
-      ideas.should include(Idea.order("idea_actions_count desc").first)
-    end
-
-    it 'should return exclude specific idea' do
-      idea_to_exclude = Idea.first
-      Idea.excluding_ideas([idea_to_exclude.id]).should_not include(idea_to_exclude)
     end
   end
 
@@ -124,4 +168,5 @@ describe Idea do
       end
     end
   end
+
 end
