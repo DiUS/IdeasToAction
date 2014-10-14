@@ -83,16 +83,15 @@ describe Talk do
       end
 
       it "should destroy ideas without talks" do
-        expect(@talk.ideas.count).to eq 1
+        @talk.should_receive(:destroy_ideas_without_talks)
         @talk.destroy
-        expect(@talk.ideas.count).to eq 0
       end
     end
   end
 
   context 'dependent ideas' do
     before :each do
-      @talk = Talk.create!(event_id: Event.first.id, title: "test", description: "talk", hero_image_url: "test")
+      @talk = Talk.create!(event_id: Event.first.id, title: "talk title 1", description: "talk description 1", hero_image_url: "test")
       @idea = Idea.create!(talks: [@talk], member_id: Member.first.id, description: "test idea")
     end
 
