@@ -2,6 +2,10 @@ Actionman::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   match "search" => "search#index"
 
   get "heartbeat/beat"

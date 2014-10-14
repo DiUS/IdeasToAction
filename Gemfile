@@ -73,6 +73,7 @@ end
 group :development do
   gem 'pry', '~> 0.10.0'
   gem 'interactive_rspec'
+  gem 'letter_opener_web'
 end
 
 # Deploy with Capistrano

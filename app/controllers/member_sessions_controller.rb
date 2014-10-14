@@ -49,7 +49,9 @@ class MemberSessionsController < ApplicationController
 
   def create_member_if_new
     if Member.where(email: params[:member_session][:email]).empty?
-      Member.create(email: params[:member_session][:email], password: params[:member_session][:password])
+      member = Member.create(email: params[:member_session][:email], password: params[:member_session][:password])
+      Mailer.welcome(member)
+      member
     end
   end
 end
