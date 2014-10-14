@@ -106,12 +106,8 @@ class IdeaAction < ActiveRecord::Base
     idea_actions.each{|idea_action| idea_action.update_attribute(:reminded, true)}
   end
 
-  def self.reminded(idea_actions = nil)
-    if idea_actions
-      bulk_set_reminded(idea_actions)
-    else
-      where(reminded: true)
-    end
+  def self.reminded
+    where(reminded: true)
   end
 
   def self.viewable

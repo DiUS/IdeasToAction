@@ -19,23 +19,6 @@ describe IdeaAction do
   it { should validate_presence_of(:target_date) }
 	it { should belong_to(:member) }
 
-  describe "scopes" do
-    it "should return featured idea actions" do
-      idea_actions = IdeaAction.featured
-      idea_actions.each{ |idea_action| idea_action.featured?.should be_true }
-    end
-
-    it 'should return recent idea actions' do
-      idea_actions = IdeaAction.recent
-      idea_actions.should include(IdeaAction.order("created_at desc").first)
-    end
-
-    it 'should return exclude specific idea actions' do
-      idea_action_to_exclude = IdeaAction.first
-      IdeaAction.excluding_idea_actions([idea_action_to_exclude.id]).should_not include(idea_action_to_exclude)
-    end
-  end
-
   describe "counters" do
     let(:event) { Event.first }
     let(:talk) { event.talks.first }
@@ -235,6 +218,41 @@ describe IdeaAction do
     let(:idea_action2){double(IdeaAction, id: 2, description: 'description2', target_date: 6.days.from_now)}
     let(:idea_actions){[idea_action1, idea_action2]}
 
+    describe "self.random" do
+      subject{IdeaAction}
+
+      it "should return random idea actions" do
+        member_objects = []
+        100.times{member_objects << subject.random}
+        expect(member_objects.frequencies.values.max).to be <= 100/subject.count * 3
+      end
+
+      it "should return a given number of random idea actions" do
+        expect(subject.random(2).count).to eq 2
+      end
+    end
+
+    describe "self.featured" do
+      it "should return featured idea actions" do
+        idea_actions = IdeaAction.featured
+        idea_actions.each{ |idea_action| idea_action.featured?.should be_true }
+      end
+    end
+
+    describe "self.recent" do
+      it 'should return recent idea actions' do
+        idea_actions = IdeaAction.recent
+        idea_actions.should include(IdeaAction.order("created_at desc").first)
+      end
+    end
+
+    describe "self.excluding_idea_actions" do
+      it 'should return exclude specific idea actions' do
+        idea_action_to_exclude = IdeaAction.first
+        IdeaAction.excluding_idea_actions([idea_action_to_exclude.id]).should_not include(idea_action_to_exclude)
+      end
+    end
+
     describe "self.descriptions" do
       before do
         IdeaAction.should_receive(:all).and_return(idea_actions)
@@ -311,8 +329,8 @@ describe IdeaAction do
     end
 
     describe "self.total" do
-      it "should work" do
-        expect(IdeaAction.viewable.count).to eq 31
+      it "should return a number" do
+        expect(IdeaAction.viewable.count.class).to eq Fixnum
       end
     end
   end
