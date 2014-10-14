@@ -20,14 +20,16 @@ describe Talk do
 
   describe "collection methods" do
     describe "self.random" do
+      subject{Talk}
+
       it "should return random talks" do
-        randomised_talks = []
-        100.times{randomised_talks << Talk.random}
-        expect(randomised_talks.frequencies.values.max).to be <= 30
+        member_objects = []
+        100.times{member_objects << subject.random}
+        expect(member_objects.frequencies.values.max).to be <= 100/subject.count * 3
       end
 
       it "should return a given number of random talks" do
-        expect(Talk.random(2).count).to eq 2
+        expect(subject.random(2).count).to eq 2
       end
     end
 

@@ -26,14 +26,16 @@ describe Event do
 
   describe "collection methods" do
     describe "self.random" do
+      subject{Event}
+
       it "should return random events" do
-        randomised_events = []
-        100.times{randomised_events << Event.random}
-        expect(randomised_events.frequencies.values.max).to be <= 30
+        member_objects = []
+        100.times{member_objects << subject.random}
+        expect(member_objects.frequencies.values.max).to be <= 100/subject.count * 3
       end
 
       it "should return a given number of random events" do
-        expect(Event.random(2).count).to eq 2
+        expect(subject.random(2).count).to eq 2
       end
     end
 

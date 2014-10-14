@@ -17,14 +17,16 @@ describe Idea do
 
   describe "collection methods" do
     describe "self.random" do
+      subject{Idea}
+
       it "should return random ideas" do
-        randomised_ideas = []
-        100.times{randomised_ideas << Idea.random}
-        expect(randomised_ideas.frequencies.values.max).to be <= 20
+        member_objects = []
+        100.times{member_objects << subject.random}
+        expect(member_objects.frequencies.values.max).to be <= 100/subject.count * 3
       end
 
       it "should return a given number of random ideas" do
-        expect(Idea.random(2).count).to eq 2
+        expect(subject.random(2).count).to eq 2
       end
     end
 
@@ -71,7 +73,7 @@ describe Idea do
     end
 
     describe "self.viewable" do
-      
+
     end
 
     describe "self.total" do
