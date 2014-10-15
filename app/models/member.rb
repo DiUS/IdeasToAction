@@ -9,7 +9,7 @@ class Member < ActiveRecord::Base
     c.session_class = MemberSession
     c.validate_password_field = false
     c.validate_login_field = false
-    c.validate_email_field = false
+    c.validate_email_field = true
   end
 
   has_many :idea_actions, dependent: :destroy

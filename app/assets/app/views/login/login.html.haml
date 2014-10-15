@@ -13,12 +13,13 @@
       %p
         We're looking forward to seeing you change the world!
 
-      %form(name="loginForm" ng-controller="LoginCtrl" ng-submit="submit()" novalidate)
-        .content-item.content-item-full.text-item
-          .error(ng-show="memberSession.errorMsg")
-            {{ memberSession.errorMsg }}
-          %input(type="text" id="email" ng-model="loginForm.email" placeholder="Please enter your email address..." autocorrect="off" autocapitalize="off" )
+      .login-field
+        %form(name="loginForm" ng-controller="LoginCtrl" ng-submit="submit()" novalidate)
+          .content-item.content-item-full.text-item
+            .error(ng-show="memberSession.errorMsg")
+              {{ memberSession.errorMsg }}
+            %input(type="text" id="email" ng-model="loginForm.email" placeholder="Please enter your email address..." autocorrect="off" autocapitalize="off" mobile-focus-click)
 
-        %div
-          %button#login-submit.content-button.btn(type="submit")
-            Login
+          %div
+            %button#login-submit.content-button.btn(type="submit")
+              Login
