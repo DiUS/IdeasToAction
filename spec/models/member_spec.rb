@@ -9,12 +9,6 @@ describe Member do
     before(:each) do
       activate_authlogic
     end
-
-    it "should allow blank emails and passwords" do
-      subject.email = ""
-      subject.password = ""
-      subject.valid?.should be_true
-    end
   end
 
   describe ".emails" do
