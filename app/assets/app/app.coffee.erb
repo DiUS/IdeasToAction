@@ -53,13 +53,16 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
 
         otherwise( {redirectTo: '/home'} )
   ).
-  run ($location, $rootScope, $http) ->
+  run ($location, $rootScope, $http, MemberSession, LoginService) ->
 		<% unless Rails.env.test? %>
     $rootScope.$on "$routeChangeStart", () ->
-      if not $rootScope.member or not $rootScope.member.email
+      if not MemberSession or not MemberSession.email
         $http.get("#{window.ENDPOINT}/member_sessions/check.json").success (data) ->
           if data.authenticated
-            $rootScope.member = data
+            MemberSession.create null, data.id, data.email, true
           else
-            $location.path "/login"
+						if window.localStorage.TEDXLoginEmail
+              LoginService.login {email: window.localStorage.TEDXLoginEmail, password: '', remember_me: true}
+						else
+            	$location.path "/login"
 		<% end %>

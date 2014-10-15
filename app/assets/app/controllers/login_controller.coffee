@@ -1,18 +1,15 @@
-window.LoginCtrl = ($rootScope, $scope, $http, $location) ->
+window.LoginCtrl = ($rootScope, $scope, $http, $location, MemberSession, LoginService) ->
   $scope.loginForm =
     email: ""
     password: ""
     remember_me: true
 
-  $scope.memberSession = {errorMsg: null, id: null, email: null, loggedIn: undefined}
+  $scope.memberSession = MemberSession
 
-  $rootScope.member = {}
   $scope.submit = ->
-    $scope.loginForm.password = "constant_hardcoded_password"
-    $scope.loginForm.remember_me = true
-    $http.post("#{window.ENDPOINT}/member_sessions", $scope.loginForm).success((member_data) ->
-      $rootScope.member = member_data
-      $scope.memberSession = {errorMsg: null, id: member_data.id, email: member_data.email, loggedIn: true}
+    LoginService.login($scope.loginForm).then ( (session)->
+      $scope.memberSession = session
+      window.localStorage.setItem "TEDXLoginEmail", session.email
       $location.path("/home")
-    ).error (data) ->
-      $scope.memberSession = {errorMsg: data.error, id: null, email: null, loggedIn: undefined}
+    ), (res) ->
+      MemberSession.create res.data.error, null, null, undefined
