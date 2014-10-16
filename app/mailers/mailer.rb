@@ -23,7 +23,8 @@ class Mailer < ActionMailer::Base
   def mail_with_error_logging(*args)
     options = args.extract_options!
     to, subject = options[:to], options[:subject]
-    callback_method_name, callback_argument = options[:callback].first, options[:callback].second
+    callback_method_name = options[:callback] && options[:callback].first
+    callback_argument = options[:callback] && options[:callback].second
     mail_object = mail(to: to, subject: subject).deliver
     self.send(callback_method_name, callback_argument) if options[:callback]
     mail_object
