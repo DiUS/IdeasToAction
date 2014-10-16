@@ -1,4 +1,4 @@
-if Rails.env.qa? || Rails.env.production? || Rails.env.development?
+if Rails.env.qa? || Rails.env.production?
   ActionMailer::Base.smtp_settings = {
     address: 'email-smtp.us-west-2.amazonaws.com',
     port: '587',
