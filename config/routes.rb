@@ -7,9 +7,6 @@ Actionman::Application.routes.draw do
   end
 
   match "search" => "search#index"
-
-  get "heartbeat/beat"
-
   match "counts" => "counts#index"
   match 'member/idea_actions' => 'member#idea_actions'
 
