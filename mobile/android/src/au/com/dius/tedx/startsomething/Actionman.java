@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.ted.ideastoaction;
+package au.com.dius.tedx.startsomething;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -18,7 +18,7 @@
        under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
-      package="com.ted.ideastoaction" android:versionName="1.1.<%= ENV['BUILD_NUMBER'] || 'Dev' %>" android:versionCode="<%= ENV['BUILD_NUMBER'] || '5'%>" android:hardwareAccelerated="true">
+      package="au.com.dius.tedx.startsomething" android:versionName="1.1.<%= ENV['BUILD_NUMBER'] || 'Dev' %>" android:versionCode="<%= ENV['BUILD_NUMBER'] || '5'%>" android:hardwareAccelerated="true">
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -34,7 +34,7 @@
     <application android:icon="@drawable/icon" android:label="@string/app_name"
         android:hardwareAccelerated="true"
         android:debuggable="true">
-        <activity android:name="com.ted.ideastoaction.Actionman" android:label="@string/app_name"
+        <activity android:name="au.com.dius.tedx.startsomething.Actionman" android:label="@string/app_name"
                 android:screenOrientation="portrait" 
                 android:windowSoftInputMode="stateUnspecified|adjustResize" 
                 android:theme="@android:style/Theme.Black.NoTitleBar"
