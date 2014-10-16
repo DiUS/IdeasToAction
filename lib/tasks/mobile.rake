@@ -91,7 +91,7 @@ namespace :mobile do
     end
 
     task :set_www_directory do
-      @www_directory = "mobile/android/www"
+      @www_directory = "mobile/android/assets/www"
     end
 
     task :clean => :clean_www_directory do
