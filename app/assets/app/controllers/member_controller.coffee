@@ -4,15 +4,15 @@ window.MemberCtrl = ($scope, $http, MemberIdeaActionsResource, MemberSession, Me
   $scope.emailChangeSuccess = false
 
   $scope.updateEmail = ->
-    MemberResource.update({id: $scope.memberSession.id, email: $scope.memberSession.email},
+    MemberResource.update({memberId: $scope.memberSession.id, email: $scope.memberSession.email},
       ->
         window.localStorage.setItem "TEDXLoginEmail", $scope.memberSession.email
         $scope.emailChangeError = null
         $scope.emailChangeSuccess = true
-      (e) ->
+      (error_data) ->
         $scope.emailChangeSuccess = false
-        if e.data?.errors?.email[0]?
-          $scope.emailChangeError = e.data.errors.email[0]
+        if error_data.data?.errors?.email[0]?
+          $scope.emailChangeError = error_data.data.errors.email[0]
         else
           $scope.emailChangeError = 'unknown error'
     )

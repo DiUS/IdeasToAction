@@ -1,6 +1,6 @@
 angular.module('Actionman').
   factory 'MemberResource', ($resource) ->
-    $resource "/members/:id", {id: "@id"},
+    $resource "/members/:memberId", {memberId: "@memberId"},
       {
         update:
           method: "PUT"
