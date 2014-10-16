@@ -24,7 +24,7 @@
     id          = "au.com.dius.tedxstartsomething"
     version     = "1.0.0" >
 
-    <name>TEDxUltimo Start Something QA</name>
+    <name>TEDxUltimo Start Something</name>
 
     <description>
         TEDxUltimo Start Something

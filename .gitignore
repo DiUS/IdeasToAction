@@ -22,6 +22,7 @@ mobile/android/bin/
 mobile/android/gen/
 mobile/android/local.properties
 mobile/android/www/
+mobile/ios/Actionman/config.xml
 mobile/ios/Actionman/*.mobileprovision
 mobile/ios/Actionman.xcodeproj/project.xcworkspace/
 mobile/ios/Actionman.xcodeproj/xcuserdata/
