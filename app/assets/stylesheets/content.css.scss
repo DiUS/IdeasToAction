@@ -60,7 +60,7 @@
     text-align: center;
   }
 
-  button.content-button {
+  button.content-button, input[type="submit"].content-button {
     width: 100%;
   }
 }
