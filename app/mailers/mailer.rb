@@ -21,9 +21,11 @@ class Mailer < ActionMailer::Base
   private
 
   def mail_with_error_logging(*args)
-    params = args.extract_options!
-    mail_object = mail(to: params[:to], subject: params[:subject]).deliver
-    self.send(params[:callback].first, params[:callback].second) if params[:callback]
+    options = args.extract_options!
+    to, subject = options[:to], options[:subject]
+    callback_method_name, callback_argument = options[:callback].first, options[:callback].second
+    mail_object = mail(to: to, subject: subject).deliver
+    self.send(callback_method_name, callback_argument) if options[:callback]
     mail_object
   rescue *SMTP_ERRORS => e
     Rails.logger.error("Attempting to send an email to #{to} with subject #{subject} produced an error.")
