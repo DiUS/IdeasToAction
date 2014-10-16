@@ -39,7 +39,7 @@ class MemberSessionsController < ApplicationController
   end
 
   def check
-    member_check = {authenticated: current_member && current_member.email.present?}
+    member_check = {admin_authenticated: current_member && current_member.email.present?}
     member_check[:id] = current_member.id if current_member
     member_check[:email] = current_member.email if current_member
     render json: member_check

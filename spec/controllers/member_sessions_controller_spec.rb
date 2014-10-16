@@ -28,7 +28,7 @@ describe MemberSessionsController do
   describe "when json/ajax" do
     it "should report user status" do
       xhr :get, :check
-      ActiveSupport::JSON.decode(response.body)['authenticated'].should be_true
+      ActiveSupport::JSON.decode(response.body)['admin_authenticated'].should be_true
       ActiveSupport::JSON.decode(response.body)['id'].should eql(@admin_member.id)
       ActiveSupport::JSON.decode(response.body)['email'].should eql(@admin_member.email)
       response.should be_success

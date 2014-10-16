@@ -58,7 +58,7 @@ angular.module('Actionman', [ 'snappy-swipe-navigate', 'ui', 'ngResource' ]).
     $rootScope.$on "$routeChangeStart", () ->
       if not MemberSession or not MemberSession.email
         $http.get("#{window.ENDPOINT}/member_sessions/check.json").success (data) ->
-          if data.authenticated
+          if data.admin_authenticated
             MemberSession.create null, data.id, data.email, true
           else
 						if window.localStorage.TEDXLoginEmail
