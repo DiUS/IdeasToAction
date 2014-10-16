@@ -1,7 +1,7 @@
 require 'pathname'
 require 'erb'
 
-namespace :phonegap do
+namespace :mobile do
 
   task :precompile_assets do
     raise "Couldn't precompile assets" unless Kernel.system("rake RAILS_ENV=#{@assets_env} assets:precompile")
@@ -29,13 +29,15 @@ namespace :phonegap do
     application_css.open("w"){|file| file.write(content)}
   end
 
-  task :set_qa_assets do
-    @assets_env = 'qa_mobile_assets'
-  end
+  namespace :set_assets_env do
+    task :qa do
+      @assets_env = 'qa_mobile_assets'
+    end
 
-  task :set_production_assets do
-    @assets_env = 'production_mobile_assets'
-  end
+    task :production do
+      @assets_env = 'production_mobile_assets'
+    end
+  end # namespace :set_assets_env
 
   namespace :ios do
 
@@ -53,7 +55,7 @@ namespace :phonegap do
       FileUtils.rm_rf('mobile/ios/Build') if File.exist?('mobile/ios/Build')
     end
 
-    desc "Copy the PhoneGap config.xml to the www_directory."
+    desc "Copy the Phonegap config.xml to the www_directory."
     task :cp_build_config do
       source = "mobile/ios/Actionman/#{@assets_env}.config.xml"
       destination = "mobile/ios/Actionman/config.xml"
@@ -62,21 +64,21 @@ namespace :phonegap do
 
     namespace :qa do
       desc "Assembles all the assets necessary for a qa build."
-      task :assemble_assets => [:set_qa_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
+      task :assemble_assets => ['set_assets_env:qa', :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
 
-      desc "Build iPhone Application (qa)"
+      desc "qa build of the iPhone application"
       task :build => [:assemble_assets, :cp_build_config] do
-        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/ios/cordova/build')
+        raise "Couldn't build Phonegap package." unless Kernel.system('mobile/ios/cordova/build')
       end
     end
 
     namespace :production do
-      desc "Assembles all the assets necessary for a build."
-      task :assemble_assets => [:set_production_assets, :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
+      desc "Assembles all the assets necessary for a production build."
+      task :assemble_assets => ['set_assets_env:production', :set_www_directory, :clean, :cp_cordova_to_assets, :cp_assets_to_www_directory]
 
-      desc "Build iPhone Application (production)"
+      desc "production build of the iPhone application"
       task :build => [:assemble_assets, :cp_build_config] do
-        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/ios/cordova/build')
+        raise "Couldn't build Phonegap package." unless Kernel.system('mobile/ios/cordova/build')
       end
     end
 
@@ -89,7 +91,7 @@ namespace :phonegap do
     end
 
     task :set_www_directory do
-      @www_directory = "mobile/android/assets/www"
+      @www_directory = "mobile/android/www"
     end
 
     task :clean => :clean_www_directory do
@@ -98,7 +100,7 @@ namespace :phonegap do
       FileUtils.rm('mobile/android/AndroidManifest.xml') if File.exist?('mobile/android/AndroidManifest.xml')
     end
 
-    task :android_manifest do
+    task :create_android_manifest do
       android_manifest_template = Pathname.new('mobile/android/AndroidManifest.xml.erb')
       android_manifest = Pathname.new('mobile/android/AndroidManifest.xml')
       android_manifest.open("w"){|manifest| manifest.puts(ERB.new(android_manifest_template.read).result)}
@@ -108,33 +110,32 @@ namespace :phonegap do
       FileUtils.cp('mobile/android/res/xml/config.xml', @www_directory, verbose: true)
     end
 
-    namespace :assemble_assets do
-      desc "Assembles all the assets necessary for a build."
-      task :production => [:set_www_directory, :clean, :cp_cordova_to_assets, :android_manifest, :cp_assets_to_www_directory]
-
+    namespace :qa do
       desc "Assembles all the assets necessary for a qa build."
-      task :qa => [:set_qa_assets, :production]
-    end
+      task :assemble_assets => ['set_assets_env:qa', :set_www_directory, :clean, :cp_cordova_to_assets, :create_android_manifest, :cp_assets_to_www_directory]
 
-    namespace :build do
-      desc "Build Android Application (production)"
-      task :production => ['assemble_assets:production', :cp_build_config] do
-        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/android/cordova/build')
+      desc "qa build of the Android application"
+      task :build => [:assemble_assets, :cp_build_config] do
+        raise "Couldn't build Phonegap package." unless Kernel.system('mobile/android/cordova/build')
+      end
+    end # namespace :qa
+
+    namespace :production do
+      desc "Assembles all the assets necessary for a production build."
+      task :assemble_assets => ['set_assets_env:qa', :set_www_directory, :clean, :cp_cordova_to_assets, :create_android_manifest, :cp_assets_to_www_directory]
+
+      desc "production build of the Android application"
+      task :build => [:assemble_assets, :cp_build_config] do
+        raise "Couldn't build Phonegap package." unless Kernel.system('mobile/android/cordova/build')
       end
 
-      desc "Build Android Application (qa)"
-      task :qa => 'assemble_assets:qa' do
-        raise "Couldn't build PhoneGap package." unless Kernel.system('mobile/android/cordova/build')
-      end
-    end
-
-    namespace :release do
-      desc "Building Release Android Application (production)"
-      task :production => ['assemble_assets:production', :cp_build_config] do
+      desc "release build of the Android application"
+      task :release => [:assemble_assets, :cp_build_config] do
         raise "Couldn't build Phonegap package" unless Kernel.system('mobile/android/cordova/release')
       end
-    end
+    end # namespace :production
 
   end # namespace :android
 
-end # namespace :phonegap
+end # namespace :mobile
+
