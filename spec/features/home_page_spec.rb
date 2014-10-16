@@ -9,7 +9,7 @@ describe "Home page", js: true, acceptance: true do
     page.text.should =~ /(\d+) Ideas/
     page.text.should =~ /(\d+) Talks/
     page.text.should =~ /(\d+) Events/
-    page.text.should =~ /The Ultimate Place to Start Something/
+    page.text.should =~ /the ultimate place to start something/
   end
 
   it 'should link to ideas' do
