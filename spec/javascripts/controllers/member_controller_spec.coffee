@@ -8,6 +8,7 @@ describe 'MemberCtrl', ->
   beforeEach inject (_$httpBackend_, $rootScope, $controller, MemberIdeaActionsResource, MemberSession, MemberResource) ->
     httpBackend = _$httpBackend_
     scope = $rootScope.$new()
+    window.ENDPOINT = 'window_endpoint'
     MemberSession.id = 3
     spyOn(MemberIdeaActionsResource, 'query').andReturn([])
     spyOn(window.localStorage, 'setItem').andCallThrough()
@@ -20,7 +21,7 @@ describe 'MemberCtrl', ->
 
     describe 'when successful', ->
       beforeEach ->
-        httpBackend.expectPUT("/members/3").respond({})
+        httpBackend.expectPUT("#{window.ENDPOINT}/members/3").respond({})
         scope.updateEmail()
         httpBackend.flush()
 
@@ -33,7 +34,7 @@ describe 'MemberCtrl', ->
 
     describe 'when error', ->
       beforeEach ->
-        httpBackend.expectPUT("/members/3").respond(422, emailError)
+        httpBackend.expectPUT("#{window.ENDPOINT}/members/3").respond(422, emailError)
         scope.updateEmail()
         httpBackend.flush()
 
