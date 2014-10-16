@@ -1,0 +1,29 @@
+#member {
+  label {
+    margin-top: 10px;
+  }
+
+  .email-controls {
+    background-color: #ffffff;
+    margin-top: 10px;
+  }
+
+  input[type="text"] {
+    height: 2em;
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f7f7;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+    -webkit-user-modify: read-write-plaintext-only;
+  }
+
+  .error {
+    color: red;
+  }
+
+  .success {
+    color: green;
+  }
+}

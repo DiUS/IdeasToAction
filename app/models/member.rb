@@ -10,11 +10,10 @@ class Member < ActiveRecord::Base
     c.validate_password_field = false
     c.validate_login_field = false
     c.validate_email_field = true
+		c.merge_validates_format_of_email_field_options message: 'not a valid email'
   end
 
   has_many :idea_actions, dependent: :destroy
-
-  validate :email, format: /\A(\S+)@(.+)\.(\S+)\z/
 
   def self.emails
     all.map{|member| ["(#{member.id}) #{member.email}", member.id]}

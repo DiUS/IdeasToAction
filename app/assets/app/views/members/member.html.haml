@@ -7,3 +7,14 @@
   %scrollable
     .content
       %collapsible(scroller="scroller" title='My Actions' expanded="true" can-collapse="false" type='idea_action' collection='idea_actions' item-template='assets/views/actions/actions_item.html')
+    .content.email-controls
+      %form
+        %label
+          Your email address is:
+        .error(ng-show='emailChangeError')
+          {{emailChangeError}}
+        .success(ng-show='emailChangeSuccess')
+          Email updated
+        %input(type="text" placeholder="Please enter your email address..." ng-model="memberSession.email" autocorrect="off" autocapitalize="off" mobile-focus-click)
+        .content-button(ng-click="updateEmail()")
+          Update Email Address

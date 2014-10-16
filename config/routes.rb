@@ -13,6 +13,8 @@ Actionman::Application.routes.draw do
   match "counts" => "counts#index"
   match 'member/idea_actions' => 'member#idea_actions'
 
+	resources :members, only: [:update]
+
   resources :idea_actions do
     collection do
       get 'random'
