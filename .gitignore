@@ -18,7 +18,7 @@
 /bin
 public/assets
 mobile/android/AndroidManifest.xml
-mobile/android/assets/www/
+mobile/android/www/
 mobile/android/bin/
 mobile/android/gen/
 mobile/android/local.properties
