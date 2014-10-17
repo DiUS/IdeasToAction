@@ -73,3 +73,5 @@ Actionman::Application.configure do
   config.host = '54.79.75.3'
   config.analytics_tracking_key = 'UA-39769967-1'
 end
+
+ActionMailer::Base.default from: 'info@tedxultimo.com'

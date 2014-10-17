@@ -41,3 +41,5 @@ Actionman::Application.configure do
 end
 
 WebMock.allow_net_connect!
+
+ActionMailer::Base.default from: 'no-reply+development@tedxultimo.com'

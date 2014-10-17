@@ -73,3 +73,5 @@ Actionman::Application.configure do
   config.host = '54.79.124.80'
 	config.analytics_tracking_key = 'bogus'
 end
+
+ActionMailer::Base.default from: 'no-reply+qa@tedxultimo.com'

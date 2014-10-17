@@ -1,7 +1,5 @@
 class Mailer < ActionMailer::Base
 
-  default from: "no-reply+#{Rails.env}@tedxultimo.com"
-
   def remind(member)
     if member.remindable?
       @actions = member.remindable_actions
