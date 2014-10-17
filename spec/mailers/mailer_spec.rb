@@ -6,6 +6,21 @@ describe Mailer do
   let(:mail){Mailer.remind(member)}
   subject{mail}
 
+  describe "self.welcome" do
+    let(:member){double(Member, email: 'to.1@example.org')}
+    let(:mail){Mailer.welcome(member)}
+    subject{mail}
+
+    its(:subject){should match('TEDxUltimo Welcome')}
+    its(:to){should eq(['to.1@example.org'])}
+    its(:from){should eq(["no-reply+test@tedxultimo.com"])}
+
+    describe "#body" do
+      subject{mail.body.encoded}
+      it{should match('Welcome to TEDxUltimo')}
+    end
+  end
+
   context "member.remindable? == true" do
     let(:member){double(Member, email: 'to.0@example.org', remindable?: true, remindable_actions: remindable_actions)}
 
@@ -16,7 +31,7 @@ describe Mailer do
 
       describe "#body" do
         subject{mail.body.encoded}
-        it{should match('OMG, the target date for the following action')}
+        it{should match('This is a reminder email')}
       end
     end
 
@@ -34,21 +49,6 @@ describe Mailer do
     end
 
     describe "self.reminders" do
-    end
-  end
-
-  describe "self.welcome" do
-    let(:member){double(Member, email: 'to.1@example.org')}
-    let(:mail){Mailer.welcome(member)}
-    subject{mail}
-
-    its(:subject){should match('TEDxUltimo Welcome')}
-    its(:to){should eq(['to.1@example.org'])}
-    its(:from){should eq(["no-reply+test@tedxultimo.com"])}
-
-    describe "#body" do
-      subject{mail.body.encoded}
-      it{should match('Sincerely')}
     end
   end
 
