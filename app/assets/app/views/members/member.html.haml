@@ -16,5 +16,4 @@
         .success(ng-show='emailChangeSuccess')
           Email updated
         %input(type="text" placeholder="Please enter your email address..." ng-model="memberSession.email" autocorrect="off" autocapitalize="off" mobile-focus-click)
-        .content-button(ng-click="updateEmail()")
-          Update Email Address
+        %input.btn.content-button(type="submit" ng-click="updateEmail()" value="Update Email Address")
