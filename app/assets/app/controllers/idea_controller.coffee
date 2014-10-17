@@ -40,4 +40,4 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
   $scope.$on 'actionDone', (event, idea_action_data) ->
     for idea_action in $scope.idea.idea_actions
       if idea_action_data.id == idea_action.id
-        idea_action.target_date = idea_action_data.completion_date
+        idea_action.completion_date = idea_action_data.completion_date
