@@ -1,14 +1,16 @@
 Hello TEDxer,
 
-OMG, the target date for the following action<%= @actions.size > 1 ? 's' : '' %>
+Congratulations on taking some action towards something awesome!
+
+This is a reminder email to let you know that you wanted to complete the following action<%= @actions.size > 1 ? 's' : '' %> in around a week's time:
 
 <% @actions.each do |action| %>
-	* <%= action.description %>
+	- <%= action.description %>
 <% end %>
 
-is less than a week away!
-
-Sincerely,
+Good luck!
 
 
-TEDxUltimo Organisers
+The TEDxUltimo Team
+
+Please note: You received this email because you signed up with the TEDxUltimo mobile app.  We would be sad to see you go, but if you wish to unsubscribe, please respond to us with the subject: "Unsubscribe".
