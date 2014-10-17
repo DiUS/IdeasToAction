@@ -36,3 +36,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     $navigate.swipeScope.resetToTop()
 
   $scope.update()
+
+  $scope.$on 'actionDone', (idea_action_data) ->
+    for idea_action in $scope.idea.idea_actions
+      idea_action.target_date = idea_action_data.completion_date if idea_action_data.id == idea_action.id
