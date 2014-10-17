@@ -91,6 +91,5 @@ RSpec.configure do |config|
 	end
 
   config.include JsonSpec::Helpers
-
-  config.include(LoginMacros)
+  config.include LoginMacros
 end
