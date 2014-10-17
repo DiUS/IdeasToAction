@@ -299,8 +299,3 @@ Reply time [ms]: response 297.6 transfer 173.5
 Make sure this stays with acceptable rate (< 500ms??)
 
 It is also good to personally play with the app while the test is executing.
-
-=== Future Improvements
-
-It would be good to investigate how to pass JSON to POST requests in path_sequence.txt (i.e. for posting a reaction)
-
