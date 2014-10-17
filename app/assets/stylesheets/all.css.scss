@@ -89,6 +89,17 @@ h6 {
   }
 }
 
+.page {
+  .home-header {
+    height: 34px;
+    background-color: white;
+    text-align: center;
+    width: auto;
+    border-bottom: 1px solid #FF2A06;
+    padding: 15px;
+  }
+}
+
 .error-box {
   text-align: center;
   width: 75%;
@@ -102,4 +113,13 @@ h6 {
 
 .date-label {
   font-size: 0.9em;
+}
+
+footer {
+  margin: 0;
+  height: auto;
+  display: block;
+  font: {
+    color: black;
+  }
 }

@@ -1,12 +1,15 @@
 #home
-  .header.main-header(ng-href="/instructions")
-    Start something
+  %header.home-header
+    %a(href="http://www.tedxultimo.com")
+      %img(src="assets/tedxultimo.medium.cropped.png")
+
   %scrollable
     .content.center
-      %p.statement
-        TEDxUltimo;
-        %br
-        the ultimate place to start something
+      %p.small_statement
+        %a(ng-href="/instructions")
+          The Ultimate Place to Start Something&hellip;
+          %span.red
+            >
     .content
       .content-item.big(ng-href="/talks")
         %span {{counts.talks | number }}
