@@ -6,7 +6,7 @@ window.IdeaCtrl = ($scope, $http, $routeParams, $navigate, dataCache) ->
     "idea-#{idea.id}"
 
   $scope.update = (callback) ->
-    $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: dataCache }).success (data) -> 
+    $http.get("#{window.ENDPOINT}/ideas/#{$scope.ideaId}.json", { cache: false }).success (data) ->
       $scope.idea = data
       $scope.talk_title = $scope.idea.talks[0].title
 
