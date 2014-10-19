@@ -16,7 +16,9 @@ describe 'IdeaCtrl', ->
     window.ENDPOINT = 'window_endpoint'
 
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
-          respond(ideaData)
+        respond(ideaData)
+    $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1.json").
+        respond(ideaData)
     $httpBackend.expectGET("#{window.ENDPOINT}/ideas/1/show_idea_url").
           respond({idea_url: "http://bit.ly/15z4CPz"})
 
