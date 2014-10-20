@@ -43,8 +43,5 @@ production_mobile_assets:
 qa_mobile_assets:
   <<: *test
 
-android:
-  <<: *test
-
 canary:
   <<: *base
