@@ -122,7 +122,7 @@ namespace :mobile do
 
     namespace :production do
       desc "Assembles all the assets necessary for a production build."
-      task :assemble_assets => ['set_assets_env:qa', :set_www_directory, :clean, :cp_cordova_to_assets, :create_android_manifest, :cp_assets_to_www_directory]
+      task :assemble_assets => ['set_assets_env:production', :set_www_directory, :clean, :cp_cordova_to_assets, :create_android_manifest, :cp_assets_to_www_directory]
 
       desc "production build of the Android application"
       task :build => [:assemble_assets, :cp_build_config] do
