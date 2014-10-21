@@ -17,8 +17,13 @@
        specific language governing permissions and limitations
        under the License.
 -->
+
+<% build_number = ENV['BUILD_NUMBER'] || Time.now_as_numbers %>
+<% debuggable = ENV['RAILS_ENV'] == 'production_mobile_assets' ? 'false' : 'true' %>
+<% endpoint = ENV['RAILS_ENV'] == 'production_mobile_assets' ? '54.79.75.3' : '54.79.124.80'%>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
-      package="au.com.dius.tedx.startsomething" android:versionName="1.1.<%= ENV['BUILD_NUMBER'] || 'Dev' %>" android:versionCode="<%= ENV['BUILD_NUMBER'] || '5'%>" android:hardwareAccelerated="true">
+      package="au.com.dius.tedx.startsomething" android:versionName="<%= build_number %>" android:versionCode="<%= build_number %>" android:hardwareAccelerated="true">
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -33,7 +38,7 @@
     
     <application android:icon="@drawable/icon" android:label="@string/app_name"
         android:hardwareAccelerated="true"
-        android:debuggable="false">
+        android:debuggable="<%= debuggable %>">
         <activity android:name="au.com.dius.tedx.startsomething.Actionman" android:label="@string/app_name"
                 android:screenOrientation="portrait" 
                 android:windowSoftInputMode="stateUnspecified|adjustResize" 
@@ -48,7 +53,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="54.79.75.3" android:pathPrefix="/ideas" />
+                <data android:scheme="http" android:host="<%= endpoint %>" android:pathPrefix="/ideas" />
             </intent-filter>
         </activity>
     </application>
