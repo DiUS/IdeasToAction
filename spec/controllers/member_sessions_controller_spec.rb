@@ -50,6 +50,16 @@ describe MemberSessionsController do
       ActiveSupport::JSON.decode(response.body)["success"].should be_true
       response.should be_success
     end
-  end
+	end
+
+	describe 'when non existent member' do
+		let(:new_member) { double(Member) }
+
+		it 'should create a new user and send welcome email' do
+			Member.should_receive(:create).and_return(new_member)
+			Mailer.should_receive(:welcome).with(new_member)
+			post :create, member_session: { email: 'new@member.com', password: 'tedxer' }
+		end
+	end
 
 end

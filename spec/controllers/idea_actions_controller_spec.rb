@@ -121,23 +121,45 @@ describe IdeaActionsController do
 		let(:idea_action) { IdeaAction.first }
 
 		describe 'for users that submitted the action' do
-			before do
-				controller.stub(:current_member).and_return(idea_action.member)
-				put :complete, { id: idea_action.id, format: :json }
+			describe 'when ok' do
+				before do
+					controller.stub(:current_member).and_return(idea_action.member)
+					put :complete, { id: idea_action.id, format: :json }
+				end
+
+				it 'should be successful' do
+					expect(response).to be_success
+				end
+
+				it 'should update new idea action' do
+					expect(assigns(:idea_action)).to be_a(IdeaAction)
+					expect(assigns(:idea_action)).to be_persisted
+				end
+
+				it 'returns JSON of updated idea action' do
+					idea_action_json = JSON.parse(response.body)
+					expect(idea_action_json['description']).to eq(idea_action.description)
+				end
 			end
 
-			it 'should be successful' do
-				expect(response).to be_success
-			end
+			describe 'when error' do
+				let(:errors) { ['error'] }
 
-			it 'should update new idea action' do
-				expect(assigns(:idea_action)).to be_a(IdeaAction)
-				expect(assigns(:idea_action)).to be_persisted
-			end
+				before do
+					IdeaAction.any_instance.stub(:save).and_return(false)
+					IdeaAction.any_instance.stub(:errors).and_return(errors)
+					controller.stub(:current_member).and_return(idea_action.member)
+					put :complete, { id: idea_action.id, format: :json }
+				end
 
-			it 'returns JSON of updated idea action' do
-				idea_action_json = JSON.parse(response.body)
-				expect(idea_action_json['description']).to eq(idea_action.description)
+				it 'should not be successful' do
+					expect(response).not_to be_success
+				end
+
+				it 'returns JSON with errors' do
+					error_response = JSON.parse(response.body)
+					expect(error_response['errors']).to eq(errors)
+				end
 			end
 		end
 	end
