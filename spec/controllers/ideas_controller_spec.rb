@@ -185,5 +185,25 @@ describe IdeasController do
       get :random, { :format => :json }
       response.body.should eql idea.to_json
     end
-  end
+	end
+
+	describe 'GET show_idea_url' do
+		let(:idea) { double(Idea) }
+
+		before do
+			idea.stub(:bitly_url).and_return('bitly_url')
+			Idea.should_receive(:find).and_return(idea)
+
+			get 'show_idea_url', { id: 1 }
+		end
+
+		it 'should be successful' do
+			expect(response).to be_success
+		end
+
+		it 'returns JSON with errors' do
+			idea_url_response = JSON.parse(response.body)
+			expect(idea_url_response['idea_url']).to eq('bitly_url')
+		end
+	end
 end
