@@ -1,3 +1,5 @@
+{<img src="https://codeclimate.com/github/DiUS/TEDxStartSomething/badges/gpa.svg" />}[https://codeclimate.com/github/DiUS/TEDxStartSomething]
+
 = TEDxStartSomething Care and Feeding Instructions
 
 == Setting up Continuous Integration (CI)
@@ -83,63 +85,6 @@
 		rvm use gemset actionman
 		bundle install
 		bundle exec cap production deploy
-	</tt>
-
-===== QA_Mobile_Assets Job
-
-1. Add jenkins user public key to Github.
-2. Create a QA_Mobile_Assets Jenkins job.
-3. In Source Code Management, Repository URL enter: https://github.com/DiUS/TEDxStartSomething.git.
-4. In Build, Execute Shell:
-	<tt>
-		#!/bin/bash -xl
-		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
-		source /var/lib/jenkins/.rvm/scripts/rvm
-		rvm use gemset actionman
-		bundle install
-		export DB_USERNAME=actionman
-		export DB_PASSWORD=testing_actionman
-		echo "Building QA Mobile assets"
-		RAILS_ENV=test rake phonegap:ios:qa:assemble_assets
-		cd mobile/ios
-		git clone git@github.com:DiUS/TEDxStartSomething-iOS.git assets_repo
-		cp -pr www/* assets_repo
-		cd assets_repo
-		git config --global user.name "jenkins"
-		git config --global user.email "test@example.com"
-		git commit --amend --reset-author
-		git add .
-		git commit -m "Automated commit of QA mobile assets #$BUILD_NUMBER"
-		git push origin master
-	</tt>
-
-===== Production_Mobile_Assets Job
-
-1. Add jenkins user public key to Github.
-2. Create a Production_Mobile_Assets Jenkins job.
-3. In Source Code Management, Repository URL enter: https://github.com/DiUS/TEDxStartSomething.git.
-4. In Build, Execute Shell:
-	<tt>
-		#!/bin/bash -xl
-		\curl -sSL get.rvm.io | bash -s stable –ruby=1.9.3 source /var/lib/jenkins/.rvm/scripts/rvm
-		source /var/lib/jenkins/.rvm/scripts/rvm
-		rvm use gemset actionman
-		bundle install
-		export DB_USERNAME=actionman
-		export DB_PASSWORD=testing_actionman
-		echo "Building QA Mobile assets"
-		RAILS_ENV=test rake phonegap:ios:production:assemble_assets
-		cd mobile/ios
-		git clone git@github.com:DiUS/TEDxStartSomething-iOS.git assets_repo
-		cp -pr www/* assets_repo
-		cd assets_repo
-		git checkout -b production
-		git config --global user.name "jenkins"
-		git config --global user.email "test@example.com"
-		git commit --amend --reset-author
-		git add .
-		git commit -m "Automated commit of mobile assets #$BUILD_NUMBER"
-		git push origin production
 	</tt>
 
 === Set up Elastic IP
@@ -299,3 +244,7 @@ Reply time [ms]: response 297.6 transfer 173.5
 Make sure this stays with acceptable rate (< 500ms??)
 
 It is also good to personally play with the app while the test is executing.
+
+== Trello
+
+{https://trello.com/b/vHeUZle9/tedxultimo-startsomething}[https://github.com/srbartlett/ec2-blackout]
