@@ -81,8 +81,23 @@ describe Idea do
     end
 
     describe "self.total" do
+			it 'should count the viewable ideas' do
+				viwable_ideas = double
+				Idea.should_receive(:viewable).and_return(viwable_ideas)
+				viwable_ideas.should_receive(:count)
+				Idea.total
+			end
+		end
 
-    end
+		describe 'bitly url' do
+			it 'calls the bitly service' do
+				bitly_mock = double
+				Bitly.should_receive(:new).with(ENV['BITLY_USERNAME'], ENV['BITLY_API_KEY']).and_return(bitly_mock)
+				bitly_mock.should_receive(:shorten).and_return(bitly_mock)
+				bitly_mock.should_receive(:short_url).and_return('http://1234')
+				subject.bitly_url
+			end
+		end
   end
 
   describe 'member methods' do
