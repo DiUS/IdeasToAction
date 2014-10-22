@@ -84,16 +84,24 @@ describe Member do
     end
   end
 
-  describe "#content_admin?" do
-
+  describe '#content_admin?' do
+		it 'is true when user has content admin role' do
+			subject.role = Member::ROLE_CONTENT_ADMIN
+			expect(subject.content_admin?).to be_true
+		end
   end
 
-  describe "#global_admin?" do
-
+  describe '#global_admin?' do
+		it 'is true when user has content admin role' do
+			subject.role = Member::ROLE_GLOBAL_ADMIN
+			expect(subject.global_admin?).to be_true
+		end
   end
 
-  describe "#remindable?" do
-
+  describe '#remindable?' do
+		it 'to be remindable if there are any remindable actions' do
+			result = subject.idea_actions.any?{|idea_action| idea_action.remindable?}
+			expect(subject.remindable?).to be(result)
+		end
   end
-
 end
