@@ -1,3 +1,5 @@
+{<img src="https://codeclimate.com/github/DiUS/TEDxStartSomething/badges/gpa.svg" />}[https://codeclimate.com/github/DiUS/TEDxStartSomething]
+
 = TEDxStartSomething Care and Feeding Instructions
 
 == Setting up Continuous Integration (CI)
