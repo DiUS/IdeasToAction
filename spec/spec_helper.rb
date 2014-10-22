@@ -1,6 +1,4 @@
 require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
 
 SimpleCov.start do
@@ -81,7 +79,11 @@ RSpec.configure do |config|
 
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
-  end
+	end
+
+	config.before :suite, type: :unit do
+		CodeClimate::TestReporter.start
+	end
 
   config.before :each do
     bitly_response = {}
