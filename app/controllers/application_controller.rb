@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
   def require_admin_member
     if current_member.nil? || current_member.role == Member::ROLE_REGULAR
       store_location
-      flash[:notice] = "You must be logged in to access this page."
-      redirect_to new_member_session_url
+      redirect_to new_member_session_url, notice: 'You must be logged in to access this page.'
       false
     end
   end
