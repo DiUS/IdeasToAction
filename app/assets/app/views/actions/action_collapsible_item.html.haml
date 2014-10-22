@@ -1,4 +1,4 @@
-%div(ng-controller="IdeaActionCtrl")
+.content-item.item(ng-controller="IdeaActionCtrl")
   %p {{item.description}}
   .action-controls(ng-show='item.mine')
     %em.date-label(ng-hide='item.completion_date') Target date on {{item.target_date | date:'dd/MM/yyyy'}}

@@ -57,7 +57,7 @@ describe "Idea detail page", js: true, acceptance: true do
     before do
       collapsible.find('.content-header').click
       expect(page).to have_selector('.btn.done-it', visible: true)
-      collapsible.find('.content-item:first-child .btn.done-it').click
+      collapsible.first('.btn.done-it').click
 		end
 
 		it 'should display the completion date' do

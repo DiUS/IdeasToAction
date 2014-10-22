@@ -5,6 +5,6 @@
       %sup><
         {{collection_length}}
   .items(ng-show="!!expanded")
-    .content-item.item(ng-repeat="item in collection")
+    %div(ng-repeat="item in collection")
       %ng:include(src="itemTemplate")
     .clear(ng-transclude)
