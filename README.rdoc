@@ -244,3 +244,7 @@ Reply time [ms]: response 297.6 transfer 173.5
 Make sure this stays with acceptable rate (< 500ms??)
 
 It is also good to personally play with the app while the test is executing.
+
+== Trello
+
+{https://trello.com/b/vHeUZle9/tedxultimo-startsomething}[https://github.com/srbartlett/ec2-blackout]
