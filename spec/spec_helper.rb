@@ -51,8 +51,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # Capybara configuration
 Capybara.javascript_driver = :poltergeist
 
-WebMock.disable_net_connect! allow: 'codeclimate.com'
-
 RSpec.configure do |config|
   # ## Mock Framework
   #

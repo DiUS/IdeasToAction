@@ -42,6 +42,6 @@ Actionman::Application.configure do
   config.analytics_tracking_key = 'bogus'
 end
 
-WebMock.disable_net_connect!(:allow_localhost => true)
+WebMock.disable_net_connect! allow_localhost: true, allow: 'codeclimate.com'
 
 ActionMailer::Base.default from: 'no-reply+test@tedxultimo.com'
