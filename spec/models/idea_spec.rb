@@ -9,6 +9,10 @@ describe Idea do
   it { should be_accessible(:featured) }
   it { should be_accessible(:member_id) }
   it { should be_accessible(:talk_ids) }
+  it { should be_accessible(:idea_actions_attributes) }
+  it { should be_accessible(:member) }
+
+	it { should accept_nested_attributes_for :idea_actions }
 
   it { should delegate(:email).to(:member).with_prefix }
 
