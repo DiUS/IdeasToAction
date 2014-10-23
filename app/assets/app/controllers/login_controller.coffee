@@ -1,4 +1,4 @@
-window.LoginCtrl = ($rootScope, $scope, $http, $location, MemberSession, LoginService) ->
+window.LoginCtrl = ($rootScope, $scope, $timeout, $http, $location, MemberSession, LoginService) ->
   $scope.loginForm =
     email: ""
     password: ""
@@ -10,6 +10,8 @@ window.LoginCtrl = ($rootScope, $scope, $http, $location, MemberSession, LoginSe
     LoginService.login($scope.loginForm).then ( (session)->
       $scope.memberSession = session
       window.localStorage.setItem "TEDXLoginEmail", session.email
-      $location.path("/home")
+      $timeout (->
+        $location.path("/home").replace()
+      ), 1
     ), (res) ->
       MemberSession.create res.data.error, null, null, undefined
