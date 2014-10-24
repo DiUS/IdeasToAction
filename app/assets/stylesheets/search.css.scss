@@ -24,19 +24,16 @@
       border: none;
       box-shadow: none;
       -webkit-user-modify: read-write-plaintext-only;
-      background: transparent image-url('search.png') no-repeat 96% center;
+      background: transparent;
     }
   }
 
   .btn {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 20%;
-    height: 65px;
-   }
-}
+    left: 82%;
+    width: 15%;
+    height: 89px;
+    background: transparent image-url('search.png') no-repeat 96% center;
+  }
 
-#found .search-field form {
-  position: relative;
 }

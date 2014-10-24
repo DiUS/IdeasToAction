@@ -1,6 +1,6 @@
 .content.content-full.content-footer.search-field
-  .content-header
+  .content-item
     %form(name='searchQuery' ng-submit="doSearch()")
       .search-text-wrapper
         %input(type='text' ng-model='query.text' size='30' placeholder='Search' mobile-focus-click)
-      %input.btn.btn-borderless(type="submit" value="")
+      %input.btn.btn-borderless.btn-home-search(type="submit" value="")
