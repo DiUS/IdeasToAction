@@ -4,12 +4,11 @@
       %img(src="assets/tedxultimo.medium.cropped.png")
 
   %scrollable
-    .content.center
-      %p.small_statement
-        %a(ng-href="/instructions")
-          The Ultimate Place to Start Something&hellip;
-          %span.red
-            >
+    .content.content-full.content-statement.center
+      .content-header(ng-href="/instructions")
+        The Ultimate Place to Start Something
+        %span.red
+          >
     .content
       .content-item.big(ng-href="/talks")
         %span {{counts.talks | number }}
@@ -26,5 +25,8 @@
         %span
           %ng-pluralize(count="counts.events | number" when="{'0': 'Events',  '1': 'Event', 'other': 'Events'}")
     .content.content-full.content-footer
-      .content-header(ng-href="/member") My profile
+      .content-header(ng-href="/member") My Profile
     %search(scroller="scroller")
+    .content.content-full
+      .content-header.center(ng-href="#" onclick="window.open('http://www.dius.com.au/', '_blank');")
+        %img(src="assets/powered_by_dius.small.png")
