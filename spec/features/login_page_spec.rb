@@ -22,7 +22,7 @@ describe 'Login page', js: true, acceptance: true do
     end
 
     it 'should naviagate to home page' do
-      expect(page).to have_content('The Ultimate Place to Start Something')
+      expect(page).to have_content('How To Start Something')
     end
   end
 end
